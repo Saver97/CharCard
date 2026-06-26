@@ -158,6 +158,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
       <div class="npc-g-card"><span class="npc-g-label">邦布心情</span><span class="npc-g-val" id="b-mood">开心</span></div>
     </div>
   </div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>📦 邦布图鉴 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击已拥有替换）</span></h3>
+    <div id="bangboo-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px"></div>
+  </div>
 </div>
 
 <div class="tab-panel" id="tab-npc">
@@ -314,7 +317,7 @@ function renderAll(){
   try{
     let sd=null;
     if(typeof getAllVariables==='function'){const all=getAllVariables();const parsed=typeof _!=='undefined'?_.get(all,'stat_data'):(all.stat_data||all);if(parsed&&Object.keys(parsed).length>0)sd=parsed}
-    if(!sd){renderFactions(null);renderNPCs(null);document.getElementById('refreshBadge').textContent='○ 演示模式';document.getElementById('refreshBadge').style.color='var(--muted)';return}
+    if(!sd){renderFactions(null);renderNPCs(null);renderBangbooGallery(null);document.getElementById('refreshBadge').textContent='○ 演示模式';document.getElementById('refreshBadge').style.color='var(--muted)';return}
     document.getElementById('w-time').textContent=getProp(sd,'world.当前时间','-');
     document.getElementById('w-loc').textContent=getProp(sd,'world.当前地点','-');
     document.getElementById('w-chapter').textContent=getProp(sd,'world.当前章节','-');
@@ -458,6 +461,44 @@ function renderFactions(data){
   }
   fc.innerHTML=html||'<div class="nodata">暂无阵营数据</div>';
 }
+
+// ===== Bangboo Gallery with demo data =====
+const DEMO_BANGBOOS = [
+  { name: "伊埃斯", desc: "HDD远程同步型邦布", faction: "法厄同", skill: "感官同步·远程操控", owned: true },
+  { name: "阿全", desc: "安全监控型邦布", faction: "治安局", skill: "360°视野·报警联动", owned: false },
+  { name: "企鹅布", desc: "极寒战斗型邦布", faction: "维多利亚家政", skill: "冰霜弹·减速领域", owned: false },
+  { name: "纸袋布", desc: "防御特化型邦布", faction: "白祇重工", skill: "以太护盾·伤害减免", owned: false },
+  { name: "鲨鱼布", desc: "高速突击型邦布", faction: "维多利亚家政", skill: "鲨鱼冲刺·破甲", owned: false },
+  { name: "恶魔布", desc: "暗影潜行型邦布", faction: "卡吕冬之子", skill: "影子潜伏·暴击加成", owned: false },
+  { name: "巴特勒", desc: "辅助治疗型邦布", faction: "其他", skill: "急救喷雾·HP回复", owned: false },
+  { name: "格列佛", desc: "物理机甲型邦布", faction: "白祇重工", skill: "钻头猛击·眩晕", owned: false },
+  { name: "招财布", desc: "幸运加成型邦布", faction: "其他", skill: "黄金律·掉率+5%", owned: false },
+  { name: "共鸣布", desc: "声波探测型邦布", faction: "天琴座", skill: "声呐扫描·弱点击破", owned: false },
+  { name: "飓风布", desc: "风系加速型邦布", faction: "卡吕冬之子", skill: "疾风步·移速+30%", owned: false },
+  { name: "静电布", desc: "电磁干扰型邦布", faction: "狡兔屋", skill: "EMP脉冲·机械瘫痪", owned: false }
+];
+
+function renderBangbooGallery(data){
+  const gallery=document.getElementById('bangboo-gallery');
+  const partners=data?getProp(data,'bangboo.邦布伙伴',['伊埃斯']):['伊埃斯'];
+  let html='';
+  DEMO_BANGBOOS.forEach(bb=>{
+    const isOwned=partners.includes(bb.name);
+    html+=`<div class="npc-g-card" onclick="${isOwned?'':'swapBangboo(\''+bb.name+'\')'}" style="${isOwned?'border-color:var(--orange);background:rgba(255,167,38,.08)':''};cursor:${isOwned?'default':'pointer'}">
+      <span class="npc-g-label" style="color:${isOwned?'var(--orange)':'var(--muted)'}">${isOwned?'★ 已携带':bb.faction}</span>
+      <span class="npc-g-val" style="font-size:12px">${bb.name}</span>
+      <span style="font-size:10px;color:var(--muted);display:block;margin-top:2px">${bb.skill}</span>
+      ${!isOwned?'<span style="font-size:9px;color:var(--gold);display:block;margin-top:3px">点击携带</span>':''}
+    </div>`;
+  });
+  gallery.innerHTML=html;
+}
+window.swapBangboo=function(name){
+  if(confirm('确定要将邦布伙伴替换为 「'+name+'」 吗？（替换后会影响当前携带）')){
+    sendSlash('/setvar bangboo.邦布伙伴 ["'+name+'"]|/trigger');
+    setTimeout(renderAll,300);
+  }
+};
 
 renderAll();
 if(typeof eventOn==='function'&&typeof Mvu!=='undefined'){try{eventOn(Mvu.events.VARIABLE_UPDATE_ENDED,()=>{setTimeout(renderAll,200)})}catch(e){}}
