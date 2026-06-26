@@ -32,7 +32,21 @@ export const Schema = z.object({
       战斗能力: z.string().or(z.literal('无')).prefault('无'),
       种族: z.string().or(z.literal('人类')).prefault('人类'),
       特殊能力: z.string().or(z.literal('无')).prefault('无')
-    }).prefault({})
+    }).prefault({}),
+    角色类型: z.string().or(z.literal('')).prefault(''),
+    当前情绪: z.string().or(z.literal('平静')).prefault('平静'),
+    战斗定位: z.string().or(z.literal('')).prefault(''),
+    同伴: z.array(z.string()).prefault([]),
+    着装: z.object({
+      头部: z.string().or(z.literal('')).prefault(''),
+      身体: z.string().or(z.literal('')).prefault(''),
+      足部: z.string().or(z.literal('')).prefault(''),
+      饰品: z.string().or(z.literal('')).prefault('')
+    }).prefault({}),
+    背包: z.record(z.string(), z.object({
+      数量: z.coerce.number().prefault(1),
+      描述: z.string().or(z.literal('')).prefault('')
+    }).prefault({})).prefault({})
   }).prefault({}),
 
   空洞: z.object({
