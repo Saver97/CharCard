@@ -587,7 +587,9 @@ function startAdventure() {
   }
   
   const patchStr = JSON.stringify(patches);
-  const finalPrompt = `/send ${narrative}\n\n<span style="display:none;">\n<UpdateVariable>\n<JSONPatch>\n${patchStr}\n</JSONPatch>\n</UpdateVariable>\n</span>|/trigger`;
+  const _uv = '<Up'+'dateVariable>';
+  const _uvEnd = '</Up'+'dateVariable>';
+  const finalPrompt = `/send ${narrative}\n\n<span style="display:none;">\n${_uv}\n<JSONPatch>\n${patchStr}\n</JSONPatch>\n${_uvEnd}\n</span>|/trigger`;
   
   if (typeof triggerSlash === 'function') {
     triggerSlash(finalPrompt);

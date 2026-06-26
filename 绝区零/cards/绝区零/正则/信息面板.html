@@ -293,7 +293,7 @@ window.pickGear=function(slot){
     if(item.name==='卸下(空置)'){
       var gearName=getProp(window.cachedData,'主角.着装.'+slot,'')||'';
       window.pendingActions.push({desc:'卸下'+slot+'装备'+(gearName?'：'+gearName:''),cmd:'/setvar 主角.着装.'+slot+' ""|/trigger'});
-      if(gearName){window.pendingActions.push({desc:'将'+gearName+'放回背包',cmd:'/send '+slot+'脱下'+gearName+'，请回复时在 <UpdateVariable> 的 JSONPatch 中 add /主角/背包/'+gearName+'|/trigger'})}
+      if(gearName){window.pendingActions.push({desc:'将'+gearName+'放回背包',cmd:'/send '+slot+'脱下'+gearName+'，请回复时在 <Update'+'Variable> 的 JSONPatch 中 add /主角/背包/'+gearName+'|/trigger'})}
       updateHijack();setTimeout(renderAll,300)}
     else{window.pendingActions.push({desc:'装备'+item.name+'到'+slot,cmd:'/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger'});window.pendingActions.push({desc:'将'+item.name+'从背包移除',cmd:'/setvar 主角.背包.'+item.name+' null|/trigger'});updateHijack();setTimeout(renderAll,300)}
   });

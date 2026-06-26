@@ -70,6 +70,18 @@ for (const entry of card.data.character_book.entries) {
 }
 console.log(`✓ MVU 条目 depth 修正为 2: ${depthFixed} 个`);
 
+// 2c. HTML 正则补 markdown 代码块标记（markdownOnly 正则需 ```html 包裹才渲染）
+let fenceFixed = 0;
+for (const r of card.data.extensions.regex_scripts) {
+  const rs = r.replaceString || '';
+  const isHtml = rs.includes('<!DOCTYPE') || rs.includes('<html') || rs.includes('<style');
+  if (isHtml && !rs.startsWith('```')) {
+    r.replaceString = '```html\n' + rs + '\n```';
+    fenceFixed++;
+  }
+}
+console.log(`✓ HTML 正则补代码块标记: ${fenceFixed} 个`);
+
 // 3. 统计最终 group 分布
 const g = {};
 card.data.character_book.entries.forEach(e => { g[e.extensions.group || '(空)'] = (g[e.extensions.group || '(空)'] || 0) + 1; });
