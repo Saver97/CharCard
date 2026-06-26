@@ -371,14 +371,14 @@ function startAdventure() {
     patches.push(
       { op: "replace", path: "/世界/当前时间", value: "新艾利都历·清晨 07:30" },
       { op: "replace", path: "/世界/当前地点", value: "六分街·Random Play录像店" },
-      { op: "replace", path: "/protagonist/是否为法厄同", value: true },
+      { op: "replace", path: "/主角/基础/是否为法厄同", value: true },
       { op: "replace", path: "/主角/基础/姓名", value: charName },
       { op: "replace", path: "/主角/基础/性别", value: isWise ? "男" : "女" },
       { op: "replace", path: "/主角/基础/身份", value: "法厄同·传奇绳匠" },
       { op: "replace", path: "/主角/基础/金钱", value: 50000 },
       { op: "replace", path: "/主角/属性/以太适应性", value: 85 },
-      { op: "replace", path: "/bangboo/邦布伙伴", value: "伊埃斯" },
-      { op: "replace", path: "/bangboo/拥有的邦布", value: ["伊埃斯"] }
+      { op: "replace", path: "/邦布/邦布伙伴", value: "伊埃斯" },
+      { op: "replace", path: "/邦布/拥有的邦布", value: ["伊埃斯"] }
     );
     
     narrative = `新艾利都，六分街。
@@ -411,7 +411,7 @@ function startAdventure() {
     patches.push(
       { op: "replace", path: "/世界/当前时间", value: "新艾利都历·上午 08:00" },
       { op: "replace", path: "/世界/当前地点", value: "六分街·公寓" },
-      { op: "replace", path: "/protagonist/是否为法厄同", value: false },
+      { op: "replace", path: "/主角/基础/是否为法厄同", value: false },
       { op: "replace", path: "/主角/基础/姓名", value: name },
       { op: "replace", path: "/主角/基础/性别", value: gender },
       { op: "replace", path: "/主角/基础/年龄", value: age + "岁" },
@@ -422,8 +422,8 @@ function startAdventure() {
       { op: "replace", path: "/主角/属性/战斗能力", value: combat },
       { op: "replace", path: "/主角/基础/所属势力", value: faction },
       { op: "replace", path: "/主角/属性/特殊能力", value: special },
-      { op: "replace", path: "/bangboo/邦布伙伴", value: selectedBangboo },
-{ op: "replace", path: "/bangboo/拥有的邦布", value: [selectedBangboo] }
+      { op: "replace", path: "/邦布/邦布伙伴", value: selectedBangboo },
+      { op: "replace", path: "/邦布/拥有的邦布", value: [selectedBangboo] }
     );
     
     const presetNarratives = {

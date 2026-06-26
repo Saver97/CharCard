@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -369,43 +369,43 @@ function renderAll(){
     document.getElementById('w-weather').textContent=getProp(sd,'世界.天气','-');
     document.getElementById('w-rumor').textContent=getProp(sd,'世界.城市流言','')||'-';
     document.getElementById('w-activity').textContent=getProp(sd,'世界.绳网活跃度','-');
-    const isP=getProp(sd,'protagonist.是否为法厄同',null);
+    const isP=getProp(sd,'主角.是否为法厄同',null);
     document.getElementById('h-is-phaethon').textContent=isP===true?'✅ 是（哲/铃）':isP===false?'❌ 否（自定义角色）':'（待初始化）';
-    document.getElementById('h-identity').textContent=getProp(sd,'主角.基础.姓名','')||getProp(sd,'protagonist.主人身份','-');
-    const hp=getProp(sd,'主角.状态.HP',getProp(sd,'protagonist.HP',100));
+    document.getElementById('h-identity').textContent=getProp(sd,'主角.基础.姓名','')||getProp(sd,'主角.主人身份','-');
+    const hp=getProp(sd,'主角.状态.HP',getProp(sd,'主角.HP',100));
     document.getElementById('h-hp-txt').textContent=hp+'/100';document.getElementById('h-hp-bar').style.width=hp+'%';
-    const horny=getProp(sd,'主角.状态.发情度',getProp(sd,'protagonist.发情度',0));
+    const horny=getProp(sd,'主角.状态.发情度',getProp(sd,'主角.发情度',0));
     document.getElementById('h-horny-txt').textContent=horny+'/100';document.getElementById('h-horny-bar').style.width=horny+'%';
-    const ether=getProp(sd,'主角.状态.以太侵蚀度',getProp(sd,'protagonist.以太侵蚀度',0));
+    const ether=getProp(sd,'主角.状态.以太侵蚀度',getProp(sd,'主角.以太侵蚀度',0));
     document.getElementById('h-ether-txt').textContent=ether+'/100';document.getElementById('h-ether-bar').style.width=ether+'%';
     const mindProt=Math.max(0,100-ether);document.getElementById('h-mind-txt').textContent=mindProt+'/100';document.getElementById('h-mind-bar').style.width=mindProt+'%';
-    document.getElementById('h-denny').textContent=(getProp(sd,'主角.基础.金钱',getProp(sd,'protagonist.丁尼余额',0)))+' 丁尼';
-    const comps=getProp(sd,'protagonist.同伴',[]);document.getElementById('h-companions').textContent=Array.isArray(comps)&&comps.length>0?comps.join(', '):'无';
-    document.getElementById('ho-name').textContent=getProp(sd,'空洞.当前空洞',getProp(sd,'hollow.当前空洞',''))||'（不在空洞中）';
-    document.getElementById('ho-density').textContent=getProp(sd,'空洞.以太浓度',getProp(sd,'hollow.以太浓度','-'));
-    const prog=getProp(sd,'空洞.探索进度',getProp(sd,'hollow.探索进度',0));
+    document.getElementById('h-denny').textContent=(getProp(sd,'主角.基础.金钱',getProp(sd,'主角.丁尼余额',0)))+' 丁尼';
+    const comps=getProp(sd,'主角.同伴',[]);document.getElementById('h-companions').textContent=Array.isArray(comps)&&comps.length>0?comps.join(', '):'无';
+    document.getElementById('ho-name').textContent=getProp(sd,'空洞.当前空洞',getProp(sd,'空洞.当前空洞',''))||'（不在空洞中）';
+    document.getElementById('ho-density').textContent=getProp(sd,'空洞.以太浓度',getProp(sd,'空洞.以太浓度','-'));
+    const prog=getProp(sd,'空洞.探索进度',getProp(sd,'空洞.探索进度',0));
     document.getElementById('ho-progress-txt').textContent=prog+'%';document.getElementById('ho-progress-bar').style.width=prog+'%';
-    document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'空洞.研究音擎',getProp(sd,'hollow.研究音擎',[]))).join(', ')||'无';
-    document.getElementById('ho-threat').textContent=getProp(sd,'空洞.以骸威胁等级',getProp(sd,'hollow.以骸威胁等级','-'));
-    document.getElementById('ho-carrot').textContent=getProp(sd,'空洞.萝卜质量',getProp(sd,'hollow.萝卜质量','-'));
-    document.getElementById('ho-timeleft').textContent=getProp(sd,'空洞.剩余安全时间',getProp(sd,'hollow.剩余安全时间','-'));
-    const bat=getProp(sd,'邦布.伊埃斯电量',getProp(sd,'bangboo.伊埃斯电量',100));
+    document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'空洞.研究音擎',getProp(sd,'空洞.研究音擎',[]))).join(', ')||'无';
+    document.getElementById('ho-threat').textContent=getProp(sd,'空洞.以骸威胁等级',getProp(sd,'空洞.以骸威胁等级','-'));
+    document.getElementById('ho-carrot').textContent=getProp(sd,'空洞.萝卜质量',getProp(sd,'空洞.萝卜质量','-'));
+    document.getElementById('ho-timeleft').textContent=getProp(sd,'空洞.剩余安全时间',getProp(sd,'空洞.剩余安全时间','-'));
+    const bat=getProp(sd,'邦布.伊埃斯电量',getProp(sd,'邦布.伊埃斯电量',100));
     document.getElementById('b-battery-txt').textContent=bat+'%';document.getElementById('b-battery-bar').style.width=bat+'%';
-    const bp=getProp(sd,'邦布.邦布伙伴',getProp(sd,'bangboo.邦布伙伴',[]));
+    const bp=getProp(sd,'邦布.邦布伙伴',getProp(sd,'邦布.邦布伙伴',[]));
     document.getElementById('b-partners').textContent=Array.isArray(bp)&&bp.length>0?bp.join(', '):'-';
-    document.getElementById('b-skill').textContent=getProp(sd,'邦布.装备技能',getProp(sd,'bangboo.装备技能',''))||'-';
-    document.getElementById('b-repair').textContent=getProp(sd,'邦布.维修状态',getProp(sd,'bangboo.维修状态','-'));
-    document.getElementById('b-mood').textContent=getProp(sd,'邦布.邦布心情',getProp(sd,'bangboo.邦布心情','-'));
+    document.getElementById('b-skill').textContent=getProp(sd,'邦布.装备技能',getProp(sd,'邦布.装备技能',''))||'-';
+    document.getElementById('b-repair').textContent=getProp(sd,'邦布.维修状态',getProp(sd,'邦布.维修状态','-'));
+    document.getElementById('b-mood').textContent=getProp(sd,'邦布.邦布心情',getProp(sd,'邦布.邦布心情','-'));
     // Hero gear
-    document.getElementById('h-gear-head').textContent=getProp(sd,'主角.着装.头部',getProp(sd,'protagonist.着装.头部',''))||'空置';
-    document.getElementById('h-gear-body').textContent=getProp(sd,'主角.着装.身体',getProp(sd,'protagonist.着装.身体',''))||'空置';
-    document.getElementById('h-gear-foot').textContent=getProp(sd,'主角.着装.足部',getProp(sd,'protagonist.着装.足部',''))||'空置';
-    document.getElementById('h-gear-acc').textContent=getProp(sd,'主角.着装.饰品',getProp(sd,'protagonist.着装.饰品',''))||'空置';
-    document.getElementById('h-combat-role').textContent=getProp(sd,'主角.战斗定位',getProp(sd,'protagonist.战斗定位',''))||'-';
-    document.getElementById('h-ether-apt').textContent=getProp(sd,'主角.以太适应性',getProp(sd,'protagonist.以太适应性','-'));
-    document.getElementById('h-mood').textContent=getProp(sd,'主角.当前情绪',getProp(sd,'protagonist.当前情绪','-'));
+    document.getElementById('h-gear-head').textContent=getProp(sd,'主角.着装.头部',getProp(sd,'主角.着装.头部',''))||'空置';
+    document.getElementById('h-gear-body').textContent=getProp(sd,'主角.着装.身体',getProp(sd,'主角.着装.身体',''))||'空置';
+    document.getElementById('h-gear-foot').textContent=getProp(sd,'主角.着装.足部',getProp(sd,'主角.着装.足部',''))||'空置';
+    document.getElementById('h-gear-acc').textContent=getProp(sd,'主角.着装.饰品',getProp(sd,'主角.着装.饰品',''))||'空置';
+    document.getElementById('h-combat-role').textContent=getProp(sd,'主角.战斗定位',getProp(sd,'主角.战斗定位',''))||'-';
+    document.getElementById('h-ether-apt').textContent=getProp(sd,'主角.以太适应性',getProp(sd,'主角.以太适应性','-'));
+    document.getElementById('h-mood').textContent=getProp(sd,'主角.当前情绪',getProp(sd,'主角.当前情绪','-'));
     // Hero inventory
-    const inv=getProp(sd,'主角.背包',getProp(sd,'protagonist.背包',{}));
+    const inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));
     const invContainer=document.getElementById('hero-inventory');
     let invHtml='';
     if(typeof inv==='object'&&Object.keys(inv).length>0){
@@ -431,7 +431,7 @@ function sendSlash(cmd){if(typeof triggerSlash==='function')triggerSlash(cmd);el
 // Pick gear from inventory items
 window.pickGear=function(slot){
   const sd=window.cachedData;
-  const inv=getProp(sd,'主角.背包',getProp(sd,'protagonist.背包',{}));
+  const inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));
   const items=[{name:'卸下(空置)',desc:'移除当前装备'}];
   if(typeof inv==='object'){
     for(const[iName,iData]of Object.entries(inv)){
