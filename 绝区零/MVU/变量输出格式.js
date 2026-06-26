@@ -11,8 +11,10 @@ module.exports = `变量输出格式:
     - 天气路径为 /世界/天气（string），必须在变化时更新
   
   【着装注意事项】:
-    - 卸下装备时使用 replace 而非 remove：{ "op": "replace", "path": "/主角/着装/饰品", "value": "" }
-    - 同一步操作中需要同时将卸下的装备 add 到 /主角/背包/装备名 ✅
+    - 换装时必须同时处理：旧衣 remove 着装 + add 到背包；新衣 replace 着装 + remove 背包
+    - 卸下装备用 replace "" 清空槽位，同一步将旧装备 add 到 /主角/背包/物品名 {数量:1, 描述:"..."}
+    - 穿上装备用 replace 填入着装槽，同时 add 旧装备到背包
+    - 例：脱下T恤→ { "op": "replace", "path": "/主角/着装/身体", "value": "新上衣" } + { "op": "add", "path": "/主角/背包/白色宽松T恤", "value": { "数量": 1, "描述": "..." } }
 
   format: |
     <UpdateVariable>
@@ -21,8 +23,8 @@ module.exports = `变量输出格式:
     [
       { "op": "replace", "path": "/世界/天气", "value": "阴天·小雨" },
       { "op": "replace", "path": "/邦布/邦布伙伴", "value": ["企鹅布"] },
-      { "op": "replace", "path": "/主角/着装/饰品", "value": "" },
-      { "op": "add", "path": "/主角/背包/星星手链", "value": { "数量": 1, "描述": "银色的手链" } },
+      { "op": "replace", "path": "/主角/着装/身体", "value": "新上衣" },
+      { "op": "add", "path": "/主角/背包/白色宽松T恤", "value": { "数量": 1, "描述": "纯棉材质" } },
       { "op": "add", "path": "/邦布/拥有的邦布/-", "value": "企鹅布" }
     ]
     </JSONPatch>
