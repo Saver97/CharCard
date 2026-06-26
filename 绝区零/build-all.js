@@ -287,9 +287,9 @@ const card = {
       chub: { id: 0, full_path: "绝区零/zzz-rpg", related_lorebooks: [], background_image: "", preset: null, extensions: [] },
       depth_prompt: { depth: 4, prompt: "", role: "system" },
       fav: false, talkativeness: "0.5", world: "绝区零",
-      tavern_helper: { scripts: [], variables: {} }
+      tavern_helper: { scripts: [], variables: {} },
+      regex_scripts: regexScripts
     },
-    regex_scripts: regexScripts,
     character_book: { entries }
   }
 };
