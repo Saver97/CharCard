@@ -57,7 +57,7 @@ function generateVariableList() {
 }
 
 function generateOutputFormat() {
-  return `---\n变量输出格式:\n  rule:\n    - 你必须在每轮回复末尾输出 <UpdateVariable> 块（含 <Analysis> 和 <JSONPatch>）\n    - 使用 JSON Patch (RFC 6902) 标准：replace / add / remove\n    - 仅使用合法路径（参见变量更新规则中的路径白名单），禁止 CDATA 包裹\n    - add 对象用 /路径/新键，add 数组用 /路径/-\n  format: |\n    <UpdateVariable>\n    <Analysis>简述本回合变量变动因果（中文，80字内）</Analysis>\n    <JSONPatch>\n    [\n      { "op": "replace", "path": "/世界/当前时间", "value": "新艾利都历·清晨 07:45" },\n      { "op": "add", "path": "/NPCs/妮可", "value": { "基础": {...}, "关系": {...} } },\n      { "op": "add", "path": "/主角/背包/咖啡", "value": { "数量": 1, "描述": "..." } },\n      { "op": "remove", "path": "/主角/同伴/0" }\n    ]\n    </JSONPatch>\n    </UpdateVariable>`;
+  return `---\n变量输出格式:\n  rule:\n    - 你必须在每轮回复末尾输出 <UpdateVariable> 块（含 <Analysis> 和 <JSONPatch>）\n    - 使用 JSON Patch (RFC 6902) 标准：replace / add / remove\n    - 仅使用合法路径（参见变量更新规则中的路径白名单），禁止 CDATA 包裹\n    - 路径始终以 / 开头（如 /主角/基础/金钱），不可省略顶级域（如 /背包/xxx ❌ → /主角/背包/xxx ✅）\n    - add 到对象：/主角/背包/物品名，value 为 {数量: number, 描述: string}\n    - add 到数组：/主角/同伴/- 或 /邦布/拥有的邦布/-（value 直接是字符串）\n  \n  【着装注意事项】:\n    - 卸下装备时使用 replace 而非 remove：{ "op": "replace", "path": "/主角/着装/饰品", "value": "" }\n    - 同一步操作中需要同时将卸下的装备 add 到 /主角/背包/装备名 ✅\n\n  format: |\n    <UpdateVariable>\n    <Analysis>简述本回合变量变动因果（中文，80字内）</Analysis>\n    <JSONPatch>\n    [\n      { "op": "replace", "path": "/主角/着装/饰品", "value": "" },\n      { "op": "add", "path": "/主角/背包/星星手链", "value": { "数量": 1, "描述": "银色的手链" } },\n      { "op": "add", "path": "/邦布/拥有的邦布/-", "value": "企鹅布" },\n      { "op": "remove", "path": "/主角/同伴/0" }\n    ]\n    </JSONPatch>\n    </UpdateVariable>`;
 }
 
 function formatVar(val) {
