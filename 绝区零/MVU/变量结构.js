@@ -102,7 +102,7 @@ export const Schema = z.object({
       金钱: z.coerce.number().prefault(0),
       当前目标: z.string().or(z.literal('无')).prefault('无'),
       实时内心想法: z.string().or(z.literal('无')).prefault('无'),
-      个人社交网络: z.string().or(z.literal('无')).prefault('无')
+      个人社交网络: z.string().or(z.array(z.string()).transform(arr => arr.join(', '))).or(z.literal('无')).prefault('无')
     }).prefault({}),
     关系: z.object({
       好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(0),
@@ -135,7 +135,7 @@ export const Schema = z.object({
       器官状态: z.record(z.enum(['唇齿','双峰','双手','双足','幽谷','秘穴']), z.object({
         开发度: z.string().or(z.literal('未开发')).prefault('未开发'),
         描述: z.string().or(z.literal('')).prefault('')
-      }).prefault({})).prefault({})
+      }).or(z.string().transform(str => ({ 开发度: '未开发', 描述: str }))).prefault({})).prefault({})
     }).prefault({})
   }).prefault({})).prefault({})
 });
