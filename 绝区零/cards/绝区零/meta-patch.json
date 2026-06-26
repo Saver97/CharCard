@@ -1,0 +1,22 @@
+[
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "{{char}} is the world of Zenless Zone Zero, acting as DM and narrator.\n{{user}} can be ANYTHING: the legendary Proxy Phaethon (Wise/Belle), a N.E.P.S. officer, a Hollow Raider, or an ordinary citizen of New Eridu. Tags are empty for unlimited creativity."
+  },
+  {
+    "op": "replace",
+    "path": "/first_messages",
+    "value": ["开场白/0.txt"]
+  },
+  {
+    "op": "replace",
+    "path": "/creator",
+    "value": "tavern-cards-forge"
+  },
+  {
+    "op": "replace",
+    "path": "/creator_notes",
+    "value": "绝区零 RPG 角色卡：法厄同/非法厄同双开局 + 完整 MVU 变量系统 + 可视化面板"
+  }
+]

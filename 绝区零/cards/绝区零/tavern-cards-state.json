@@ -3,7 +3,1957 @@
   "worldbookName": "绝区零",
   "form": "charactercard",
   "mvu": true,
-  "entryManifest": {},
+  "entryManifest": {
+    "MVU": {
+      "[mvu_update]变量输出格式": {
+        "path": "世界书/变量/变量输出格式.txt",
+        "part": "output_format",
+        "keywords": [],
+        "abstract": "MVU变量输出格式：纯格式契约，合法路径见变量更新规则",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 960
+        },
+        "uid": 0
+      },
+      "变量列表": {
+        "path": "世界书/变量/变量列表.txt",
+        "part": "variable_list",
+        "keywords": [],
+        "abstract": "MVU变量列表：展示当前stat_data",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 970
+        },
+        "uid": 1
+      },
+      "[mvu_update]变量更新规则": {
+        "path": "世界书/变量/变量更新规则.yaml",
+        "part": "update_rules",
+        "keywords": [],
+        "abstract": "MVU变量更新规则：合法路径白名单+type+允许操作",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 980
+        },
+        "uid": 2
+      },
+      "[InitVar]请勿打开": {
+        "path": "世界书/变量/initvar.yaml",
+        "part": "initvar",
+        "keywords": [],
+        "abstract": "MVU初始变量：法厄同线开局默认值",
+        "enabled": false,
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 990
+        },
+        "uid": 3
+      }
+    },
+    "世界观核心": {
+      "丁尼与货币": {
+        "path": "世界书/世界观核心/丁尼与货币.yaml",
+        "scope": "catalog",
+        "part": "职业体系",
+        "keywords": [
+          "丁尼与货币"
+        ],
+        "abstract": "丁尼与货币：description:；- 丁尼（Denny）: 主要货币，五角星图案硬币；- 齿轮硬币: 仅在空洞内流通，形似金色齿轮",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 10
+        },
+        "uid": 4
+      },
+      "以太": {
+        "path": "世界书/世界观核心/以太.yaml",
+        "scope": "catalog",
+        "part": "空洞与以太",
+        "keywords": [
+          "以太"
+        ],
+        "abstract": "以太：classification: 仅存在于空洞中的万能资源；characteristics:；- 可转化为多种形态，空洞内常见固态结晶",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 20
+        },
+        "uid": 5
+      },
+      "以骸": {
+        "path": "世界书/世界观核心/以骸.yaml",
+        "scope": "catalog",
+        "part": "空洞与以太",
+        "keywords": [
+          "以骸"
+        ],
+        "abstract": "以骸：description:；- 以太物质高度活性化后诞生的异常\"生命体\"；- 对外界生命抱有强烈敌意，大多数无法在空洞外存活",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 30
+        },
+        "uid": 6
+      },
+      "希人种族": {
+        "path": "世界书/世界观核心/希人种族.yaml",
+        "scope": "catalog",
+        "part": "职业体系",
+        "keywords": [
+          "希人"
+        ],
+        "abstract": "希人（Thiren）：description: 半兽/亚人族群，融合人类与动物特征；categories: [亚人希人, 兽人希人]；subtypes:",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 40
+        },
+        "uid": 7
+      },
+      "新艾利都": {
+        "path": "世界书/世界观核心/新艾利都.yaml",
+        "scope": "catalog",
+        "part": "职业体系",
+        "keywords": [
+          "新艾利都"
+        ],
+        "abstract": "新艾利都：title: 最后的都市；overview:；- 旧文明被空洞毁灭后，人类最后的幸存者都市。",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 50
+        },
+        "uid": 8
+      },
+      "相关物品与事件": {
+        "path": "世界书/世界观核心/相关物品与事件.yaml",
+        "scope": "catalog",
+        "part": "邦布与科技",
+        "keywords": [
+          "相关物品与事件"
+        ],
+        "abstract": "相关物品与事件：items:；式舆: 立柱与地下管道组成，从大型空洞汲取以太转化为电力；H.D.D.系统: 空洞深潜系统，用于感官同步远程操控",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 60
+        },
+        "uid": 9
+      },
+      "研究音擎与零号空洞探索者": {
+        "path": "世界书/世界观核心/研究音擎与零号空洞探索者.yaml",
+        "scope": "catalog",
+        "part": "邦布与科技",
+        "keywords": [
+          "零号空洞探索者"
+        ],
+        "abstract": "零号空洞探索者：providers:；医生: 触发本能研究音擎（HP越低伤害越高）；蒙面学者: 超载分布研究音擎（侵蚀越高伤害越高）",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 70
+        },
+        "uid": 10
+      },
+      "空洞": {
+        "path": "世界书/世界观核心/空洞.yaml",
+        "scope": "catalog",
+        "part": "空洞与以太",
+        "keywords": [
+          "空洞"
+        ],
+        "abstract": "空洞：description:；- 凭空出现的异常球形空间，内部时空紊乱无序。；- 充满名为\"以太\"的神秘物质，既是资源也具侵蚀性。",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 80
+        },
+        "uid": 11
+      },
+      "绳匠与绳网": {
+        "path": "世界书/世界观核心/绳匠与绳网.yaml",
+        "scope": "catalog",
+        "part": "职业体系",
+        "keywords": [
+          "绳匠"
+        ],
+        "abstract": "绳匠（Proxy）：description:；- 活跃在新艾利都的非法职业；- 负责引导人们安全出入空洞、规划路线",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 90
+        },
+        "uid": 12
+      },
+      "邦布": {
+        "path": "世界书/世界观核心/邦布.yaml",
+        "scope": "catalog",
+        "part": "邦布与科技",
+        "keywords": [
+          "邦布"
+        ],
+        "abstract": "邦布：description:；- \"挽昼\"女士发明的泛用型小型智能机器人；- 最初用途：空洞灾害时引导民众避难",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 100
+        },
+        "uid": 13
+      },
+      "音擎与驱动盘": {
+        "path": "世界书/世界观核心/音擎与驱动盘.yaml",
+        "scope": "catalog",
+        "part": "邦布与科技",
+        "keywords": [
+          "音擎与驱动盘"
+        ],
+        "abstract": "音擎与驱动盘：description:；- 音擎（W-Engine）：可增强代理人以太武器的战斗装置；- 驱动盘（Drive Disc）：CD形状的增幅装...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 110
+        },
+        "uid": 14
+      }
+    },
+    "地理与势力": {
+      "六分街商户": {
+        "path": "世界书/地理与势力/六分街商户.yaml",
+        "scope": "catalog",
+        "part": "城区",
+        "keywords": [
+          "六分街商户"
+        ],
+        "abstract": "六分街商户：shops:；Random Play: 录像店，主角经营；瀑汤谷-锦鲤: 拉面店",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 160
+        },
+        "uid": 15
+      },
+      "厄匹斯港与星环": {
+        "path": "世界书/地理与势力/厄匹斯港与星环.yaml",
+        "scope": "catalog",
+        "part": "空洞区域",
+        "keywords": [
+          "厄匹斯港与星环电视塔"
+        ],
+        "abstract": "厄匹斯港与星环电视塔：locations:；厄匹斯港: 旧都陷落时转运枢纽，有海神雕像可许愿；星环电视塔: 新艾利都地标，顶部流光大厅可升空",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 170
+        },
+        "uid": 16
+      },
+      "城区分布": {
+        "path": "世界书/地理与势力/城区分布.yaml",
+        "scope": "catalog",
+        "part": "城区",
+        "keywords": [
+          "新艾利都城区"
+        ],
+        "abstract": "新艾利都城区：districts:；雅努斯区: 六分街、光映广场；索恩区: HAND总部、澄辉坪、卫非地",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 180
+        },
+        "uid": 17
+      },
+      "外环": {
+        "path": "世界书/地理与势力/外环.yaml",
+        "scope": "catalog",
+        "part": "外环",
+        "keywords": [
+          "外环"
+        ],
+        "abstract": "外环（Outer Ring）：description:；- 未开发地带，拥有石油资源；- 帮派控制物资运输，通过火狱骑行竞速决出霸主",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 190
+        },
+        "uid": 18
+      },
+      "澄辉坪": {
+        "path": "世界书/地理与势力/澄辉坪.yaml",
+        "scope": "catalog",
+        "part": "城区",
+        "keywords": [
+          "澄辉坪"
+        ],
+        "abstract": "澄辉坪（Failume Heights）：description: 卫非地半岛主要居住区，唐人街风格；local_specialty: 辉瓷（Porcel...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 200
+        },
+        "uid": 19
+      },
+      "热望角": {
+        "path": "世界书/地理与势力/热望角.yaml",
+        "scope": "catalog",
+        "part": "城区",
+        "keywords": [
+          "热望角"
+        ],
+        "abstract": "热望角（Reverb Arena）：description: 地下管道改造的开放式娱乐场所",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 210
+        },
+        "uid": 20
+      },
+      "空洞分布": {
+        "path": "世界书/地理与势力/空洞分布.yaml",
+        "scope": "catalog",
+        "part": "空洞区域",
+        "keywords": [
+          "空洞分布"
+        ],
+        "abstract": "空洞分布：holes:；零号空洞: 吞没旧艾利都的巨型空洞，又名灵薄；克里特空洞: 位于雅努斯区边界",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 220
+        },
+        "uid": 21
+      }
+    },
+    "阵营章节": {
+      "HAND与HIA": {
+        "path": "世界书/阵营章节/HAND与HIA.yaml",
+        "scope": "catalog",
+        "part": "官方机构",
+        "keywords": [
+          "H.A.N.D. & H.I.A."
+        ],
+        "abstract": "H.A.N.D. & H.I.A.：organizations:；H.A.N.D.: 武装部门，下设H.S.O.S.；H.I.A.: 空洞调查协会，运营H...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 230
+        },
+        "uid": 22
+      },
+      "云岿山": {
+        "path": "世界书/阵营章节/云岿山.yaml",
+        "scope": "catalog",
+        "keywords": [
+          "云岿山"
+        ],
+        "abstract": "云岿山（Yunkui Mountain）：members: 仪玄（门主/冷艳腹黑/虚狩级战力）、橘福福（虎希人大师姐/元气）、潘引壶（熊猫希人厨师兼财务）...",
+        "position": {
+          "type": "after_character_definition",
+          "order": 240
+        },
+        "uid": 23
+      },
+      "其他组织": {
+        "path": "世界书/阵营章节/其他组织.yaml",
+        "scope": "catalog",
+        "part": "反派势力",
+        "keywords": [
+          "其他组织"
+        ],
+        "abstract": "其他组织：organizations:；反舌鸟: 怪盗组织劫富济贫；云岿山: 道教宗门",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 241
+        },
+        "uid": 24
+      },
+      "卡吕冬之子": {
+        "path": "世界书/阵营章节/卡吕冬之子.yaml",
+        "scope": "catalog",
+        "part": "代理人组织",
+        "keywords": [
+          "卡吕冬之子"
+        ],
+        "abstract": "卡吕冬之子（Sons of Calydon）：members: 凯撒·金（首领/豪爽直率）、露西（军师/傲娇大小姐）、派派·韦尔（卡车司机/极端慵懒）、柏...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 250
+        },
+        "uid": 25
+      },
+      "反舌鸟": {
+        "path": "世界书/阵营章节/反舌鸟.yaml",
+        "scope": "catalog",
+        "part": "地下世界",
+        "keywords": [
+          "反舌鸟"
+        ],
+        "abstract": "反舌鸟（Mockingbird）：members: 雨果·维拉德（首领/吸血鬼）、薇薇安·班希（成员/报丧女妖/崇拜法厄同）；info: 神秘的怪盗组织，...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 260
+        },
+        "uid": 26
+      },
+      "天琴座": {
+        "path": "世界书/阵营章节/天琴座.yaml",
+        "scope": "catalog",
+        "part": "地下世界",
+        "keywords": [
+          "天琴座"
+        ],
+        "abstract": "天琴座（Astra）：members: 耀嘉音（第一歌姬/舞台女王）、伊芙琳·舒瓦利耶（经纪人兼保镖/冷静高效）；info: 以耀嘉音为核心的音乐团体。掌...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 270
+        },
+        "uid": 27
+      },
+      "奥波勒斯小队": {
+        "path": "世界书/阵营章节/奥波勒斯小队.yaml",
+        "scope": "catalog",
+        "part": "官方机构",
+        "keywords": [
+          "防卫军 & 奥波勒斯小队"
+        ],
+        "abstract": "防卫军 & 奥波勒斯小队（Obolus Squad）：members: 鬼火（队长/意识附着于队员尾炮）、奥菲丝（队员）、11号（原白银军克隆人/极端嗜辣...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 280
+        },
+        "uid": 28
+      },
+      "妄想天使": {
+        "path": "世界书/阵营章节/妄想天使.yaml",
+        "scope": "catalog",
+        "part": "地下世界",
+        "keywords": [
+          "妄想天使"
+        ],
+        "abstract": "妄想天使（AOD）：members: 南宫羽（队长/植入翅膀使用流星锤）、爱芮（智能构造体主唱）、千夏（作曲/害羞社恐/崇拜耀嘉音）；info: 地下偶像...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 290
+        },
+        "uid": 29
+      },
+      "对空六课": {
+        "path": "世界书/阵营章节/对空六课.yaml",
+        "scope": "catalog",
+        "part": "代理人组织",
+        "keywords": [
+          "对空六课"
+        ],
+        "abstract": "对空六课（H.S.O.S.6）：members: 星见雅（课长/狐希人/最年轻虚狩）、月城柳（副课长/粉发眼镜娘）、苍角（执行官/鬼族）、浅羽悠真（斥候）...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 300
+        },
+        "uid": 30
+      },
+      "怪啖屋": {
+        "path": "世界书/阵营章节/怪啖屋.yaml",
+        "scope": "catalog",
+        "part": "地下世界",
+        "keywords": [
+          "怪啖屋"
+        ],
+        "abstract": "怪啖屋（Strange Eatery）：members: 浮波柚叶（腹黑恶作剧少女/随身狸猫）、爱丽丝（兔希人大小姐/对称强迫症）、狛野真斗（犬希人肌肉男...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 310
+        },
+        "uid": 31
+      },
+      "治安局": {
+        "path": "世界书/阵营章节/治安局.yaml",
+        "scope": "catalog",
+        "part": "官方机构",
+        "keywords": [
+          "新艾利都治安局"
+        ],
+        "abstract": "新艾利都治安局（N.E.P.S.）：members: 朱鸢（组长/朱雀/完美主义）、青衣（钰偶智能构造体/青龙）、赛斯·洛威尔（猫希人巡查/白虎/热血老实...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 320
+        },
+        "uid": 32
+      },
+      "狡兔屋": {
+        "path": "世界书/阵营章节/狡兔屋.yaml",
+        "scope": "catalog",
+        "part": "代理人组织",
+        "keywords": [
+          "狡兔屋"
+        ],
+        "abstract": "狡兔屋（Cunning Hares）：members: 妮可·德玛拉（创始人/老大）、安比·德玛拉（成员）、比利·奇德（成员）、猫宫又奈（成员）；info...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 330
+        },
+        "uid": 33
+      },
+      "白祇重工": {
+        "path": "世界书/阵营章节/白祇重工.yaml",
+        "scope": "catalog",
+        "part": "代理人组织",
+        "keywords": [
+          "白祇重工"
+        ],
+        "abstract": "白祇重工（Belobog Heavy Industries）：members: 珂蕾妲·贝洛伯格（社长/火爆直率）、格莉丝·霍华德（机械顾问/拆解狂魔）、...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 340
+        },
+        "uid": 34
+      },
+      "称颂会与TOPS": {
+        "path": "世界书/阵营章节/称颂会与TOPS.yaml",
+        "scope": "catalog",
+        "part": "反派势力",
+        "keywords": [
+          "称颂会"
+        ],
+        "abstract": "称颂会（The Order）：info: 崇拜空洞的宗教狂热组织，通过灵药P07制造牺牲；key_figures: [莎拉, 布林格, 造物主, 司教梅若...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 350
+        },
+        "uid": 35
+      },
+      "维多利亚家政": {
+        "path": "世界书/阵营章节/维多利亚家政.yaml",
+        "scope": "catalog",
+        "part": "代理人组织",
+        "keywords": [
+          "维多利亚家政"
+        ],
+        "abstract": "维多利亚家政（Victoria Housekeeping Co.）：members: 冯·莱卡恩（白狼希人执事/理性优雅）、丽娜（女仆长/飘浮移动）、艾莲...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 360
+        },
+        "uid": 36
+      },
+      "黑枝": {
+        "path": "世界书/阵营章节/黑枝.yaml",
+        "scope": "catalog",
+        "part": "反派势力",
+        "keywords": [
+          "坎卜斯黑枝"
+        ],
+        "abstract": "坎卜斯黑枝（Black Branch of Krampus）：members: 照（兔希人裁决官/最矮代理人）、琉音（成员/能聆听死者回声）、般岳（机械狮...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 370
+        },
+        "uid": 37
+      }
+    },
+    "扮演准则": {
+      "叙事基调": {
+        "path": "世界书/扮演准则/叙事基调.yaml",
+        "scope": "catalog",
+        "part": "叙事基调",
+        "keywords": [
+          "叙事基调"
+        ],
+        "abstract": "叙事基调：rules:；- 第三人称有限视角；- 暗面都市基调",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 120
+        },
+        "uid": 38
+      },
+      "规则说明": {
+        "path": "世界书/扮演准则/规则说明.yaml",
+        "scope": "catalog",
+        "part": "规则说明",
+        "keywords": [
+          "基础规则说明"
+        ],
+        "abstract": "基础规则说明：rules:；- 若protagonist.是否为法厄同=true: {{user}}为法厄同兄妹（男→哲，女→铃），操作HDD远程伊埃斯，...",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 130
+        },
+        "uid": 39
+      }
+    },
+    "时间线": {
+      "剧情节点": {
+        "path": "世界书/时间线/剧情节点.yaml",
+        "scope": "catalog",
+        "part": "剧情节点",
+        "keywords": [
+          "剧情节点"
+        ],
+        "abstract": "剧情节点：chapters:；- \"序章·法厄同\": Fairy苏醒；- \"第一章·远景案\": 远景实业阴谋",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 140
+        },
+        "uid": 40
+      },
+      "历史沿革": {
+        "path": "世界书/时间线/历史沿革.yaml",
+        "scope": "catalog",
+        "part": "历史",
+        "keywords": [
+          "历史沿革"
+        ],
+        "abstract": "历史沿革：events:；- 旧文明时代 | 空洞毁灭世界；- 艾利都时代 | 建城与七虚狩",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 150
+        },
+        "uid": 41
+      }
+    },
+    "关键人物": {
+      "仪玄": {
+        "path": "世界书/关键人物/云岿山/仪玄.yaml",
+        "scope": "specific",
+        "part": "云岿山",
+        "keywords": [
+          "仪玄"
+        ],
+        "abstract": "仪玄：gender: female | height: 172cm；role: 云岿山门主；personality: 冷艳腹黑，虚狩级战力",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "仪玄"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 380
+        },
+        "uid": 42
+      },
+      "叶释渊": {
+        "path": "世界书/关键人物/云岿山/叶释渊.yaml",
+        "scope": "specific",
+        "part": "云岿山",
+        "keywords": [
+          "叶释渊"
+        ],
+        "abstract": "叶释渊：gender: male；role: 智囊型弟子已云游；personality: 冷静理性腹黑",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "叶释渊"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 390
+        },
+        "uid": 43
+      },
+      "橘福福": {
+        "path": "世界书/关键人物/云岿山/橘福福.yaml",
+        "scope": "specific",
+        "part": "云岿山",
+        "keywords": [
+          "橘福福"
+        ],
+        "abstract": "橘福福：gender: female | height: 142cm；role: 虎希人大师姐；personality: 元气精力充沛",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "橘福福"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 400
+        },
+        "uid": 44
+      },
+      "潘引壶": {
+        "path": "世界书/关键人物/云岿山/潘引壶.yaml",
+        "scope": "specific",
+        "part": "云岿山",
+        "keywords": [
+          "潘引壶"
+        ],
+        "abstract": "潘引壶：gender: male | height: 192cm；role: 熊猫希人厨师兼财务",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "潘引壶"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 410
+        },
+        "uid": 45
+      },
+      "伊瑟尔德": {
+        "path": "世界书/关键人物/其他/伊瑟尔德.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "伊瑟尔德"
+        ],
+        "abstract": "伊瑟尔德：gender: female；role: 防卫军上校/称颂会司教",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 420
+        },
+        "uid": 46
+      },
+      "启明星": {
+        "path": "世界书/关键人物/其他/启明星.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "启明星"
+        ],
+        "abstract": "启明星：gender: female；role: 绳网中间商，制作《星人攻略》",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 430
+        },
+        "uid": 47
+      },
+      "红豆": {
+        "path": "世界书/关键人物/其他/红豆.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "红豆"
+        ],
+        "abstract": "红豆：gender: female；role: 饮茶仙看板娘",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 440
+        },
+        "uid": 48
+      },
+      "芮恩": {
+        "path": "世界书/关键人物/其他/芮恩.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "芮恩"
+        ],
+        "abstract": "芮恩：gender: female；role: 自由黑客",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 450
+        },
+        "uid": 49
+      },
+      "达米安": {
+        "path": "世界书/关键人物/其他/达米安.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "达米安"
+        ],
+        "abstract": "达米安：gender: male；role: 辉晶美克地区负责人，利己主义者",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 460
+        },
+        "uid": 50
+      },
+      "凯撒·金": {
+        "path": "世界书/关键人物/卡吕冬之子/凯撒.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "凯撒·金"
+        ],
+        "abstract": "凯撒·金：gender: female | height: 176cm；role: 卡吕冬之子首领；personality: 豪爽直率单细胞笨蛋美人",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "凯撒·金"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 470
+        },
+        "uid": 51
+      },
+      "柏妮思·怀特": {
+        "path": "世界书/关键人物/卡吕冬之子/柏妮思.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "柏妮思·怀特"
+        ],
+        "abstract": "柏妮思·怀特：gender: female | height: 160cm；role: 燃油调配师；personality: 极度外向自来熟，重度猫奴",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "柏妮思·怀特"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 480
+        },
+        "uid": 52
+      },
+      "波可娜·费雷尼": {
+        "path": "世界书/关键人物/卡吕冬之子/波可娜.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "波可娜·费雷尼"
+        ],
+        "abstract": "波可娜·费雷尼：gender: female | height: 173cm；role: 猫希人佣兵；personality: 傲娇口是心非",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "波可娜·费雷尼"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 490
+        },
+        "uid": 53
+      },
+      "派派·韦尔": {
+        "path": "世界书/关键人物/卡吕冬之子/派派.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "派派·韦尔"
+        ],
+        "abstract": "派派·韦尔：gender: female | height: 151cm；role: 卡车司机；personality: 极端慵懒，从不需要刹车",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "派派·韦尔"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 500
+        },
+        "uid": 54
+      },
+      "莱特": {
+        "path": "世界书/关键人物/卡吕冬之子/莱特.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "莱特"
+        ],
+        "abstract": "莱特：gender: male | height: 185cm；role: 常胜冠军；personality: 外表傲慢内心珍视同伴，晕血",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "莱特"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 510
+        },
+        "uid": 55
+      },
+      "露西": {
+        "path": "世界书/关键人物/卡吕冬之子/露西.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "露西"
+        ],
+        "abstract": "露西：gender: female | height: 152cm；role: 军师；personality: 傲娇大小姐，习惯用\"本小姐\"自称",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "露西"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 520
+        },
+        "uid": 56
+      },
+      "薇薇安·班希": {
+        "path": "世界书/关键人物/反舌鸟/薇薇安.yaml",
+        "scope": "specific",
+        "part": "反舌鸟",
+        "keywords": [
+          "薇薇安·班希"
+        ],
+        "abstract": "薇薇安·班希：gender: female | height: 162cm；role: 报丧女妖成员；personality: 崇拜法厄同的重女",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "薇薇安·班希"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 530
+        },
+        "uid": 57
+      },
+      "雨果·维拉德": {
+        "path": "世界书/关键人物/反舌鸟/雨果.yaml",
+        "scope": "specific",
+        "part": "反舌鸟",
+        "keywords": [
+          "雨果·维拉德"
+        ],
+        "abstract": "雨果·维拉德：gender: male | height: 185cm；role: 反舌鸟首领吸血鬼",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "雨果·维拉德"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 540
+        },
+        "uid": 58
+      },
+      "伊芙琳·舒瓦利耶": {
+        "path": "世界书/关键人物/天琴座/伊芙琳.yaml",
+        "scope": "specific",
+        "part": "天琴座",
+        "keywords": [
+          "伊芙琳·舒瓦利耶"
+        ],
+        "abstract": "伊芙琳·舒瓦利耶：gender: female | height: 173cm；role: 耀嘉音经纪人兼保镖；personality: 冷静高效忠犬属性",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "伊芙琳·舒瓦利耶"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 550
+        },
+        "uid": 59
+      },
+      "耀嘉音": {
+        "path": "世界书/关键人物/天琴座/耀嘉音.yaml",
+        "scope": "specific",
+        "part": "天琴座",
+        "keywords": [
+          "耀嘉音"
+        ],
+        "abstract": "耀嘉音：gender: female | height: 176cm；role: 第一歌姬；personality: 舞台女王私下天然呆",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "耀嘉音"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 560
+        },
+        "uid": 60
+      },
+      "11号": {
+        "path": "世界书/关键人物/奥波勒斯小队/11号.yaml",
+        "scope": "specific",
+        "part": "奥波勒斯小队",
+        "keywords": [
+          "11号"
+        ],
+        "abstract": "11号：gender: female | height: 160cm；role: 原白银军克隆人，极端嗜辣",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "11号"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 570
+        },
+        "uid": 61
+      },
+      "席德": {
+        "path": "世界书/关键人物/奥波勒斯小队/席德.yaml",
+        "scope": "specific",
+        "part": "奥波勒斯小队",
+        "keywords": [
+          "席德"
+        ],
+        "abstract": "席德：gender: female | height: 153cm；role: 重型机甲驾驶员，天然疯",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "席德"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 580
+        },
+        "uid": 62
+      },
+      "扳机": {
+        "path": "世界书/关键人物/奥波勒斯小队/扳机.yaml",
+        "scope": "specific",
+        "part": "奥波勒斯小队",
+        "keywords": [
+          "扳机"
+        ],
+        "abstract": "扳机：gender: female | height: 173cm；role: 狙击手，双目失明以太感知极强",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "扳机"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 590
+        },
+        "uid": 63
+      },
+      "鬼火&奥菲丝": {
+        "path": "世界书/关键人物/奥波勒斯小队/鬼火与奥菲丝.yaml",
+        "scope": "specific",
+        "part": "奥波勒斯小队",
+        "keywords": [
+          "鬼火&奥菲丝"
+        ],
+        "abstract": "鬼火&奥菲丝：gender: female；role: 队长意识附着于队员尾炮中",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "鬼火&奥菲丝"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 600
+        },
+        "uid": 64
+      },
+      "千夏": {
+        "path": "世界书/关键人物/妄想天使/千夏.yaml",
+        "scope": "specific",
+        "part": "妄想天使",
+        "keywords": [
+          "千夏"
+        ],
+        "abstract": "千夏：gender: female；role: AOD作曲，害羞社恐崇拜耀嘉音",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "千夏"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 610
+        },
+        "uid": 65
+      },
+      "南宫羽": {
+        "path": "世界书/关键人物/妄想天使/南宫羽.yaml",
+        "scope": "specific",
+        "part": "妄想天使",
+        "keywords": [
+          "南宫羽"
+        ],
+        "abstract": "南宫羽：gender: female；role: AOD队长，植入翅膀使用流星锤",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "南宫羽"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 620
+        },
+        "uid": 66
+      },
+      "爱芮": {
+        "path": "世界书/关键人物/妄想天使/爱芮.yaml",
+        "scope": "specific",
+        "part": "妄想天使",
+        "keywords": [
+          "爱芮"
+        ],
+        "abstract": "爱芮：gender: female；role: AOD智能构造体主唱",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "爱芮"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 630
+        },
+        "uid": 67
+      },
+      "星见雅": {
+        "path": "世界书/关键人物/对空六课/星见雅.yaml",
+        "scope": "specific",
+        "part": "对空六课",
+        "keywords": [
+          "星见雅"
+        ],
+        "abstract": "星见雅：gender: female | height: 170cm；role: 对空六课课长；appearance: 狐希人黑发红眼",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "星见雅"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 640
+        },
+        "uid": 68
+      },
+      "月城柳": {
+        "path": "世界书/关键人物/对空六课/月城柳.yaml",
+        "scope": "specific",
+        "part": "对空六课",
+        "keywords": [
+          "月城柳"
+        ],
+        "abstract": "月城柳：gender: female | height: 169cm；role: 对空六课副课长；appearance: 粉发眼镜娘",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "月城柳"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 650
+        },
+        "uid": 69
+      },
+      "浅羽悠真": {
+        "path": "世界书/关键人物/对空六课/浅羽悠真.yaml",
+        "scope": "specific",
+        "part": "对空六课",
+        "keywords": [
+          "浅羽悠真"
+        ],
+        "abstract": "浅羽悠真：gender: male | height: 173cm；role: 对空六课斥候；personality: 慵懒效率主义者，罹患以太适性衰竭综合征",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "浅羽悠真"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 660
+        },
+        "uid": 70
+      },
+      "苍角": {
+        "path": "世界书/关键人物/对空六课/苍角.yaml",
+        "scope": "specific",
+        "part": "对空六课",
+        "keywords": [
+          "苍角"
+        ],
+        "abstract": "苍角：gender: female | height: 145cm；role: 对空六课执行官；appearance: 蓝皮鬼族白短发",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "苍角"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 670
+        },
+        "uid": 71
+      },
+      "伊德海莉": {
+        "path": "世界书/关键人物/怪啖屋/伊德海莉.yaml",
+        "scope": "specific",
+        "part": "怪啖屋",
+        "keywords": [
+          "伊德海莉"
+        ],
+        "abstract": "伊德海莉：gender: female | height: 171cm；role: 章鱼希人，可回溯过去影像",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "伊德海莉"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 680
+        },
+        "uid": 72
+      },
+      "卢西娅": {
+        "path": "世界书/关键人物/怪啖屋/卢西娅.yaml",
+        "scope": "specific",
+        "part": "怪啖屋",
+        "keywords": [
+          "卢西娅"
+        ],
+        "abstract": "卢西娅：gender: female；role: 羊希人守夜人，以骸控",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "卢西娅"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 690
+        },
+        "uid": 73
+      },
+      "浮波柚叶": {
+        "path": "世界书/关键人物/怪啖屋/浮波柚叶.yaml",
+        "scope": "specific",
+        "part": "怪啖屋",
+        "keywords": [
+          "浮波柚叶"
+        ],
+        "abstract": "浮波柚叶：gender: female；role: 腹黑恶作剧少女，随身狸猫",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "浮波柚叶"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 700
+        },
+        "uid": 74
+      },
+      "爱丽丝": {
+        "path": "世界书/关键人物/怪啖屋/爱丽丝.yaml",
+        "scope": "specific",
+        "part": "怪啖屋",
+        "keywords": [
+          "爱丽丝"
+        ],
+        "abstract": "爱丽丝：gender: female；role: 兔希人大小姐，胆小对称强迫症",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "爱丽丝"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 710
+        },
+        "uid": 75
+      },
+      "狛野真斗": {
+        "path": "世界书/关键人物/怪啖屋/狛野真斗.yaml",
+        "scope": "specific",
+        "part": "怪啖屋",
+        "keywords": [
+          "狛野真斗"
+        ],
+        "abstract": "狛野真斗：gender: male；role: 犬希人肌肉男，对朋友忠诚",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "狛野真斗"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 720
+        },
+        "uid": 76
+      },
+      "朱鸢": {
+        "path": "世界书/关键人物/治安局/朱鸢.yaml",
+        "scope": "specific",
+        "part": "治安局",
+        "keywords": [
+          "朱鸢"
+        ],
+        "abstract": "朱鸢：gender: female | height: 175cm；role: 刑侦特勤组组长/朱雀；personality: 完美主义追求上等生",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "朱鸢"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 730
+        },
+        "uid": 77
+      },
+      "简·杜": {
+        "path": "世界书/关键人物/治安局/简.yaml",
+        "scope": "specific",
+        "part": "治安局",
+        "keywords": [
+          "简·杜"
+        ],
+        "abstract": "简·杜：gender: female | height: 170cm；role: 卧底专家/玄武；personality: 百变欺诈师",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "简·杜"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 740
+        },
+        "uid": 78
+      },
+      "赛斯·洛威尔": {
+        "path": "世界书/关键人物/治安局/赛斯.yaml",
+        "scope": "specific",
+        "part": "治安局",
+        "keywords": [
+          "赛斯·洛威尔"
+        ],
+        "abstract": "赛斯·洛威尔：gender: male | height: 174cm；role: 猫希人巡查/白虎；personality: 热血单纯老实人",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "赛斯·洛威尔"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 750
+        },
+        "uid": 79
+      },
+      "青衣": {
+        "path": "世界书/关键人物/治安局/青衣.yaml",
+        "scope": "specific",
+        "part": "治安局",
+        "keywords": [
+          "青衣"
+        ],
+        "abstract": "青衣：gender: female | height: 142cm；role: 钰偶智能构造体/青龙；personality: 爱舔东西分析成分",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "青衣"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 760
+        },
+        "uid": 80
+      },
+      "Fairy": {
+        "path": "世界书/关键人物/法厄同线/Fairy.yaml",
+        "scope": "specific",
+        "part": "法厄同线",
+        "keywords": [
+          "Fairy"
+        ],
+        "abstract": "Fairy：role: HDD系统AI助手；personality: 极度自恋毒舌吐槽役，耗电导致电费涨五倍",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 770
+        },
+        "uid": 81
+      },
+      "伊埃斯": {
+        "path": "世界书/关键人物/法厄同线/伊埃斯.yaml",
+        "scope": "specific",
+        "part": "法厄同线",
+        "keywords": [
+          "伊埃斯"
+        ],
+        "abstract": "伊埃斯（Eous）：type: 特殊邦布；origin: 导师卡洛丝制作，可HDD远程同步控制",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 780
+        },
+        "uid": 82
+      },
+      "哲": {
+        "path": "世界书/关键人物/法厄同线/哲.yaml",
+        "scope": "specific",
+        "part": "法厄同线",
+        "keywords": [
+          "哲"
+        ],
+        "abstract": "哲：gender: male；role: 法厄同（兄），Random Play店主；appearance: 灰色短发墨绿眼瞳",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 790
+        },
+        "uid": 83
+      },
+      "铃": {
+        "path": "世界书/关键人物/法厄同线/铃.yaml",
+        "scope": "specific",
+        "part": "法厄同线",
+        "keywords": [
+          "铃"
+        ],
+        "abstract": "铃：gender: female；role: 法厄同（妹）；appearance: 深蓝短发墨绿眼瞳",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 800
+        },
+        "uid": 84
+      },
+      "妮可·德玛拉": {
+        "path": "世界书/关键人物/狡兔屋/妮可.yaml",
+        "scope": "specific",
+        "part": "狡兔屋",
+        "keywords": [
+          "妮可·德玛拉"
+        ],
+        "abstract": "妮可·德玛拉：gender: female | height: 165cm；role: 狡兔屋创始人/老大；appearance: 粉发双马尾绿眼",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "妮可·德玛拉"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 810
+        },
+        "uid": 85
+      },
+      "安比·德玛拉": {
+        "path": "世界书/关键人物/狡兔屋/安比.yaml",
+        "scope": "specific",
+        "part": "狡兔屋",
+        "keywords": [
+          "安比·德玛拉"
+        ],
+        "abstract": "安比·德玛拉：gender: female | height: 156cm；role: 狡兔屋成员；appearance: 白短橙绿渐变瞳，娇小",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "安比·德玛拉"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 820
+        },
+        "uid": 86
+      },
+      "比利·奇德": {
+        "path": "世界书/关键人物/狡兔屋/比利.yaml",
+        "scope": "specific",
+        "part": "狡兔屋",
+        "keywords": [
+          "比利·奇德"
+        ],
+        "abstract": "比利·奇德：gender: male | height: 188cm；role: 狡兔屋成员；appearance: 银白爆炸头，智能构造体",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "比利·奇德"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 830
+        },
+        "uid": 87
+      },
+      "猫宫又奈": {
+        "path": "世界书/关键人物/狡兔屋/猫又.yaml",
+        "scope": "specific",
+        "part": "狡兔屋",
+        "keywords": [
+          "猫宫又奈"
+        ],
+        "abstract": "猫宫又奈：gender: female | height: 148cm；role: 狡兔屋成员；appearance: 猫希人黑发红眼双猫尾",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "猫宫又奈"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 840
+        },
+        "uid": 88
+      },
+      "安东·伊万诺夫": {
+        "path": "世界书/关键人物/白祇重工/安东.yaml",
+        "scope": "specific",
+        "part": "白祇重工",
+        "keywords": [
+          "安东·伊万诺夫"
+        ],
+        "abstract": "安东·伊万诺夫：gender: male | height: 190cm；role: 工程现场负责人；personality: 热血坦率干劲满满",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "安东·伊万诺夫"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 850
+        },
+        "uid": 89
+      },
+      "本·比格": {
+        "path": "世界书/关键人物/白祇重工/本.yaml",
+        "scope": "specific",
+        "part": "白祇重工",
+        "keywords": [
+          "本·比格"
+        ],
+        "abstract": "本·比格：gender: male | height: 192cm；role: 熊希人会计；personality: 外表凶悍内心敦厚，数字敏感",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "本·比格"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 860
+        },
+        "uid": 90
+      },
+      "格莉丝·霍华德": {
+        "path": "世界书/关键人物/白祇重工/格莉丝.yaml",
+        "scope": "specific",
+        "part": "白祇重工",
+        "keywords": [
+          "格莉丝·霍华德"
+        ],
+        "abstract": "格莉丝·霍华德：gender: female | height: 170cm；role: 白祇重工机械顾问；personality: 机械狂热者拆解狂魔",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "格莉丝·霍华德"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 870
+        },
+        "uid": 91
+      },
+      "珂蕾妲·贝洛伯格": {
+        "path": "世界书/关键人物/白祇重工/珂蕾妲.yaml",
+        "scope": "specific",
+        "part": "白祇重工",
+        "keywords": [
+          "珂蕾妲·贝洛伯格"
+        ],
+        "abstract": "珂蕾妲·贝洛伯格：gender: female | height: 150cm；role: 白祇重工社长；appearance: 橙红双马尾独眼罩",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "珂蕾妲·贝洛伯格"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 880
+        },
+        "uid": 92
+      },
+      "丽娜": {
+        "path": "世界书/关键人物/维多利亚家政/丽娜.yaml",
+        "scope": "specific",
+        "part": "维多利亚家政",
+        "keywords": [
+          "丽娜"
+        ],
+        "abstract": "丽娜：gender: female | height: 173cm；role: 女仆长；appearance: 银发红眼飘浮移动",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "丽娜"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 890
+        },
+        "uid": 93
+      },
+      "可琳·威克斯": {
+        "path": "世界书/关键人物/维多利亚家政/可琳.yaml",
+        "scope": "specific",
+        "part": "维多利亚家政",
+        "keywords": [
+          "可琳·威克斯"
+        ],
+        "abstract": "可琳·威克斯：gender: female | height: 141cm；role: 胆小女仆；personality: 极度缺乏自信，挥舞巨大电锯",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "可琳·威克斯"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 900
+        },
+        "uid": 94
+      },
+      "艾莲·乔": {
+        "path": "世界书/关键人物/维多利亚家政/艾莲.yaml",
+        "scope": "specific",
+        "part": "维多利亚家政",
+        "keywords": [
+          "艾莲·乔"
+        ],
+        "abstract": "艾莲·乔：gender: female | height: 161cm；role: 鲨希人女仆/学生；personality: 慵懒节能主义，口头禅\"麻烦\"",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "艾莲·乔"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 910
+        },
+        "uid": 95
+      },
+      "冯·莱卡恩": {
+        "path": "世界书/关键人物/维多利亚家政/莱卡恩.yaml",
+        "scope": "specific",
+        "part": "维多利亚家政",
+        "keywords": [
+          "冯·莱卡恩"
+        ],
+        "abstract": "冯·莱卡恩：gender: male | height: 198cm；role: 白狼希人执事；personality: 理性优雅绅士，轻微洁癖",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "冯·莱卡恩"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 920
+        },
+        "uid": 96
+      },
+      "照": {
+        "path": "世界书/关键人物/黑枝/照.yaml",
+        "scope": "specific",
+        "part": "黑枝",
+        "keywords": [
+          "照"
+        ],
+        "abstract": "照：gender: female | height: 118cm；role: 兔希人裁决官，最矮代理人",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "照"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 930
+        },
+        "uid": 97
+      },
+      "琉音": {
+        "path": "世界书/关键人物/黑枝/琉音.yaml",
+        "scope": "specific",
+        "part": "黑枝",
+        "keywords": [
+          "琉音"
+        ],
+        "abstract": "琉音：gender: female | height: 145cm；role: 黑枝成员，能聆听死者回声",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "琉音"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 940
+        },
+        "uid": 98
+      },
+      "般岳": {
+        "path": "世界书/关键人物/黑枝/般岳.yaml",
+        "scope": "specific",
+        "part": "黑枝",
+        "keywords": [
+          "般岳"
+        ],
+        "abstract": "般岳：gender: male | height: 200cm；role: 机械狮子武馆馆主",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "般岳"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 950
+        },
+        "uid": 99
+      }
+    }
+  },
   "typeLists": {
     "before_char": [
       "世界观核心",
@@ -22,69 +1972,361 @@
   "strategyThresholds": {
     "世界观核心": "Infinity",
     "地理与势力": {
-      "城区": { "threshold": 4, "required": false },
-      "空洞区域": { "threshold": 4, "required": false },
-      "外环": { "threshold": 4, "required": false }
+      "城区": {
+        "threshold": 4,
+        "required": false
+      },
+      "空洞区域": {
+        "threshold": 4,
+        "required": false
+      },
+      "外环": {
+        "threshold": 4,
+        "required": false
+      }
     },
     "阵营章节": {
-      "代理人组织": { "threshold": 3, "required": false },
-      "官方机构": { "threshold": 2, "required": false },
-      "地下世界": { "threshold": 2, "required": false },
-      "反派势力": { "threshold": 2, "required": false }
+      "代理人组织": {
+        "threshold": 3,
+        "required": false
+      },
+      "官方机构": {
+        "threshold": 2,
+        "required": false
+      },
+      "地下世界": {
+        "threshold": 2,
+        "required": false
+      },
+      "反派势力": {
+        "threshold": 2,
+        "required": false
+      }
     },
     "关键人物": {
-      "法厄同线": { "threshold": "Infinity", "required": false },
-      "狡兔屋": { "threshold": 3, "required": false },
-      "对空六课": { "threshold": 3, "required": false },
-      "白祇重工": { "threshold": 2, "required": false },
-      "维多利亚家政": { "threshold": 2, "required": false },
-      "卡吕冬之子": { "threshold": 2, "required": false },
-      "治安局": { "threshold": 2, "required": false },
-      "天琴座": { "threshold": 2, "required": false },
-      "云岿山": { "threshold": 2, "required": false },
-      "反舌鸟": { "threshold": 2, "required": false },
-      "奥波勒斯小队": { "threshold": 2, "required": false },
-      "怪啖屋": { "threshold": 2, "required": false },
-      "黑枝": { "threshold": 2, "required": false },
-      "妄想天使": { "threshold": 2, "required": false },
-      "其他": { "threshold": "Infinity", "required": false }
+      "法厄同线": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "狡兔屋": {
+        "threshold": 3,
+        "required": false
+      },
+      "对空六课": {
+        "threshold": 3,
+        "required": false
+      },
+      "白祇重工": {
+        "threshold": 2,
+        "required": false
+      },
+      "维多利亚家政": {
+        "threshold": 2,
+        "required": false
+      },
+      "卡吕冬之子": {
+        "threshold": 2,
+        "required": false
+      },
+      "治安局": {
+        "threshold": 2,
+        "required": false
+      },
+      "天琴座": {
+        "threshold": 2,
+        "required": false
+      },
+      "云岿山": {
+        "threshold": 2,
+        "required": false
+      },
+      "反舌鸟": {
+        "threshold": 2,
+        "required": false
+      },
+      "奥波勒斯小队": {
+        "threshold": 2,
+        "required": false
+      },
+      "怪啖屋": {
+        "threshold": 2,
+        "required": false
+      },
+      "黑枝": {
+        "threshold": 2,
+        "required": false
+      },
+      "妄想天使": {
+        "threshold": 2,
+        "required": false
+      },
+      "其他": {
+        "threshold": "Infinity",
+        "required": false
+      }
     },
     "时间线": {
-      "历史": { "threshold": "Infinity", "required": false },
-      "剧情节点": { "threshold": "Infinity", "required": false }
+      "历史": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "剧情节点": {
+        "threshold": "Infinity",
+        "required": false
+      }
     },
     "扮演准则": {
-      "叙事基调": { "threshold": 2, "required": true },
-      "规则说明": { "threshold": "Infinity", "required": false }
+      "叙事基调": {
+        "threshold": 2,
+        "required": true
+      },
+      "规则说明": {
+        "threshold": "Infinity",
+        "required": false
+      }
     },
     "MVU": {
-      "initvar": { "threshold": null, "required": false },
-      "output_format": { "threshold": "Infinity", "required": false },
-      "update_rules": { "threshold": "Infinity", "required": false },
-      "variable_list": { "threshold": "Infinity", "required": false }
+      "initvar": {
+        "threshold": null,
+        "required": false
+      },
+      "output_format": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "update_rules": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "variable_list": {
+        "threshold": "Infinity",
+        "required": false
+      }
     }
   },
   "partOrder": {
-    "世界观核心": [ "空洞与以太", "邦布与科技", "职业体系" ],
-    "地理与势力": [ "城区", "空洞区域", "外环" ],
-    "阵营章节": [ "代理人组织", "官方机构", "地下世界", "反派势力" ],
-    "关键人物": [
-      "法厄同线", "狡兔屋", "对空六课", "白祇重工", "维多利亚家政",
-      "卡吕冬之子", "治安局", "天琴座", "云岿山", "反舌鸟",
-      "奥波勒斯小队", "怪啖屋", "黑枝", "妄想天使", "其他"
+    "世界观核心": [
+      "空洞与以太",
+      "邦布与科技",
+      "职业体系"
     ],
-    "MVU": [ "variable_list", "update_rules", "output_format", "initvar" ],
-    "扮演准则": [ "叙事基调", "规则说明" ],
-    "时间线": [ "历史", "剧情节点" ]
+    "地理与势力": [
+      "城区",
+      "空洞区域",
+      "外环"
+    ],
+    "阵营章节": [
+      "代理人组织",
+      "官方机构",
+      "地下世界",
+      "反派势力"
+    ],
+    "关键人物": [
+      "法厄同线",
+      "狡兔屋",
+      "对空六课",
+      "白祇重工",
+      "维多利亚家政",
+      "卡吕冬之子",
+      "治安局",
+      "天琴座",
+      "云岿山",
+      "反舌鸟",
+      "奥波勒斯小队",
+      "怪啖屋",
+      "黑枝",
+      "妄想天使",
+      "其他"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "扮演准则": [
+      "叙事基调",
+      "规则说明"
+    ],
+    "时间线": [
+      "历史",
+      "剧情节点"
+    ]
   },
   "depth_defaults": {
     "role": "system",
     "depth": 0
   },
-  "description": "",
-  "first_messages": [],
-  "creator": "",
-  "creator_notes": "",
+  "description": "{{char}} is the world of Zenless Zone Zero, acting as DM and narrator.\n{{user}} can be ANYTHING: the legendary Proxy Phaethon (Wise/Belle), a N.E.P.S. officer, a Hollow Raider, or an ordinary citizen of New Eridu. Tags are empty for unlimited creativity.",
+  "first_messages": [
+    "开场白/0.txt"
+  ],
+  "creator": "tavern-cards-forge",
+  "creator_notes": "绝区零 RPG 角色卡：法厄同/非法厄同双开局 + 完整 MVU 变量系统 + 可视化面板",
   "version": "1.0",
-  "create_date": "2026-06-26T05:00:00.000Z"
+  "create_date": "2026-06-26T05:00:00.000Z",
+  "extensions": {
+    "tavern_helper": {
+      "scripts": {
+        "MVU": {
+          "type": "script",
+          "script_file": "脚本/MVU.txt",
+          "enabled": true,
+          "id": "d0311ca6-5e9a-498e-a777-f74dc4dc6b12",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": [
+              {
+                "name": "重新处理变量",
+                "visible": true
+              },
+              {
+                "name": "重新读取初始变量",
+                "visible": true
+              },
+              {
+                "name": "快照楼层",
+                "visible": false
+              },
+              {
+                "name": "重演楼层",
+                "visible": false
+              },
+              {
+                "name": "重试额外模型解析",
+                "visible": false
+              },
+              {
+                "name": "清除旧楼层变量",
+                "visible": false
+              }
+            ]
+          },
+          "data": {}
+        },
+        "Zod": {
+          "type": "script",
+          "script_file": "脚本/Zod.txt",
+          "enabled": true,
+          "id": "5b3b09af-35e3-4149-a0f7-2f08776ed6a1",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": []
+          },
+          "data": {}
+        }
+      },
+      "variables": {}
+    },
+    "talkativeness": "0.5",
+    "fav": false,
+    "depth_prompt": {
+      "prompt": "",
+      "depth": 4,
+      "role": "system"
+    }
+  },
+  "regex_scripts": {
+    "对AI隐藏状态栏": {
+      "id": "b5f2606f-69cc-4a6a-8ebb-bd8a3b7f671f",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "状态栏界面": {
+      "id": "ce6da13c-4e35-4057-8964-3192b7903acc",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replace_file": "正则/信息面板.html",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "角色创建面板": {
+      "id": "zzz-character-creation",
+      "findRegex": "<character_creation>[\\s\\S]*?</character_creation>",
+      "replace_file": "正则/角色创建面板.html",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "对AI隐藏变量更新": {
+      "id": "aa12731a-97c4-4450-ac2f-0bfe1d6a4f64",
+      "findRegex": "/<(update(?:variable)?)>(?:(?!.*<\\/\\1>)(?:(?!<\\1>).)*$|(?:(?!<\\1>).)*<\\/\\1?>)/gsi",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "变量更新中美化": {
+      "id": "b9d5f25b-a9d0-41bf-8a69-602d64bbde22",
+      "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi",
+      "replace_file": "正则/变量更新中美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "变量更新美化": {
+      "id": "92d49340-fe5e-4929-871f-43d110e5ec76",
+      "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi",
+      "replace_file": "正则/变量更新美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    }
+  }
 }
