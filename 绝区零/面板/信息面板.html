@@ -369,7 +369,7 @@ function renderAll(){
     document.getElementById('w-weather').textContent=getProp(sd,'世界.天气','-');
     document.getElementById('w-rumor').textContent=getProp(sd,'世界.城市流言','')||'-';
     document.getElementById('w-activity').textContent=getProp(sd,'世界.绳网活跃度','-');
-    const isP=getProp(sd,'主角.是否为法厄同',null);
+    const isP=getProp(sd,'主角.基础.是否为法厄同',null);
     document.getElementById('h-is-phaethon').textContent=isP===true?'✅ 是（哲/铃）':isP===false?'❌ 否（自定义角色）':'（待初始化）';
     document.getElementById('h-identity').textContent=getProp(sd,'主角.基础.姓名','')||getProp(sd,'主角.主人身份','-');
     const hp=getProp(sd,'主角.状态.HP',getProp(sd,'主角.HP',100));
@@ -402,7 +402,7 @@ function renderAll(){
     document.getElementById('h-gear-foot').textContent=getProp(sd,'主角.着装.足部',getProp(sd,'主角.着装.足部',''))||'空置';
     document.getElementById('h-gear-acc').textContent=getProp(sd,'主角.着装.饰品',getProp(sd,'主角.着装.饰品',''))||'空置';
     document.getElementById('h-combat-role').textContent=getProp(sd,'主角.战斗定位',getProp(sd,'主角.战斗定位',''))||'-';
-    document.getElementById('h-ether-apt').textContent=getProp(sd,'主角.以太适应性',getProp(sd,'主角.以太适应性','-'));
+    document.getElementById('h-ether-apt').textContent=getProp(sd,'主角.属性.以太适应性',getProp(sd,'主角.属性.以太适应性','-'));
     document.getElementById('h-mood').textContent=getProp(sd,'主角.当前情绪',getProp(sd,'主角.当前情绪','-'));
     // Hero inventory
     const inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));

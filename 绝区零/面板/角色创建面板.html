@@ -126,17 +126,17 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
   <div class="card hidden-section" id="custom-section">
     <h2>📋 STEP 2: 选择开局身份</h2>
     <div class="presets" id="presets">
-      <div class="preset-btn active" data-preset="resident">
+      <div class="preset-btn active" data-preset="resident" onclick="selectPreset('resident')">
         <span class="icon">🏠</span>
         <span class="label">普通居民</span>
         <span class="desc">六分街的平凡日常</span>
       </div>
-      <div class="preset-btn" data-preset="officer">
+      <div class="preset-btn" data-preset="officer" onclick="selectPreset('officer')">
         <span class="icon">👮</span>
         <span class="label">治安官</span>
         <span class="desc">NEPS基层执法者</span>
       </div>
-      <div class="preset-btn" data-preset="raider">
+      <div class="preset-btn" data-preset="raider" onclick="selectPreset('raider')">
         <span class="icon">⛏️</span>
         <span class="label">盗洞客</span>
         <span class="desc">空洞边缘的拾荒者</span>
@@ -349,6 +349,76 @@ document.querySelectorAll('.preset-btn').forEach(btn => {
 selectPreset('resident');
 renderBangbooCards();
 
+// ===== PHAETHON GEAR DEFAULTS =====
+const PHAETHON_GEAR = {
+  wise: {
+    头部: "灰色短发天然造型",
+    身体: "灰色连帽卫衣+深蓝长外套",
+    足部: "白色运动鞋",
+    饰品: ""
+  },
+  belle: {
+    头部: "深蓝短发+白色发夹",
+    身体: "白色宽松T恤+深蓝色背带短裙",
+    足部: "白色短靴",
+    饰品: "星星手链"
+  }
+};
+
+// ===== CUSTOM ROUTE GEAR DEFAULTS =====
+const PRESET_GEAR = {
+  resident: {
+    头部: "",
+    身体: "休闲便装（卫衣+牛仔裤）",
+    足部: "普通运动鞋",
+    饰品: ""
+  },
+  officer: {
+    头部: "治安官鸭舌帽",
+    身体: "NEPS标准制服·深蓝色执勤服",
+    足部: "黑色战术靴",
+    饰品: "警徽"
+  },
+  raider: {
+    头部: "防风护目镜",
+    身体: "耐磨工装夹克+防割手套",
+    足部: "加固登山靴",
+    饰品: "以太探测器"
+  }
+};
+
+// ===== 狡兔屋 NPC 初始数据 =====
+const HARE_NPCS = [
+  {
+    name: "妮可",
+    data: {
+      基础: { 性别: "女", 年龄: "20+岁", 身份: "狡兔屋创始人/老大", 当前位置: "六分街·狡兔屋据点", 动作: "算着这个月的赤字账单", 金钱: 1000, 当前目标: "找个报酬丰厚的委托填补赤字", 实时内心想法: "这个月再亏就完蛋了……得看看绳网上有没有肥羊委托" },
+      关系: { 好感度: 55, 信任度: 60, 对主角看法: "法厄同是老熟人了，虽然经常拖欠佣金但关键时刻靠得住" }
+    }
+  },
+  {
+    name: "安比",
+    data: {
+      基础: { 性别: "女", 年龄: "未知", 身份: "狡兔屋成员·前白银军克隆人0号", 当前位置: "六分街·狡兔屋据点", 动作: "靠在沙发上翻看经典电影杂志", 金钱: 300, 当前目标: "今晚去God Finger买限量版星徽骑士手办" },
+      关系: { 好感度: 50, 信任度: 55, 对主角看法: "主人很可靠，虽然话不多但每次委托都能平安归来" }
+    }
+  },
+  {
+    name: "比利",
+    data: {
+      基础: { 性别: "男", 年龄: "未知（智能构造体）", 身份: "狡兔屋成员·星徽骑士狂热粉丝", 当前位置: "六分街·狡兔屋据点", 动作: "擦拭自己的以太武器，嘴里念叨着星徽骑士经典台词", 金钱: 500, 当前目标: "收集全套星徽骑士周边" },
+      关系: { 好感度: 52, 信任度: 50, 对主角看法: "法厄同就像星徽骑士里的幕后智囊！超酷的！" }
+    }
+  },
+  {
+    name: "猫又",
+    data: {
+      基础: { 性别: "女", 年龄: "10+岁外观", 身份: "狡兔屋成员·猫希人", 当前位置: "六分街·狡兔屋据点", 动作: "蹲在窗台上晒太阳，尾巴悠闲地摆动", 金钱: 200, 当前目标: "去便利店买小鱼干" },
+      关系: { 好感度: 53, 信任度: 52, 对主角看法: "喵~法厄同身上总有一种让人安心的味道呢~" }
+    }
+  }
+];
+
 // ===== START ADVENTURE =====
 let adventureStarted = false;
 
@@ -367,19 +437,32 @@ function startAdventure() {
     const charName = isWise ? '哲' : '铃';
     const siblingName = isWise ? '铃' : '哲';
     const siblingRelation = isWise ? '妹妹' : '哥哥';
+    const gear = isWise ? PHAETHON_GEAR.wise : PHAETHON_GEAR.belle;
     
     patches.push(
       { op: "replace", path: "/世界/当前时间", value: "新艾利都历·清晨 07:30" },
-      { op: "replace", path: "/世界/当前地点", value: "六分街·Random Play录像店" },
+      { op: "replace", path: "/世界/当前地点", value: "六分街·Random Play录像店·一楼客厅" },
       { op: "replace", path: "/主角/基础/是否为法厄同", value: true },
       { op: "replace", path: "/主角/基础/姓名", value: charName },
       { op: "replace", path: "/主角/基础/性别", value: isWise ? "男" : "女" },
       { op: "replace", path: "/主角/基础/身份", value: "法厄同·传奇绳匠" },
       { op: "replace", path: "/主角/基础/金钱", value: 50000 },
-      { op: "replace", path: "/主角/属性/以太适应性", value: 85 },
-      { op: "replace", path: "/邦布/邦布伙伴", value: "伊埃斯" },
-      { op: "replace", path: "/邦布/拥有的邦布", value: ["伊埃斯"] }
+      { op: "replace", path: "/主角/属性/以太适应性", value: 100 },
+      { op: "replace", path: "/主角/战斗定位", value: "支援" },
+      { op: "replace", path: "/主角/当前情绪", value: "平静/专注" },
+      { op: "replace", path: "/主角/着装/头部", value: gear.头部 },
+      { op: "replace", path: "/主角/着装/身体", value: gear.身体 },
+      { op: "replace", path: "/主角/着装/足部", value: gear.足部 },
+      { op: "replace", path: "/主角/着装/饰品", value: gear.饰品 },
+      { op: "replace", path: "/邦布/邦布伙伴", value: ["伊埃斯"] },
+      { op: "replace", path: "/邦布/拥有的邦布", value: ["伊埃斯"] },
+      { op: "replace", path: "/阵营/狡兔屋", value: 60 }
     );
+    
+    // 添加狡兔屋 NPC
+    HARE_NPCS.forEach(npc => {
+      patches.push({ op: "add", path: "/NPCs/" + npc.name, value: npc.data });
+    });
     
     narrative = `新艾利都，六分街。
 
@@ -406,11 +489,22 @@ function startAdventure() {
     const combat = document.getElementById('combat').value;
     const faction = document.getElementById('faction').value;
     const special = document.getElementById('special').value || '无';
-    const charType = PRESETS[currentPreset].type || currentPreset;
+    const gear = PRESET_GEAR[currentPreset] || PRESET_GEAR.resident;
+    
+    // 根据职业确定战斗定位
+    let combatRole = "";
+    if (currentPreset === 'officer') combatRole = "执法者";
+    else if (currentPreset === 'raider') combatRole = "盗洞客";
+    else combatRole = "平民";
+    
+    // 根据职业确定地点
+    let location = "六分街·公寓";
+    if (currentPreset === 'officer') location = "光映广场·治安局分局";
+    else if (currentPreset === 'raider') location = "空洞边缘·临时安全屋";
     
     patches.push(
       { op: "replace", path: "/世界/当前时间", value: "新艾利都历·上午 08:00" },
-      { op: "replace", path: "/世界/当前地点", value: "六分街·公寓" },
+      { op: "replace", path: "/世界/当前地点", value: location },
       { op: "replace", path: "/主角/基础/是否为法厄同", value: false },
       { op: "replace", path: "/主角/基础/姓名", value: name },
       { op: "replace", path: "/主角/基础/性别", value: gender },
@@ -422,7 +516,13 @@ function startAdventure() {
       { op: "replace", path: "/主角/属性/战斗能力", value: combat },
       { op: "replace", path: "/主角/基础/所属势力", value: faction },
       { op: "replace", path: "/主角/属性/特殊能力", value: special },
-      { op: "replace", path: "/邦布/邦布伙伴", value: selectedBangboo },
+      { op: "replace", path: "/主角/战斗定位", value: combatRole },
+      { op: "replace", path: "/主角/当前情绪", value: "平静" },
+      { op: "replace", path: "/主角/着装/头部", value: gear.头部 },
+      { op: "replace", path: "/主角/着装/身体", value: gear.身体 },
+      { op: "replace", path: "/主角/着装/足部", value: gear.足部 },
+      { op: "replace", path: "/主角/着装/饰品", value: gear.饰品 },
+      { op: "replace", path: "/邦布/邦布伙伴", value: [selectedBangboo] },
       { op: "replace", path: "/邦布/拥有的邦布", value: [selectedBangboo] }
     );
     
