@@ -46,6 +46,7 @@ function generateUpdateRules(panels) {
   rules += `/主角/基础/年龄          string   replace\n`;
   rules += `/主角/基础/身份          string   replace\n`;
   rules += `/主角/基础/当前行动      string   replace\n`;
+  rules += `/主角/基础/当前目标      string   replace\n`;
   rules += `/主角/基础/金钱          number   replace\n`;
   rules += `/主角/状态/HP            number   replace\n`;
   rules += `/主角/状态/发情度        number   replace（range 0~100）\n`;

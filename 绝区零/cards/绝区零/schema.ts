@@ -22,6 +22,7 @@ export const Schema = z.object({
       年龄: z.string().or(z.literal('未知')).prefault('未知'),
       身份: z.string().or(z.literal('未知')).prefault('未知'),
       当前行动: z.string().or(z.literal('无')).prefault('无'),
+      当前目标: z.string().or(z.literal('无')).prefault('无'),
       金钱: z.coerce.number().prefault(0)
     }).prefault({}),
     状态: z.object({

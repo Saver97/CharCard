@@ -11,6 +11,7 @@ const panel = {
     "主角.状态.发情度": { type: "number", default: 0, desc: "0~100，越高越需要发泄" },
     "主角.状态.以太侵蚀度": { type: "number", default: 0, desc: "0~100，超标则异变；心智防护=100-侵蚀度" },
     "主角.基础.金钱": { type: "number", default: 5000, desc: "货币，单位丁尼" },
+    "主角.基础.当前目标": { type: "string", default: "无", desc: "主角当前的主要目标/意图" },
     "主角.同伴": { type: "array", default: [], desc: "当前一同行动的代理人列表" },
      "主角.着装.上衣": { type: "string", default: "", desc: "主角当前穿着的上衣" },
      "主角.着装.下装": { type: "string", default: "", desc: "主角当前穿着的下装" },
