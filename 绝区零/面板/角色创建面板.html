@@ -264,6 +264,7 @@ const PRESETS = {
 
 function selectRoute(route) {
   currentRoute = route;
+  if (route === 'custom') { selectedBangboo = "阿全"; } else { selectedBangboo = "伊埃斯"; }
   document.querySelectorAll('.route-card').forEach(c => c.classList.remove('active'));
   document.querySelector(`[data-route="${route}"]`).classList.add('active');
   
@@ -271,6 +272,7 @@ function selectRoute(route) {
   document.getElementById('custom-section').classList.toggle('show', route === 'custom');
   document.getElementById('form-section').classList.toggle('show', route === 'custom');
   document.getElementById('bangboo-section').classList.toggle('show', route === 'custom');
+  renderBangbooCards();
 }
 
 function selectPhaethon(char) {
