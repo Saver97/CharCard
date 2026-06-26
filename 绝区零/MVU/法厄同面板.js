@@ -16,7 +16,10 @@ const panel = {
     "protagonist.着装.身体": { type: "string", default: "", desc: "主角当前身体服装" },
     "protagonist.着装.足部": { type: "string", default: "", desc: "主角当前足部装备" },
     "protagonist.着装.饰品": { type: "string", default: "", desc: "主角当前佩戴的饰品" },
-    "protagonist.背包": { type: "object", default: {}, desc: "主角背包物品，键为物品名，值为{数量,描述}" }
+    "protagonist.背包": { type: "object", default: {}, desc: "主角背包物品，键为物品名，值为{数量,描述}" },
+    "protagonist.战斗定位": { type: "string", default: "", desc: "主角战斗定位：独立绳匠/治安官/盗洞客/HIA调查员等" },
+    "protagonist.以太适应性": { type: "number", default: 0, desc: "0~100，低于50禁止进入空洞" },
+    "protagonist.当前情绪": { type: "string", default: "平静", desc: "主角当前情绪状态：平静/焦虑/兴奋/低落/困倦/专注等" }
   },
   rules: [
     "① 开关关闭时：不追踪法厄同特有变量，可扮演任意角色",
@@ -25,7 +28,8 @@ const panel = {
     "④ 心智防护：由以太侵蚀度反向计算（防护=100-侵蚀度），侵蚀度越高心智防护越低",
     "⑤ 发情度调整：视线+1~5、接触+5~15、亲吻+15~30、前戏+30~50、性行为+50~70，每回合-2自然衰减",
     "⑥ 以太侵蚀度：在空洞中随时间增加，离开后缓慢降低",
-    "⑦ 着装与背包：可由用户通过信息面板手动修改，AI也可在剧情中增减物品"
+    "⑦ 着装与背包：可由用户通过信息面板手动修改，AI也可在剧情中增减物品",
+    "⑧ 战斗定位/以太适应性/当前情绪：可由用户通过信息面板手动修改"
   ]
 };
 module.exports = panel;

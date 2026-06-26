@@ -94,11 +94,20 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
     <div class="form-row"><label>丁尼余额</label><span class="val" id="h-denny">4200 丁尼</span></div>
     <div class="form-row"><label>同伴</label><span class="val" id="h-companions">安比, 比利</span></div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>当前着装</h3>
-    <div class="form-row"><label>头部</label><input id="h-gear-head" onchange="updateProtagonistVar('着装.头部',this.value)" placeholder="无"></div>
-    <div class="form-row"><label>身体</label><input id="h-gear-body" onchange="updateProtagonistVar('着装.身体',this.value)" placeholder="无"></div>
-    <div class="form-row"><label>足部</label><input id="h-gear-foot" onchange="updateProtagonistVar('着装.足部',this.value)" placeholder="无"></div>
-    <div class="form-row"><label>饰品</label><input id="h-gear-acc" onchange="updateProtagonistVar('着装.饰品',this.value)" placeholder="无"></div>
+  <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>⚔️ 战斗与个性</h3>
+    <div class="npc-grid">
+      <div class="npc-g-card" onclick="editHeroString('战斗定位','h-combat-role')"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)" id="h-combat-role">-</span></div>
+      <div class="npc-g-card" onclick="editHeroNumber('以太适应性','h-ether-apt')"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)" id="h-ether-apt">-</span></div>
+      <div class="npc-g-card" onclick="editHeroString('当前情绪','h-mood')"><span class="npc-g-label">当前情绪</span><span class="npc-g-val" id="h-mood">-</span></div>
+    </div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>当前着装 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击编辑）</span></h3>
+    <div class="npc-grid" id="hero-gear-grid">
+      <div class="npc-g-card" onclick="editHeroGear('头部')"><span class="npc-g-label">头部</span><span class="npc-g-val" style="font-size:11px" id="h-gear-head">空置</span></div>
+      <div class="npc-g-card" onclick="editHeroGear('身体')"><span class="npc-g-label">身体</span><span class="npc-g-val" style="font-size:11px" id="h-gear-body">空置</span></div>
+      <div class="npc-g-card" onclick="editHeroGear('足部')"><span class="npc-g-label">足部</span><span class="npc-g-val" style="font-size:11px" id="h-gear-foot">空置</span></div>
+      <div class="npc-g-card" onclick="editHeroGear('饰品')"><span class="npc-g-label">饰品</span><span class="npc-g-val" style="font-size:11px" id="h-gear-acc">空置</span></div>
+    </div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>背包 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击行可编辑）</span></h3>
     <div id="hero-inventory"></div>
@@ -315,11 +324,15 @@ function renderAll(){
     document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'hollow.研究音擎',[])).join(', ')||'无';
     const bat=getProp(sd,'bangboo.伊埃斯电量',100);document.getElementById('b-battery-txt').textContent=bat+'%';document.getElementById('b-battery-bar').style.width=bat+'%';
     const bp=getProp(sd,'bangboo.邦布伙伴',[]);document.getElementById('b-partners').textContent=Array.isArray(bp)&&bp.length>0?bp.join(', '):'伊埃斯';
-    // Hero gear
-    document.getElementById('h-gear-head').value=getProp(sd,'protagonist.着装.头部','');
-    document.getElementById('h-gear-body').value=getProp(sd,'protagonist.着装.身体','');
-    document.getElementById('h-gear-foot').value=getProp(sd,'protagonist.着装.足部','');
-    document.getElementById('h-gear-acc').value=getProp(sd,'protagonist.着装.饰品','');
+    // Hero gear (grid cards)
+    document.getElementById('h-gear-head').textContent=getProp(sd,'protagonist.着装.头部','')||'空置';
+    document.getElementById('h-gear-body').textContent=getProp(sd,'protagonist.着装.身体','')||'空置';
+    document.getElementById('h-gear-foot').textContent=getProp(sd,'protagonist.着装.足部','')||'空置';
+    document.getElementById('h-gear-acc').textContent=getProp(sd,'protagonist.着装.饰品','')||'空置';
+    // Hero combat & personality
+    document.getElementById('h-combat-role').textContent=getProp(sd,'protagonist.战斗定位','')||'-';
+    document.getElementById('h-ether-apt').textContent=getProp(sd,'protagonist.以太适应性','-');
+    document.getElementById('h-mood').textContent=getProp(sd,'protagonist.当前情绪','-');
     // Hero inventory
     const inv=getProp(sd,'protagonist.背包',{});
     const invContainer=document.getElementById('hero-inventory');
@@ -339,8 +352,29 @@ function renderAll(){
 
 // ===== Hero inventory & gear editing =====
 function sendSlash(cmd){if(typeof triggerSlash==='function')triggerSlash(cmd);else console.log('Slash:',cmd)}
-window.updateProtagonistVar=function(key,val){
+window.editHeroGear=function(slot){
+  const el=document.getElementById('h-gear-'+{头部:'head',身体:'body',足部:'foot',饰品:'acc'}[slot]);
+  const cur=el.textContent==='空置'?'':el.textContent;
+  const val=prompt('编辑着装 - '+slot,cur);if(val===null)return;
+  sendSlash('/setvar protagonist.着装.'+slot+' "'+val.replace(/"/g,'\\"')+'"|/trigger');
+  setTimeout(renderAll,300);
+};
+window.editHeroString=function(label,elId){
+  const el=document.getElementById(elId);const cur=el.textContent==='-'?'':el.textContent;
+  const keyMap={战斗定位:'战斗定位',当前情绪:'当前情绪'};
+  const key=keyMap[label];if(!key)return;
+  const val=prompt('编辑'+label,cur);if(val===null)return;
   sendSlash('/setvar protagonist.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger');
+  setTimeout(renderAll,300);
+};
+window.editHeroNumber=function(label,elId){
+  const el=document.getElementById(elId);const cur=el.textContent==='-'?'':el.textContent;
+  const keyMap={以太适应性:'以太适应性'};
+  const key=keyMap[label];if(!key)return;
+  const val=prompt('编辑'+label+' (0-100)',cur);if(val===null)return;
+  const num=parseInt(val);if(isNaN(num)||num<0||num>100){alert('请输入0-100的数字');return}
+  sendSlash('/setvar protagonist.'+key+' '+num+'|/trigger');
+  setTimeout(renderAll,300);
 };
 window.addHeroItem=function(){
   const nameEl=document.getElementById('inv-new-name');const qtyEl=document.getElementById('inv-new-qty');
