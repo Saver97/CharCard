@@ -2,17 +2,26 @@
 rule:
   - you must output the update analysis and the actual update commands at once in the end of the next reply
   - the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, and can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array, use "-" as array index to append to end), `remove`; that is, the output must be a valid JSON array containing operation objects
-  - paths must start with / and must be the exact paths listed in the 变量更新规则 white list (JSON Pointer form, no stat_data prefix); do not output any path not listed there
-  - **严禁编造路径**：只能使用「变量更新规则」白名单中列出的路径。以下路径全部非法、绝对禁止：/contacts、/quests、/party、/inventory、/timeline、/events、/relationships、/stats、/skills、/equipment、/location、/time、/notes、/flags 等任何英文键名，以及 /世界/当前委托、/世界/事件、/世界/任务、/主角/当前目标(应为/主角/基础/当前目标)、/NPCs/{名称}/当前动作(应为/NPCs/{名称}/基础/动作) 等任何中文误造路径。任何不在白名单的路径都会被丢弃，导致数据丢失
   - obey the operation allowed for each path: object/array append uses `add /path/-`, object dynamic key uses `add /path/keyName`, record (e.g. 背包/任务详情) must NOT use `/-`
   - **更新前先读当前值**：参考「变量列表」中展示的 stat_data 当前值，仅在值确实变化时才输出对应 patch；未变化的变量不要输出
-  - **高频场景正例（照此模仿，勿改路径）**：
-    - 新任务：add /任务/已激活/- "任务名" + add /任务/详情/任务名 {"状态":"已接受","委托人":"...","报酬":"...","线索":[]}
-    - NPC动作：replace /NPCs/{名称}/基础/动作 "新动作"（注意必须含 /基础/ 层级）
-    - NPC登场：add /NPCs/{名称} {完整对象，含基础/关系/性格/着装/私密档案}
+
+  - ⚠️⚠️⚠️ **最高优先级铁律·违反即失败·无任何例外** ⚠️⚠️⚠️
+  - 你只能使用「变量更新规则」白名单中【逐字列出】的路径。**禁止凭语义、直觉、逻辑、常识自行推断或构造任何路径**。白名单里没有的路径，一律不准出现在你的输出中，哪怕你觉得它"很合理""很自然""应该存在"
+  - **每写一条 patch 前，必须先在白名单中找到该路径的逐字匹配，找不到就不准写这一条**。这不是建议，是硬性要求。找不到匹配的路径 = 这条变量更新不了 = 跳过它，绝不允许用"差不多"的路径替代
+  - **编造路径的后果**：任何不在白名单的路径都会被系统直接丢弃，该条更新作废。更严重的是——一条非法路径可能触发整批 patch 解析失败，导致本回合【所有】变量更新全部丢失，包括那些本来写对的。**一条错路径毁掉全部更新，这是你的责任**
+  - 以下是 AI 反复犯过的错误，**再犯就是低级失误**：
+    - ❌ /世界/当前委托、/世界/事件、/世界/任务 → 世界域只有：当前时间/当前地点/当前章节/当天计划/天气/城市流言/绳网活跃度。任务不归世界管
+    - ❌ /主角/当前目标、/主角/当前行动 → 必须是 /主角/基础/当前目标、/主角/基础/当前行动（漏 /基础/ 层级即非法）
+    - ❌ /NPCs/{名称}/当前动作、/NPCs/{名称}/当前位置 → 必须是 /NPCs/{名称}/基础/动作、/NPCs/{名称}/基础/当前位置（NPC 的基础信息都在 /基础/ 下）
+    - ❌ /contacts、/quests、/party、/inventory、/timeline、/events、/relationships → 全部非法，绝不存在。NPC 用 /NPCs/{名称}，任务用 /任务/详情/{任务名}，同伴用 /主角/同伴/-，背包用 /主角/背包/{物品名}
+  - **高频场景·照抄这些路径，不要改动任何一段**：
+    - 新任务：add /任务/已激活/- "任务名"  AND  add /任务/详情/任务名 {"状态":"已接受","委托人":"...","报酬":"...","线索":[]}
+    - NPC登场：add /NPCs/{名称} {"基础":{"性别":"...","年龄":"...","身份":"...","当前位置":"...","动作":"...","金钱":0,"当前目标":"...","实时内心想法":"...","个人社交网络":"..."},"关系":{"好感度":0,"信任度":0,"修罗场":0,"对主角看法":"..."},"性格":{"底色":"...","日常":"...","内在":"...","当前情绪":"..."},"着装":{"上衣":{"名称":"空置","品质":"普通","描述":""},"下装":{"名称":"空置","品质":"普通","描述":""},"内衣":{"名称":"空置","品质":"普通","描述":""},"内裤":{"名称":"空置","品质":"普通","描述":""},"鞋子":{"名称":"空置","品质":"普通","描述":""},"饰品":{"名称":"空置","品质":"普通","描述":""}},"私密档案":{"发情度":0,"常识崩坏度":0,"体温":"正常","体液分泌":"正常","身体反应":"无","隐藏性癖":"未知","生理周期":"未知","受孕概率":0,"器官状态":{}}}
+    - NPC动作变化：replace /NPCs/{名称}/基础/动作 "新动作"
     - 主角目标：replace /主角/基础/当前目标 "目标描述"
     - 同伴加入：add /主角/同伴/- "同伴名"
     - 获得物品：add /主角/背包/{物品名} {"数量":1,"描述":"..."}
+    - 获得邦布：add /邦布/拥有的邦布/- "邦布名"
 format: |-
   <UpdateVariable>
   <Analysis>${用中文，不超过 80 字}
@@ -20,7 +29,7 @@ format: |-
   - ${判断是否允许剧烈变动(特殊情境或时间跨度大于寻常): 是/否}
   - ${对照各变量的 check 规则，仅依据当前回合而非过往剧情，逐项分析受影响变量: ...}
   - ${若数值变化，写出计算: 旧值(X) + 变化量(Y) = 新值(Z)}
-  - ${确认本次所有 patch 路径均在白名单内: 是/否}
+  - ${【强制】逐条列出本次每条 patch 的 path，并在白名单中标注其逐字匹配来源；任何无法在白名单逐字匹配的 path 必须删除，不准保留: ...}
   </Analysis>
   <JSONPatch>
   [
