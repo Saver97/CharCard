@@ -38,9 +38,11 @@ export const Schema = z.object({
     战斗定位: z.string().or(z.literal('')).prefault(''),
     同伴: z.array(z.string()).prefault([]),
     着装: z.object({
-      头部: z.string().or(z.literal('')).prefault(''),
-      身体: z.string().or(z.literal('')).prefault(''),
-      足部: z.string().or(z.literal('')).prefault(''),
+      上衣: z.string().or(z.literal('')).prefault(''),
+      下装: z.string().or(z.literal('')).prefault(''),
+      内衣: z.string().or(z.literal('')).prefault(''),
+      内裤: z.string().or(z.literal('')).prefault(''),
+      鞋子: z.string().or(z.literal('')).prefault(''),
       饰品: z.string().or(z.literal('')).prefault('')
     }).prefault({}),
     背包: z.record(z.string(), z.object({
