@@ -5,9 +5,16 @@ rule:
   - you must output the update analysis and the actual update commands at once in the end of the next reply
   - the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, and can only use the following operations: \`replace\` (replace the value of existing paths), \`add\` (only used to insert new items into an object or array, use "-" as array index to append to end), \`remove\`; that is, the output must be a valid JSON array containing operation objects
   - paths must start with / and must be the exact paths listed in the 变量更新规则 white list (JSON Pointer form, no stat_data prefix); do not output any path not listed there
-  - **严禁编造路径**：只能使用「变量更新规则」白名单中列出的路径。以下路径全部非法、绝对禁止：/contacts、/quests、/party、/inventory、/timeline、/events、/relationships、/stats、/skills、/equipment、/location、/time、/notes、/flags 等任何英文键名。NPC 用 /NPCs/{名称}，任务用 /任务/详情/{任务名}，同伴用 /主角/同伴/-，背包用 /主角/背包/{物品名}，时间用 /世界/当前时间。任何不在白名单的路径都会被丢弃，导致数据丢失
+  - **严禁编造路径**：只能使用「变量更新规则」白名单中列出的路径。以下路径全部非法、绝对禁止：/contacts、/quests、/party、/inventory、/timeline、/events、/relationships、/stats、/skills、/equipment、/location、/time、/notes、/flags 等任何英文键名，以及 /世界/当前委托、/世界/事件、/世界/任务、/主角/当前目标(应为/主角/基础/当前目标)、/NPCs/{名称}/当前动作(应为/NPCs/{名称}/基础/动作) 等任何中文误造路径。任何不在白名单的路径都会被丢弃，导致数据丢失
   - obey the operation allowed for each path: object/array append uses \`add /path/-\`, object dynamic key uses \`add /path/keyName\`, record (e.g. 背包/任务详情) must NOT use \`/-\`
   - **更新前先读当前值**：参考「变量列表」中展示的 stat_data 当前值，仅在值确实变化时才输出对应 patch；未变化的变量不要输出
+  - **高频场景正例（照此模仿，勿改路径）**：
+    - 新任务：add /任务/已激活/- "任务名" + add /任务/详情/任务名 {"状态":"已接受","委托人":"...","报酬":"...","线索":[]}
+    - NPC动作：replace /NPCs/{名称}/基础/动作 "新动作"（注意必须含 /基础/ 层级）
+    - NPC登场：add /NPCs/{名称} {完整对象，含基础/关系/性格/着装/私密档案}
+    - 主角目标：replace /主角/基础/当前目标 "目标描述"
+    - 同伴加入：add /主角/同伴/- "同伴名"
+    - 获得物品：add /主角/背包/{物品名} {"数量":1,"描述":"..."}
 format: |-
   <UpdateVariable>
   <Analysis>\${用中文，不超过 80 字}
