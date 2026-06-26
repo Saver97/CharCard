@@ -85,6 +85,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   <button class="tab-btn" data-tab="faction">🤝 阵营</button>
   <button class="tab-btn" data-tab="bangboo">🤖 邦布</button>
   <button class="tab-btn" data-tab="npc">💝 NPC</button>
+  <button class="tab-btn" data-tab="quest">📋 任务</button>
 </div>
 
 <!-- HIJACK CONSOLE -->
@@ -202,6 +203,11 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   <div id="npc-container"></div>
 </div>
 
+<div class="tab-panel" id="tab-quest">
+  <div class="card" style="margin-bottom:8px"><h3><span class="dot" style="background:var(--orange)"></span>任务信息</h3></div>
+  <div id="quest-container"></div>
+</div>
+
 <div class="footer">绝区零 RPG · 信息面板 v4.4 · 事件驱动刷新</div>
 </div>
 
@@ -275,9 +281,9 @@ function renderAll(){
     var inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));var invContainer=document.getElementById('hero-inventory');var invHtml='';
     if(typeof inv==='object'&&Object.keys(inv).length>0){var invKeys=Object.keys(inv);for(var i=0;i<invKeys.length;i++){var iName=invKeys[i];var iData=inv[iName];var qty=typeof iData==='object'?iData.数量||1:iData;var desc=typeof iData==='object'?iData.描述||'':'';invHtml+='<div class="kv-row" style="cursor:pointer" onclick="editHeroItem(\''+iName+'\','+qty+')" title="点击编辑"><span>'+iName+'</span><span class="kv-v" style="color:var(--gold)">x'+qty+' '+desc+'</span></div>'}}else{invHtml='<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>'}
     invContainer.innerHTML=invHtml;
-    renderFactions(sd);renderNPCs(sd);renderBangbooGallery(sd);renderOwnedBangboos(sd);
+    renderFactions(sd);renderNPCs(sd);renderBangbooGallery(sd);renderOwnedBangboos(sd);renderQuests(sd);
     document.getElementById('refreshBadge').textContent='● 已连接';document.getElementById('refreshBadge').style.color='var(--green)';
-  }catch(e){renderNPCs(null);renderFactions(null);renderBangbooGallery(null);renderOwnedBangboos(null)}
+  }catch(e){renderNPCs(null);renderFactions(null);renderBangbooGallery(null);renderOwnedBangboos(null);renderQuests(null)}
 }
 
 window.pickGear=function(slot){
@@ -285,8 +291,9 @@ window.pickGear=function(slot){
   if(typeof inv==='object'){var invKeys=Object.keys(inv);for(var i=0;i<invKeys.length;i++){var iName=invKeys[i];var iData=inv[iName];var qty=typeof iData==='object'?iData.数量||1:iData;items.push({name:iName,desc:'x'+qty})}}
   showPickModal('选择着装 - '+slot,items,function(item){
     if(item.name==='卸下(空置)'){
-      var gearName=getProp(window.cachedData,'主角.着装.'+slot,getProp(window.cachedData,'主角.着装.'+slot,''))||'';if(gearName){window.pendingActions.push({desc:'将'+gearName+'放回背包',cmd:'/send 主角脱下了'+gearName+'，请在 JSON Patch 中 { "op": "add", "path": "/主角/背包/'+gearName+'", "value": { "数量": 1, "描述": "已脱下的装备" } } |/trigger'})}
-      window.pendingActions.push({desc:'卸下'+slot+'装备',cmd:'/setvar 主角.着装.'+slot+' ""|/trigger'});
+      var gearName=getProp(window.cachedData,'主角.着装.'+slot,'')||'';
+      window.pendingActions.push({desc:'卸下'+slot+'装备'+(gearName?'：'+gearName:''),cmd:'/setvar 主角.着装.'+slot+' ""|/trigger'});
+      if(gearName){window.pendingActions.push({desc:'将'+gearName+'放回背包',cmd:'/send '+slot+'脱下'+gearName+'，请回复时在 <UpdateVariable> 的 JSONPatch 中 add /主角/背包/'+gearName+'|/trigger'})}
       updateHijack();setTimeout(renderAll,300)}
     else{window.pendingActions.push({desc:'装备'+item.name+'到'+slot,cmd:'/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger'});window.pendingActions.push({desc:'将'+item.name+'从背包移除',cmd:'/setvar 主角.背包.'+item.name+' null|/trigger'});updateHijack();setTimeout(renderAll,300)}
   });
@@ -305,6 +312,8 @@ window.isInHollow=function(){var sd=window.cachedData;if(!sd)return false;var h=
 window.swapBangboo=function(name){if(window.isInHollow()){alert('⚠️ 当前处于空洞探索中，无法更换邦布伙伴。请先退出空洞。');return}if(confirm('确定要将邦布伙伴替换为 「'+name+'」 吗？')){window.pendingActions.push({desc:'切换邦布伙伴为 '+name,cmd:'/setvar 邦布.邦布伙伴 "'+name+'"|/trigger'});updateHijack();setTimeout(renderAll,300)}};
 window.unselectBangboo=function(name){if(window.isInHollow()){alert('⚠️ 当前处于空洞探索中，无法取消携带邦布。请先退出空洞。');return}if(confirm('确定要取消携带 「'+name+'」 吗？')){window.pendingActions.push({desc:'取消携带邦布 '+name,cmd:'/setvar 邦布.邦布伙伴 remove "'+name+'"|/trigger'});updateHijack();setTimeout(renderAll,300)}};
 window.addBangboo=function(){if(window.isInHollow()){alert('⚠️ 当前处于空洞探索中，无法添加邦布。请先退出空洞。');return}var nameEl=document.getElementById('bb-new-name');var name=nameEl.value.trim();if(!name)return;window.pendingActions.push({desc:'添加邦布 '+name+'（不自动携带）',cmd:'/setvar 邦布.拥有的邦布 add "'+name+'"|/trigger'});updateHijack();nameEl.value='';document.getElementById('bb-new-faction').value='';document.getElementById('bb-new-skill').value='';setTimeout(renderAll,300)};
+
+function renderQuests(data){var qc=document.getElementById('quest-container');if(!data){qc.innerHTML='<div class="nodata">暂无任务数据</div>';return}var active=getProp(data,'任务.已激活',[]);var details=getProp(data,'任务.详情',{});if(!active.length){qc.innerHTML='<div class="nodata">暂无激活任务</div>';return}var html='';active.forEach(function(name){var d=details[name]||{};var status=d.状态||'未知';var client=d.委托人||'';var reward=d.报酬||'';var clues=d.线索||[];var sc=status==='已完成'?'var(--green)':status==='进行中'?'var(--gold)':'var(--muted)';html+='<div class="card"><h3><span class="dot" style="background:'+sc+'"></span>'+name+' <span style="font-weight:400;font-size:11px;color:'+sc+'">· '+status+'</span></h3><div class="kv-row"><span style="color:var(--muted)">委托人</span><span class="kv-v" style="color:var(--gold)">'+client+'</span></div><div class="kv-row"><span style="color:var(--muted)">报酬</span><span class="kv-v" style="color:var(--green)">'+reward+'</span></div>';if(clues.length>0){html+='<div style="margin-top:8px"><span style="font-size:11px;color:var(--pink);font-weight:600">🔍 线索</span>';clues.forEach(function(c){html+='<div style="font-size:11px;color:var(--text);margin:4px 0 0 12px;padding:4px 0;border-bottom:1px dashed rgba(255,255,255,.04)">▸ '+c+'</div>'});html+='</div>'}html+='</div>'});qc.innerHTML=html}
 
 renderAll();
 if(typeof eventOn==='function'&&typeof Mvu!=='undefined'){try{eventOn(Mvu.events.VARIABLE_UPDATE_ENDED,function(){setTimeout(renderAll,200)})}catch(e){}}
