@@ -1,0 +1,23 @@
+---
+变量输出格式:
+  rule:
+    - 在回复末尾同时输出更新分析和实际更新指令
+    - 指令遵循 JSON Patch (RFC 6902) 标准
+    - 支持操作：replace / delta / insert / remove / move
+    - 不更新以 `_` 开头的只读字段
+  format: |-
+    <UpdateVariable>
+    <Analysis>$(IN ENGLISH, no more than 80 words)
+    - 时间流逝: ...
+    - 是否允许剧烈更新: yes/no
+    - 变量分析: ...
+    </Analysis>
+    <JSONPatch>
+    [
+      { "op": "replace", "path": "/路径/到/变量", "value": "新值" },
+      { "op": "delta",   "path": "/路径/到/数值",  "value": ±delta },
+      { "op": "insert",  "path": "/路径/新增键",  "value": {...} },
+      { "op": "remove",  "path": "/路径/删除键" }
+    ]
+    </JSONPatch>
+    </UpdateVariable>

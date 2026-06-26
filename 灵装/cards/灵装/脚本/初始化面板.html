@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>幻 - 灵装主控台初始化</title>
+    <style>
+        /* ===== 现代都市暗黑极简风格 ===== */
+        :root {
+            --primary: #3b82f6; /* 科技蓝 */
+            --secondary: #ef4444; /* 危险红 */
+            --gold: #eab308; /* 财阀金 */
+            --bg-dark: rgba(15, 17, 26, 0.95);
+            --border-color: rgba(59, 130, 246, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
+
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #000;
+            color: var(--text-main);
+            padding: 10px;
+            overflow-x: hidden;
+        }
+
+        .sys-container {
+            width: 100%; max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+            display: flex; flex-direction: column; overflow: hidden;
+            position: relative;
+            min-height: 80vh;
+        }
+
+        /* 顶部扫描线效果 */
+        .sys-container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            animation: scanline 3s linear infinite;
+            z-index: 10;
+        }
+        @keyframes scanline { 0% { top: 0; opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+        .header {
+            padding: 20px; text-align: center; border-bottom: 1px solid var(--border-color);
+            background: rgba(0,0,0,0.5);
+        }
+        .sys-title { font-size: 20px; font-weight: 900; letter-spacing: 4px; color: var(--text-main); margin-bottom: 4px; }
+        .sys-subtitle { font-size: 11px; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* API 配置面板 */
+        .api-btn { position: absolute; top: 15px; right: 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--border-color); color: var(--primary); border-radius: 4px; padding: 6px 12px; cursor: pointer; font-size: 12px; z-index: 100; transition: 0.3s; }
+        .api-btn:hover { background: var(--primary); color: #fff; }
+        .api-panel { position: absolute; top: 50px; right: 20px; width: 280px; background: rgba(15, 17, 26, 0.98); border: 1px solid var(--primary); border-radius: 8px; padding: 15px; z-index: 99; display: none; box-shadow: 0 0 20px rgba(0,0,0,0.8); }
+        .api-panel.show { display: block; }
+        .api-input-group { margin-bottom: 10px; }
+        .api-label { font-size: 11px; color: var(--primary); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .fetch-btn { color: var(--gold); cursor: pointer; border: 1px solid var(--gold); padding: 2px 6px; border-radius: 3px; font-size: 9px; transition: 0.2s; background: rgba(234, 179, 8, 0.1); }
+        .fetch-btn:hover { background: var(--gold); color: #000; }
+        .fetch-btn.loading { opacity: 0.5; pointer-events: none; }
+        .api-input, .api-select { width: 100%; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 4px; font-size: 12px; outline: none; }
+        .api-input:focus { border-color: var(--primary); }
+        .api-save-btn { width: 100%; background: rgba(59, 130, 246, 0.2); border: 1px solid var(--primary); color: var(--primary); padding: 8px; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+
+        .page { display: none; padding: 20px; flex: 1; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .sec-title { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-left: 3px solid var(--primary); padding-left: 8px; }
+
+        /* 选项卡片 */
+        .route-card { border: 1px solid var(--border-color); background: rgba(255,255,255,0.02); border-radius: 8px; padding: 15px; margin-bottom: 15px; cursor: pointer; transition: 0.3s; }
+        .route-card:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
+        .route-card.selected { border-color: var(--gold); background: rgba(234, 179, 8, 0.1); box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
+        .route-name { font-size: 16px; font-weight: bold; margin-bottom: 6px; color: var(--gold); }
+        .route-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+        /* 表单元素 */
+        .input-group { margin-bottom: 15px; }
+        .input-label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; }
+        .sys-input { width: 100%; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px; border-radius: 4px; outline: none; transition: 0.3s; font-size: 13px; }
+        .sys-input:focus { border-color: var(--primary); box-shadow: inset 0 0 5px rgba(59,130,246,0.3); }
+
+        .flex-row { display: flex; gap: 10px; }
+        .flex-1 { flex: 1; }
+
+        /* 属性加点 */
+        .stat-row { display: flex; align-items: center; background: rgba(0,0,0,0.3); padding: 8px 10px; margin-bottom: 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-name { width: 60px; font-size: 12px; font-weight: bold; color: var(--text-main); }
+        .stat-btn { width: 24px; height: 24px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--primary); display: flex; justify-content: center; align-items: center; cursor: pointer; border-radius: 4px; user-select: none; }
+        .stat-btn:hover { background: var(--primary); color: #fff; }
+        .stat-val { flex: 1; text-align: center; font-size: 14px; font-weight: bold; }
+
+        .pt-bar { display: flex; justify-content: space-between; padding: 10px; background: rgba(59,130,246,0.1); border: 1px solid var(--primary); border-radius: 4px; margin-bottom: 15px; font-size: 13px; font-weight: bold; }
+
+        /* 灵装盲盒 */
+        .gacha-btn { background: rgba(234, 179, 8, 0.1); border: 1px dashed var(--gold); color: var(--gold); padding: 12px; text-align: center; border-radius: 8px; cursor: pointer; margin-bottom: 15px; font-weight: bold; transition: 0.3s; font-size: 13px; }
+        .gacha-btn:hover { background: rgba(234, 179, 8, 0.2); box-shadow: 0 0 15px rgba(234, 179, 8, 0.3); }
+        .gacha-btn.loading { opacity: 0.5; pointer-events: none; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+        .relic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+        .relic-card { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
+        .relic-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .relic-card.selected { border-color: var(--gold); background: rgba(234, 179, 8, 0.1); box-shadow: 0 0 10px rgba(234, 179, 8, 0.2); }
+        .r-name { font-size: 13px; font-weight: bold; color: #fff; margin-bottom: 4px; }
+        .r-tag { font-size: 9px; padding: 2px 4px; background: rgba(255,255,255,0.1); border-radius: 3px; color: var(--gold); display: inline-block; margin-bottom: 6px; }
+        .r-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; flex: 1; }
+        .r-curse { font-size: 10px; color: var(--secondary); margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 4px; }
+
+        /* 地图选择 */
+        .map-viewport { width: 100%; height: 350px; background: #050505; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; position: relative; cursor: grab; touch-action: none; margin-bottom: 10px; }
+        .map-viewport:active { cursor: grabbing; }
+        .map-canvas { position: absolute; top: 0; left: 0; width: 1200px; height: 900px; background-size: 100% 100%; background-position: center; transform-origin: 0 0;
+    background-image: url('');
+}
+        .map-node { position: absolute; display: flex; flex-direction: column; align-items: center; transform: translate(-50%, -50%); cursor: pointer; z-index: 10; padding: 5px; }
+        .node-dot { width: 12px; height: 12px; border-radius: 50%; background: #000; border: 2px solid var(--text-muted); transition: 0.3s; }
+        .map-node:hover .node-dot { border-color: var(--primary); box-shadow: 0 0 10px var(--primary); }
+        .map-node.selected .node-dot { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 15px var(--gold); transform: scale(1.3); }
+        .node-label { font-size: 10px; color: #fff; background: rgba(0,0,0,0.8); padding: 2px 4px; border-radius: 4px; margin-top: 4px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.1); }
+        .map-node.selected .node-label { border-color: var(--gold); color: var(--gold); }
+        .map-controls { position: absolute; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; z-index: 20; }
+        .zoom-btn { width: 30px; height: 30px; background: rgba(0,0,0,0.7); border: 1px solid var(--border-color); color: var(--primary); display: flex; justify-content: center; align-items: center; cursor: pointer; border-radius: 4px; font-weight: bold; }
+
+        /* 模态框 */
+        .global-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9998; display: none; }
+        .global-overlay.show { display: block; }
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 320px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; z-index: 9999; display: none; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        .modal.show { display: block; }
+        .m-close { position: absolute; top: 10px; right: 15px; color: var(--text-muted); cursor: pointer; font-size: 18px; }
+
+        /* 底部导航 */
+        .nav-bar { display: flex; justify-content: space-between; padding: 15px 20px; background: rgba(0,0,0,0.8); border-top: 1px solid var(--border-color); }
+        .btn { padding: 10px 20px; border: none; border-radius: 4px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-prev { background: transparent; color: var(--text-muted); border: 1px solid var(--text-muted); }
+        .btn-prev:hover { color: #fff; border-color: #fff; }
+        .btn-next { background: var(--primary); color: #fff; box-shadow: 0 0 10px rgba(59,130,246,0.4); }
+        .btn-next:hover { background: #2563eb; box-shadow: 0 0 20px rgba(59,130,246,0.6); transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.3; pointer-events: none; }
+
+        .preset-box { background: rgba(0,0,0,0.5); border: 1px dashed var(--gold); padding: 15px; border-radius: 4px; margin-top: 15px; display: none; }
+        .preset-box.show { display: block; }
+        .kv-line { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
+        .kv-k { color: var(--text-muted); }
+        .kv-v { color: #fff; font-weight: bold; text-align: right; max-width: 70%; }
+    </style>
+</head>
+<body>
+
+<div class="sys-container">
+    <div class="header">
+        <div class="sys-title">FATE SYSTEM</div>
+        <div class="sys-subtitle">Initialization Protocol</div>
+    </div>
+
+    <!-- API 配置按钮 -->
+    <div class="api-btn" onclick="toggleApi()">⚙️ API 配置</div>
+    <div class="api-panel" id="api_panel">
+        <div style="font-size:12px; font-weight:bold; color:#fff; margin-bottom:10px;">外部 API 配置 (用于盲盒抽卡)</div>
+        <div class="api-input-group">
+            <label class="api-label">API URL</label>
+            <input type="text" class="api-input" id="api_url" placeholder="https://api.openai.com/v1">
+        </div>
+        <div class="api-input-group">
+            <label class="api-label">API Key</label>
+            <input type="password" class="api-input" id="api_key" placeholder="sk-...">
+        </div>
+        <div class="api-input-group">
+            <label class="api-label">
+                <span>Model</span>
+                <span class="fetch-btn" id="fetch_model_btn" onclick="fetchModels()">拉取模型</span>
+            </label>
+            <input type="text" class="api-input" id="api_model" list="model_list" placeholder="gpt-4o-mini 或下拉选择">
+            <datalist id="model_list"></datalist>
+        </div>
+        <div class="api-save-btn" onclick="saveApi()">保存配置并关闭</div>
+    </div>
+
+    <div class="global-overlay" id="overlay" onclick="closeModals()"></div>
+
+    <!-- 城市详情模态框 -->
+    <div class="modal" id="cityModal">
+        <div class="m-close" onclick="closeModals()">✖</div>
+        <div style="font-size:16px; font-weight:bold; color:#fff; margin-bottom:5px;" id="m_name">地点名</div>
+        <div style="font-size:11px; color:var(--primary); margin-bottom:10px;" id="m_type">类型</div>
+        <div style="display:flex; gap:10px; margin-bottom:12px; font-size:10px;">
+            <span style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:3px; color:var(--gold);" id="m_danger">危险度</span>
+            <span style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:3px; color:var(--text-muted);" id="m_faction">势力</span>
+        </div>
+        <div style="font-size:12px; color:var(--text-muted); line-height:1.5; margin-bottom:15px;" id="m_desc">描述...</div>
+        <div class="btn btn-next" style="width:100%; text-align:center; padding:8px;" onclick="confirmLoc()">锁定此坐标</div>
+    </div>
+
+    <!-- 自定义底图模态框 -->
+    <div class="modal" id="mapConfigModal">
+        <div class="m-close" onclick="closeModals()">✖</div>
+        <div style="font-size:14px; font-weight:bold; color:var(--primary); margin-bottom:10px;">自定义大地图底图</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:15px;">你可以使用网络链接或直接上传本地图片替换原有地图。上传的图片将被保存在浏览器的 IndexedDB 数据库中。</div>
+
+        <div style="font-size: 11px; color: var(--gold); margin-bottom: 6px;">方案一：网络 URL</div>
+        <input type="text" id="map_bg_url" placeholder="https://..." class="sys-input" style="margin-bottom: 10px;">
+        <div class="btn btn-next" style="width:100%; text-align:center; padding:8px; margin-bottom: 15px;" onclick="saveMapBgUrl()">保存网络链接</div>
+
+        <div style="font-size: 11px; color: var(--primary); margin-bottom: 6px;">方案二：本地上传</div>
+        <input type="file" id="map_bg_file" accept="image/*" style="display:none;" onchange="handleMapBgUpload(event)">
+        <div class="btn" style="background:rgba(59,130,246,0.1); border:1px dashed var(--primary); color:var(--primary); width:100%; text-align:center; margin-bottom:10px;" onclick="document.getElementById('map_bg_file').click()">📁 选择本地图片</div>
+
+        <div class="btn" style="background:transparent; border:1px solid var(--secondary); color:var(--secondary); width:100%; text-align:center;" onclick="resetMapBg()">恢复默认地图</div>
+    </div>
+
+    <!-- Page 1: 路线 -->
+    <div class="page active" id="page-1">
+        <div class="sec-title">STEP 1. 确立身份终端</div>
+        <div class="route-card selected" onclick="selectRoute('preset')" id="route-preset">
+            <div class="route-name">【预设档案】{{user}}</div>
+            <div class="route-desc">BRACE顶级特工。为了调查铃木家族而来。自带顶级灵装「残火之楔」。降临点锁定于废弃工业区。</div>
+        </div>
+        <div class="route-card" onclick="selectRoute('custom')" id="route-custom">
+            <div class="route-name">【自定义档案】未知觉醒者</div>
+            <div class="route-desc">脱离监控的未知个体。手动录入信息并分配初始点数。资源从零开始。</div>
+        </div>
+        <div class="preset-box show" id="preset-preview">
+            <div style="font-size:11px; color:var(--gold); margin-bottom:10px; font-weight:bold;">[系统已锁定高阶预设数据]</div>
+            <div class="kv-line"><span class="kv-k">基础</span><span class="kv-v">男 / 28岁 / BRACE顶级特工</span></div>
+            <div class="kv-line"><span class="kv-k">初始资金</span><span class="kv-v" style="color:var(--gold);">999,999,999 CNY</span></div>
+            <div class="kv-line"><span class="kv-k">核心能力</span><span class="kv-v">极高智慧 / 灵装高契合度</span></div>
+        </div>
+    </div>
+
+    <!-- Page 2: 自定义填写 -->
+    <div class="page" id="page-2">
+        <div class="sec-title">STEP 2. 录入主体数据</div>
+        <div class="input-group"><label class="input-label">真名 (Name)</label><input type="text" class="sys-input" id="c_name" placeholder="输入姓名..."></div>
+        <div class="flex-row">
+            <div class="input-group flex-1"><label class="input-label">性别 (Gender)</label><select class="sys-input" id="c_sex"><option value="男">男</option><option value="女">女</option></select></div>
+            <div class="input-group flex-1"><label class="input-label">年龄 (Age)</label><input type="number" class="sys-input" id="c_age" value="17"></div>
+        </div>
+        <div class="input-group"><label class="input-label">表面身份 (Identity)</label><input type="text" class="sys-input" id="c_job" placeholder="例如: 普通高中生"></div>
+    </div>
+
+    <!-- Page 3: 属性加点 -->
+    <div class="page" id="page-3">
+        <div class="sec-title">STEP 3. 神经突触强化</div>
+        <div class="pt-bar"><span>可用属性点数</span><span id="pt_left" style="color:var(--gold);">20</span></div>
+        <div id="stats_container"></div>
+    </div>
+
+    <!-- Page 4: 灵装盲盒 -->
+    <div class="page" id="page-4">
+        <div class="sec-title">STEP 4. 提取初始灵装</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
+            <span id="gacha_tip">你可以在黑市残骸中挑选一件初始灵装。</span>
+        </div>
+        <div class="gacha-btn" id="gacha_btn" onclick="rollRelics()">🎲 链接外部 API 抽取黑市盲盒 (随机6件)</div>
+        <div class="relic-grid" id="relic_grid"></div>
+    </div>
+
+    <!-- Page 5: 地图 -->
+    <div class="page" id="page-5">
+        <div class="sec-title">STEP 5. 锁定降临坐标</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
+            <span style="font-size:11px; color:var(--text-muted);">拖拽平移 | 滚轮缩放 | 点击节点查看</span>
+            <div style="display:flex; gap:12px;">
+                <span style="font-size:11px; color:var(--primary); cursor:pointer;" onclick="document.getElementById('map_data_import_init').click()">📥 导入</span>
+                <span style="font-size:11px; color:var(--primary); cursor:pointer;" onclick="exportMapData()">📤 导出</span>
+                <span style="font-size:11px; color:var(--primary); cursor:pointer;" onclick="openMapConfig()">🖼️ 自定义底图</span>
+                <input type="file" id="map_data_import_init" accept=".json" style="display:none;" onchange="importMapData(event)">
+            </div>
+        </div>
+        <div class="map-viewport" id="viewport">
+            <div class="map-canvas" id="canvas"></div>
+            <div class="map-controls">
+                <div class="zoom-btn" onclick="zoomMap(0.2)">+</div>
+                <div class="zoom-btn" onclick="zoomMap(-0.2)">-</div>
+            </div>
+        </div>
+        <div style="font-size:12px; text-align:center; color:var(--gold);" id="loc_display">未锁定坐标</div>
+    </div>
+
+    <div class="nav-bar">
+        <button class="btn btn-prev" id="btn-prev" onclick="go(-1)" disabled>BACK</button>
+        <button class="btn btn-next" id="btn-next" onclick="go(1)">NEXT</button>
+    </div>
+</div>
+
+<script>
+    /* ========== 数据配置 ========== */
+    let currentRoute = 'preset';
+    let currentPage = 1;
+    let selectedLocation = '废弃工业区';
+    let selectedRelic = null;
+
+    const baseStats = ['体能', '精神', '灵感', '契合', '抗性', '交涉'];
+    let customStats = { '体能':10, '精神':10, '灵感':10, '契合':10, '抗性':10, '交涉':10 };
+    let maxPt = 20;
+
+    // 默认现代灵装库
+    let defaultRelics = [
+        { name:"【残破的Zippo】", desc:"点燃后火焰温度可达上千度，无视物理隔绝。", curse:"每次使用抽取少量血液。", part:"消耗品", qual:"精良", passive:"高温灼烧" },
+        { name:"【静音耳机】", desc:"戴上后能听到方圆百米内心跳最快之人的心声。", curse:"听觉逐渐退化。", part:"头部", qual:"史诗", passive:"读心频段" },
+        { name:"【无墨钢笔】", desc:"在空中画出的线条会变成坚硬的实体切割线。", curse:"划破空间的同时也会割伤使用者的皮肤。", part:"主灵装", qual:"传说", passive:"空间切割" },
+        { name:"【旧御守】", desc:"张开微弱的屏障，扭曲监控与公安科的感知探测。", curse:"佩戴时体温恒定在低热状态，容易疲惫。", part:"饰品", qual:"稀有", passive:"认知屏蔽" },
+        { name:"【血斑创可贴】", desc:"贴在伤口上能瞬间再生肉体。", curse:"伤痛不会消失，且会在撕下时成倍返还。", part:"消耗品", qual:"精良", passive:"超速自愈" },
+        { name:"【盲人墨镜】", desc:"闭眼戴上能透视建筑物内部结构。", curse:"使用期间理智值(SAN)会缓慢下降，看到不可名状之物。", part:"头部", qual:"史诗", passive:"结构透视" }
+    ];
+
+    // 现代上海节点 (默认预设)
+    let locations = [
+        { id:1, x:50, y:50, r:'铃木财阀', n:'{{user}}的私人别墅', t:'庇护所', s:'绝对安全', c:'#eab308', d:'被特殊灵装结界笼罩的豪华私宅。外人无法感知其存在，是{{user}}与美雪的秘密居所。' },
+        { id:2, x:60, y:40, r:'铃木财阀', n:'铃木家本部宅邸', t:'权力中心', s:'安全', c:'#eab308', d:'铃木本家所在地。内部戒备森严，御前会议的召开地。' },
+        { id:3, x:70, y:65, r:'铃木财阀', n:'幽玄殿', t:'地下实验室', s:'致命', c:'#ef4444', d:'位于上海湾地下200米的机密设施。进行着惨无人道的活体灵装融合实验。' },
+        { id:4, x:45, y:45, r:'铃木财阀', n:'情报部伪装大楼', t:'战术指挥', s:'危险', c:'#ef4444', d:'表面是跨国物流公司，地下则是铃木财阀情报部的暗杀与监控中枢。' },
+        { id:5, x:35, y:35, r:'铃木家族', n:'池袋-黑市外围', t:'黑市入口', s:'中等', c:'#3b82f6', d:'伪装成废弃书店的地下通道入口。周围常有极道成员和公安科眼线游荡。' },
+        { id:6, x:32, y:30, r:'铃木家族', n:'黑市深处', t:'法外交易区', s:'高危', c:'#ef4444', d:'空间被灵装折叠的巨大地下集市。充斥着未知灵装、非法药剂与情报买卖。' },
+        { id:7, x:25, y:55, r:'地下灵装黑市', n:'新宿-废弃排污管网', t:'贫民窟', s:'高危', c:'#ef4444', d:'阴暗潮湿的地下迷宫。因灵装反噬而异变的底层流浪者在这里苟延残喘。' },
+        { id:8, x:80, y:30, r:'中国政府', n:'公安科-上海都分局', t:'官方据点', s:'危险', c:'#ef4444', d:'处理涉灵装刑事案件的表面机构，暗中监控财阀与黑市。' },
+        { id:9, x:85, y:15, r:'中国政府', n:'公安科-郊外收容所', t:'秘密监狱', s:'致命', c:'#ef4444', d:'关押失控暴走者的废弃军事基地，内部环境极其恶劣。' },
+        { id:10, x:30, y:45, r:'铃木家族', n:'歌舞伎町极道本部', t:'黑道中心', s:'危险', c:'#ef4444', d:'企业化黑帮的总部，控制着周边的风俗业与高利贷。' },
+        { id:11, x:55, y:30, r:'中立', n:'上海第一高中', t:'日常校园', s:'安全', c:'#10b981', d:'看似普通的私立高中，许多财阀子弟就读于此，是极好的伪装舞台。' },
+        { id:12, x:40, y:60, r:'铃木家族', n:'六本木-地下钱庄', t:'洗钱中心', s:'中等', c:'#3b82f6', d:'处理黑市灵装交易资金的隐秘场所。' },
+        { id:13, x:52, y:65, r:'上流阶层', n:'涩谷-财阀高级会所', t:'社交场', s:'秩序严苛', c:'#eab308', d:'政客与财阀高层密会的奢华场所，安保级别极高。' },
+        { id:14, x:75, y:45, r:'地下灵装黑市', n:'秋叶原-废弃烂尾楼', t:'冲突区', s:'危险', c:'#ef4444', d:'无家可归的底层灵装使常为了争夺抑制剂在此发生致死火拼。' },
+        { id:15, x:65, y:80, r:'极道/财阀', n:'上海湾-无人码头', t:'走私点', s:'危险', c:'#ef4444', d:'深夜常有未登记的海外灵装在此卸货交易。' },
+        { id:16, x:20, y:40, r:'中立', n:'某24h便利店', t:'物资点', s:'中等', c:'#3b82f6', d:'普通的便利店，但常被陷入疯狂的底层灵装使劫掠。' },
+        { id:17, x:85, y:50, r:'清洁工', n:'废弃工业处理厂', t:'灭口现场', s:'极危', c:'#ef4444', d:'铃木财阀处理叛徒和实验废料的焚尸炉所在地。' },
+        { id:18, x:15, y:20, r:'铃木财阀', n:'郊区圣心孤儿院', t:'伪装机构', s:'中等', c:'#3b82f6', d:'表面是慈善机构，实则是为幽玄殿提供实验"素体"的农场。' },
+        { id:19, x:48, y:52, r:'情报部', n:'高处狙击点', t:'战术制高点', s:'安全', c:'#10b981', d:'俯瞰别墅周边街区的绝佳位置，铃木樱等特工常驻于此提供掩护。' },
+        { id:20, x:28, y:70, r:'地下灵装黑市', n:'地下防空洞营地', t:'临时庇护所', s:'危险', c:'#ef4444', d:'随时可能被公安科清剿的松散聚集地，空气中弥漫着绝望与血腥味。' },
+        { id:21, x:42, y:20, r:'中立/极道', n:'上野-电子黑市', t:'情报集散地', s:'中等', c:'#3b82f6', d:'贩卖被破解的公安科通讯频段和监控数据的隐秘商铺。' },
+        { id:22, x:68, y:25, r:'未知', n:'浅草-旧神社废墟', t:'神代遗迹', s:'未知', c:'#eab308', d:'据说是最早发现原生灵装的地点之一，常有异常能量波动。' },
+        { id:23, x:58, y:55, r:'财阀关联', n:'中央区-高级私立医院', t:'医疗点', s:'秩序严苛', c:'#10b981', d:'铃木羽音常年住院的地方，顶层配备了压制灵装反噬的尖端设备。' },
+        { id:24, x:10, y:80, r:'公安科', n:'奥多摩-迷雾树林', t:'封锁区', s:'极危', c:'#ef4444', d:'因一件失控的空间类灵装导致该区域常年大雾，进入者多半失踪。' }
+    ];
+
+    const $ = id => document.getElementById(id);
+
+    /* API 及本地数据库 */
+    const DB_NAME = 'FateMapDB';
+    const STORE_NAME = 'bgStore';
+    function initDB() { return new Promise((res, rej) => { const req = indexedDB.open(DB_NAME, 1); req.onupgradeneeded = e => { if(!e.target.result.objectStoreNames.contains(STORE_NAME)) e.target.result.createObjectStore(STORE_NAME); }; req.onsuccess = () => res(req.result); req.onerror = () => rej(req.error); }); }
+    async function saveMap(b64) { const db = await initDB(); return new Promise((res) => { const tx = db.transaction(STORE_NAME, 'readwrite'); tx.objectStore(STORE_NAME).put(b64, 'bg'); tx.oncomplete = res; }); }
+    async function getMap() { const db = await initDB(); return new Promise((res) => { const tx = db.transaction(STORE_NAME, 'readonly'); const req = tx.objectStore(STORE_NAME).get('bg'); req.onsuccess = () => res(req.result); }); }
+    async function clearMap() { const db = await initDB(); return new Promise((res) => { const tx = db.transaction(STORE_NAME, 'readwrite'); tx.objectStore(STORE_NAME).delete('bg'); tx.oncomplete = res; }); }
+
+    function toggleApi() { $('api_panel').classList.toggle('show'); }
+    function saveApi() {
+        localStorage.setItem('f_url', $('api_url').value.trim());
+        localStorage.setItem('f_key', $('api_key').value.trim());
+        localStorage.setItem('f_mod', $('api_model').value.trim());
+        toggleApi();
+    }
+    function loadApi() {
+        $('api_url').value = localStorage.getItem('f_url') || 'https://api.openai.com/v1';
+        $('api_key').value = localStorage.getItem('f_key') || '';
+        $('api_model').value = localStorage.getItem('f_mod') || 'gpt-4o-mini';
+    }
+
+    // 新增：拉取模型列表功能
+    async function fetchModels() {
+        const btn = $('fetch_model_btn');
+        const url = $('api_url').value.trim();
+        const key = $('api_key').value.trim();
+
+        if(!url || !key) {
+            alert("请先填写 API URL 和 API Key！");
+            return;
+        }
+
+        try {
+            btn.classList.add('loading');
+            btn.innerText = "拉取中...";
+
+            // 处理 URL：如果是带有 /chat/completions 结尾，要去掉。然后拼上 /models
+            let fetchUrl = url;
+            if(fetchUrl.endsWith('/chat/completions')) {
+                fetchUrl = fetchUrl.replace('/chat/completions', '');
+            }
+            if(!fetchUrl.endsWith('/v1') && fetchUrl.includes('api.openai.com')) {
+                fetchUrl = fetchUrl.replace(/\/$/, '') + '/v1';
+            }
+            fetchUrl = fetchUrl.replace(/\/$/, '') + '/models';
+
+            const res = await fetch(fetchUrl, {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${key}` }
+            });
+
+            if(!res.ok) throw new Error("HTTP " + res.status);
+
+            const data = await res.json();
+            if(data && data.data && Array.isArray(data.data)) {
+                let html = '';
+                data.data.forEach(m => {
+                    html += `<option value="${m.id}">`;
+                });
+                $('model_list').innerHTML = html;
+                alert("拉取成功！可以直接在下拉列表中选择模型了。");
+            } else {
+                throw new Error("返回数据格式不符合标准");
+            }
+        } catch(e) {
+            alert("获取模型失败: " + e.message + "\n请确认API地址支持 /models 接口或直接手动填写。");
+        } finally {
+            btn.classList.remove('loading');
+            btn.innerText = "拉取模型";
+        }
+    }
+
+    function closeModals() { $('overlay').classList.remove('show'); document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show')); }
+    function openMapConfig() {
+        const urlInput = document.getElementById('map_bg_url');
+        if(urlInput) urlInput.value = localStorage.getItem('fate_map_bg_url') || '';
+        $('overlay').classList.add('show');
+        $('mapConfigModal').classList.add('show');
+    }
+
+    function saveMapBgUrl() {
+        const url = document.getElementById('map_bg_url').value.trim();
+        if(url) {
+            localStorage.setItem('fate_map_bg_url', url);
+            clearMap().then(() => { applyBg(); closeModals(); alert("地图网络链接已保存！"); });
+        }
+    }
+
+    function handleMapBgUpload(e) {
+        const file = e.target.files[0]; if(!file) return;
+        const reader = new FileReader();
+        reader.onload = async ev => {
+            try {
+                await saveMap(ev.target.result);
+                localStorage.removeItem('fate_map_bg_url');
+                applyBg(); closeModals(); alert('底图已存入 IndexedDB！');
+            } catch(err){ alert('失败:'+err.message); }
+        };
+        reader.readAsDataURL(file); e.target.value = '';
+    }
+    async function resetMapBg() { localStorage.removeItem('fate_map_bg_url'); await clearMap(); applyBg(); closeModals(); alert("已恢复默认地图底图！"); }
+
+    async function applyBg() {
+        const urlBg = localStorage.getItem('fate_map_bg_url');
+        if (urlBg) {
+            $('canvas').style.backgroundImage = `url('${urlBg}')`;
+            $('canvas').style.backgroundColor = 'transparent';
+            return;
+        }
+        const bg = await getMap();
+        if(bg) { $('canvas').style.backgroundImage = `url('${bg}')`; $('canvas').style.backgroundColor = 'transparent'; }
+        else { $('canvas').style.backgroundImage = "url('')"; $('canvas').style.backgroundColor = 'transparent'; }
+    }
+
+
+    /* UI 交互 */
+    function selectRoute(route) {
+        currentRoute = route;
+        $('route-preset').classList.remove('selected'); $('route-custom').classList.remove('selected');
+        $('route-' + route).classList.add('selected');
+        if(route === 'preset') {
+            $('preset-preview').classList.add('show');
+            $('gacha_tip').innerText = "{{user}}已持有顶级灵装，但仍可额外提取一件作为底牌。";
+            selectedLocation = '废弃工业区';
+            renderMap(); // 重新高亮
+        }
+        else {
+            $('preset-preview').classList.remove('show');
+            $('gacha_tip').innerText = "作为未知觉醒者，这是你唯一的保命底牌。";
+            selectedLocation = locations[4] ? locations[4].n : (locations[0] ? locations[0].n : '未知'); // 自定义默认地点
+            renderMap();
+        }
+        $('loc_display').innerText = `已锁定坐标: ${selectedLocation}`;
+    }
+
+    function renderStats() {
+        let html = '';
+        baseStats.forEach(s => { html += `<div class="stat-row"><div class="stat-name">${s}</div><div class="stat-btn" onclick="adjStat('${s}', -1)">-</div><div class="stat-val" id="val_${s}">${customStats[s]}</div><div class="stat-btn" onclick="adjStat('${s}', 1)">+</div></div>`; });
+        $('stats_container').innerHTML = html; $('pt_left').innerText = maxPt;
+    }
+    function adjStat(s, delta) {
+        if(delta>0 && maxPt<=0) return; if(delta<0 && customStats[s]<=5) return;
+        customStats[s] += delta; maxPt -= delta; $('val_'+s).innerText = customStats[s]; $('pt_left').innerText = maxPt;
+    }
+
+    function renderRelics(arr) {
+        let html = '';
+        arr.forEach(itm => {
+            const safe = encodeURIComponent(JSON.stringify(itm));
+            html += `<div class="relic-card" data-safe="${safe}" onclick="selRelic(this)">
+                <div class="r-name">${itm.name}</div>
+                <div><span class="r-tag">${itm.qual}</span> <span class="r-tag">${itm.part}</span></div>
+                <div class="r-desc">${itm.desc}</div>
+                <div class="r-curse">⚠ 代价: ${itm.curse}</div>
+            </div>`;
+        });
+        $('relic_grid').innerHTML = html;
+        selectedRelic = null;
+    }
+    function selRelic(el) {
+        document.querySelectorAll('.relic-card').forEach(c=>c.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedRelic = JSON.parse(decodeURIComponent(el.dataset.safe));
+    }
+
+    async function rollRelics() {
+        const btn = $('gacha_btn');
+        const url = $('api_url').value.trim(); const key = $('api_key').value.trim(); const mod = $('api_model').value.trim();
+        if(!url || !key) { alert("请先在右上角配置 API URL 和 Key！"); return; }
+
+        try {
+            btn.classList.add('loading'); btn.innerText = "链接深网数据库中...";
+            let fetchUrl = url; if(!fetchUrl.endsWith('/chat/completions')) fetchUrl = fetchUrl.replace(/\/$/, '') + '/chat/completions';
+
+            const prompt = `你现在是《幻》世界的黑市商人。请提供6件形态各异的现代灵装（如打火机、耳机、眼药水等日常物品变异而来）。\n【强制要求】：只输出一个JSON数组格式，不要任何其他废话。格式如下：\n[{"name":"【物品名】", "desc":"功能描述(15字)", "curse":"使用代价(15字)", "part":"主灵装/副灵装/饰品/消耗品", "qual":"稀有/精良/史诗/传说", "passive":"被动词条(短)"}]`;
+
+            const res = await fetch(fetchUrl, {
+                method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                body: JSON.stringify({ model: mod, messages: [{ role: "user", content: prompt }], temperature: 0.9 })
+            });
+            if(!res.ok) throw new Error("HTTP " + res.status);
+            const data = await res.json();
+            let txt = data.choices[0].message.content.replace(/```json\s*/gi, '').replace(/```\s*$/gi, '').trim();
+            const match = txt.match(/\[\s*{[\s\S]*}\s*\]/);
+            if(!match) throw new Error("无法提取 JSON");
+            const arr = JSON.parse(match[0]);
+            renderRelics(arr);
+            btn.innerText = "重新抽取黑市盲盒";
+        } catch(e) {
+            alert("抽取失败: " + e.message); btn.innerText = "🎲 链接外部 API 抽取黑市盲盒 (随机6件)";
+        } finally { btn.classList.remove('loading'); }
+    }
+
+    /* ========== 地图引擎及导入导出 ========== */
+    function exportMapData() {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(locations, null, 2));
+        const dlAnchorElem = document.createElement('a');
+        dlAnchorElem.setAttribute("href", dataStr);
+        dlAnchorElem.setAttribute("download", "fate_map_nodes.json");
+        dlAnchorElem.click();
+    }
+
+    function importMapData(e) {
+        const file = e.target.files[0]; if(!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            try {
+                const newLocs = JSON.parse(ev.target.result);
+                if(Array.isArray(newLocs)) {
+                    locations = newLocs;
+                    localStorage.setItem('fate_map_nodes', JSON.stringify(newLocs));
+                    alert('地图节点导入成功！');
+                    renderMap();
+                    // 检查当前选中节点是否存在，不存在则重置
+                    if (!locations.find(l => l.n === selectedLocation)) {
+                        selectedLocation = locations[0] ? locations[0].n : '未知坐标';
+                        $('loc_display').innerText = `已锁定坐标: ${selectedLocation}`;
+                    }
+                } else {
+                    alert('数据格式错误，必须是数组。');
+                }
+            } catch(err) { alert('解析失败: ' + err.message); }
+        }
+        reader.readAsText(file); e.target.value = '';
+    }
+
+    let scale = 1.0, panX = 0, panY = 0, isDragging = false, startX, startY;
+    const CANVAS_W = 1200, CANVAS_H = 900;
+
+    function constrainMap() {
+        const vp = $('viewport');
+        if(!vp) return;
+        const vpRect = vp.getBoundingClientRect();
+
+        const minScale = Math.max(vpRect.width / CANVAS_W, vpRect.height / CANVAS_H);
+        if (scale < minScale) scale = minScale;
+        if (scale > 3.0) scale = 3.0;
+
+        const scaledW = CANVAS_W * scale;
+        const scaledH = CANVAS_H * scale;
+
+        const minX = vpRect.width - scaledW;
+        const minY = vpRect.height - scaledH;
+
+        panX = Math.max(minX, Math.min(0, panX));
+        panY = Math.max(minY, Math.min(0, panY));
+    }
+
+    function applyTrans() {
+        const vp = $('viewport');
+        if(vp) constrainMap();
+        $('canvas').style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+    }
+
+    function zoomMap(delta) {
+        const vp = $('viewport');
+        const oldScale = scale;
+        scale += delta;
+        const cx = vp.clientWidth / 2;
+        const cy = vp.clientHeight / 2;
+        panX = cx - (cx - panX) * (scale / oldScale);
+        panY = cy - (cy - panY) * (scale / oldScale);
+        applyTrans();
+    }
+
+    function renderMap() {
+        let html = '';
+        locations.forEach(l => {
+            const isSel = l.n === selectedLocation ? 'selected' : '';
+            html += `<div class="map-node ${isSel}" style="left:${l.x}%; top:${l.y}%;" onclick="openLoc(${l.id})">
+                <div class="node-dot" style="border-color:${l.c};"></div>
+                <div class="node-label">${l.n}</div>
+            </div>`;
+        });
+        $('canvas').innerHTML = html;
+    }
+
+    let curLocObj = null;
+    function openLoc(id) {
+        const l = locations.find(x => String(x.id) === String(id)); if(!l) return;
+        curLocObj = l;
+        $('m_name').innerText = l.n; $('m_type').innerText = l.t;
+        $('m_danger').innerText = l.s; $('m_danger').style.color = l.c;
+        $('m_faction').innerText = l.r || l.f || '未知'; // 兼容旧版的f字段或新的r字段
+        $('m_desc').innerText = l.d;
+        $('overlay').classList.add('show'); $('cityModal').classList.add('show');
+    }
+
+    function confirmLoc() {
+        if(curLocObj) { selectedLocation = curLocObj.n; renderMap(); $('loc_display').innerText = `已锁定坐标: ${selectedLocation}`; }
+        closeModals();
+    }
+
+    function initMap() {
+        const vp = $('viewport');
+        // 尝试从状态栏的缓存中读取已同步的节点数据
+        try {
+            const savedNodes = localStorage.getItem('fate_map_nodes');
+            if (savedNodes) locations = JSON.parse(savedNodes);
+        } catch(e) {}
+
+        // 鼠标拖拽
+        vp.addEventListener('mousedown', e => { if(e.target.closest('.map-controls') || e.target.closest('.map-node')) return; isDragging=true; startX=e.clientX-panX; startY=e.clientY-panY; vp.style.cursor='grabbing'; });
+        window.addEventListener('mousemove', e => { if(!isDragging) return; panX=e.clientX-startX; panY=e.clientY-startY; applyTrans(); });
+        window.addEventListener('mouseup', () => { isDragging=false; vp.style.cursor='grab'; });
+        vp.addEventListener('mouseleave', () => { isDragging=false; vp.style.cursor='grab'; });
+        // 鼠标滚轮缩放
+        vp.addEventListener('wheel', e => { e.preventDefault(); zoomMap(e.deltaY>0?-0.1:0.1); }, {passive:false});
+
+        // 手机触摸支持
+        vp.addEventListener('touchstart', e => { if(e.target.closest('.map-controls') || e.target.closest('.map-node')) return; if(e.touches.length===1){ isDragging=true; startX=e.touches[0].clientX-panX; startY=e.touches[0].clientY-panY; }});
+        window.addEventListener('touchmove', e => { if(!isDragging || e.touches.length!==1) return; panX=e.touches[0].clientX-startX; panY=e.touches[0].clientY-startY; applyTrans(); });
+        window.addEventListener('touchend', () => isDragging=false);
+
+        const vpRect = vp.getBoundingClientRect();
+        scale = Math.max(vpRect.width / CANVAS_W, vpRect.height / CANVAS_H);
+        panX = (vpRect.width - CANVAS_W * scale) / 2;
+        panY = (vpRect.height - CANVAS_H * scale) / 2;
+
+        applyTrans();
+        renderMap();
+    }
+
+    /* 流程控制 */
+    function go(dir) {
+        if(dir===1) {
+            if(currentRoute==='custom' && currentPage===2 && (!$('c_name').value.trim() || !$('c_job').value.trim())) { alert("请填写姓名和身份！"); return; }
+            if(currentPage===4 && !selectedRelic) { alert("请选择一件初始灵装！"); return; }
+        }
+
+        let target = currentPage + dir;
+        if(currentRoute==='preset') {
+            if(currentPage===1 && dir===1) target = 4; // 预设跳过 2,3
+            if(currentPage===4 && dir===-1) target = 1;
+        }
+
+        if(target > 5) return finalizeInit();
+
+        document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+        $('page-'+target).classList.add('active');
+        currentPage = target;
+
+        $('btn-prev').disabled = (currentPage===1);
+        if(currentPage===5) {
+            $('btn-next').innerText = 'INITIALIZE';
+            $('btn-next').style.background = 'var(--secondary)';
+            setTimeout(() => { constrainMap(); applyTrans(); }, 100);
+        }
+        else { $('btn-next').innerText = 'NEXT'; $('btn-next').style.background = 'var(--primary)'; }
+    }
+
+    function finalizeInit() {
+        let patches = [];
+        patches.push({ "op": "replace", "path": "/世界/当前地点", "value": selectedLocation });
+        patches.push({ "op": "replace", "path": "/世界/当前时间", "value": "2024-09-01 22:00" });
+
+        if(currentRoute === 'preset') {
+            patches.push({ "op": "replace", "path": "/主角/基础/姓名", "value": "{{user}}" });
+            patches.push({ "op": "replace", "path": "/主角/基础/性别", "value": "男" });
+            patches.push({ "op": "replace", "path": "/主角/基础/年龄", "value": "28岁" });
+            patches.push({ "op": "replace", "path": "/主角/基础/身份", "value": "BRACE顶级特工" });
+            patches.push({ "op": "replace", "path": "/主角/基础/金钱", "value": 999999999 });
+            patches.push({ "op": "replace", "path": "/主角/属性/体能", "value": 15 });
+            patches.push({ "op": "replace", "path": "/主角/属性/精神", "value": 45 });
+            patches.push({ "op": "replace", "path": "/主角/属性/灵感", "value": 35 });
+            patches.push({ "op": "replace", "path": "/主角/属性/契合", "value": 50 });
+            patches.push({ "op": "replace", "path": "/主角/属性/抗性", "value": 30 });
+            patches.push({ "op": "replace", "path": "/主角/属性/交涉", "value": 40 });
+
+            patches.push({ "op": "replace", "path": "/主角/着装/主灵装", "value": { "名称": "【残火之楔】", "品质": "A+", "描述": "超强的战斗型太刀灵装。", "被动词条": "可以切断灵装连接" } });
+        } else {
+            patches.push({ "op": "replace", "path": "/主角/基础/姓名", "value": $('c_name').value.trim() });
+            patches.push({ "op": "replace", "path": "/主角/基础/性别", "value": $('c_sex').value });
+            patches.push({ "op": "replace", "path": "/主角/基础/年龄", "value": $('c_age').value + "岁" });
+            patches.push({ "op": "replace", "path": "/主角/基础/身份", "value": $('c_job').value.trim() });
+            patches.push({ "op": "replace", "path": "/主角/基础/金钱", "value": 10000 });
+            baseStats.forEach(s => { patches.push({ "op": "replace", "path": "/主角/属性/" + s, "value": customStats[s] }); });
+        }
+
+        if(selectedRelic) {
+            const relObj = { "描述": selectedRelic.desc + " 代价: " + selectedRelic.curse, "品质": selectedRelic.qual, "被动词条": selectedRelic.passive };
+            if(selectedRelic.part === '消耗品') {
+                relObj.数量 = 1; relObj.类型 = "消耗品";
+                patches.push({ "op": "insert", "path": `/主角/背包/特殊物资/${selectedRelic.name}`, "value": relObj });
+            } else {
+                relObj.名称 = selectedRelic.name;
+                if(currentRoute === 'preset' && (selectedRelic.part === '主灵装' || selectedRelic.part === '副灵装')) {
+                    relObj.数量 = 1; relObj.类型 = "装备"; relObj.部位 = selectedRelic.part;
+                    patches.push({ "op": "insert", "path": `/主角/背包/战术物资/${selectedRelic.name}`, "value": relObj });
+                } else {
+                    patches.push({ "op": "replace", "path": `/主角/着装/${selectedRelic.part}`, "value": relObj });
+                }
+            }
+        }
+
+        patches.push({ "op": "replace", "path": "/主角/状态/HP", "value": 100 });
+        patches.push({ "op": "replace", "path": "/主角/状态/MaxHP", "value": 100 });
+        patches.push({ "op": "replace", "path": "/主角/状态/SAN", "value": 100 });
+        patches.push({ "op": "replace", "path": "/主角/状态/MaxSAN", "value": 100 });
+        patches.push({ "op": "replace", "path": "/主角/状态/SP", "value": 100 });
+        patches.push({ "op": "replace", "path": "/主角/状态/MaxSP", "value": 100 });
+        patches.push({ "op": "replace", "path": "/主角/状态/发情度", "value": 0 });
+
+        const patchStr = JSON.stringify(patches);
+        let narrative = `【幻·系统初始化协议启动】\n\n`;
+        
+        narrative += `数据流交汇重组……权限认证通过。欢迎归来，BRACE的顶级特工。你将探索这被扭曲的上海，邂逅未知的命运。\n\n`;
+        
+        narrative += `你的意识逐渐清晰。环顾四周，你发现自己正处于：**${selectedLocation}**。\n\n游戏的帷幕，就此拉开。`;
+
+        const hiddenDirective = `<span style="display:none;">\n[SYSTEM OVERRIDE: 此时正在进行系统级底层数据初始化。你必须在回复末尾的 <UpdateVariable> 块中，将下方的 JSON Patch 数组一字不落地完整输出！绝对禁止用任何理由省略或精简！]\n<UpdateVariable>\n<JSONPatch>\n${patchStr}\n</JSONPatch>\n</UpdateVariable>\n</span>`;
+
+        const finalPrompt = `/send ${narrative}\n\n${hiddenDirective}|/trigger`;
+
+        if (typeof triggerSlash === 'function') {
+            triggerSlash(finalPrompt);
+        } else {
+            console.log("待发送指令：\n", finalPrompt);
+            alert("初始化数据已生成，请查看控制台！");
+        }
+    }
+
+    window.onload = function() {
+        loadApi();
+        renderStats();
+        renderRelics(defaultRelics);
+        initMap();
+        applyBg();
+        $('loc_display').innerText = `已锁定坐标: ${selectedLocation}`;
+    };
+</script>
+</body>
+</html>
