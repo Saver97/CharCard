@@ -125,7 +125,7 @@ export const Schema = z.object({
       名称: z.string().or(z.literal('空置')).prefault('空置'),
       品质: z.string().or(z.literal('普通')).prefault('普通'),
       描述: z.string().or(z.literal('')).prefault('')
-    }).prefault({})).prefault({}),
+    }).or(z.string().transform(str => ({ 名称: str, 品质: '普通', 描述: '' }))).prefault({})).prefault({}),
     私密档案: z.object({
       发情度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(0),
       常识崩坏度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(0),
