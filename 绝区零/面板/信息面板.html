@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>绝区零 · 信息面板</title>
+<style>
+:root{
+  --bg:#0f1119;--card:#161b2a;--border:#1e2d50;--text:#c8d6e5;
+  --muted:#6a7d99;--gold:#f0c040;--blue:#4fc3f7;--purple:#ab47bc;--green:#66bb6a;--orange:#ffa726;--pink:#ec407a;--danger:#ef5350
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;color:var(--text);min-height:100vh;display:flex;justify-content:center;padding:16px}
+.container{max-width:700px;width:100%}
+.header{text-align:center;padding:18px 0 12px}
+.header h1{font-size:20px;color:var(--gold)}
+.header p{color:var(--muted);font-size:12px;margin-top:4px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;background:var(--card);border-radius:10px;padding:6px;border:1px solid var(--border)}
+.tab-btn{flex:1;min-width:48px;padding:8px 4px;text-align:center;cursor:pointer;font-size:11px;font-weight:600;border-radius:8px;background:transparent;color:var(--muted);border:none;transition:all .2s}
+.tab-btn:hover{background:rgba(255,255,255,.05);color:var(--text)}
+.tab-btn.active{background:rgba(255,255,255,.1);color:var(--gold)}
+.tab-panel{display:none;animation:fadeIn .3s ease}.tab-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:10px;border:1px solid var(--border)}
+.card h3{font-size:13px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.card h3 .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.form-row{margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.form-row label{font-size:12px;color:var(--muted);min-width:72px;text-align:right}
+.form-row .val{flex:1;font-size:13px;font-weight:600;color:var(--text)}
+.bar-wrap{margin-bottom:12px}.bar-info{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}.bar-bg{height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}.bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.faction-list .fr{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.faction-list .fr label{font-size:12px;width:90px;color:var(--muted)}
+.faction-list .fr input{flex:1;accent-color:var(--green)}
+.faction-list .fr .fr-val{font-size:12px;width:36px;text-align:right;color:var(--muted)}
+.npc-card-w{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px;background:var(--card);position:relative;transition:all .3s}
+.npc-card-w:hover{border-color:var(--gold)}
+.npc-card-w .npc-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.15;z-index:0}
+.npc-head,.npc-body{position:relative;z-index:1}
+.npc-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid transparent;transition:all .2s}
+.npc-head:hover{background:rgba(255,255,255,.04)}
+.npc-head.open{border-bottom-color:var(--border)}
+.npc-name{font-weight:700;font-size:15px;color:var(--text);display:flex;align-items:center;gap:8px}
+.npc-badge{font-size:11px;color:var(--muted);font-weight:400}
+.npc-actions{display:flex;gap:8px}
+.action-icon{width:30px;height:30px;border-radius:50%;background:rgba(22,27,42,.8);border:1px solid var(--border);display:flex;justify-content:center;align-items:center;font-size:13px;cursor:pointer;transition:all .3s;color:var(--muted)}
+.action-icon:hover{transform:scale(1.1);color:var(--gold);border-color:var(--gold)}
+.npc-body{display:none;padding:16px}.npc-body.open{display:block;animation:fadeIn .3s ease}
+.ns-title{font-size:13px;font-weight:700;color:var(--gold);margin:14px 0 10px 0;display:flex;align-items:center;gap:6px}
+.ns-title::before{content:'⚡';font-size:11px}.ns-title.pink{color:var(--pink)}.ns-title.pink::before{content:'🌸'}
+.kv-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;padding-bottom:4px;border-bottom:1px dashed rgba(255,255,255,.04)}.kv-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.kv-v{font-weight:600;text-align:right;max-width:70%;color:var(--text)}
+.npc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:14px}
+.npc-g-card{padding:10px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}
+.npc-g-label{font-size:10px;color:var(--muted);display:block;margin-bottom:3px;text-transform:uppercase;font-weight:600}
+.npc-g-val{font-size:12px;font-weight:700;color:var(--text)}
+.text-block{padding:14px;margin-bottom:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}.text-block .kv-row:last-child{border:none;margin:0;padding:0}
+.footer{text-align:center;padding:12px;color:var(--muted);font-size:10px}
+.nodata{text-align:center;color:var(--muted);padding:20px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>⚡ 绝区零 · 状态面板</h1><p>事件驱动刷新 &nbsp;·&nbsp; <span id="refreshBadge" style="color:var(--muted);font-size:11px">○ 等待事件</span></p></div>
+<div class="tabs">
+  <button class="tab-btn active" data-tab="world">🌍 世界观</button>
+  <button class="tab-btn" data-tab="hero">🐣 主角</button>
+  <button class="tab-btn" data-tab="hollow">🌀 空洞</button>
+  <button class="tab-btn" data-tab="faction">🤝 阵营</button>
+  <button class="tab-btn" data-tab="bangboo">🤖 邦布</button>
+  <button class="tab-btn" data-tab="npc">💝 NPC</button>
+</div>
+
+<div class="tab-panel active" id="tab-world">
+  <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>世界状态</h3>
+    <div class="form-row"><label>当前时间</label><span class="val" id="w-time">新艾利都·清晨</span></div>
+    <div class="form-row"><label>当前地点</label><span class="val" id="w-loc">雅努斯区·六分街</span></div>
+    <div class="form-row"><label>当前章节</label><span class="val" id="w-chapter">序章·法厄同</span></div>
+    <div class="form-row"><label>当天计划</label><span class="val" id="w-plan">录像店营业</span></div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-hero">
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>身份</h3>
+    <div class="form-row"><label>身份</label><span class="val" id="h-is-phaethon">✅ 是（哲/铃）</span></div>
+    <div class="form-row"><label>角色</label><span class="val" id="h-identity">哲</span></div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>生存参数</h3>
+    <div class="bar-wrap"><div class="bar-info"><span>❤️ HP</span><span id="h-hp-txt">85/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-hp-bar" style="width:85%;background:var(--danger)"></div></div></div>
+    <div class="bar-wrap"><div class="bar-info"><span>🧠 SAN</span><span id="h-san-txt">72/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-san-bar" style="width:72%;background:var(--blue)"></div></div></div>
+    <div class="bar-wrap"><div class="bar-info"><span>🌸 发情度</span><span id="h-horny-txt">15/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-horny-bar" style="width:15%;background:var(--pink)"></div></div></div>
+    <div class="bar-wrap"><div class="bar-info"><span>☣️ 以太侵蚀度</span><span id="h-ether-txt">8/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-ether-bar" style="width:8%;background:var(--purple)"></div></div></div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>经济与同伴</h3>
+    <div class="form-row"><label>丁尼余额</label><span class="val" id="h-denny">4200 丁尼</span></div>
+    <div class="form-row"><label>同伴</label><span class="val" id="h-companions">安比, 比利</span></div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-hollow">
+  <div class="card"><h3><span class="dot" style="background:var(--purple)"></span>空洞状态</h3>
+    <div class="form-row"><label>当前空洞</label><span class="val" id="ho-name">（不在空洞中）</span></div>
+    <div class="form-row"><label>以太浓度</label><span class="val" id="ho-density">低</span></div>
+    <div class="bar-wrap"><div class="bar-info"><span>探索进度</span><span id="ho-progress-txt">0%</span></div><div class="bar-bg"><div class="bar-fill" id="ho-progress-bar" style="width:0%;background:var(--purple)"></div></div></div>
+    <div class="form-row"><label>研究音擎</label><span class="val" id="ho-resonia">无</span></div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-faction">
+  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>阵营亲密度</h3>
+    <div class="faction-list" id="faction-list">
+      <div class="fr"><label>狡兔屋</label><input type="range" min="-100" max="100" value="45" disabled><span class="fr-val">45</span></div>
+      <div class="fr"><label>对空六课</label><input type="range" min="-100" max="100" value="10" disabled><span class="fr-val">10</span></div>
+      <div class="fr"><label>白祇重工</label><input type="range" min="-100" max="100" value="20" disabled><span class="fr-val">20</span></div>
+      <div class="fr"><label>维多利亚家政</label><input type="range" min="-100" max="100" value="30" disabled><span class="fr-val">30</span></div>
+      <div class="fr"><label>卡吕冬之子</label><input type="range" min="-100" max="100" value="15" disabled><span class="fr-val">15</span></div>
+      <div class="fr"><label>治安局</label><input type="range" min="-100" max="100" value="-5" disabled><span class="fr-val">-5</span></div>
+      <div class="fr"><label>天琴座</label><input type="range" min="-100" max="100" value="5" disabled><span class="fr-val">5</span></div>
+      <div class="fr"><label>云岿山</label><input type="range" min="-100" max="100" value="0" disabled><span class="fr-val">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-bangboo">
+  <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>邦布状态</h3>
+    <div class="bar-wrap"><div class="bar-info"><span>伊埃斯电量</span><span id="b-battery-txt">92%</span></div><div class="bar-bg"><div class="bar-fill" id="b-battery-bar" style="width:92%;background:var(--orange)"></div></div></div>
+    <div class="form-row"><label>邦布伙伴</label><span class="val" id="b-partners">伊埃斯</span></div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-npc">
+  <div class="card" style="margin-bottom:8px"><h3><span class="dot" style="background:var(--pink)"></span>社交详情 <span style="font-weight:400;color:var(--muted);font-size:11px">（女角色首次登场自动记录）</span></h3></div>
+  <div id="npc-container"></div>
+</div>
+
+<div class="footer">绝区零 RPG · 信息面板 v3.0 · 事件驱动刷新</div>
+</div>
+
+<script>
+const LEVEL_NAMES=['敌对','冷淡','中立','友好','亲密','热恋'];
+function getLevel(v){const n=parseInt(v)||0;if(n<=-51)return LEVEL_NAMES[0];if(n<=-11)return LEVEL_NAMES[1];if(n<=10)return LEVEL_NAMES[2];if(n<=50)return LEVEL_NAMES[3];if(n<=80)return LEVEL_NAMES[4];return LEVEL_NAMES[5]}
+function getProp(obj,path,def){const keys=path.split('.');let r=obj;for(const k of keys){if(r&&typeof r==='object'&&k in r)r=r[k];else return def}return r!==undefined?r:def}
+window.npcImageCache={};
+
+// ===== Rich Demo NPCs (幻器与铃木 style) =====
+const DEMO_NPCS = {
+  妮可: {
+    基础:{身份:"狡兔屋创始人/老大",性别:"女",年龄:"22岁",当前位置:"六分街·狡兔屋据点",动作:"正对着账本发愁，算了几遍发现又赤字了",金钱:3800,当前目标:"找到一个愿意预付定金的大客户",实时内心想法:"这个月再这样下去真的要解散了...但绝对不能在他们面前表现出来",个人社交网络:"安比(成员), 比利(成员), 猫又(成员), 法厄同(常客)"},
+    关系:{好感度:35,信任度:25,修罗场:0,对主角看法:"虽然老是拖欠委托费...但这人关键时刻意外的靠谱"},
+    性格:{底色:"精明拜金，表面圆滑实则重情义",日常:"总是笑嘻嘻地讨价还价，但从不背弃伙伴",内在:"因为贫穷的童年经历，对金钱有近乎偏执的执着，但其实把钱都花在了伙伴身上"},
+    过往经历:"出身孤儿院，混迹街头时创立了狡兔屋。曾为了给孤儿院的孩子们买一套防侵蚀服而攒了三年丁尼",
+    容貌身材:"粉发双马尾，165cm，身材丰满，绿色眼瞳，标志性的三段式笑声",
+    着装:{头部:{名称:"黄色心形耳坠",品质:"稀有",描述:"妮可最喜欢的耳饰，据说是在幻廊淘到的"},身体:{名称:"狡兔屋作战服",品质:"普通",描述:"黑色短夹克+白色露脐装"}},
+    背包:{改装手提箱:{类型:"武器",数量:1,描述:"可发射多种口径弹药的定制武器"},应急丁尼:{类型:"消耗品",数量:500,描述:"藏在秘密口袋里的私房钱"}},
+    私密档案:{发情度:20,常识崩坏度:5,体温:"正常(36.5℃)",体液分泌:"正常",身体反应:"紧张时会不自觉地玩弄发梢",隐藏性癖:"被强势的人壁咚时会心跳加速",生理周期:"安全期",受孕概率:5,器官状态:{唇齿:{开发度:"未开发",描述:"说话时习惯性舔嘴唇"},双峰:{开发度:"轻度",描述:"E罩杯，因长期穿紧身作战服略有压痕"},双手:{开发度:"未开发",描述:"指尖因长期握枪而有薄茧"},双足:{开发度:"未开发",描述:"穿着过膝长靴，偶尔脱下来时会有皮革的印记"},幽谷:{开发度:"未开发",描述:"从未被他人触碰"},秘穴:{开发度:"未开发",描述:"保持着原始的青涩"}}}
+  },
+  艾莲: {
+    基础:{身份:"维多利亚家政女仆/学生",性别:"女",年龄:"17岁",当前位置:"六分街·COFF CAFE",动作:"叼着棒棒糖靠在椅背上打瞌睡",金钱:15000,当前目标:"在下一节课开始前睡够20分钟",实时内心想法:"好麻烦...但咖啡快凉了，不喝又浪费",个人社交网络:"丽娜(上司), 莱卡恩(同事), 可琳(同事), 梦娜/露比/凛(闺蜜)"},
+    关系:{好感度:70,信任度:50,修罗场:15,对主角看法:"虽然是个麻烦的家伙，但在他身边意外的安心..."},
+    性格:{底色:"极度慵懒的节能主义者",日常:"口头禅是'麻烦'，但实际上对朋友非常上心",内在:"内心柔软，会为了不让闺蜜担心而隐瞒自己危险的女仆工作"},
+    过往经历:"鲨希人，因强大的战斗力被招募进维多利亚家政。在学校努力维持着普通女高中生的伪装",
+    容貌身材:"黑短发红挑染，161cm，红色眼瞳，鲨鱼锯齿牙和黑色鱼尾，C罩杯，慵懒泪痣",
+    着装:{头部:{名称:"女仆发饰",品质:"普通",描述:"维多利亚家政标准黑色发箍"},身体:{名称:"维多利亚女仆装",品质:"精良",描述:"黑白主色调的改造女仆装，便于战斗"}},
+    背包:{棒棒糖:{类型:"消耗品",数量:42,描述:"各种口味的棒棒糖，快速补充糖分"},学籍证:{类型:"道具",数量:1,描述:"樱丘高校学生证，上面的照片是她难得正经的表情"}},
+    私密档案:{发情度:10,常识崩坏度:8,体温:"偏低(35.8℃,鲨鱼体质)",体液分泌:"正常",身体反应:"被人触碰鲨鱼尾巴会全身僵硬",隐藏性癖:"在对方强行要求时反而会乖乖听话",生理周期:"非安全期",受孕概率:15,器官状态:{唇齿:{开发度:"未开发",描述:"咬棒棒糖时偶尔会露出尖尖的鲨鱼牙"},双峰:{开发度:"未开发",描述:"C罩杯，女仆装下藏着匀称的曲线"},双手:{开发度:"未开发",描述:"指尖修长但握大剪刀时很有力"},双足:{开发度:"未开发",描述:"总是穿着黑色过膝袜，大腿上有长期站立的轻微压痕"},幽谷:{开发度:"未开发",描述:"从未被他人触碰"},秘穴:{开发度:"未开发",描述:"保持着青涩"}}}
+  },
+  星见雅: {
+    基础:{身份:"对空六课课长",性别:"女",年龄:"保密",当前位置:"索恩区·H.A.N.D.总部",动作:"正在会议室外的走廊里擦拭她的妖刀'无尾'，完全忘记了有月度会议这件事",金钱:500000,当前目标:"找到一块新的磨刀石",实时内心想法:"这把刀今天在低语...或许该去空洞巡逻一趟",个人社交网络:"月城柳(下属), 朱鸢(老同学), 法厄同(盟友)"},
+    关系:{好感度:55,信任度:60,修罗场:5,对主角看法:"他是我的绳匠。我不允许任何人伤害他"},
+    性格:{底色:"沉默寡言的剑士，用冷淡掩盖炽热",日常:"说话像俳句般难以理解，需要月城柳当'翻译'",内在:"背负着亲手结束母亲生命的心结，内心有着极致的温柔与守护欲"},
+    过往经历:"星见家继承人，最年轻的虚狩。母亲被以骸侵蚀后，年幼的她在妖刀引导下亲手解脱了母亲",
+    容貌身材:"狐希人，黑长直姬发式，170cm，红瞳，身材丰满但被修行服裹胸布掩藏着",
+    着装:{头部:{名称:"狐耳",品质:"传说",描述:"毛茸茸的黑色狐耳，会随情绪微微颤动的天然特征"},身体:{名称:"羽织",品质:"史诗",描述:"青绿色羽织披在肩上，内搭白衬衫和领带"}},
+    背包:{讨骸刀·无尾:{类型:"主武器",数量:1,描述:"家传妖刀，被封印在特制刀鞘中，只有星见家的人才能拔出"},磨刀石:{类型:"道具",数量:3,描述:"特制的磨刀石，雅每天都要用"}},
+    私密档案:{发情度:5,常识崩坏度:12,体温:"偏低",体液分泌:"正常",身体反应:"被夸赞时会耳朵抖动但面无表情",隐藏性癖:"在对方展现强大实力时会心跳加速",生理周期:"排卵期",受孕概率:30,器官状态:{唇齿:{开发度:"未开发",描述:"极少露出笑容，嘴唇薄而坚定"},双峰:{开发度:"未开发",描述:"E罩杯，被裹胸布紧紧压制着，偶尔会在道场独处时放松"},双手:{开发度:"中度",描述:"因常年握刀而有厚实的老茧，但指尖依然纤细优雅"},双足:{开发度:"未开发",描述:"穿着白色足袋和木屐，脚踝纤细有力"},幽谷:{开发度:"未开发",描述:"从未被他人触碰"},秘穴:{开发度:"未开发",描述:"保持着修行者贞洁"}}}
+  }
+};
+
+function renderNPCs(data){
+  const npcContainer=document.getElementById('npc-container');
+  let npcs=getProp(data,'NPCs',null)||DEMO_NPCS;
+  if(!npcs||Object.keys(npcs).length===0){npcContainer.innerHTML='<div class="nodata">暂无NPC数据</div>';return}
+  let html='';
+  for(const[nName,npc]of Object.entries(npcs)){
+    const base=getProp(npc,'基础',{});const rel=getProp(npc,'关系',{});const pdt=getProp(npc,'性格',{});
+    const past=getProp(npc,'过往经历','');const look=getProp(npc,'容貌身材','');
+    const secret=getProp(npc,'私密档案',{});const organs=getProp(secret,'器官状态',{});
+    const bgImg=window.npcImageCache[nName]?`background-image:url('${window.npcImageCache[nName]}');`:'';
+    const favor=getProp(rel,'好感度',0);const trust=getProp(rel,'信任度',0);
+    const chaos=getProp(rel,'修罗场',0);const lv=getLevel(favor);
+
+    let eqHtml='<div class="npc-grid">';
+    const equip=getProp(npc,'着装',{});['头部','身体','足部','饰品','主幻器','副幻器'].forEach(part=>{
+      const item=equip[part]||{名称:'空置'};
+      eqHtml+=`<div class="npc-g-card"><span class="npc-g-label">${part}</span><span class="npc-g-val" style="font-size:11px">${item.名称||'空置'}</span></div>`;
+    });eqHtml+='</div>';
+
+    let invHtml='';const nInv=getProp(npc,'背包',{});
+    for(const[iName,iData]of Object.entries(nInv))invHtml+=`<div class="kv-row"><span>${iName}</span><span class="kv-v" style="color:var(--gold)">x${iData.数量||1} ${iData.描述||''}</span></div>`;
+
+    let partsHtml='';['唇齿','双峰','双手','双足','幽谷','秘穴'].forEach(p=>{
+      const pData=organs[p]||{开发度:'未开发',描述:'保持着原有的状态'};
+      partsHtml+=`<div class="npc-g-card"><span class="npc-g-label">${p} · ${pData.开发度}</span><span class="npc-g-val" style="font-size:11px;font-weight:400;color:var(--muted)">${pData.描述}</span></div>`;
+    });
+
+    html+=`<div class="npc-card-w" style="${bgImg}"><div class="npc-bg" style="${bgImg}"></div>
+      <div class="npc-head" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <div class="npc-name">${nName}<span class="npc-badge">${lv} · ${favor}</span></div>
+        <div class="npc-actions">
+          <div class="action-icon" title="设置背景图片" onclick="event.stopPropagation();picUpload('${nName}')">🖼</div>
+          <div class="action-icon" style="color:var(--danger);border-color:var(--danger)" title="删除此NPC" onclick="event.stopPropagation();delNpc('${nName}')">🗑</div>
+        </div></div>
+      <div class="npc-body">
+        <div class="ns-title">当前动态</div><div class="text-block">
+          <div class="kv-row"><span style="color:var(--muted)">身份</span><span class="kv-v" style="color:var(--gold)">${base.身份||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">位置/动作</span><span class="kv-v">${base.当前位置||'-'} · ${base.动作||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">当前目标</span><span class="kv-v" style="color:var(--gold)">${base.当前目标||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">内心想法</span><span class="kv-v" style="font-style:italic">"${base.实时内心想法||'-'}"</span></div>
+        </div>
+        <div class="ns-title">基本信息</div><div class="npc-grid">
+          <div class="npc-g-card"><span class="npc-g-label">性别/年龄</span><span class="npc-g-val">${base.性别||'-'} / ${base.年龄||'-'}</span></div>
+          <div class="npc-g-card"><span class="npc-g-label">金钱</span><span class="npc-g-val" style="color:var(--gold)">${base.金钱||0} 丁尼</span></div>
+          <div class="npc-g-card"><span class="npc-g-label">社交网络</span><span class="npc-g-val" style="font-size:11px">${base.个人社交网络||'-'}</span></div>
+        </div>
+        <div class="ns-title">角色深度设定</div><div class="text-block">
+          <div style="font-size:11px;color:var(--pink);margin-bottom:6px;font-weight:700">性格调色盘</div>
+          <div class="kv-row"><span style="color:var(--muted)">底色</span><span class="kv-v">${pdt.底色||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">日常</span><span class="kv-v">${pdt.日常||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">内在</span><span class="kv-v">${pdt.内在||'-'}</span></div>
+          <div style="font-size:11px;color:var(--pink);margin:10px 0 6px;font-weight:700">过往与外貌</div>
+          <div class="kv-row"><span style="color:var(--muted)">过往经历</span><span class="kv-v">${past||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">容貌身材</span><span class="kv-v">${look||'-'}</span></div>
+        </div>
+        <div class="ns-title">关系与看法</div><div class="text-block">
+          <div class="kv-row"><span style="color:var(--muted)">对主角看法</span><span class="kv-v" style="font-style:italic;color:var(--gold)">"${rel.对主角看法||'-'}"</span></div>
+          <div class="kv-row" style="margin-top:8px;border-top:1px dashed var(--border);padding-top:8px">
+            <span style="color:var(--muted)">好感 / 信任 / 修罗场</span>
+            <span class="kv-v"><span style="color:var(--pink)">${favor}</span> / <span style="color:var(--green)">${trust}</span> / <span style="color:var(--danger)">${chaos}</span></span>
+          </div>
+        </div>
+        <div class="ns-title">当前着装</div>${eqHtml}
+        <div class="ns-title">背包</div>${invHtml||'<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>'}
+        <div class="ns-title pink">私密档案</div><div class="text-block">
+          <div class="kv-row"><span style="color:var(--muted)">发情度 / 常识崩坏度</span><span class="kv-v"><span style="color:var(--danger)">${secret.发情度||0}</span> / <span style="color:var(--pink)">${secret.常识崩坏度||0}</span></span></div>
+          <div class="kv-row"><span style="color:var(--muted)">体温 / 体液分泌</span><span class="kv-v">${secret.体温||'-'} / ${secret.体液分泌||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">身体反应</span><span class="kv-v">${secret.身体反应||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">隐藏性癖</span><span class="kv-v" style="color:var(--pink)">${secret.隐藏性癖||'-'}</span></div>
+          <div class="kv-row"><span style="color:var(--muted)">生理周期 / 受孕率</span><span class="kv-v">${secret.生理周期||'-'} / ${secret.受孕概率||0}%</span></div>
+        </div>
+        <div class="ns-title pink">器官状态</div><div class="npc-grid">${partsHtml}</div>
+      </div></div>`;
+  }
+  npcContainer.innerHTML=html;
+}
+
+// ===== Utilities =====
+window.picUpload=function(npcName){
+  const input=document.createElement('input');input.type='file';input.accept='image/*';
+  input.onchange=e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();
+    reader.onload=ev=>{window.npcImageCache[npcName]=ev.target.result;try{localStorage.setItem('zzz_npc_bg_'+npcName,ev.target.result)}catch(e){}renderAll()};reader.readAsDataURL(file);};input.click();};
+window.delNpc=function(npcName){if(confirm('确定要移除NPC ['+npcName+'] 吗？')){if(typeof triggerSlash==='function')triggerSlash('/send 请移除NPC ['+npcName+']|/trigger');else alert('请手动移除: '+npcName);}};
+
+// ===== Tabs =====
+document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+});});
+
+// ===== Rendering =====
+function loadNpcBgCache(){try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_')){const name=k.replace('zzz_npc_bg_','');window.npcImageCache[name]=localStorage.getItem(k)}}}catch(e){}}loadNpcBgCache();
+
+function renderAll(){
+  try{
+    let sd=null;
+    if(typeof getAllVariables==='function'){const all=getAllVariables();const parsed=typeof _!=='undefined'?_.get(all,'stat_data'):(all.stat_data||all);if(parsed&&Object.keys(parsed).length>0)sd=parsed}
+    if(!sd){renderNPCs(null);document.getElementById('refreshBadge').textContent='○ 演示模式';document.getElementById('refreshBadge').style.color='var(--muted)';return}
+    document.getElementById('w-time').textContent=getProp(sd,'world.当前时间','-');
+    document.getElementById('w-loc').textContent=getProp(sd,'world.当前地点','-');
+    document.getElementById('w-chapter').textContent=getProp(sd,'world.当前章节','-');
+    document.getElementById('w-plan').textContent=getProp(sd,'world.当天计划','-');
+    const isP=getProp(sd,'protagonist.是否为法厄同',true);
+    document.getElementById('h-is-phaethon').textContent=isP?'✅ 是（哲/铃）':'❌ 否（自定义角色）';
+    document.getElementById('h-identity').textContent=getProp(sd,'protagonist.主人身份','-');
+    const hp=getProp(sd,'protagonist.HP',100);document.getElementById('h-hp-txt').textContent=hp+'/100';document.getElementById('h-hp-bar').style.width=hp+'%';
+    const san=getProp(sd,'protagonist.SAN',100);document.getElementById('h-san-txt').textContent=san+'/100';document.getElementById('h-san-bar').style.width=san+'%';
+    const horny=getProp(sd,'protagonist.发情度',0);document.getElementById('h-horny-txt').textContent=horny+'/100';document.getElementById('h-horny-bar').style.width=horny+'%';
+    const ether=getProp(sd,'protagonist.以太侵蚀度',0);document.getElementById('h-ether-txt').textContent=ether+'/100';document.getElementById('h-ether-bar').style.width=ether+'%';
+    document.getElementById('h-denny').textContent=getProp(sd,'protagonist.丁尼余额',0)+' 丁尼';
+    const comps=getProp(sd,'protagonist.同伴',[]);document.getElementById('h-companions').textContent=Array.isArray(comps)&&comps.length>0?comps.join(', '):'无';
+    document.getElementById('ho-name').textContent=getProp(sd,'hollow.当前空洞','')||'（不在空洞中）';
+    document.getElementById('ho-density').textContent=getProp(sd,'hollow.以太浓度','-');
+    const prog=getProp(sd,'hollow.探索进度',0);document.getElementById('ho-progress-txt').textContent=prog+'%';document.getElementById('ho-progress-bar').style.width=prog+'%';
+    document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'hollow.研究音擎',[])).join(', ')||'无';
+    const bat=getProp(sd,'bangboo.伊埃斯电量',100);document.getElementById('b-battery-txt').textContent=bat+'%';document.getElementById('b-battery-bar').style.width=bat+'%';
+    const bp=getProp(sd,'bangboo.邦布伙伴',[]);document.getElementById('b-partners').textContent=Array.isArray(bp)&&bp.length>0?bp.join(', '):'伊埃斯';
+    renderNPCs(sd);
+    document.getElementById('refreshBadge').textContent='● 已连接';
+    document.getElementById('refreshBadge').style.color='var(--green)';
+  }catch(e){renderNPCs(null)}
+}
+
+renderAll();
+if(typeof eventOn==='function'&&typeof Mvu!=='undefined'){try{eventOn(Mvu.events.VARIABLE_UPDATE_ENDED,()=>{setTimeout(renderAll,200)})}catch(e){}}
+</script>
+</body>
+</html>
