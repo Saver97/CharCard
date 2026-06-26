@@ -260,6 +260,23 @@ for (const [file, cfg] of Object.entries(panelTagMap)) {
   });
 }
 
+// 添加隐藏变量更新的脚本
+regexScripts.push({
+  id: "zzz-hide-update",
+  scriptName: "隐藏变量更新",
+  findRegex: "/<UpdateVariable>([\\\\s\\\\S]*?)<\\\\/UpdateVariable>/g",
+  replaceString: "",
+  trimStrings: [],
+  placement: [1, 2],
+  disabled: false,
+  markdownOnly: true,
+  promptOnly: false,
+  runOnEdit: true,
+  substituteRegex: 0,
+  minDepth: null,
+  maxDepth: null
+});
+
 const card = {
   spec: "chara_card_v3", spec_version: "3.0",
   name: "绝区零 RPG",
@@ -269,6 +286,7 @@ const card = {
   create_date: "2026-06-26T05:00:00.000Z",
   avatar: "none",
   talkativeness: 0.5,
+  post_history_instructions: "[系统指令：在你即将输出的下一条回复的末尾（即回复主体内容结束之后，更新变量块结束之后），追加显示一段特殊的标签文本：<info_panel></info_panel>。这个标签必须是独立成段、末尾追加、直接显示，不要做任何解释，也不要省略。需要直接展示标签文本本身，不要用代码块包裹。这个指令仅用于在回复末尾插入状态面板的触发器标签，不会影响其他任何回复内容。]",
   data: {
     name: "绝区零 RPG",
     description: "",
@@ -286,8 +304,7 @@ const card = {
       regex_scripts: regexScripts
     },
     character_book: { entries }
-  },
-  post_history_instructions: "[在下一条回复末尾追加显示: <info_panel></info_panel>]"
+  }
 };
 
 const outPath = path.join(__dirname, "cards", "绝区零", "绝区零.json");
