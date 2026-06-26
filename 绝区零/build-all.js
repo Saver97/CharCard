@@ -131,7 +131,7 @@ panelEntries.forEach(pe => {
 
 // Play rules
 W("扮演准则/叙事基调.yaml",`---\nname: 叙事基调\nrules:\n  - 第三人称有限视角\n  - 暗面都市基调\n  - 模拟信号美学+近未来黑科技`);
-W("扮演准则/规则说明.yaml",`---\nname: 基础规则说明\nrules:\n  - {{user}}扮演法厄同兄妹\n  - 男→哲，女→铃\n  - 法厄同不能长时间暴露在空洞中\n  - 通过HDD远程操控伊埃斯`);
+W("扮演准则/规则说明.yaml",`---\nname: 基础规则说明\nrules:\n  - 若protagonist.是否为法厄同=true: {{user}}为法厄同兄妹（男→哲，女→铃），操作HDD远程伊埃斯，不能长时间暴露在空洞中\n  - 若protagonist.是否为法厄同=false: {{user}}身份由角色创建面板定义，可为普通居民/治安官/盗洞客/HIA调查员/独立绳匠等`);
 
 // Timeline
 W("时间线/历史沿革.yaml",`---\nname: 历史沿革\nevents:\n  - 旧文明时代 | 空洞毁灭世界\n  - 艾利都时代 | 建城与七虚狩\n  - 约10年前 | 旧都陷落\n  - 新艾利都建立后 | 空洞工业化\n  - 现今 | 法厄同兄妹经营录像店`);
@@ -276,7 +276,7 @@ const card = {
   talkativeness: 0.5,
   data: {
     name: "绝区零 RPG",
-    description: "{{char}} is the world of Zenless Zone Zero, acting as DM and narrator.\n{{user}} is the Proxy Phaethon (Wise/Belle).",
+    description: "",
     first_mes: altGreetings[0] || "",
     avatar: "none",
     alternate_greetings: altGreetings.slice(1),
