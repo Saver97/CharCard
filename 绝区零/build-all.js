@@ -159,12 +159,14 @@ function addYamlDir(dir) {
       const keys = [];
       const km = content.match(/name:\s*(.+)/m);
       if (km) keys.push(km[1].trim());
-      // Also extract trigger words from panel YAML entries
-      const triggerSection = content.match(/triggers:\n((?:\s+- "[^"]*"\n?)*)/);
-      if (triggerSection) {
-        const tMatches = triggerSection[1].matchAll(/- "([^"]+)"/g);
-        for (const m of tMatches) {
-          if (!keys.includes(m[1])) keys.push(m[1]);
+      // MVU 条目不提取触发词（仅常量注入，避免对话误触发）
+      if (folder !== 'MVU') {
+        const triggerSection = content.match(/triggers:\n((?:\s+- "[^"]*"\n?)*)/);
+        if (triggerSection) {
+          const tMatches = triggerSection[1].matchAll(/- "([^"]+)"/g);
+          for (const m of tMatches) {
+            if (!keys.includes(m[1])) keys.push(m[1]);
+          }
         }
       }
       // 本 (Ben) 单独设置为 after_char，其余均为 before_char
