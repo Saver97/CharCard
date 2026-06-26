@@ -25,7 +25,8 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 .form-row label{font-size:12px;color:var(--muted);min-width:72px;text-align:right}
 .form-row .val{flex:1;font-size:13px;font-weight:600;color:var(--text)}
 .bar-wrap{margin-bottom:12px}.bar-info{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}.bar-bg{height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}.bar-fill{height:100%;border-radius:4px;transition:width .5s}
-.npc-card-w{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px;background:var(--card);position:relative;transition:all .3s}.npc-card-w:hover{border-color:var(--gold)}
+.npc-card-w{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px;background:var(--card);position:relative;transition:all .3s}
+.npc-card-w:hover{border-color:var(--gold)}
 .npc-card-w .npc-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.15;z-index:0}
 .npc-head,.npc-body{position:relative;z-index:1}
 .npc-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid transparent;transition:all .2s}
@@ -37,40 +38,68 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 .action-icon:hover{transform:scale(1.1);color:var(--gold);border-color:var(--gold)}
 .npc-body{display:none;padding:16px}.npc-body.open{display:block;animation:fadeIn .3s ease}
 .ns-title{font-size:13px;font-weight:700;color:var(--gold);margin:14px 0 10px 0;display:flex;align-items:center;gap:6px}
+.ns-title::before{content:'⚡';font-size:11px}.ns-title.pink{color:var(--pink)}.ns-title.pink::before{content:'🌸'}
 .kv-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;padding-bottom:4px;border-bottom:1px dashed rgba(255,255,255,.04)}.kv-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
 .kv-v{font-weight:600;text-align:right;max-width:70%;color:var(--text)}
 .npc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:14px}
-.npc-g-card{padding:10px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}.npc-g-card:hover{border-color:var(--gold);cursor:pointer}
+.npc-g-card{padding:10px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}
+.npc-g-card:hover{border-color:var(--gold);cursor:pointer}
 .npc-g-label{font-size:10px;color:var(--muted);display:block;margin-bottom:3px;text-transform:uppercase;font-weight:600}
 .npc-g-val{font-size:12px;font-weight:700;color:var(--text)}
-.text-block{padding:14px;margin-bottom:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}
-.footer{text-align:center;padding:12px;color:var(--muted);font-size:10px}.nodata{text-align:center;color:var(--muted);padding:20px;font-size:12px}
-.global-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.5);z-index:9998;display:none}.global-overlay.show{display:block}
-.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:360px;background:var(--bg);border:1px solid var(--gold);border-radius:12px;padding:20px;z-index:9999;display:none;max-height:80vh;overflow-y:auto}.modal.show{display:block}
+.text-block{padding:14px;margin-bottom:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}.text-block .kv-row:last-child{border:none;margin:0;padding:0}
+.footer{text-align:center;padding:12px;color:var(--muted);font-size:10px}
+.nodata{text-align:center;color:var(--muted);padding:20px;font-size:12px}
+/* Modal */
+.global-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.5);z-index:9998;display:none}
+.global-overlay.show{display:block}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:360px;background:var(--bg);border:1px solid var(--gold);border-radius:12px;padding:20px;z-index:9999;display:none;max-height:80vh;overflow-y:auto}
+.modal.show{display:block}
 .modal h4{font-size:14px;color:var(--gold);margin-bottom:12px}
 .modal .pick-list{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
 .modal .pick-item{padding:10px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:12px;transition:all .2s}
 .modal .pick-item:hover{background:rgba(255,255,255,.05);border-color:var(--gold)}
-.modal .pick-item .pick-name{font-weight:700;color:var(--text)}.modal .pick-item .pick-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.modal .pick-item .pick-name{font-weight:700;color:var(--text)}
+.modal .pick-item .pick-desc{font-size:11px;color:var(--muted);margin-top:2px}
 .modal .pick-cancel{margin-top:10px;text-align:center;color:var(--danger);cursor:pointer;font-size:12px;padding:8px}
+.modal .pick-cancel:hover{color:#fff}
+/* Hijack Console */
 .hijack-console{background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.hc-text{font-size:13px;font-weight:700;color:var(--text)}.hc-count{color:var(--gold);background:var(--bg);padding:2px 10px;border-radius:10px;margin-left:6px;font-size:14px}
+.hc-text{font-size:13px;font-weight:700;color:var(--text)}
+.hc-count{color:var(--gold);background:var(--bg);padding:2px 10px;border-radius:10px;margin-left:6px;font-size:14px}
 .hc-submit{background:linear-gradient(135deg,var(--gold),#d4a020);color:#1a1a2e;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:all .3s}
-.hc-submit:disabled{opacity:0.35;cursor:not-allowed}.hc-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 4px 15px rgba(240,192,64,.4)}
+.hc-submit:disabled{opacity:0.35;cursor:not-allowed}
+.hc-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 4px 15px rgba(240,192,64,.4)}
 </style>
 </head>
 <body>
+
 <div class="global-overlay" id="overlay" onclick="closeModal()"></div>
 <div class="modal" id="pickModal"><h4 id="pickTitle">选择物品</h4><div class="pick-list" id="pickList"></div><div class="pick-cancel" onclick="closeModal()">取消</div></div>
+
 <div class="container">
 <div class="header"><h1>⚡ 绝区零 · 状态面板</h1><p>事件驱动刷新 &nbsp;·&nbsp; <span id="refreshBadge" style="color:var(--muted);font-size:11px">○ 等待事件</span></p></div>
-<div class="tabs"><button class="tab-btn active" data-tab="world">🌍 世界观</button><button class="tab-btn" data-tab="hero">🐣 主角</button><button class="tab-btn" data-tab="hollow">🌀 空洞</button><button class="tab-btn" data-tab="faction">🤝 阵营</button><button class="tab-btn" data-tab="bangboo">🤖 邦布</button><button class="tab-btn" data-tab="npc">💝 NPC</button></div>
-<div class="hijack-console"><div class="hc-text">待提交操作: <span class="hc-count" id="hc-count">0</span></div><button class="hc-submit" id="hc-submit" disabled onclick="hijackAndSend()">✨ 提交变更</button></div>
+<div class="tabs">
+  <button class="tab-btn active" data-tab="world">🌍 世界观</button>
+  <button class="tab-btn" data-tab="hero">🐣 主角</button>
+  <button class="tab-btn" data-tab="hollow">🌀 空洞</button>
+  <button class="tab-btn" data-tab="faction">🤝 阵营</button>
+  <button class="tab-btn" data-tab="bangboo">🤖 邦布</button>
+  <button class="tab-btn" data-tab="npc">💝 NPC</button>
+</div>
+
+<!-- HIJACK CONSOLE -->
+<div class="hijack-console">
+  <div class="hc-text">待提交操作: <span class="hc-count" id="hc-count">0</span></div>
+  <button class="hc-submit" id="hc-submit" disabled onclick="hijackAndSend()">✨ 提交变更</button>
+</div>
 
 <div class="tab-panel active" id="tab-world">
   <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>世界状态</h3>
-    <div class="form-row"><label>当前时间</label><span class="val" id="w-time">-</span></div><div class="form-row"><label>当前地点</label><span class="val" id="w-loc">-</span></div>
-    <div class="form-row"><label>当前章节</label><span class="val" id="w-chapter">-</span></div><div class="form-row"><label>当天计划</label><span class="val" id="w-plan">-</span></div><div class="form-row"><label>天气</label><span class="val" id="w-weather">-</span></div>
+    <div class="form-row"><label>当前时间</label><span class="val" id="w-time">-</span></div>
+    <div class="form-row"><label>当前地点</label><span class="val" id="w-loc">-</span></div>
+    <div class="form-row"><label>当前章节</label><span class="val" id="w-chapter">-</span></div>
+    <div class="form-row"><label>当天计划</label><span class="val" id="w-plan">-</span></div>
+    <div class="form-row"><label>天气</label><span class="val" id="w-weather">-</span></div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>都市情报</h3>
     <div class="kv-row"><span style="color:var(--muted)">城市流言</span><span class="kv-v" style="font-size:12px;font-style:italic" id="w-rumor">-</span></div>
@@ -79,38 +108,66 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 </div>
 
 <div class="tab-panel" id="tab-hero">
-  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>身份</h3><div class="form-row"><label>身份</label><span class="val" id="h-is-phaethon">-</span></div><div class="form-row"><label>角色</label><span class="val" id="h-identity">-</span></div></div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>身份</h3>
+    <div class="form-row"><label>身份</label><span class="val" id="h-is-phaethon">-</span></div>
+    <div class="form-row"><label>角色</label><span class="val" id="h-identity">-</span></div>
+  </div>
   <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>生存参数</h3>
     <div class="bar-wrap"><div class="bar-info"><span>❤️ HP</span><span id="h-hp-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-hp-bar" style="width:0%;background:var(--danger)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>🧠 心智防护</span><span id="h-mind-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-mind-bar" style="width:0%;background:var(--blue)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>🌸 发情度</span><span id="h-horny-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-horny-bar" style="width:0%;background:var(--pink)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>☣️ 以太侵蚀度</span><span id="h-ether-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-ether-bar" style="width:0%;background:var(--purple)"></div></div></div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>经济与同伴</h3><div class="form-row"><label>丁尼余额</label><span class="val" id="h-denny">0 丁尼</span></div><div class="form-row"><label>同伴</label><span class="val" id="h-companions">无</span></div></div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>经济与同伴</h3>
+    <div class="form-row"><label>丁尼余额</label><span class="val" id="h-denny">0 丁尼</span></div>
+    <div class="form-row"><label>同伴</label><span class="val" id="h-companions">无</span></div>
+  </div>
   <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>⚔️ 战斗与个性</h3>
-    <div class="npc-grid"><div class="npc-g-card" onclick="editHeroString('战斗定位','h-combat-role')"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)" id="h-combat-role">-</span></div><div class="npc-g-card" onclick="editHeroNumber('以太适应性','h-ether-apt')"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)" id="h-ether-apt">-</span></div><div class="npc-g-card" onclick="editHeroString('当前情绪','h-mood')"><span class="npc-g-label">当前情绪</span><span class="npc-g-val" id="h-mood">-</span></div></div>
+    <div class="npc-grid">
+      <div class="npc-g-card" onclick="editHeroString('战斗定位','h-combat-role')"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)" id="h-combat-role">-</span></div>
+      <div class="npc-g-card" onclick="editHeroNumber('以太适应性','h-ether-apt')"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)" id="h-ether-apt">-</span></div>
+      <div class="npc-g-card" onclick="editHeroString('当前情绪','h-mood')"><span class="npc-g-label">当前情绪</span><span class="npc-g-val" id="h-mood">-</span></div>
+    </div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>当前着装</h3>
-    <div class="npc-grid" id="hero-gear-grid"><div class="npc-g-card" onclick="pickGear('头部')"><span class="npc-g-label">头部</span><span class="npc-g-val" style="font-size:11px" id="h-gear-head">空置</span></div><div class="npc-g-card" onclick="pickGear('身体')"><span class="npc-g-label">身体</span><span class="npc-g-val" style="font-size:11px" id="h-gear-body">空置</span></div><div class="npc-g-card" onclick="pickGear('足部')"><span class="npc-g-label">足部</span><span class="npc-g-val" style="font-size:11px" id="h-gear-foot">空置</span></div><div class="npc-g-card" onclick="pickGear('饰品')"><span class="npc-g-label">饰品</span><span class="npc-g-val" style="font-size:11px" id="h-gear-acc">空置</span></div></div>
+  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>当前着装 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击选择道具）</span></h3>
+    <div class="npc-grid" id="hero-gear-grid">
+      <div class="npc-g-card" onclick="pickGear('头部')"><span class="npc-g-label">头部</span><span class="npc-g-val" style="font-size:11px" id="h-gear-head">空置</span></div>
+      <div class="npc-g-card" onclick="pickGear('身体')"><span class="npc-g-label">身体</span><span class="npc-g-val" style="font-size:11px" id="h-gear-body">空置</span></div>
+      <div class="npc-g-card" onclick="pickGear('足部')"><span class="npc-g-label">足部</span><span class="npc-g-val" style="font-size:11px" id="h-gear-foot">空置</span></div>
+      <div class="npc-g-card" onclick="pickGear('饰品')"><span class="npc-g-label">饰品</span><span class="npc-g-val" style="font-size:11px" id="h-gear-acc">空置</span></div>
+    </div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>道具记录</h3>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>道具记录 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击行可编辑）</span></h3>
     <div id="hero-inventory"></div>
-    <div style="margin-top:8px;display:flex;gap:6px"><input id="inv-new-name" placeholder="物品名" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none"><input id="inv-new-qty" type="number" placeholder="数量" value="1" min="1" style="width:56px;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none"><button onclick="addHeroItem()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+添加</button></div>
+    <div style="margin-top:8px;display:flex;gap:6px">
+      <input id="inv-new-name" placeholder="物品名" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <input id="inv-new-qty" type="number" placeholder="数量" value="1" min="1" style="width:56px;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <button onclick="addHeroItem()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+添加</button>
+    </div>
   </div>
 </div>
 
 <div class="tab-panel" id="tab-hollow">
   <div class="card"><h3><span class="dot" style="background:var(--purple)"></span>空洞状态</h3>
-    <div class="form-row"><label>当前空洞</label><span class="val" id="ho-name">（不在空洞中）</span></div><div class="form-row"><label>以太浓度</label><span class="val" id="ho-density">-</span></div>
+    <div class="form-row"><label>当前空洞</label><span class="val" id="ho-name">（不在空洞中）</span></div>
+    <div class="form-row"><label>以太浓度</label><span class="val" id="ho-density">-</span></div>
     <div class="bar-wrap"><div class="bar-info"><span>探索进度</span><span id="ho-progress-txt">0%</span></div><div class="bar-bg"><div class="bar-fill" id="ho-progress-bar" style="width:0%;background:var(--purple)"></div></div></div>
     <div class="form-row"><label>研究音擎</label><span class="val" id="ho-resonia">无</span></div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>危险评估</h3>
-    <div class="npc-grid"><div class="npc-g-card"><span class="npc-g-label">以骸威胁</span><span class="npc-g-val" style="color:var(--danger)" id="ho-threat">-</span></div><div class="npc-g-card"><span class="npc-g-label">萝卜质量</span><span class="npc-g-val" style="color:var(--gold)" id="ho-carrot">-</span></div><div class="npc-g-card"><span class="npc-g-label">安全时间</span><span class="npc-g-val" id="ho-timeleft">-</span></div></div>
+    <div class="npc-grid">
+      <div class="npc-g-card"><span class="npc-g-label">以骸威胁</span><span class="npc-g-val" style="color:var(--danger)" id="ho-threat">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">萝卜质量</span><span class="npc-g-val" style="color:var(--gold)" id="ho-carrot">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">安全时间</span><span class="npc-g-val" id="ho-timeleft">-</span></div>
+    </div>
   </div>
 </div>
 
-<div class="tab-panel" id="tab-faction"><div class="card"><h3><span class="dot" style="background:var(--green)"></span>阵营亲密度</h3><div id="faction-container"></div></div></div>
+<div class="tab-panel" id="tab-faction">
+  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>阵营亲密度</h3>
+    <div id="faction-container"></div>
+  </div>
+</div>
 
 <div class="tab-panel" id="tab-bangboo">
   <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>邦布状态</h3>
@@ -118,16 +175,32 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
     <div class="form-row"><label>邦布伙伴</label><span class="val" id="b-partners">-</span></div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>邦布详情</h3>
-    <div class="npc-grid"><div class="npc-g-card"><span class="npc-g-label">装备技能</span><span class="npc-g-val" style="font-size:11px;color:var(--gold)" id="b-skill">-</span></div><div class="npc-g-card"><span class="npc-g-label">维修状态</span><span class="npc-g-val" id="b-repair">-</span></div><div class="npc-g-card"><span class="npc-g-label">邦布心情</span><span class="npc-g-val" id="b-mood">-</span></div></div>
+    <div class="npc-grid">
+      <div class="npc-g-card"><span class="npc-g-label">装备技能</span><span class="npc-g-val" style="font-size:11px;color:var(--gold)" id="b-skill">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">维修状态</span><span class="npc-g-val" id="b-repair">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">邦布心情</span><span class="npc-g-val" id="b-mood">-</span></div>
+    </div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>📦 已拥有邦布</h3><div id="owned-bangboo-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px"></div>
-    <div style="margin-top:8px;display:flex;gap:6px"><input id="bb-new-name" placeholder="新邦布名" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none"><input id="bb-new-faction" placeholder="所属势力" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none"><input id="bb-new-skill" placeholder="技能" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none"><button onclick="addBangboo()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+添加</button></div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>📦 已拥有邦布 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击携带）</span></h3>
+    <div id="owned-bangboo-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px"></div>
+    <div style="margin-top:8px;display:flex;gap:6px">
+      <input id="bb-new-name" placeholder="新邦布名" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <input id="bb-new-faction" placeholder="所属势力" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <input id="bb-new-skill" placeholder="技能" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <button onclick="addBangboo()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+添加</button>
+    </div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>📦 邦布图鉴</h3><div id="bangboo-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px"></div></div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>📦 邦布图鉴 <span style="font-weight:400;color:var(--muted);font-size:11px">（所有可获取邦布）</span></h3>
+    <div id="bangboo-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px"></div>
+  </div>
 </div>
 
-<div class="tab-panel" id="tab-npc"><div class="card" style="margin-bottom:8px"><h3><span class="dot" style="background:var(--pink)"></span>社交详情</h3></div><div id="npc-container"></div></div>
-<div class="footer">绝区零 RPG · 信息面板 v4.2</div>
+<div class="tab-panel" id="tab-npc">
+  <div class="card" style="margin-bottom:8px"><h3><span class="dot" style="background:var(--pink)"></span>社交详情 <span style="font-weight:400;color:var(--muted);font-size:11px">（女角色首次登场自动记录）</span></h3></div>
+  <div id="npc-container"></div>
+</div>
+
+<div class="footer">绝区零 RPG · 信息面板 v4.3 · 事件驱动刷新</div>
 </div>
 
 <script>
@@ -135,40 +208,67 @@ const LEVEL_NAMES=['敌对','冷淡','中立','友好','亲密','热恋'];
 function getLevel(v){const n=parseInt(v)||0;if(n<=-51)return LEVEL_NAMES[0];if(n<=-11)return LEVEL_NAMES[1];if(n<=10)return LEVEL_NAMES[2];if(n<=50)return LEVEL_NAMES[3];if(n<=80)return LEVEL_NAMES[4];return LEVEL_NAMES[5]}
 function getProp(obj,path,def){const keys=path.split('.');let r=obj;for(const k of keys){if(r&&typeof r==='object'&&k in r)r=r[k];else return def}return r!==undefined?r:def}
 window.npcImageCache={};window.cachedData=null;
-window.pendingActions=[];
 
+// ===== HIJACK QUEUE =====
+window.pendingActions=[];
 function updateHijack(){document.getElementById('hc-count').innerText=window.pendingActions.length;document.getElementById('hc-submit').disabled=window.pendingActions.length===0}
 window.hijackAndSend=function(){if(window.pendingActions.length===0)return;var lines=window.pendingActions.map(function(a){return a.desc}).join('\n');if(typeof triggerSlash==='function')triggerSlash('/send 请执行以下操作：\n'+lines+'|/trigger');else alert('待发送:\n'+lines);window.pendingActions=[];updateHijack()}
 
+// ===== BANGBOO GALLERY =====
 const ALL_BANGBOOS=[{name:"伊埃斯",faction:"法厄同·特殊",skill:"感官同步·HDD远程操控"},{name:"阿全",faction:"治安局",skill:"360°视野·报警联动"},{name:"企鹅布",faction:"维多利亚家政",skill:"冰霜弹·减速领域"},{name:"纸袋布",faction:"白祇重工",skill:"以太护盾·伤害减免"},{name:"鲨鱼布",faction:"维多利亚家政",skill:"鲨鱼冲刺·破甲"},{name:"恶魔布",faction:"卡吕冬之子",skill:"影子潜伏·暴击加成"},{name:"巴特勒",faction:"独立",skill:"急救喷雾·HP回复"},{name:"格列佛",faction:"白祇重工",skill:"钻头猛击·眩晕"},{name:"招财布",faction:"独立",skill:"黄金律·掉率+5%"},{name:"共鸣布",faction:"天琴座",skill:"声呐扫描·弱点击破"},{name:"飓风布",faction:"卡吕冬之子",skill:"疾风步·移速+30%"},{name:"静电布",faction:"狡兔屋",skill:"EMP脉冲·机械瘫痪"}];
 
-function renderNPCs(data){var nc=document.getElementById('npc-container');var npcs=data?getProp(data,'NPCs',null):null;if(!npcs||Object.keys(npcs).length===0){nc.innerHTML='<div class="nodata">暂无NPC数据</div>';return}var html='';var keys=Object.keys(npcs);for(var i=0;i<keys.length;i++){var nName=keys[i];var npc=npcs[nName];var base=getProp(npc,'基础',{});var rel=getProp(npc,'关系',{});var pdt=getProp(npc,'性格',{});var past=getProp(npc,'过往经历','');var look=getProp(npc,'容貌身材','');var secret=getProp(npc,'私密档案',{});var organs=getProp(secret,'器官状态',{});var bgImg=window.npcImageCache[nName]?'background-image:url(\''+window.npcImageCache[nName]+'\');':'';var favor=getProp(rel,'好感度',0);var trust=getProp(rel,'信任度',0);var chaos=getProp(rel,'修罗场',0);var lv=getLevel(favor);
-var eqHtml='<div class="npc-grid">';var equip=getProp(npc,'着装',{});var parts=['头部','身体','足部','饰品','武器'];for(var j=0;j<parts.length;j++){var part=parts[j];var item=equip[part]||{名称:'空置'};eqHtml+='<div class="npc-g-card"><span class="npc-g-label">'+part+'</span><span class="npc-g-val" style="font-size:11px">'+(item.名称||'空置')+'</span></div>'}eqHtml+='</div>';
-var invHtml='';var nInv=getProp(npc,'背包',{});var invKeys=Object.keys(nInv);for(var k=0;k<invKeys.length;k++){var iName=invKeys[k];var iData=nInv[iName];invHtml+='<div class="kv-row"><span>'+iName+'</span><span class="kv-v" style="color:var(--gold)">x'+(iData.数量||1)+' '+(iData.描述||'')+'</span></div>'}
-var partsHtml='';var organsKeys=['唇齿','双峰','双手','双足','幽谷','秘穴'];for(var o=0;o<organsKeys.length;o++){var p=organsKeys[o];var pData=organs[p]||{开发度:'未开发',描述:'保持着原有的状态'};partsHtml+='<div class="npc-g-card"><span class="npc-g-label">'+p+' · '+pData.开发度+'</span><span class="npc-g-val" style="font-size:11px;font-weight:400;color:var(--muted)">'+pData.描述+'</span></div>'}
-html+='<div class="npc-card-w" style="'+bgImg+'"><div class="npc-bg" style="'+bgImg+'"></div><div class="npc-head" onclick="this.classList.toggle(\'open\');this.nextElementSibling.classList.toggle(\'open\')"><div class="npc-name">'+nName+'<span class="npc-badge">'+lv+' · '+favor+'</span></div><div class="npc-actions"><div class="action-icon" title="设置背景图片" onclick="event.stopPropagation();picUpload(\''+nName+'\')">🖼</div><div class="action-icon" style="color:var(--danger);border-color:var(--danger)" title="删除NPC" onclick="event.stopPropagation();delNpc(\''+nName+'\')">🗑</div></div></div><div class="npc-body"><div class="ns-title">当前动态</div><div class="text-block"><div class="kv-row"><span style="color:var(--muted)">身份</span><span class="kv-v" style="color:var(--gold)">'+(base.身份||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">位置/动作</span><span class="kv-v">'+(base.当前位置||'-')+' · '+(base.动作||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">当前目标</span><span class="kv-v" style="color:var(--gold)">'+(base.当前目标||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">内心想法</span><span class="kv-v" style="font-style:italic">"'+(base.实时内心想法||'-')+'"</span></div></div><div class="ns-title">基本信息</div><div class="npc-grid"><div class="npc-g-card"><span class="npc-g-label">性别/年龄</span><span class="npc-g-val">'+(base.性别||'-')+' / '+(base.年龄||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">金钱</span><span class="npc-g-val" style="color:var(--gold)">'+(base.金钱||0)+' 丁尼</span></div><div class="npc-g-card"><span class="npc-g-label">社交网络</span><span class="npc-g-val" style="font-size:11px">'+(base.个人社交网络||'-')+'</span></div></div><div class="ns-title">⚔️ 战斗与个性</div><div class="npc-grid"><div class="npc-g-card"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)">'+(base.战斗定位||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)">'+(base.以太适应性||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">当前情绪</span><span class="npc-g-val">'+(pdt.当前情绪||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">声线</span><span class="npc-g-val" style="font-size:11px">'+(pdt.声线||'-')+'</span></div><div class="npc-g-card" style="grid-column:1/-1"><span class="npc-g-label">弱点</span><span class="npc-g-val" style="font-size:11px;font-weight:400">'+(pdt.弱点||'-')+'</span></div><div class="npc-g-card" style="grid-column:1/-1"><span class="npc-g-label">专属技能</span><span class="npc-g-val" style="font-size:11px;font-weight:400;color:var(--gold)">'+(pdt.专属技能||'-')+'</span></div></div><div class="ns-title">角色深度设定</div><div class="text-block"><div style="font-size:11px;color:var(--pink);margin-bottom:6px;font-weight:700">性格调色盘</div><div class="kv-row"><span style="color:var(--muted)">底色</span><span class="kv-v">'+(pdt.底色||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">日常</span><span class="kv-v">'+(pdt.日常||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">内在</span><span class="kv-v">'+(pdt.内在||'-')+'</span></div><div style="font-size:11px;color:var(--pink);margin:10px 0 6px;font-weight:700">过往与外貌</div><div class="kv-row"><span style="color:var(--muted)">过往经历</span><span class="kv-v">'+past+'</span></div><div class="kv-row"><span style="color:var(--muted)">容貌身材</span><span class="kv-v">'+look+'</span></div></div><div class="ns-title">关系与看法</div><div class="text-block"><div class="kv-row"><span style="color:var(--muted)">对主角看法</span><span class="kv-v" style="font-style:italic;color:var(--gold)">"'+(rel.对主角看法||'-')+'"</span></div><div class="kv-row" style="margin-top:8px;border-top:1px dashed var(--border);padding-top:8px"><span style="color:var(--muted)">好感 / 信任 / 修罗场</span><span class="kv-v"><span style="color:var(--pink)">'+favor+'</span> / <span style="color:var(--green)">'+trust+'</span> / <span style="color:var(--danger)">'+chaos+'</span></span></div></div><div class="ns-title">当前着装</div>'+eqHtml+'<div class="ns-title">背包</div>'+(invHtml||'<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>')+'<div class="ns-title pink">私密档案</div><div class="text-block"><div class="kv-row"><span style="color:var(--muted)">发情度 / 常识崩坏度</span><span class="kv-v"><span style="color:var(--danger)">'+(secret.发情度||0)+'</span> / <span style="color:var(--pink)">'+(secret.常识崩坏度||0)+'</span></span></div><div class="kv-row"><span style="color:var(--muted)">体温 / 体液分泌</span><span class="kv-v">'+(secret.体温||'-')+' / '+(secret.体液分泌||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">身体反应</span><span class="kv-v">'+(secret.身体反应||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">隐藏性癖</span><span class="kv-v" style="color:var(--pink)">'+(secret.隐藏性癖||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">生理周期 / 受孕率</span><span class="kv-v">'+(secret.生理周期||'-')+' / '+(secret.受孕概率||0)+'%</span></div></div><div class="ns-title pink">器官状态</div><div class="npc-grid">'+partsHtml+'</div></div></div>'}nc.innerHTML=html}
+// ===== NPC RENDERING =====
+function renderNPCs(data){
+  var nc=document.getElementById('npc-container');
+  var npcs=data?getProp(data,'NPCs',null):null;
+  if(!npcs||Object.keys(npcs).length===0){nc.innerHTML='<div class="nodata">暂无NPC数据</div>';return}
+  var html='';var keys=Object.keys(npcs);
+  for(var i=0;i<keys.length;i++){
+    var nName=keys[i];var npc=npcs[nName];var base=getProp(npc,'基础',{});var rel=getProp(npc,'关系',{});var pdt=getProp(npc,'性格',{});
+    var past=getProp(npc,'过往经历','');var look=getProp(npc,'容貌身材','');var secret=getProp(npc,'私密档案',{});var organs=getProp(secret,'器官状态',{});
+    var bgImg=window.npcImageCache[nName]?'background-image:url(\''+window.npcImageCache[nName]+'\');':'';
+    var favor=getProp(rel,'好感度',0);var trust=getProp(rel,'信任度',0);var chaos=getProp(rel,'修罗场',0);var lv=getLevel(favor);
+    var eqHtml='<div class="npc-grid">';var equip=getProp(npc,'着装',{});['头部','身体','足部','饰品','武器'].forEach(function(part){
+      var item=equip[part]||{名称:'空置'};eqHtml+='<div class="npc-g-card"><span class="npc-g-label">'+part+'</span><span class="npc-g-val" style="font-size:11px">'+(item.名称||'空置')+'</span></div>';
+    });eqHtml+='</div>';
+    var invHtml='';var nInv=getProp(npc,'背包',{});var invKeys=Object.keys(nInv);
+    for(var k=0;k<invKeys.length;k++){var iName=invKeys[k];var iData=nInv[iName];invHtml+='<div class="kv-row"><span>'+iName+'</span><span class="kv-v" style="color:var(--gold)">x'+(iData.数量||1)+' '+(iData.描述||'')+'</span></div>'}
+    var partsHtml='';['唇齿','双峰','双手','双足','幽谷','秘穴'].forEach(function(p){
+      var pData=organs[p]||{开发度:'未开发',描述:'保持着原有的状态'};
+      partsHtml+='<div class="npc-g-card"><span class="npc-g-label">'+p+' · '+pData.开发度+'</span><span class="npc-g-val" style="font-size:11px;font-weight:400;color:var(--muted)">'+pData.描述+'</span></div>';
+    });
+    html+='<div class="npc-card-w" style="'+bgImg+'"><div class="npc-bg" style="'+bgImg+'"></div><div class="npc-head" onclick="this.classList.toggle(\'open\');this.nextElementSibling.classList.toggle(\'open\')"><div class="npc-name">'+nName+'<span class="npc-badge">'+lv+' · '+favor+'</span></div><div class="npc-actions"><div class="action-icon" title="设置背景图片" onclick="event.stopPropagation();picUpload(\''+nName+'\')">🖼</div><div class="action-icon" title="重置底图" onclick="event.stopPropagation();resetNpcBg(\''+nName+'\')" style="font-size:10px">🔄</div><div class="action-icon" style="color:var(--danger);border-color:var(--danger)" title="删除NPC" onclick="event.stopPropagation();delNpc(\''+nName+'\')">🗑</div></div></div><div class="npc-body"><div class="ns-title">当前动态</div><div class="text-block"><div class="kv-row"><span style="color:var(--muted)">身份</span><span class="kv-v" style="color:var(--gold)">'+(base.身份||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">位置/动作</span><span class="kv-v">'+(base.当前位置||'-')+' · '+(base.动作||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">当前目标</span><span class="kv-v" style="color:var(--gold)">'+(base.当前目标||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">内心想法</span><span class="kv-v" style="font-style:italic">"'+(base.实时内心想法||'-')+'"</span></div></div><div class="ns-title">基本信息</div><div class="npc-grid"><div class="npc-g-card"><span class="npc-g-label">性别/年龄</span><span class="npc-g-val">'+(base.性别||'-')+' / '+(base.年龄||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">金钱</span><span class="npc-g-val" style="color:var(--gold)">'+(base.金钱||0)+' 丁尼</span></div><div class="npc-g-card"><span class="npc-g-label">社交网络</span><span class="npc-g-val" style="font-size:11px">'+(base.个人社交网络||'-')+'</span></div></div><div class="ns-title">⚔️ 战斗与个性</div><div class="npc-grid"><div class="npc-g-card"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)">'+(base.战斗定位||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)">'+(base.以太适应性||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">当前情绪</span><span class="npc-g-val">'+(pdt.当前情绪||'-')+'</span></div><div class="npc-g-card"><span class="npc-g-label">声线</span><span class="npc-g-val" style="font-size:11px">'+(pdt.声线||'-')+'</span></div><div class="npc-g-card" style="grid-column:1/-1"><span class="npc-g-label">弱点</span><span class="npc-g-val" style="font-size:11px;font-weight:400">'+(pdt.弱点||'-')+'</span></div><div class="npc-g-card" style="grid-column:1/-1"><span class="npc-g-label">专属技能</span><span class="npc-g-val" style="font-size:11px;font-weight:400;color:var(--gold)">'+(pdt.专属技能||'-')+'</span></div></div><div class="ns-title">角色深度设定</div><div class="text-block"><div style="font-size:11px;color:var(--pink);margin-bottom:6px;font-weight:700">性格调色盘</div><div class="kv-row"><span style="color:var(--muted)">底色</span><span class="kv-v">'+(pdt.底色||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">日常</span><span class="kv-v">'+(pdt.日常||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">内在</span><span class="kv-v">'+(pdt.内在||'-')+'</span></div><div style="font-size:11px;color:var(--pink);margin:10px 0 6px;font-weight:700">过往与外貌</div><div class="kv-row"><span style="color:var(--muted)">过往经历</span><span class="kv-v">'+past+'</span></div><div class="kv-row"><span style="color:var(--muted)">容貌身材</span><span class="kv-v">'+look+'</span></div></div><div class="ns-title">关系与看法</div><div class="text-block"><div class="kv-row"><span style="color:var(--muted)">对主角看法</span><span class="kv-v" style="font-style:italic;color:var(--gold)">"'+(rel.对主角看法||'-')+'"</span></div><div class="kv-row" style="margin-top:8px;border-top:1px dashed var(--border);padding-top:8px"><span style="color:var(--muted)">好感 / 信任 / 修罗场</span><span class="kv-v"><span style="color:var(--pink)">'+favor+'</span> / <span style="color:var(--green)">'+trust+'</span> / <span style="color:var(--danger)">'+chaos+'</span></span></div></div><div class="ns-title">当前着装</div>'+eqHtml+'<div class="ns-title">背包</div>'+(invHtml||'<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>')+'<div class="ns-title pink">私密档案</div><div class="text-block"><div class="kv-row"><span style="color:var(--muted)">发情度 / 常识崩坏度</span><span class="kv-v"><span style="color:var(--danger)">'+(secret.发情度||0)+'</span> / <span style="color:var(--pink)">'+(secret.常识崩坏度||0)+'</span></span></div><div class="kv-row"><span style="color:var(--muted)">体温 / 体液分泌</span><span class="kv-v">'+(secret.体温||'-')+' / '+(secret.体液分泌||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">身体反应</span><span class="kv-v">'+(secret.身体反应||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">隐藏性癖</span><span class="kv-v" style="color:var(--pink)">'+(secret.隐藏性癖||'-')+'</span></div><div class="kv-row"><span style="color:var(--muted)">生理周期 / 受孕率</span><span class="kv-v">'+(secret.生理周期||'-')+' / '+(secret.受孕概率||0)+'%</span></div></div><div class="ns-title pink">器官状态</div><div class="npc-grid">'+partsHtml+'</div></div></div>';
+  }
+  nc.innerHTML=html;
+}
 
-window.picUpload=function(npcName){var input=document.createElement('input');input.type='file';input.accept='image/*';input.onchange=function(e){var file=e.target.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(ev){window.npcImageCache[npcName]=ev.target.result;try{localStorage.setItem('zzz_npc_bg_'+npcName,ev.target.result)}catch(e){}renderAll()};reader.readAsDataURL(file)};input.click()}
-window.resetNpcBg=function(npcName){if(confirm('确定要重置 ['+npcName+'] 的底图吗？')){delete window.npcImageCache[npcName];try{localStorage.removeItem('zzz_npc_bg_'+npcName)}catch(e){}renderAll()}}
-window.delNpc=function(npcName){if(confirm('确定要移除NPC ['+npcName+'] 吗？')){if(typeof triggerSlash==='function')triggerSlash('/send 请移除NPC ['+npcName+']|/trigger')}}
-window.closeModal=function(){document.getElementById('overlay').classList.remove('show');document.getElementById('pickModal').classList.remove('show')}
-window.showPickModal=function(title,items,callback){document.getElementById('pickTitle').textContent=title;var html='';if(items.length===0)html='<div class="nodata">暂无可用选项</div>';else items.forEach(function(it,i){html+='<div class="pick-item" onclick="selectPick('+i+')"><div class="pick-name">'+it.name+'</div><div class="pick-desc">'+(it.desc||'')+'</div></div>'});document.getElementById('pickList').innerHTML=html;window._pickItems=items;window.currentPickCallback=callback;document.getElementById('overlay').classList.add('show');document.getElementById('pickModal').classList.add('show')}
-window.selectPick=function(idx){window.closeModal();if(window.currentPickCallback)window.currentPickCallback(window._pickItems[idx])}
+// ===== Utilities =====
+window.picUpload=function(npcName){var input=document.createElement('input');input.type='file';input.accept='image/*';input.onchange=function(e){var file=e.target.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(ev){window.npcImageCache[npcName]=ev.target.result;try{localStorage.setItem('zzz_npc_bg_'+npcName,ev.target.result)}catch(e){}renderAll()};reader.readAsDataURL(file)};input.click()};
+window.resetNpcBg=function(npcName){if(confirm('确定要重置 ['+npcName+'] 的底图吗？')){delete window.npcImageCache[npcName];try{localStorage.removeItem('zzz_npc_bg_'+npcName)}catch(e){}renderAll()}};
+window.delNpc=function(npcName){if(confirm('确定要移除NPC ['+npcName+'] 吗？')){if(typeof triggerSlash==='function')triggerSlash('/send 请移除NPC ['+npcName+']|/trigger')}};
+window.closeModal=function(){document.getElementById('overlay').classList.remove('show');document.getElementById('pickModal').classList.remove('show')};
+window.currentPickCallback=null;
+window.showPickModal=function(title,items,callback){document.getElementById('pickTitle').textContent=title;var html='';if(items.length===0)html='<div class="nodata">暂无可用选项</div>';else items.forEach(function(it,i){html+='<div class="pick-item" onclick="selectPick('+i+')"><div class="pick-name">'+it.name+'</div><div class="pick-desc">'+(it.desc||'')+'</div></div>'});document.getElementById('pickList').innerHTML=html;window._pickItems=items;window.currentPickCallback=callback;document.getElementById('overlay').classList.add('show');document.getElementById('pickModal').classList.add('show')};
+window.selectPick=function(idx){window.closeModal();if(window.currentPickCallback)window.currentPickCallback(window._pickItems[idx])};
 
-document.querySelectorAll('.tab-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active')})})
+// ===== Tabs =====
+document.querySelectorAll('.tab-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active')})});
 
-function loadNpcBgCache(){try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_')){window.npcImageCache[k.replace('zzz_npc_bg_','')]=localStorage.getItem(k)}}}catch(e){}}loadNpcBgCache()
+// ===== Rendering =====
+function loadNpcBgCache(){try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_')){window.npcImageCache[k.replace('zzz_npc_bg_','')]=localStorage.getItem(k)}}}catch(e){}}loadNpcBgCache();
 
 function renderAll(){
   try{
     var sd=null;
     if(typeof getAllVariables==='function'){var all=getAllVariables();var parsed=typeof _!=='undefined'?_.get(all,'stat_data'):(all.stat_data||all);if(parsed&&Object.keys(parsed).length>0)sd=parsed}
     window.cachedData=sd;
-    if(!sd){renderFactions(null);renderNPCs(null);renderBangbooGallery(null);renderOwnedBangboos(null);document.getElementById('refreshBadge').textContent='○ 等待数据';document.getElementById('refreshBadge').style.color='var(--muted)';
-      // 新对话清理底图
+    if(!sd){renderFactions(null);renderNPCs(null);renderBangbooGallery(null);renderOwnedBangboos(null);document.getElementById('refreshBadge').textContent='○ 等待数据';document.getElementById('refreshBadge').style.color='var(--muted)';return}
+    // 新对话清理底图：NPCs 为空时清空缓存
+    var npcs=sd?getProp(sd,'NPCs',null):null;
+    if(!npcs||typeof npcs!=='object'||Object.keys(npcs).length===0){
       window.npcImageCache={};
       try{var keysToRemove=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_'))keysToRemove.push(k)}keysToRemove.forEach(function(k){localStorage.removeItem(k)})}catch(e){}
-      return}
+    }
     document.getElementById('w-time').textContent=getProp(sd,'世界.当前时间','-');
     document.getElementById('w-loc').textContent=getProp(sd,'世界.当前地点','-');
     document.getElementById('w-chapter').textContent=getProp(sd,'世界.当前章节','-');
@@ -212,19 +312,37 @@ function renderAll(){
   }catch(e){renderNPCs(null);renderFactions(null);renderBangbooGallery(null);renderOwnedBangboos(null)}
 }
 
-window.pickGear=function(slot){var sd=window.cachedData;var inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));var items=[{name:'卸下(空置)',desc:'移除当前装备'}];if(typeof inv==='object'){var invKeys=Object.keys(inv);for(var i=0;i<invKeys.length;i++){var iName=invKeys[i];var iData=inv[iName];var qty=typeof iData==='object'?iData.数量||1:iData;items.push({name:iName,desc:'x'+qty})}}showPickModal('选择着装 - '+slot,items,function(item){if(item.name==='卸下(空置)')window.pendingActions.push({desc:'卸下'+slot+'装备',cmd:'/setvar 主角.着装.'+slot+' null|/trigger'});else window.pendingActions.push({desc:'装备'+item.name+'到'+slot,cmd:'/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger'});updateHijack();setTimeout(renderAll,300)})}
-window.editHeroString=function(label,elId){var el=document.getElementById(elId);var cur=el.textContent==='-'?'':el.textContent;var keyMap={战斗定位:'战斗定位',当前情绪:'当前情绪'};var key=keyMap[label];if(!key)return;var val=prompt('编辑'+label,cur);if(val===null)return;window.pendingActions.push({desc:'修改主角'+label+'为 '+val,cmd:'/setvar 主角.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger'});updateHijack();setTimeout(renderAll,300)}
-window.editHeroNumber=function(label,elId){var el=document.getElementById(elId);var cur=el.textContent==='-'?'':el.textContent;var keyMap={以太适应性:'以太适应性'};var key=keyMap[label];if(!key)return;var val=prompt('编辑'+label+' (0-100)',cur);if(val===null)return;var num=parseInt(val);if(isNaN(num)||num<0||num>100){alert('请输入0-100的数字');return}window.pendingActions.push({desc:'修改主角'+label+'为 '+num,cmd:'/setvar 主角.'+key+' '+num+'|/trigger'});updateHijack();setTimeout(renderAll,300)}
-window.addHeroItem=function(){var nameEl=document.getElementById('inv-new-name');var qtyEl=document.getElementById('inv-new-qty');var name=nameEl.value.trim();var qty=parseInt(qtyEl.value)||1;if(!name)return;window.pendingActions.push({desc:'添加道具 '+name+' x'+qty,cmd:'/setvar 主角.背包.'+name+' '+qty+'|/trigger'});updateHijack();nameEl.value='';qtyEl.value='1';setTimeout(renderAll,300)}
-window.editHeroItem=function(name,qty){var newName=prompt('物品名',name);if(!newName)return;var newQty=parseInt(prompt('数量',qty))||0;if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？')){window.pendingActions.push({desc:'删除道具 '+newName,cmd:'/setvar 主角.背包.'+newName+' null|/trigger'});updateHijack()}}else{window.pendingActions.push({desc:'修改道具 '+newName+' 数量为 '+newQty,cmd:'/setvar 主角.背包.'+newName+' '+newQty+'|/trigger'});updateHijack()}setTimeout(renderAll,300)}
+// ===== Inventory & gear editing =====
+window.pickGear=function(slot){
+  var sd=window.cachedData;
+  var inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));
+  var items=[{name:'卸下(空置)',desc:'移除当前装备'}];
+  if(typeof inv==='object'){var invKeys=Object.keys(inv);for(var i=0;i<invKeys.length;i++){var iName=invKeys[i];var iData=inv[iName];var qty=typeof iData==='object'?iData.数量||1:iData;items.push({name:iName,desc:'x'+qty})}}
+  showPickModal('选择着装 - '+slot,items,function(item){
+    if(item.name==='卸下(空置)'){
+      var gearName=getProp(window.cachedData,'主角.着装.'+slot,'')||'';
+      window.pendingActions.push({desc:'卸下'+slot+'装备',cmd:'/setvar 主角.着装.'+slot+' null|/trigger'});
+      if(gearName)window.pendingActions.push({desc:'将'+gearName+'放回背包',cmd:'/send 请将主角的'+slot+'着装卸下，在 /主角/背包 中添加 '+gearName+' 条目 |/trigger'});
+    }else{
+      window.pendingActions.push({desc:'装备'+item.name+'到'+slot,cmd:'/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger'});
+    }
+    updateHijack();setTimeout(renderAll,300);
+  });
+};
+window.editHeroString=function(label,elId){var el=document.getElementById(elId);var cur=el.textContent==='-'?'':el.textContent;var keyMap={战斗定位:'战斗定位',当前情绪:'当前情绪'};var key=keyMap[label];if(!key)return;var val=prompt('编辑'+label,cur);if(val===null)return;window.pendingActions.push({desc:'修改主角'+label+'为 '+val,cmd:'/setvar 主角.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger'});updateHijack();setTimeout(renderAll,300)};
+window.editHeroNumber=function(label,elId){var el=document.getElementById(elId);var cur=el.textContent==='-'?'':el.textContent;var keyMap={以太适应性:'以太适应性'};var key=keyMap[label];if(!key)return;var val=prompt('编辑'+label+' (0-100)',cur);if(val===null)return;var num=parseInt(val);if(isNaN(num)||num<0||num>100){alert('请输入0-100的数字');return}window.pendingActions.push({desc:'修改主角'+label+'为 '+num,cmd:'/setvar 主角.'+key+' '+num+'|/trigger'});updateHijack();setTimeout(renderAll,300)};
+window.addHeroItem=function(){var nameEl=document.getElementById('inv-new-name');var qtyEl=document.getElementById('inv-new-qty');var name=nameEl.value.trim();var qty=parseInt(qtyEl.value)||1;if(!name)return;window.pendingActions.push({desc:'添加道具 '+name+' x'+qty,cmd:'/setvar 主角.背包.'+name+' '+qty+'|/trigger'});updateHijack();nameEl.value='';qtyEl.value='1';setTimeout(renderAll,300)};
+window.editHeroItem=function(name,qty){var newName=prompt('物品名',name);if(!newName)return;var newQty=parseInt(prompt('数量',qty))||0;if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？')){window.pendingActions.push({desc:'删除道具 '+newName,cmd:'/setvar 主角.背包.'+newName+' null|/trigger'});updateHijack()}}else{window.pendingActions.push({desc:'修改道具 '+newName+' 数量为 '+newQty,cmd:'/setvar 主角.背包.'+newName+' '+newQty+'|/trigger'});updateHijack()}setTimeout(renderAll,300)};
 
+// ===== Factions =====
 function getFactionTitle(v){if(v<=-51)return '仇敌';if(v<=-11)return '冷淡';if(v<=10)return '陌生人';if(v<=50)return '朋友';if(v<=80)return '盟友';return '至交'}
 function renderFactions(data){var fc=document.getElementById('faction-container');if(!data){fc.innerHTML='<div class="nodata">暂无阵营数据</div>';return}var FNS=['狡兔屋','对空六课','白祇重工','维多利亚家政','卡吕冬之子','治安局','天琴座','云岿山'];var factions={};FNS.forEach(function(f){var val=getProp(data,'阵营.'+f,getProp(data,'factions.'+f,0));var title=getProp(data,'阵营.'+f+'_称号',getProp(data,'factions.'+f+'_称号',''))||getFactionTitle(val);var quest=getProp(data,'阵营.'+f+'_委托',getProp(data,'factions.'+f+'_委托',false));factions[f]={val:val,title:title,quest:quest}});var html='';var factionKeys=Object.keys(factions);for(var i=0;i<factionKeys.length;i++){var name=factionKeys[i];var f=factions[name];var visualPct=Math.max(0,Math.min(100,((f.val+100)/2)|0));html+='<div style="margin-bottom:10px;border-bottom:1px dashed rgba(255,255,255,.04);padding-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span style="font-size:13px;font-weight:600;color:var(--text)">'+name+'</span><span style="font-size:11px;color:var(--muted)">'+f.title+' · '+f.val+' '+(f.quest?'🟢':'⚪')+'</span></div><div style="height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden"><div style="height:100%;width:'+visualPct+'%;background:'+(f.val<0?'var(--danger)':'var(--green)')+';border-radius:3px;transition:width .5s"></div></div></div>'}fc.innerHTML=html||'<div class="nodata">暂无阵营数据</div>'}
 
+// ===== Bangboos =====
 function renderOwnedBangboos(data){var list=document.getElementById('owned-bangboo-list');var owned=getProp(data,'邦布.拥有的邦布',getProp(data,'bangboo.拥有的邦布',[]));var partners=getProp(data,'邦布.邦布伙伴',getProp(data,'bangboo.邦布伙伴',[]));if(!Array.isArray(owned)||owned.length===0){list.innerHTML='<div class="nodata" style="grid-column:1/-1">暂无拥有邦布</div>';return}var html='';owned.forEach(function(bbName){var info=ALL_BANGBOOS.find(function(b){return b.name===bbName})||{faction:'?',skill:'?'};var isActive=Array.isArray(partners)&&partners.includes(bbName);html+='<div class="npc-g-card" onclick="'+(isActive?'':'swapBangboo(\''+bbName+'\')')+'" style="'+(isActive?'border-color:var(--orange);background:rgba(255,167,38,.08)':'')+';cursor:'+(isActive?'default':'pointer')+'"><span class="npc-g-label" style="color:'+(isActive?'var(--orange)':'var(--muted)')+'">'+(isActive?'★ 已携带':info.faction)+'</span><span class="npc-g-val" style="font-size:12px">'+bbName+'</span><span style="font-size:10px;color:var(--muted);display:block;margin-top:2px">'+info.skill+'</span>'+(isActive?'':'<span style="font-size:9px;color:var(--gold);display:block;margin-top:3px">点击携带</span>')+'</div>'});list.innerHTML=html}
 function renderBangbooGallery(data){var gallery=document.getElementById('bangboo-gallery');var owned=getProp(data,'邦布.拥有的邦布',getProp(data,'bangboo.拥有的邦布',[]));var partners=getProp(data,'邦布.邦布伙伴',getProp(data,'bangboo.邦布伙伴',[]));var html='';ALL_BANGBOOS.forEach(function(bb){var isOwned=Array.isArray(owned)&&owned.includes(bb.name);var isActive=Array.isArray(partners)&&partners.includes(bb.name);html+='<div class="npc-g-card" style="'+(isActive?'border-color:var(--orange);background:rgba(255,167,38,.08)':isOwned?'border-color:var(--green)':'')+'"><span class="npc-g-label" style="color:'+(isActive?'var(--orange)':isOwned?'var(--green)':'var(--muted)')+'">'+(isActive?'★ 携带中':isOwned?'✓ 已拥有':bb.faction)+'</span><span class="npc-g-val" style="font-size:12px">'+bb.name+'</span><span style="font-size:10px;color:var(--muted);display:block;margin-top:2px">'+bb.skill+'</span></div>'});gallery.innerHTML=html}
-window.swapBangboo=function(name){if(confirm('确定要将邦布伙伴替换为 「'+name+'」 吗？')){window.pendingActions.push({desc:'切换邦布伙伴为 '+name,cmd:'/setvar 邦布.邦布伙伴 ["'+name+'"]|/trigger'});updateHijack();setTimeout(renderAll,300)}}
-window.addBangboo=function(){var nameEl=document.getElementById('bb-new-name');var name=nameEl.value.trim();if(!name)return;window.pendingActions.push({desc:'添加邦布 '+name,cmd:'/setvar 邦布.拥有的邦布 add "'+name+'"|/trigger'});updateHijack();nameEl.value='';document.getElementById('bb-new-faction').value='';document.getElementById('bb-new-skill').value='';setTimeout(renderAll,300)}
+window.swapBangboo=function(name){if(confirm('确定要将邦布伙伴替换为 「'+name+'」 吗？')){window.pendingActions.push({desc:'切换邦布伙伴为 '+name,cmd:'/setvar 邦布.邦布伙伴 ["'+name+'"]|/trigger'});updateHijack();setTimeout(renderAll,300)}};
+window.addBangboo=function(){var nameEl=document.getElementById('bb-new-name');var name=nameEl.value.trim();if(!name)return;window.pendingActions.push({desc:'添加邦布 '+name,cmd:'/setvar 邦布.拥有的邦布 add "'+name+'"|/trigger'});updateHijack();nameEl.value='';document.getElementById('bb-new-faction').value='';document.getElementById('bb-new-skill').value='';setTimeout(renderAll,300)};
 
 renderAll();
 if(typeof eventOn==='function'&&typeof Mvu!=='undefined'){try{eventOn(Mvu.events.VARIABLE_UPDATE_ENDED,function(){setTimeout(renderAll,200)})}catch(e){}}
