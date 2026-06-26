@@ -107,6 +107,19 @@ for (const r of card.data.extensions.regex_scripts) {
 }
 console.log(`✓ 对AI隐藏变量更新正则改为前端隐藏(防MVU解析前被清): ${hideFixed} 个`);
 
+// 2f. 所有 selective 条目转 constant（DeepSeek prefix-cache 优化）
+//     selective 条目按关键词时有时无地插入上下文中段，破坏前缀缓存
+//     转 constant 后全部常驻、位置固定，缓存命中率最大化
+let constFixed = 0;
+for (const entry of card.data.character_book.entries) {
+  if (!entry.constant && entry.selective) {
+    entry.constant = true;
+    entry.selective = false;
+    constFixed++;
+  }
+}
+console.log(`✓ selective→constant(缓存优化): ${constFixed} 个条目`);
+
 // 3. 统计最终 group 分布
 const g = {};
 card.data.character_book.entries.forEach(e => { g[e.extensions.group || '(空)'] = (g[e.extensions.group || '(空)'] || 0) + 1; });
