@@ -2,6 +2,7 @@
 const panel = {
   name: "阵营亲密度面板",
   description: "法与各势力的亲密度",
+  triggers: ["阵营", "亲密度", "factions", "狡兔屋", "对空六课", "白祇重工", "维多利亚家政", "卡吕冬之子", "治安局", "天琴座", "云岿山", "关系"],
   variables: {
     "factions.狡兔屋": { type: "number", default: 0, desc: "微型派遣社，财务长期赤字" },
     "factions.对空六课": { type: "number", default: 0, desc: "H.A.N.D.下属精锐武装" },

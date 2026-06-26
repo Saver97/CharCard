@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>阵营亲密度面板 · 绝区零</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;color:#e0e0e0;display:flex;justify-content:center;padding:20px}.container{max-width:600px;width:100%}.header{text-align:center;padding:24px 0 16px}.header h1{font-size:22px;color:#66bb6a}.header p{color:#888;font-size:13px}.card{background:#16213e;border-radius:14px;padding:20px;margin-bottom:14px;border:1px solid #1e2d50}.card h2{font-size:15px;color:#66bb6a;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid #1e2d50}.form-group{margin-bottom:10px;display:flex;align-items:center;gap:10px}.form-group label{font-size:13px;color:#ccc;min-width:100px}.form-group input{flex:1;background:#0f1b33;border:1px solid #1e2d50;border-radius:6px;padding:8px 10px;color:#e0e0e0;font-size:14px;outline:none}.form-group input:focus{border-color:#66bb6a}.form-group .hint{font-size:11px;color:#666;min-width:60px;text-align:right}.output-area textarea{width:100%;height:160px;background:#0a0f1f;border:1px solid #1e2d50;border-radius:8px;padding:10px;color:#a0d0a0;font-size:12px;font-family:monospace;resize:vertical;outline:none}.copy-btn{background:#2a4a6a;border:none;border-radius:6px;padding:6px 14px;color:#fff;cursor:pointer;font-size:12px;float:right;margin-top:-32px;margin-right:4px}.copy-btn:hover{background:#3a6a8a}.copy-btn.copied{background:#2a8a4a}.footer{padding:16px;text-align:center;color:#555;font-size:11px}</style></head><body>
+<div class="container">
+<div class="header"><h1>🤝 阵营亲密度面板</h1><p>法厄同与各势力的关系</p></div>
+<div class="card"><h2>📊 亲密度（-100 ~ 100）</h2>
+<div class="form-group"><label>狡兔屋</label><input type="number" id="f0" value="0" min="-100" max="100"><span class="hint">派遣社</span></div>
+<div class="form-group"><label>对空六课</label><input type="number" id="f1" value="0" min="-100" max="100"><span class="hint">H.A.N.D.</span></div>
+<div class="form-group"><label>白祇重工</label><input type="number" id="f2" value="0" min="-100" max="100"><span class="hint">建筑公司</span></div>
+<div class="form-group"><label>维多利亚家政</label><input type="number" id="f3" value="0" min="-100" max="100"><span class="hint">高端家政</span></div>
+<div class="form-group"><label>卡吕冬之子</label><input type="number" id="f4" value="0" min="-100" max="100"><span class="hint">外环机车</span></div>
+<div class="form-group"><label>治安局</label><input type="number" id="f5" value="0" min="-100" max="100"><span class="hint">N.E.P.S.</span></div>
+<div class="form-group"><label>天琴座</label><input type="number" id="f6" value="0" min="-100" max="100"><span class="hint">音乐团体</span></div>
+<div class="form-group"><label>云岿山</label><input type="number" id="f7" value="0" min="-100" max="100"><span class="hint">道教宗门</span></div>
+</div>
+<div class="card"><h2>📤 YAML <button class="copy-btn" id="copyBtn" onclick="copyYaml()">📋 复制</button></h2><div class="output-area"><textarea id="output" readonly></textarea></div></div>
+<div class="footer">绝区零 RPG · 阵营亲密度面板</div>
+</div>
+<script>
+const names=['狡兔屋','对空六课','白祇重工','维多利亚家政','卡吕冬之子','治安局','天琴座','云岿山'];
+function updateYaml(){let y='---\n';for(let i=0;i<8;i++){const v=document.getElementById('f'+i).value;y+='factions.'+names[i]+': '+v+'\n'}y+='---';document.getElementById('output').value=y}
+function copyYaml(){const ta=document.getElementById('output');ta.select();navigator.clipboard.writeText(ta.value).then(()=>{const btn=document.getElementById('copyBtn');btn.textContent='✅ 已复制';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 复制';btn.classList.remove('copied')},1500)})}
+for(let i=0;i<8;i++){document.getElementById('f'+i).addEventListener('input',updateYaml)}updateYaml()
+</script>
+</body></html>

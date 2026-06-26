@@ -3,6 +3,7 @@
 const panel = {
   name: "角色创建面板（非法厄同）",
   description: "非法厄同角色的身份/背景/能力定义",
+  triggers: ["角色创建", "非法厄同", "自定义角色", "角色类型", "角色姓名", "种族", "战斗能力", "所属势力", "特殊能力", "character"],
   variables: {
     "character.角色类型": { type: "string", default: "", desc: "普通居民/盗洞客/治安官/HIA调查员/绳匠/商人/混混/学生/其他" },
     "character.角色姓名": { type: "string", default: "", desc: "自定义角色名" },

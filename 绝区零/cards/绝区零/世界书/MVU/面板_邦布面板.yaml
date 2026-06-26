@@ -1,0 +1,18 @@
+---
+name: "邦布面板"
+triggers:
+  - "邦布"
+  - "Bangboo"
+  - "伊埃斯"
+  - "Eous"
+  - "电量"
+  - "bangboo"
+description: "伊埃斯电量与当前携带邦布"
+variables:
+  bangboo.伊埃斯电量: { type: "number", default: 100, desc: "0~100%，低于20%无法进入空洞" }
+  bangboo.邦布伙伴: { type: "array", default: ["伊埃斯"], desc: "当前携带的邦布列表" }
+rules:
+  - "① 在空洞中每回合消耗伊埃斯电量5~15%（视操作复杂度）"
+  - "② 电量低于20%时HDD系统发出警告"
+  - "③ 在Random Play充电可恢复至100%"
+  - "④ 可携带多个邦布轮换使用"

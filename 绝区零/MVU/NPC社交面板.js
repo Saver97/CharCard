@@ -3,6 +3,7 @@
 const panel = {
   name: "NPC社交面板",
   description: "每个NPC独立的好感度、关系状态和互动记录",
+  triggers: ["NPC", "社交", "好感度", "好感", "关系", "性关系", "记忆", "互动", "npc", "女角色"],
   variableTemplate: {
     "npc.{NPC名称}.好感度": { type: "number", default: 0, desc: "-100~100" },
     "npc.{NPC名称}.好感等级": { type: "string", default: "中立", desc: "敌对/冷淡/中立/友好/亲密/热恋" },

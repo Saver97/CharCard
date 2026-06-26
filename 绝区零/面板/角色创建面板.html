@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>绝区零 RPG · 角色创建面板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;color:#e0e0e0;min-height:100vh;display:flex;justify-content:center;padding:20px}
+.container{max-width:720px;width:100%}
+.header{text-align:center;padding:30px 0 20px}
+.header h1{font-size:28px;color:#f0c040;letter-spacing:2px;text-shadow:0 0 20px rgba(240,192,64,.3)}
+.header p{color:#888;font-size:14px;margin-top:8px}
+.card{background:#16213e;border-radius:16px;padding:24px;margin-bottom:16px;border:1px solid #1e2d50;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.card h2{font-size:16px;color:#f0c040;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e2d50;display:flex;align-items:center;gap:8px}
+.card h2 .badge{font-size:11px;padding:2px 8px;border-radius:10px;color:#fff}
+.badge-green{background:#2a8a4a}
+.badge-orange{background:#b86b2c}
+.badge-blue{background:#2a6a8a}
+
+/* 预设选择 */
+.presets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.preset-btn{padding:14px 8px;border-radius:12px;border:2px solid #1e2d50;background:#0f1b33;color:#ccc;cursor:pointer;text-align:center;transition:all .2s;font-size:13px}
+.preset-btn:hover{background:#1a2d50;border-color:#3a5a80;transform:translateY(-2px)}
+.preset-btn.active{border-color:#f0c040;background:#1a2d40;color:#f0c040;box-shadow:0 0 15px rgba(240,192,64,.2)}
+.preset-btn .icon{font-size:28px;display:block;margin-bottom:6px}
+.preset-btn .label{font-weight:600;font-size:13px}
+.preset-btn .desc{font-size:11px;color:#888;margin-top:4px}
+
+/* 表单 */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{display:flex;flex-direction:column}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:12px;color:#999;margin-bottom:4px;font-weight:500}
+.form-group input,.form-group select{background:#0f1b33;border:1px solid #1e2d50;border-radius:8px;padding:10px 12px;color:#e0e0e0;font-size:14px;outline:none;transition:border .2s}
+.form-group input:focus,.form-group select:focus{border-color:#f0c040}
+.form-group select{cursor:pointer;appearance:auto}
+.form-group select option{background:#16213e;color:#e0e0e0}
+.form-group .hint{font-size:11px;color:#666;margin-top:4px}
+
+/* 输出区 */
+.output-area{margin-top:20px}
+.output-area textarea{width:100%;height:160px;background:#0a0f1f;border:1px solid #1e2d50;border-radius:8px;padding:12px;color:#a0d0a0;font-size:13px;font-family:'Consolas','Courier New',monospace;resize:vertical;outline:none;transition:border .2s}
+.output-area textarea:focus{border-color:#f0c040}
+.output-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.output-header span{font-size:13px;color:#888}
+.copy-btn{background:#2a4a6a;border:none;border-radius:6px;padding:6px 14px;color:#fff;cursor:pointer;font-size:12px;transition:background .2s}
+.copy-btn:hover{background:#3a6a8a}
+.copy-btn.copied{background:#2a8a4a}
+.footer{text-align:center;padding:20px;color:#555;font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>⚡ 绝区零 · 角色创建</h1>
+    <p>关闭法厄同开关后，使用此面板自定义你的新艾利都身份</p>
+  </div>
+
+  <!-- 预设 -->
+  <div class="card">
+    <h2>📋 选择开局身份</h2>
+    <div class="presets" id="presets">
+      <div class="preset-btn active" data-preset="resident">
+        <span class="icon">🏠</span>
+        <span class="label">普通居民</span>
+        <span class="desc">六分街的平凡日常</span>
+      </div>
+      <div class="preset-btn" data-preset="officer">
+        <span class="icon">👮</span>
+        <span class="label">治安官</span>
+        <span class="desc">NEPS基层执法者</span>
+      </div>
+      <div class="preset-btn" data-preset="raider">
+        <span class="icon">⛏️</span>
+        <span class="label">盗洞客</span>
+        <span class="desc">空洞边缘的拾荒者</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 编辑面板 -->
+  <div class="card">
+    <h2>✏️ 自定义角色 <span class="badge badge-orange">非法厄同</span></h2>
+    <div class="form-grid" id="form">
+      <div class="form-group">
+        <label>角色姓名</label>
+        <input type="text" id="name" placeholder="输入你的名字" value="">
+      </div>
+      <div class="form-group">
+        <label>种族</label>
+        <select id="race">
+          <option value="人类">人类</option>
+          <option value="猫希人">猫希人</option>
+          <option value="虎希人">虎希人</option>
+          <option value="犬希人">犬希人</option>
+          <option value="狼希人">狼希人</option>
+          <option value="鲨希人">鲨希人</option>
+          <option value="熊希人">熊希人</option>
+          <option value="鼠希人">鼠希人</option>
+          <option value="兔希人">兔希人</option>
+          <option value="鬼族">鬼族</option>
+          <option value="精灵">精灵</option>
+          <option value="吸血鬼">吸血鬼</option>
+          <option value="智能构造体">智能构造体</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>性别</label>
+        <select id="gender">
+          <option value="男">男</option>
+          <option value="女">女</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>年龄</label>
+        <input type="number" id="age" value="25" min="10" max="120">
+      </div>
+      <div class="form-group full">
+        <label>背景简述</label>
+        <input type="text" id="bio" placeholder="一句话概括你的角色背景" value="新艾利都的普通市民，过着平凡的日常生活">
+      </div>
+      <div class="form-group">
+        <label>以太适应性 (0-100)</label>
+        <input type="number" id="ether" value="45" min="0" max="100">
+        <span class="hint">低于50无法独自进入空洞</span>
+      </div>
+      <div class="form-group">
+        <label>战斗能力</label>
+        <select id="combat">
+          <option value="无">无</option>
+          <option value="弱">弱</option>
+          <option value="中" selected>中</option>
+          <option value="强">强</option>
+          <option value="顶尖">顶尖</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>所属势力</label>
+        <select id="faction">
+          <option value="无">无 / 独立</option>
+          <option value="新艾利都治安局（N.E.P.S.）">治安局（N.E.P.S.）</option>
+          <option value="空洞调查协会（H.I.A.）">H.I.A.</option>
+          <option value="防卫军">防卫军</option>
+          <option value="狡兔屋">狡兔屋</option>
+          <option value="白祇重工">白祇重工</option>
+          <option value="卡吕冬之子">卡吕冬之子</option>
+          <option value="TOPS财团">TOPS财团</option>
+          <option value="独立绳匠">独立绳匠</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>特殊能力 / 特长</label>
+        <input type="text" id="special" placeholder="无" value="无">
+        <span class="hint">如：机械维修、黑客、医疗等</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 输出 -->
+  <div class="card">
+    <div class="output-header">
+      <h2 style="margin:0;border:none;padding:0">📤 角色数据（YAML）</h2>
+      <button class="copy-btn" id="copyBtn" onclick="copyOutput()">📋 复制</button>
+    </div>
+    <div class="output-area">
+      <textarea id="output" readonly></textarea>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <span style="font-size:12px;color:#888">💡 将以上数据粘贴到开场白文件顶部，或直接复制到游戏</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    绝区零 RPG · 角色创建面板 v1.0
+  </div>
+</div>
+
+<script>
+const PRESETS = {
+  resident: {
+    type:'普通居民',name:'',race:'人类',gender:'男',age:25,
+    bio:'新艾利都的普通市民，过着平凡的日常生活',
+    ether:45,combat:'无',faction:'无',special:'无'
+  },
+  officer: {
+    type:'治安官',name:'',race:'人类',gender:'男',age:28,
+    bio:'新艾利都治安局的一名基层治安官，日常巡逻六分街及周边区域',
+    ether:55,combat:'中',faction:'新艾利都治安局（N.E.P.S.）',special:'标准治安官训练、以太抑制装备使用'
+  },
+  raider: {
+    type:'盗洞客',name:'',race:'猫希人',gender:'男',age:30,
+    bio:'经验丰富的盗洞客，以探索空洞寻找值钱物资为生',
+    ether:70,combat:'强',faction:'独立',special:'空洞生存经验、以骸战斗技巧、简易萝卜绘制'
+  }
+};
+
+let currentPreset = 'resident';
+
+function selectPreset(key) {
+  currentPreset = key;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-preset="${key}"]`).classList.add('active');
+  const p = PRESETS[key];
+  document.getElementById('name').value = p.name;
+  document.getElementById('race').value = p.race;
+  document.getElementById('gender').value = p.gender;
+  document.getElementById('age').value = p.age;
+  document.getElementById('bio').value = p.bio;
+  document.getElementById('ether').value = p.ether;
+  document.getElementById('combat').value = p.combat;
+  document.getElementById('faction').value = p.faction;
+  document.getElementById('special').value = p.special;
+  updateOutput();
+}
+
+function updateOutput() {
+  const data = {
+    'protagonist.是否为法厄同': false,
+    'character.角色类型': document.getElementById('name').value ? '自定义' : PRESETS[currentPreset].type,
+    'character.角色姓名': document.getElementById('name').value || '(待填写)',
+    'character.种族': document.getElementById('race').value,
+    'character.性别': document.getElementById('gender').value,
+    'character.年龄': parseInt(document.getElementById('age').value) || 25,
+    'character.背景简述': document.getElementById('bio').value,
+    'character.以太适应性': parseInt(document.getElementById('ether').value) || 50,
+    'character.战斗能力': document.getElementById('combat').value,
+    'character.所属势力': document.getElementById('faction').value,
+    'character.特殊能力': document.getElementById('special').value || '无'
+  };
+
+  let yaml = '---\n';
+  yaml += '# 非绳匠开局 · 角色创建面板\n';
+  yaml += '# 复制此块到开场白文件顶部即可生效\n\n';
+  yaml += 'protagonist.是否为法厄同: false\n';
+  yaml += 'character.角色类型: "' + data['character.角色类型'] + '"\n';
+  yaml += 'character.角色姓名: "' + data['character.角色姓名'] + '"\n';
+  yaml += 'character.种族: "' + data['character.种族'] + '"\n';
+  yaml += 'character.性别: "' + data['character.性别'] + '"\n';
+  yaml += 'character.年龄: ' + data['character.年龄'] + '\n';
+  yaml += 'character.背景简述: "' + data['character.背景简述'] + '"\n';
+  yaml += 'character.以太适应性: ' + data['character.以太适应性'] + '\n';
+  yaml += 'character.战斗能力: "' + data['character.战斗能力'] + '"\n';
+  yaml += 'character.所属势力: "' + data['character.所属势力'] + '"\n';
+  yaml += 'character.特殊能力: "' + data['character.特殊能力'] + '"\n';
+  yaml += '---\n\n';
+  yaml += '# 选择对应的开场白文件：\n';
+  yaml += '# 4-普通居民.txt | 5-治安官.txt | 6-盗洞客.txt\n';
+
+  document.getElementById('output').value = yaml;
+}
+
+function copyOutput() {
+  const ta = document.getElementById('output');
+  ta.select();
+  ta.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✅ 已复制';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 复制'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+// Bind form changes
+document.querySelectorAll('#form input, #form select').forEach(el => {
+  el.addEventListener('input', updateOutput);
+  el.addEventListener('change', updateOutput);
+});
+
+// Bind preset buttons
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => selectPreset(btn.dataset.preset));
+});
+
+// Init
+selectPreset('resident');
+</script>
+</body>
+</html>

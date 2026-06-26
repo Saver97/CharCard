@@ -3,6 +3,7 @@
 const panel = {
   name: "法厄同面板",
   description: "法厄同状态、是否为法厄同、生存参数",
+  triggers: ["法厄同", "Phaethon", "主角", "HP", "SAN", "发情度", "侵蚀度", "丁尼", "同伴", "protagonist"],
   variables: {
     "protagonist.是否为法厄同": { type: "boolean", default: true, desc: "false=不扮演法厄同(普通居民/盗洞客等) , true=扮演法厄同兄妹" },
     "protagonist.主人身份": { type: "string", default: "", desc: "男→哲，女→铃，空=待选择" },

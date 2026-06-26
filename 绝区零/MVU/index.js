@@ -12,7 +12,7 @@ function loadAllPanels() {
     const fp = path.join(MVU_DIR, f);
     try {
       const mod = require(fp);
-      panels.push(mod);
+      panels.push({ ...mod, filename: f.replace('.js', '') });
     } catch (e) {
       console.warn(`⚠ 无法加载面板 ${f}: ${e.message}`);
     }
@@ -27,8 +27,6 @@ function generateInitYAML(panels) {
       yaml += `${key}: ${formatVar(v.default)}\n`;
     }
     for (const [key, v] of Object.entries(panel.variableTemplate || {})) {
-      // Use the template key format, but actual NPC names are added dynamically
-      // Only include the abstract template in the init
       yaml += `# ${v.desc}\n`;
     }
   }
@@ -48,6 +46,41 @@ function generateUpdateRules(panels) {
   return rules;
 }
 
+function generatePanelEntries(panels) {
+  // Generate individual YAML entries for each panel with name + triggers
+  const entries = [];
+  for (const panel of panels) {
+    const fileName = panel.filename || panel.name.replace(/[()]/g, '').replace(/\s+/g, '_');
+    let yaml = `---\nname: "${panel.name}"\ntriggers:\n`;
+    if (panel.triggers && panel.triggers.length > 0) {
+      for (const t of panel.triggers) {
+        yaml += `  - "${t}"\n`;
+      }
+    }
+    yaml += `description: "${panel.description || ''}"\n`;
+    if (panel.variables) {
+      yaml += `variables:\n`;
+      for (const [key, v] of Object.entries(panel.variables)) {
+        yaml += `  ${key}: { type: "${v.type}", default: ${formatVar(v.default)}, desc: "${v.desc}" }\n`;
+      }
+    }
+    if (panel.variableTemplate) {
+      yaml += `variable_template:\n`;
+      for (const [key, v] of Object.entries(panel.variableTemplate)) {
+        yaml += `  ${key}: { type: "${v.type}", default: ${formatVar(v.default)}, desc: "${v.desc}" }\n`;
+      }
+    }
+    yaml += `rules:\n`;
+    if (panel.rules) {
+      for (const r of panel.rules) {
+        yaml += `  - "${r.replace(/"/g, '\\"')}"\n`;
+      }
+    }
+    entries.push({ name: panel.name, fileName, yaml });
+  }
+  return entries;
+}
+
 function generateVariableList() {
   return `---\n<status_current_variables>\n{{format_message_variable::stat_data}}\n</status_current_variables>`;
 }
@@ -62,4 +95,4 @@ function formatVar(val) {
   return String(val);
 }
 
-module.exports = { loadAllPanels, generateInitYAML, generateUpdateRules, generateVariableList, generateOutputFormat };
+module.exports = { loadAllPanels, generateInitYAML, generateUpdateRules, generatePanelEntries, generateVariableList, generateOutputFormat };

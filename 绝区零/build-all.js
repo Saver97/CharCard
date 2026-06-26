@@ -122,6 +122,12 @@ W("MVU/变量列表.yaml", mvu.generateVariableList());
 W("MVU/初始变量.yaml", mvu.generateInitYAML(panels));
 W("MVU/变量更新规则.yaml", mvu.generateUpdateRules(panels));
 W("MVU/变量输出格式.yaml", mvu.generateOutputFormat());
+// 生成每个面板的触发词YAML条目（含name和triggers）
+const panelEntries = mvu.generatePanelEntries(panels);
+panelEntries.forEach(pe => {
+  const safeName = pe.fileName.replace(/[()【】]/g, '').replace(/[\s]+/g, '_');
+  W("MVU/面板_" + safeName + ".yaml", pe.yaml);
+});
 
 // Play rules
 W("扮演准则/叙事基调.yaml",`---\nname: 叙事基调\nrules:\n  - 第三人称有限视角\n  - 暗面都市基调\n  - 模拟信号美学+近未来黑科技`);
@@ -165,6 +171,14 @@ function addYamlDir(dir) {
       const keys = [];
       const km = content.match(/name:\s*(.+)/m);
       if (km) keys.push(km[1].trim());
+      // Also extract trigger words from panel YAML entries
+      const triggerSection = content.match(/triggers:\n((?:\s+- "[^"]*"\n?)*)/);
+      if (triggerSection) {
+        const tMatches = triggerSection[1].matchAll(/- "([^"]+)"/g);
+        for (const m of tMatches) {
+          if (!keys.includes(m[1])) keys.push(m[1]);
+        }
+      }
       // 本 (Ben) 单独设置为 after_char，其余均为 before_char
       const isBen = f.name === '本.yaml';
       entries.push({

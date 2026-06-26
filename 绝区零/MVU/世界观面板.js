@@ -3,6 +3,7 @@
 const panel = {
   name: "世界观面板",
   description: "当前时间、地点、章节与计划",
+  triggers: ["世界状态", "当前时间", "当前地点", "当前章节", "当天计划", "时间", "地点", "章节", "world"],
   variables: {
     "world.当前时间": { type: "string", default: "新艾利都·清晨", desc: "日期/时段（清晨/白天/傍晚/深夜）" },
     "world.当前地点": { type: "string", default: "雅努斯区·六分街·Random Play", desc: "所在城区或空洞名称" },

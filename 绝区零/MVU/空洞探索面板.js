@@ -2,6 +2,7 @@
 const panel = {
   name: "空洞探索面板",
   description: "当前空洞、以太浓度、探索进度、研究音擎",
+  triggers: ["空洞", "探索", "以太浓度", "hollow", "以骸", "萝卜", "研究音擎"],
   variables: {
     "hollow.当前空洞": { type: "string", default: "", desc: "所处空洞名称，空=不在空洞中" },
     "hollow.以太浓度": { type: "string", default: "低", desc: "低/中/高/危险" },

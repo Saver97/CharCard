@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>NPC社交面板 · 绝区零</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;color:#e0e0e0;display:flex;justify-content:center;padding:20px}.container{max-width:600px;width:100%}.header{text-align:center;padding:24px 0 16px}.header h1{font-size:22px;color:#ec407a}.header p{color:#888;font-size:13px}.card{background:#16213e;border-radius:14px;padding:20px;margin-bottom:14px;border:1px solid #1e2d50}.card h2{font-size:15px;color:#ec407a;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid #1e2d50}.form-group{margin-bottom:12px}.form-group label{font-size:12px;color:#999;display:block;margin-bottom:4px}.form-group input,.form-group select{width:100%;background:#0f1b33;border:1px solid #1e2d50;border-radius:8px;padding:10px;color:#e0e0e0;font-size:14px;outline:none}.form-group input:focus{border-color:#ec407a}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rules{background:#0f1b33;border-radius:8px;padding:12px;font-size:12px;color:#aaa;line-height:1.8;margin-bottom:14px}.output-area textarea{width:100%;height:160px;background:#0a0f1f;border:1px solid #1e2d50;border-radius:8px;padding:10px;color:#a0d0a0;font-size:12px;font-family:monospace;resize:vertical;outline:none}.copy-btn{background:#2a4a6a;border:none;border-radius:6px;padding:6px 14px;color:#fff;cursor:pointer;font-size:12px;float:right;margin-top:-32px;margin-right:4px}.copy-btn:hover{background:#3a6a8a}.copy-btn.copied{background:#2a8a4a}.add-btn{background:#2a6a3a;border:none;border-radius:6px;padding:8px 16px;color:#fff;cursor:pointer;font-size:13px;width:100%;transition:background .2s}.add-btn:hover{background:#3a8a4a}.npc-entry{border:1px solid #2a3a5a;border-radius:8px;padding:14px;margin-bottom:10px;background:#0f1b33}.npc-entry .del-btn{float:right;background:#6a2a2a;border:none;border-radius:4px;padding:3px 10px;color:#fff;cursor:pointer;font-size:11px}.npc-entry .del-btn:hover{background:#8a3a3a}.npc-entry h3{font-size:13px;color:#ec407a;margin-bottom:8px}.footer{padding:16px;text-align:center;color:#555;font-size:11px}</style></head><body>
+<div class="container">
+<div class="header"><h1>💝 NPC社交面板</h1><p>好感度 · 等级 · 性关系 · 关键记忆 · 强制女角色必加</p></div>
+<div class="card"><h2>📋 规则</h2><div class="rules">【强制规则】首次登场的女角色→自动创建完整NPC社交条目<br>好感度：-100(敌对)~100(热恋)<br>等级映射：-100~-51敌对 / -50~-11冷淡 / -10~10中立 / 11~50友好 / 51~80亲密 / 81~100热恋</div></div>
+<div class="card"><h2>👤 NPC列表 <span style="font-size:11px;color:#888;font-weight:normal">（女角色必加）</span></h2><div id="npcList"></div><button class="add-btn" onclick="addNpc()">＋ 添加NPC</button></div>
+<div class="card"><h2>📤 YAML <button class="copy-btn" id="copyBtn" onclick="copyYaml()">📋 复制</button></h2><div class="output-area"><textarea id="output" readonly></textarea></div></div>
+<div class="footer">绝区零 RPG · NPC社交面板</div>
+</div>
+<script>
+let npcs=[];
+const levelNames=['敌对','冷淡','中立','友好','亲密','热恋'];
+const levelRanges=[[-100,-51],[-50,-11],[-10,10],[11,50],[51,80],[81,100]];
+function getLevel(v){const n=parseInt(v)||0;for(let i=0;i<levelRanges.length;i++){if(n>=levelRanges[i][0]&&n<=levelRanges[i][1])return levelNames[i]}return '中立'}
+function addNpc(name,favor,rel,memory,interact,quest){
+const n={name:name||'',favor:favor!==undefined?favor:0,rel:rel||'未发生',memory:memory||'',interact:interact||'',quest:quest!==undefined?quest:false};npcs.push(n);renderNpcs();updateYaml()}
+function renderNpcs(){
+const list=document.getElementById('npcList');list.innerHTML='';
+npcs.forEach((n,i)=>{
+const d=document.createElement('div');d.className='npc-entry';
+d.innerHTML='<button class="del-btn" onclick="delNpc('+i+')">✕</button><h3>'+n.name||'未命名'+'</h3>'+
+'<div class="grid-2"><div class="form-group"><label>好感度</label><input type="number" value="'+n.favor+'" min="-100" max="100" onchange="updateNpc('+i+',\'favor\',this.value)"></div>'+
+'<div class="form-group"><label>等级</label><input value="'+getLevel(n.favor)+'" readonly style="color:#aaa"></div>'+
+'<div class="form-group"><label>性关系</label><select onchange="updateNpc('+i+',\'rel\',this.value)"><option value="未发生"'+(n.rel==='未发生'?' selected':'')+'>未发生</option><option value="已发生"'+(n.rel==='已发生'?' selected':'')+'>已发生</option><option value="固定关系"'+(n.rel==='固定关系'?' selected':'')+'>固定关系</option></select></div>'+
+'<div class="form-group"><label>当前委托</label><select onchange="updateNpc('+i+',\'quest\',this.value===\'true\')"><option value="false"'+(n.quest?'':' selected')+'>无</option><option value="true"'+(n.quest?' selected':'')+'>有</option></select></div></div>'+
+'<div class="form-group"><label>关键记忆</label><input value="'+n.memory+'" onchange="updateNpc('+i+',\'memory\',this.value)"></div>'+
+'<div class="form-group"><label>最近互动</label><input value="'+n.interact+'" onchange="updateNpc('+i+',\'interact\',this.value)"></div>';
+list.appendChild(d)})}
+function updateNpc(i,k,v){npcs[i][k]=v;updateYaml();renderNpcs()}
+function delNpc(i){npcs.splice(i,1);renderNpcs();updateYaml()}
+function updateYaml(){let y='---\n# NPC社交面板\n';for(const n of npcs){const lv=getLevel(n.favor);y+='npc.'+n.name+'.好感度: '+n.favor+'\nnpc.'+n.name+'.好感等级: "'+lv+'"\nnpc.'+n.name+'.性关系状态: "'+n.rel+'"\n';if(n.memory)y+='npc.'+n.name+'.关键记忆: ["'+n.memory+'"]\n';y+='npc.'+n.name+'.最近互动: "'+n.interact+'"\nnpc.'+n.name+'.当前委托: '+(n.quest?'true':'false')+'\n\n'}y+='---';document.getElementById('output').value=y}
+function copyYaml(){const ta=document.getElementById('output');ta.select();navigator.clipboard.writeText(ta.value).then(()=>{const btn=document.getElementById('copyBtn');btn.textContent='✅ 已复制';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 复制';btn.classList.remove('copied')},1500)})}
+addNpc('妮可·德玛拉',0,'未发生','协助调查远景案','初次见面','');addNpc('星见雅',0,'未发生','','','');
+</script>
+</body></html>

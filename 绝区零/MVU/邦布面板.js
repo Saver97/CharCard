@@ -2,6 +2,7 @@
 const panel = {
   name: "邦布面板",
   description: "伊埃斯电量与当前携带邦布",
+  triggers: ["邦布", "Bangboo", "伊埃斯", "Eous", "电量", "bangboo"],
   variables: {
     "bangboo.伊埃斯电量": { type: "number", default: 100, desc: "0~100%，低于20%无法进入空洞" },
     "bangboo.邦布伙伴": { type: "array", default: ["伊埃斯"], desc: "当前携带的邦布列表" }
