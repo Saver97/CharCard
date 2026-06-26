@@ -423,7 +423,7 @@ function startAdventure() {
       { op: "replace", path: "/主角/基础/所属势力", value: faction },
       { op: "replace", path: "/主角/属性/特殊能力", value: special },
       { op: "replace", path: "/bangboo/邦布伙伴", value: selectedBangboo },
-      { op: "replace", path: "/bangboo/拥有的邦布", value: selectedBangboo === "伊埃斯" ? ["伊埃斯"] : ["伊埃斯", selectedBangboo] }
+{ op: "replace", path: "/bangboo/拥有的邦布", value: [selectedBangboo] }
     );
     
     const presetNarratives = {
