@@ -86,13 +86,27 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>生存参数</h3>
     <div class="bar-wrap"><div class="bar-info"><span>❤️ HP</span><span id="h-hp-txt">85/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-hp-bar" style="width:85%;background:var(--danger)"></div></div></div>
-    <div class="bar-wrap"><div class="bar-info"><span>🧠 SAN</span><span id="h-san-txt">72/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-san-bar" style="width:72%;background:var(--blue)"></div></div></div>
+    <div class="bar-wrap"><div class="bar-info"><span>🧠 心智防护</span><span id="h-mind-txt">92/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-mind-bar" style="width:92%;background:var(--blue)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>🌸 发情度</span><span id="h-horny-txt">15/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-horny-bar" style="width:15%;background:var(--pink)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>☣️ 以太侵蚀度</span><span id="h-ether-txt">8/100</span></div><div class="bar-bg"><div class="bar-fill" id="h-ether-bar" style="width:8%;background:var(--purple)"></div></div></div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>经济与同伴</h3>
     <div class="form-row"><label>丁尼余额</label><span class="val" id="h-denny">4200 丁尼</span></div>
     <div class="form-row"><label>同伴</label><span class="val" id="h-companions">安比, 比利</span></div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--green)"></span>当前着装</h3>
+    <div class="form-row"><label>头部</label><input id="h-gear-head" onchange="updateProtagonistVar('着装.头部',this.value)" placeholder="无"></div>
+    <div class="form-row"><label>身体</label><input id="h-gear-body" onchange="updateProtagonistVar('着装.身体',this.value)" placeholder="无"></div>
+    <div class="form-row"><label>足部</label><input id="h-gear-foot" onchange="updateProtagonistVar('着装.足部',this.value)" placeholder="无"></div>
+    <div class="form-row"><label>饰品</label><input id="h-gear-acc" onchange="updateProtagonistVar('着装.饰品',this.value)" placeholder="无"></div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>背包 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击行可编辑）</span></h3>
+    <div id="hero-inventory"></div>
+    <div style="margin-top:8px;display:flex;gap:6px">
+      <input id="inv-new-name" placeholder="物品名" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <input id="inv-new-qty" type="number" placeholder="数量" value="1" min="1" style="width:56px;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
+      <button onclick="addHeroItem()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+添加</button>
+    </div>
   </div>
 </div>
 
@@ -189,7 +203,7 @@ function renderNPCs(data){
     const chaos=getProp(rel,'修罗场',0);const lv=getLevel(favor);
 
     let eqHtml='<div class="npc-grid">';
-    const equip=getProp(npc,'着装',{});['头部','身体','足部','饰品','主幻器','副幻器'].forEach(part=>{
+    const equip=getProp(npc,'着装',{});['头部','身体','足部','饰品'].forEach(part=>{
       const item=equip[part]||{名称:'空置'};
       eqHtml+=`<div class="npc-g-card"><span class="npc-g-label">${part}</span><span class="npc-g-val" style="font-size:11px">${item.名称||'空置'}</span></div>`;
     });eqHtml+='</div>';
@@ -282,9 +296,9 @@ function renderAll(){
     document.getElementById('h-is-phaethon').textContent=isP?'✅ 是（哲/铃）':'❌ 否（自定义角色）';
     document.getElementById('h-identity').textContent=getProp(sd,'protagonist.主人身份','-');
     const hp=getProp(sd,'protagonist.HP',100);document.getElementById('h-hp-txt').textContent=hp+'/100';document.getElementById('h-hp-bar').style.width=hp+'%';
-    const san=getProp(sd,'protagonist.SAN',100);document.getElementById('h-san-txt').textContent=san+'/100';document.getElementById('h-san-bar').style.width=san+'%';
     const horny=getProp(sd,'protagonist.发情度',0);document.getElementById('h-horny-txt').textContent=horny+'/100';document.getElementById('h-horny-bar').style.width=horny+'%';
     const ether=getProp(sd,'protagonist.以太侵蚀度',0);document.getElementById('h-ether-txt').textContent=ether+'/100';document.getElementById('h-ether-bar').style.width=ether+'%';
+    const mindProt=Math.max(0,100-ether);document.getElementById('h-mind-txt').textContent=mindProt+'/100';document.getElementById('h-mind-bar').style.width=mindProt+'%';
     document.getElementById('h-denny').textContent=getProp(sd,'protagonist.丁尼余额',0)+' 丁尼';
     const comps=getProp(sd,'protagonist.同伴',[]);document.getElementById('h-companions').textContent=Array.isArray(comps)&&comps.length>0?comps.join(', '):'无';
     document.getElementById('ho-name').textContent=getProp(sd,'hollow.当前空洞','')||'（不在空洞中）';
@@ -293,11 +307,47 @@ function renderAll(){
     document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'hollow.研究音擎',[])).join(', ')||'无';
     const bat=getProp(sd,'bangboo.伊埃斯电量',100);document.getElementById('b-battery-txt').textContent=bat+'%';document.getElementById('b-battery-bar').style.width=bat+'%';
     const bp=getProp(sd,'bangboo.邦布伙伴',[]);document.getElementById('b-partners').textContent=Array.isArray(bp)&&bp.length>0?bp.join(', '):'伊埃斯';
+    // Hero gear
+    document.getElementById('h-gear-head').value=getProp(sd,'protagonist.着装.头部','');
+    document.getElementById('h-gear-body').value=getProp(sd,'protagonist.着装.身体','');
+    document.getElementById('h-gear-foot').value=getProp(sd,'protagonist.着装.足部','');
+    document.getElementById('h-gear-acc').value=getProp(sd,'protagonist.着装.饰品','');
+    // Hero inventory
+    const inv=getProp(sd,'protagonist.背包',{});
+    const invContainer=document.getElementById('hero-inventory');
+    let invHtml='';
+    if(typeof inv==='object'&&Object.keys(inv).length>0){
+      for(const[iName,iData]of Object.entries(inv)){
+        const qty=typeof iData==='object'?iData.数量||1:iData;
+        invHtml+=`<div class="kv-row" style="cursor:pointer" onclick="editHeroItem('${iName}',${qty})" title="点击编辑"><span>${iName}</span><span class="kv-v" style="color:var(--gold)">x${qty}</span></div>`;
+      }
+    }else{invHtml='<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>'}
+    invContainer.innerHTML=invHtml;
     renderNPCs(sd);
     document.getElementById('refreshBadge').textContent='● 已连接';
     document.getElementById('refreshBadge').style.color='var(--green)';
   }catch(e){renderNPCs(null)}
 }
+
+// ===== Hero inventory & gear editing =====
+function sendSlash(cmd){if(typeof triggerSlash==='function')triggerSlash(cmd);else console.log('Slash:',cmd)}
+window.updateProtagonistVar=function(key,val){
+  sendSlash('/setvar protagonist.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger');
+};
+window.addHeroItem=function(){
+  const nameEl=document.getElementById('inv-new-name');const qtyEl=document.getElementById('inv-new-qty');
+  const name=nameEl.value.trim();const qty=parseInt(qtyEl.value)||1;
+  if(!name)return;sendSlash('/setvar protagonist.背包.'+name+' '+qty+'|/trigger');
+  nameEl.value='';qtyEl.value='1';setTimeout(renderAll,300);
+};
+window.editHeroItem=function(name,qty){
+  const newName=prompt('物品名',name);if(!newName)return;
+  const newQty=parseInt(prompt('数量',qty))||0;
+  if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？'))sendSlash('/setvar protagonist.背包.'+newName+' null|/trigger');}
+  else sendSlash('/setvar protagonist.背包.'+newName+' '+newQty+'|/trigger');
+  setTimeout(renderAll,300);
+};
+window.delHeroItem=function(){};
 
 renderAll();
 if(typeof eventOn==='function'&&typeof Mvu!=='undefined'){try{eventOn(Mvu.events.VARIABLE_UPDATE_ENDED,()=>{setTimeout(renderAll,200)})}catch(e){}}
