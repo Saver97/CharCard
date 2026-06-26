@@ -76,6 +76,11 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
     <div class="form-row"><label>当前地点</label><span class="val" id="w-loc">雅努斯区·六分街</span></div>
     <div class="form-row"><label>当前章节</label><span class="val" id="w-chapter">序章·法厄同</span></div>
     <div class="form-row"><label>当天计划</label><span class="val" id="w-plan">录像店营业</span></div>
+    <div class="form-row"><label>天气</label><span class="val" id="w-weather">晴好·微风</span></div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>都市情报</h3>
+    <div class="kv-row"><span style="color:var(--muted)">城市流言</span><span class="kv-v" style="font-size:12px;font-style:italic" id="w-rumor">暂无流言</span></div>
+    <div style="margin-top:8px"><span style="font-size:11px;color:var(--muted)">绳网活跃度</span><span class="val" id="w-activity" style="float:right;font-size:13px">普通</span></div>
   </div>
 </div>
 
@@ -126,20 +131,18 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
     <div class="bar-wrap"><div class="bar-info"><span>探索进度</span><span id="ho-progress-txt">0%</span></div><div class="bar-bg"><div class="bar-fill" id="ho-progress-bar" style="width:0%;background:var(--purple)"></div></div></div>
     <div class="form-row"><label>研究音擎</label><span class="val" id="ho-resonia">无</span></div>
   </div>
+  <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>危险评估</h3>
+    <div class="npc-grid">
+      <div class="npc-g-card"><span class="npc-g-label">以骸威胁</span><span class="npc-g-val" style="color:var(--danger)" id="ho-threat">安全</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">萝卜质量</span><span class="npc-g-val" style="color:var(--gold)" id="ho-carrot">普通</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">安全时间</span><span class="npc-g-val" id="ho-timeleft">无限制</span></div>
+    </div>
+  </div>
 </div>
 
 <div class="tab-panel" id="tab-faction">
   <div class="card"><h3><span class="dot" style="background:var(--green)"></span>阵营亲密度</h3>
-    <div class="faction-list" id="faction-list">
-      <div class="fr"><label>狡兔屋</label><input type="range" min="-100" max="100" value="45" disabled><span class="fr-val">45</span></div>
-      <div class="fr"><label>对空六课</label><input type="range" min="-100" max="100" value="10" disabled><span class="fr-val">10</span></div>
-      <div class="fr"><label>白祇重工</label><input type="range" min="-100" max="100" value="20" disabled><span class="fr-val">20</span></div>
-      <div class="fr"><label>维多利亚家政</label><input type="range" min="-100" max="100" value="30" disabled><span class="fr-val">30</span></div>
-      <div class="fr"><label>卡吕冬之子</label><input type="range" min="-100" max="100" value="15" disabled><span class="fr-val">15</span></div>
-      <div class="fr"><label>治安局</label><input type="range" min="-100" max="100" value="-5" disabled><span class="fr-val">-5</span></div>
-      <div class="fr"><label>天琴座</label><input type="range" min="-100" max="100" value="5" disabled><span class="fr-val">5</span></div>
-      <div class="fr"><label>云岿山</label><input type="range" min="-100" max="100" value="0" disabled><span class="fr-val">0</span></div>
-    </div>
+    <div id="faction-container"></div>
   </div>
 </div>
 
@@ -147,6 +150,13 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>邦布状态</h3>
     <div class="bar-wrap"><div class="bar-info"><span>伊埃斯电量</span><span id="b-battery-txt">92%</span></div><div class="bar-bg"><div class="bar-fill" id="b-battery-bar" style="width:92%;background:var(--orange)"></div></div></div>
     <div class="form-row"><label>邦布伙伴</label><span class="val" id="b-partners">伊埃斯</span></div>
+  </div>
+  <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>邦布详情</h3>
+    <div class="npc-grid">
+      <div class="npc-g-card"><span class="npc-g-label">装备技能</span><span class="npc-g-val" style="font-size:11px;color:var(--gold)" id="b-skill">无</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">维修状态</span><span class="npc-g-val" id="b-repair">正常</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">邦布心情</span><span class="npc-g-val" id="b-mood">开心</span></div>
+    </div>
   </div>
 </div>
 
@@ -309,6 +319,9 @@ function renderAll(){
     document.getElementById('w-loc').textContent=getProp(sd,'world.当前地点','-');
     document.getElementById('w-chapter').textContent=getProp(sd,'world.当前章节','-');
     document.getElementById('w-plan').textContent=getProp(sd,'world.当天计划','-');
+    document.getElementById('w-weather').textContent=getProp(sd,'world.天气','-');
+    document.getElementById('w-rumor').textContent=getProp(sd,'world.城市流言','')||'暂无流言';
+    document.getElementById('w-activity').textContent=getProp(sd,'world.绳网活跃度','普通');
     const isP=getProp(sd,'protagonist.是否为法厄同',true);
     document.getElementById('h-is-phaethon').textContent=isP?'✅ 是（哲/铃）':'❌ 否（自定义角色）';
     document.getElementById('h-identity').textContent=getProp(sd,'protagonist.主人身份','-');
@@ -322,8 +335,14 @@ function renderAll(){
     document.getElementById('ho-density').textContent=getProp(sd,'hollow.以太浓度','-');
     const prog=getProp(sd,'hollow.探索进度',0);document.getElementById('ho-progress-txt').textContent=prog+'%';document.getElementById('ho-progress-bar').style.width=prog+'%';
     document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'hollow.研究音擎',[])).join(', ')||'无';
+    document.getElementById('ho-threat').textContent=getProp(sd,'hollow.以骸威胁等级','安全');
+    document.getElementById('ho-carrot').textContent=getProp(sd,'hollow.萝卜质量','普通');
+    document.getElementById('ho-timeleft').textContent=getProp(sd,'hollow.剩余安全时间','无限制');
     const bat=getProp(sd,'bangboo.伊埃斯电量',100);document.getElementById('b-battery-txt').textContent=bat+'%';document.getElementById('b-battery-bar').style.width=bat+'%';
     const bp=getProp(sd,'bangboo.邦布伙伴',[]);document.getElementById('b-partners').textContent=Array.isArray(bp)&&bp.length>0?bp.join(', '):'伊埃斯';
+    document.getElementById('b-skill').textContent=getProp(sd,'bangboo.装备技能','')||'无';
+    document.getElementById('b-repair').textContent=getProp(sd,'bangboo.维修状态','正常');
+    document.getElementById('b-mood').textContent=getProp(sd,'bangboo.邦布心情','开心');
     // Hero gear (grid cards)
     document.getElementById('h-gear-head').textContent=getProp(sd,'protagonist.着装.头部','')||'空置';
     document.getElementById('h-gear-body').textContent=getProp(sd,'protagonist.着装.身体','')||'空置';
