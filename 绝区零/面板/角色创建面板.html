@@ -17,8 +17,29 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 .badge-green{background:#2a8a4a}
 .badge-orange{background:#b86b2c}
 .badge-blue{background:#2a6a8a}
+.badge-purple{background:#7a4aaa}
 
-/* 预设选择 */
+/* Route selector */
+.route-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.route-card{padding:20px 16px;border-radius:14px;border:2px solid #1e2d50;background:#0f1b33;color:#ccc;cursor:pointer;text-align:center;transition:all .25s}
+.route-card:hover{background:#1a2d50;border-color:#3a5a80;transform:translateY(-2px)}
+.route-card.active{border-color:#f0c040;background:#1a2d40;color:#f0c040;box-shadow:0 0 20px rgba(240,192,64,.2)}
+.route-card .icon{font-size:36px;display:block;margin-bottom:10px}
+.route-card .label{font-weight:700;font-size:16px;margin-bottom:6px}
+.route-card .desc{font-size:12px;color:#888;line-height:1.5}
+.route-card.active .desc{color:#bba060}
+
+/* Phaethon choice */
+.phaethon-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.phaethon-card{padding:16px;border-radius:12px;border:2px solid #1e2d50;background:#0f1b33;cursor:pointer;text-align:center;transition:all .2s}
+.phaethon-card:hover{background:#1a2d50;border-color:#3a5a80}
+.phaethon-card.active{border-color:#f0c040;background:#1a2d40}
+.phaethon-card .avatar{font-size:40px;display:block;margin-bottom:8px}
+.phaethon-card .name{font-size:20px;font-weight:700;color:#e0e0e0}
+.phaethon-card.active .name{color:#f0c040}
+.phaethon-card .role{font-size:12px;color:#888;margin-top:4px}
+
+/* Presets */
 .presets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
 .preset-btn{padding:14px 8px;border-radius:12px;border:2px solid #1e2d50;background:#0f1b33;color:#ccc;cursor:pointer;text-align:center;transition:all .2s;font-size:13px}
 .preset-btn:hover{background:#1a2d50;border-color:#3a5a80;transform:translateY(-2px)}
@@ -27,7 +48,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 .preset-btn .label{font-weight:600;font-size:13px}
 .preset-btn .desc{font-size:11px;color:#888;margin-top:4px}
 
-/* 表单 */
+/* Custom form */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-group{display:flex;flex-direction:column}
 .form-group.full{grid-column:1/-1}
@@ -38,21 +59,24 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 .form-group select option{background:#16213e;color:#e0e0e0}
 .form-group .hint{font-size:11px;color:#666;margin-top:4px}
 
-/* 输出区 */
-.output-area{margin-top:20px}
-.output-area textarea{width:100%;height:160px;background:#0a0f1f;border:1px solid #1e2d50;border-radius:8px;padding:12px;color:#a0d0a0;font-size:13px;font-family:'Consolas','Courier New',monospace;resize:vertical;outline:none;transition:border .2s}
-.output-area textarea:focus{border-color:#f0c040}
-.output-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.output-header span{font-size:13px;color:#888}
-.copy-btn{background:#2a4a6a;border:none;border-radius:6px;padding:6px 14px;color:#fff;cursor:pointer;font-size:12px;transition:background .2s}
-.copy-btn:hover{background:#3a6a8a}
-.copy-btn.copied{background:#2a8a4a}
+/* Bangboo */
 .bb-card{padding:12px;border-radius:10px;border:2px solid #1e2d50;background:#0f1b33;cursor:pointer;transition:all .2s;text-align:center}
 .bb-card:hover{border-color:#4fc3f7;background:#102540;transform:translateY(-2px)}
 .bb-card.active{border-color:#4fc3f7;background:#0a2a3f;box-shadow:0 0 12px rgba(79,195,247,.2)}
 .bb-card .bb-name{font-size:14px;font-weight:700;color:#e0e0e0;margin-bottom:4px}
 .bb-card .bb-faction{font-size:10px;color:#888;margin-bottom:3px}
 .bb-card .bb-skill{font-size:11px;color:#4fc3f7}
+
+/* Start button */
+.start-section{text-align:center;padding:10px 0 20px}
+.start-btn{background:linear-gradient(135deg,#f0c040,#d4a020);border:none;border-radius:14px;padding:16px 48px;color:#1a1a2e;font-size:18px;font-weight:700;cursor:pointer;letter-spacing:2px;transition:all .3s;box-shadow:0 4px 20px rgba(240,192,64,.3)}
+.start-btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(240,192,64,.4)}
+.start-btn:active{transform:translateY(0)}
+
+/* Hidden sections */
+.hidden-section{display:none}
+.hidden-section.show{display:block}
+
 .footer{text-align:center;padding:20px;color:#555;font-size:12px}
 </style>
 </head>
@@ -60,12 +84,47 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 <div class="container">
   <div class="header">
     <h1>⚡ 绝区零 · 角色创建</h1>
-    <p>关闭法厄同开关后，使用此面板自定义你的新艾利都身份</p>
+    <p>选择你的身份，开始在新艾利都的冒险</p>
   </div>
 
-  <!-- 预设 -->
-  <div class="card">
-    <h2>📋 选择开局身份</h2>
+  <!-- Step 1: Choose Route -->
+  <div class="card" id="step-route">
+    <h2>📋 STEP 1: 选择开局模式</h2>
+    <div class="route-cards">
+      <div class="route-card active" data-route="phaethon" onclick="selectRoute('phaethon')">
+        <span class="icon">🎮</span>
+        <span class="label">法厄同</span>
+        <span class="desc">传奇绳匠，经营Random Play录像店，通过HDD远程操控伊埃斯探索空洞</span>
+      </div>
+      <div class="route-card" data-route="custom" onclick="selectRoute('custom')">
+        <span class="icon">🆕</span>
+        <span class="label">非法厄同</span>
+        <span class="desc">自定义身份——普通居民、治安官、盗洞客……在新艾利都谱写属于你的故事</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phaethon Section -->
+  <div class="card hidden-section show" id="phaethon-section">
+    <h2>🎮 STEP 2: 选择法厄同身份 <span class="badge badge-purple">法厄同线</span></h2>
+    <p style="color:#888;font-size:13px;margin-bottom:12px">选择扮演哲还是铃。法厄同模式下，你将以HDD远程操控伊埃斯的方式探索空洞。</p>
+    <div class="phaethon-choice" id="phaethon-choices">
+      <div class="phaethon-card active" data-character="wise" onclick="selectPhaethon('wise')">
+        <span class="avatar">🧑</span>
+        <span class="name">哲 (Wise)</span>
+        <span class="role">兄 · 冷静聪慧 · 灰色短发</span>
+      </div>
+      <div class="phaethon-card" data-character="belle" onclick="selectPhaethon('belle')">
+        <span class="avatar">👩</span>
+        <span class="name">铃 (Belle)</span>
+        <span class="role">妹 · 元气开朗 · 深蓝短发</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Section -->
+  <div class="card hidden-section" id="custom-section">
+    <h2>📋 STEP 2: 选择开局身份</h2>
     <div class="presets" id="presets">
       <div class="preset-btn active" data-preset="resident">
         <span class="icon">🏠</span>
@@ -85,9 +144,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
     </div>
   </div>
 
-  <!-- 编辑面板 -->
-  <div class="card">
-    <h2>✏️ 自定义角色 <span class="badge badge-orange">非法厄同</span></h2>
+  <!-- Custom Form -->
+  <div class="card hidden-section" id="form-section">
+    <h2>✏️ STEP 3: 自定义角色 <span class="badge badge-orange">非法厄同</span></h2>
     <div class="form-grid" id="form">
       <div class="form-group">
         <label>角色姓名</label>
@@ -155,7 +214,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
           <option value="独立绳匠">独立绳匠</option>
         </select>
       </div>
-    <div class="form-group">
+      <div class="form-group">
         <label>特殊能力 / 特长</label>
         <input type="text" id="special" placeholder="无" value="无">
         <span class="hint">如：机械维修、黑客、医疗等</span>
@@ -163,57 +222,68 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
     </div>
   </div>
 
-  <!-- 邦布伙伴 -->
-  <div class="card">
-    <h2>🤖 邦布伙伴 <span class="badge badge-blue">初始选择</span></h2>
+  <!-- Bangboo Section -->
+  <div class="card hidden-section" id="bangboo-section">
+    <h2>🤖 STEP 4: 邦布伙伴 <span class="badge badge-blue">初始选择</span></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px" id="bangboo-presets">
     </div>
   </div>
 
-  <!-- 输出 -->
-  <div class="card">
-    <div class="output-header">
-      <h2 style="margin:0;border:none;padding:0">📤 角色数据（YAML）</h2>
-      <button class="copy-btn" id="copyBtn" onclick="copyOutput()">📋 复制</button>
-    </div>
-    <div class="output-area">
-      <textarea id="output" readonly></textarea>
-    </div>
-    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-      <span style="font-size:12px;color:#888">💡 将以上数据粘贴到开场白文件顶部，或直接复制到游戏</span>
-    </div>
+  <!-- Start Button -->
+  <div class="start-section">
+    <button class="start-btn" onclick="startAdventure()">⚡ 开始冒险</button>
   </div>
 
   <div class="footer">
-    绝区零 RPG · 角色创建面板 v1.0
+    绝区零 RPG · 角色创建面板 v2.0
   </div>
 </div>
 
 <script>
+let currentRoute = 'phaethon';
+let selectedPhaethon = 'wise';
+let currentPreset = 'resident';
+
 const PRESETS = {
   resident: {
-    type:'普通居民',name:'',race:'人类',gender:'男',age:25,
+    name:'',race:'人类',gender:'男',age:25,
     bio:'新艾利都的普通市民，过着平凡的日常生活',
     ether:45,combat:'无',faction:'无',special:'无'
   },
   officer: {
-    type:'治安官',name:'',race:'人类',gender:'男',age:28,
+    name:'',race:'人类',gender:'男',age:28,
     bio:'新艾利都治安局的一名基层治安官，日常巡逻六分街及周边区域',
     ether:55,combat:'中',faction:'新艾利都治安局（N.E.P.S.）',special:'标准治安官训练、以太抑制装备使用'
   },
   raider: {
-    type:'盗洞客',name:'',race:'猫希人',gender:'男',age:30,
+    name:'',race:'猫希人',gender:'男',age:30,
     bio:'经验丰富的盗洞客，以探索空洞寻找值钱物资为生',
     ether:70,combat:'强',faction:'独立',special:'空洞生存经验、以骸战斗技巧、简易萝卜绘制'
   }
 };
 
-let currentPreset = 'resident';
+function selectRoute(route) {
+  currentRoute = route;
+  document.querySelectorAll('.route-card').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[data-route="${route}"]`).classList.add('active');
+  
+  document.getElementById('phaethon-section').classList.toggle('show', route === 'phaethon');
+  document.getElementById('custom-section').classList.toggle('show', route === 'custom');
+  document.getElementById('form-section').classList.toggle('show', route === 'custom');
+  document.getElementById('bangboo-section').classList.toggle('show', route === 'custom');
+}
+
+function selectPhaethon(char) {
+  selectedPhaethon = char;
+  document.querySelectorAll('.phaethon-card').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[data-character="${char}"]`).classList.add('active');
+}
 
 function selectPreset(key) {
   currentPreset = key;
   document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`[data-preset="${key}"]`).classList.add('active');
+  const target = document.querySelector(`[data-preset="${key}"]`);
+  if (target) target.classList.add('active');
   const p = PRESETS[key];
   document.getElementById('name').value = p.name;
   document.getElementById('race').value = p.race;
@@ -224,65 +294,9 @@ function selectPreset(key) {
   document.getElementById('combat').value = p.combat;
   document.getElementById('faction').value = p.faction;
   document.getElementById('special').value = p.special;
-  updateOutput();
 }
 
-function updateOutput() {
-  const data = {
-    'protagonist.是否为法厄同': false,
-    'character.角色类型': document.getElementById('name').value ? '自定义' : PRESETS[currentPreset].type,
-    'character.角色姓名': document.getElementById('name').value || '(待填写)',
-    'character.种族': document.getElementById('race').value,
-    'character.性别': document.getElementById('gender').value,
-    'character.年龄': parseInt(document.getElementById('age').value) || 25,
-    'character.背景简述': document.getElementById('bio').value,
-    'character.以太适应性': parseInt(document.getElementById('ether').value) || 50,
-    'character.战斗能力': document.getElementById('combat').value,
-    'character.所属势力': document.getElementById('faction').value,
-    'character.特殊能力': document.getElementById('special').value || '无'
-  };
-
-  let yaml = '---\n';
-  yaml += '# 非绳匠开局 · 角色创建面板\n';
-  yaml += '# 复制此块到开场白文件顶部即可生效\n\n';
-  yaml += 'protagonist.是否为法厄同: false\n';
-  yaml += 'character.角色类型: "' + data['character.角色类型'] + '"\n';
-  yaml += 'character.角色姓名: "' + data['character.角色姓名'] + '"\n';
-  yaml += 'character.种族: "' + data['character.种族'] + '"\n';
-  yaml += 'character.性别: "' + data['character.性别'] + '"\n';
-  yaml += 'character.年龄: ' + data['character.年龄'] + '\n';
-  yaml += 'character.背景简述: "' + data['character.背景简述'] + '"\n';
-  yaml += 'character.以太适应性: ' + data['character.以太适应性'] + '\n';
-  yaml += 'character.战斗能力: "' + data['character.战斗能力'] + '"\n';
-  yaml += 'character.所属势力: "' + data['character.所属势力'] + '"\n';
-  yaml += 'character.特殊能力: "' + data['character.特殊能力'] + '"\n';
-  yaml += 'bangboo.邦布伙伴: ["' + selectedBangboo + '"]\n';
-  yaml += '---\n\n';
-  yaml += '# 选择对应的开场白文件：\n';
-  yaml += '# 4-普通居民.txt | 5-治安官.txt | 6-盗洞客.txt\n';
-
-  document.getElementById('output').value = yaml;
-}
-
-function copyOutput() {
-  const ta = document.getElementById('output');
-  ta.select();
-  ta.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(ta.value).then(() => {
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✅ 已复制';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = '📋 复制'; btn.classList.remove('copied'); }, 1500);
-  });
-}
-
-// Bind form changes
-document.querySelectorAll('#form input, #form select').forEach(el => {
-  el.addEventListener('input', updateOutput);
-  el.addEventListener('change', updateOutput);
-});
-
-// ===== Bangboo Selection =====
+// Bangboo selection
 const CREATION_BANGBOOS = [
   { name: "伊埃斯", faction: "法厄同·特殊", skill: "感官同步·HDD远程操控" },
   { name: "阿全", faction: "治安局", skill: "360°视野·报警联动" },
@@ -318,10 +332,15 @@ window.selectBangboo = function(name){
   document.querySelectorAll('.bb-card').forEach(c => c.classList.remove('active'));
   const target = document.querySelector(`.bb-card[data-bb="${name}"]`);
   if(target) target.classList.add('active');
-  updateOutput();
 };
 
-// Bind preset buttons
+// Form change listeners
+document.querySelectorAll('#form input, #form select').forEach(el => {
+  el.addEventListener('input', () => {});
+  el.addEventListener('change', () => {});
+});
+
+// Preset buttons
 document.querySelectorAll('.preset-btn').forEach(btn => {
   btn.addEventListener('click', () => selectPreset(btn.dataset.preset));
 });
@@ -329,6 +348,120 @@ document.querySelectorAll('.preset-btn').forEach(btn => {
 // Init
 selectPreset('resident');
 renderBangbooCards();
+
+// ===== START ADVENTURE =====
+let adventureStarted = false;
+
+function startAdventure() {
+  if (adventureStarted) return;
+  adventureStarted = true;
+  const btn = document.querySelector('.start-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '✅ 已开始'; btn.style.opacity = '0.6'; btn.style.cursor = 'not-allowed'; }
+
+  let narrative = '';
+  let patches = [];
+  
+  if (currentRoute === 'phaethon') {
+    // 法厄同线
+    const isWise = selectedPhaethon === 'wise';
+    const charName = isWise ? '哲' : '铃';
+    const siblingName = isWise ? '铃' : '哲';
+    const siblingRelation = isWise ? '妹妹' : '哥哥';
+    
+    patches.push(
+      { op: "replace", path: "/世界/当前时间", value: "新艾利都历·清晨 07:30" },
+      { op: "replace", path: "/世界/当前地点", value: "六分街·Random Play录像店" },
+      { op: "replace", path: "/protagonist/是否为法厄同", value: true },
+      { op: "replace", path: "/主角/基础/姓名", value: charName },
+      { op: "replace", path: "/主角/基础/性别", value: isWise ? "男" : "女" },
+      { op: "replace", path: "/主角/基础/身份", value: "法厄同·传奇绳匠" },
+      { op: "replace", path: "/主角/基础/金钱", value: 50000 },
+      { op: "replace", path: "/主角/属性/以太适应性", value: 85 },
+      { op: "replace", path: "/bangboo/邦布伙伴", value: "伊埃斯" }
+    );
+    
+    narrative = `新艾利都，六分街。
+
+你从床上醒来，窗外是这座城市标志性的灰蓝色天空——远处隐约可见式舆柱的轮廓缓缓转动，将零号空洞的以太转化为灯火通明的街景。楼下传来邦布18号在柜台后"嗯呢嗯呢"整理录像带的声音。
+
+你洗漱完毕，下楼时${siblingRelation}${siblingName}正坐在那台老式CRT电视前，看着晨间新闻——主持人正在播报关于某个伴生空洞异常扩大的消息，屏幕角落滚动着"HIA招募调查员"的字样。
+
+桌上是便利店买来的三明治和一杯咖啡。
+
+新的一天开始了。在这座最后都市的六分街上，你既是录像店"Random Play"的店主——${charName}，也是传奇绳匠"法厄同"。柜台上的HDD设备闪着待机灯，伊埃斯在一旁充电桩上发出轻微的嗡鸣声。
+
+你咬了一口三明治，望向窗外。
+
+今天的第六感告诉你——不会太平。`;
+    
+  } else {
+    // 非法厄同线
+    const name = document.getElementById('name').value.trim() || '(未命名)';
+    const race = document.getElementById('race').value;
+    const gender = document.getElementById('gender').value;
+    const age = parseInt(document.getElementById('age').value) || 25;
+    const bio = document.getElementById('bio').value;
+    const ether = parseInt(document.getElementById('ether').value) || 50;
+    const combat = document.getElementById('combat').value;
+    const faction = document.getElementById('faction').value;
+    const special = document.getElementById('special').value || '无';
+    const charType = PRESETS[currentPreset].type || currentPreset;
+    
+    patches.push(
+      { op: "replace", path: "/世界/当前时间", value: "新艾利都历·上午 08:00" },
+      { op: "replace", path: "/世界/当前地点", value: "六分街·公寓" },
+      { op: "replace", path: "/protagonist/是否为法厄同", value: false },
+      { op: "replace", path: "/主角/基础/姓名", value: name },
+      { op: "replace", path: "/主角/基础/性别", value: gender },
+      { op: "replace", path: "/主角/基础/年龄", value: age + "岁" },
+      { op: "replace", path: "/主角/基础/身份", value: bio },
+      { op: "replace", path: "/主角/基础/金钱", value: 10000 },
+      { op: "replace", path: "/主角/属性/种族", value: race },
+      { op: "replace", path: "/主角/属性/以太适应性", value: ether },
+      { op: "replace", path: "/主角/属性/战斗能力", value: combat },
+      { op: "replace", path: "/主角/基础/所属势力", value: faction },
+      { op: "replace", path: "/主角/属性/特殊能力", value: special },
+      { op: "replace", path: "/bangboo/邦布伙伴", value: selectedBangboo }
+    );
+    
+    const presetNarratives = {
+      resident: `新艾利都，又是一个普通的早晨。
+
+你在六分街的公寓里醒来，窗外传来早市熙熙攘攘的声音——楼下141便利店已经开始营业，隔壁COFF CAFE飘出咖啡的香气。你伸了个懒腰，思考今天要做些什么。
+
+你是${name}——${bio}。在这个空洞威胁着日常的最后都市，平凡人也有平凡人的活法。也许今天会有熟人找你帮忙，也许绳网上会跳出新的消息，也许……命运会悄悄转动它的齿轮。`,
+      officer: `光映广场的治安局分局里，你刚整理完夜班的巡逻记录。组长路过时拍了拍你的肩说"干得不错"，但你注意到他桌上的文件夹里又多了一叠待处理的异常报告。
+
+你是${name}——${bio}。作为新艾利都治安局的一员，你比普通人更了解这座城市暗面的脉动：空洞边缘的盗洞客、绳网上的匿名委托、某些"不该被记录"的事件……
+
+今天轮休，但治安官在新艾利都永远不轻松。`,
+      raider: `空洞边缘，你靠在一块被以太侵蚀的混凝土墙上检查昨晚的收获——几块品相不错的以太结晶，应该能在黑市换个好价钱。
+
+你是${name}——${bio}。耳麦里传来搭档的声音："收工了，治安局巡逻队半小时后会经过。"你拉上背包拉链——空洞里的以太不会自己跳进官方仓库。
+
+今晚找个安全屋清点物资，明天再考虑下一单。冒险还在继续。`
+    };
+    
+    narrative = presetNarratives[currentPreset] || presetNarratives.resident;
+  }
+  
+  const patchStr = JSON.stringify(patches);
+  const hiddenDirective = `<span style="display:none;">
+<UpdateVariable>
+<JSONPatch>
+${patchStr}
+</JSONPatch>
+</UpdateVariable>
+</span>`;
+  
+  const finalPrompt = `/send ${narrative}\n\n${hiddenDirective}|/trigger`;
+  
+  if (typeof triggerSlash === 'function') {
+    triggerSlash(finalPrompt);
+  } else {
+    alert("无法自动发送。请复制以下文本手动发送：\n\n" + narrative);
+  }
+}
 </script>
 </body>
 </html>

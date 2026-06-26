@@ -1,8 +1,0 @@
-<character_creation></character_creation>
----
-protagonist.是否为法厄同: false
----
-
-新艾利都，又是一个普通的早晨。
-
-你在公寓里醒来，窗外传来早市熙熙攘攘的声音。你伸了个懒腰，思考今天要做些什么。
