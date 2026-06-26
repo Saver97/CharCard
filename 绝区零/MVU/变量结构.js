@@ -74,7 +74,7 @@ export const Schema = z.object({
 
   邦布: z.object({
     伊埃斯电量: z.coerce.number().prefault(100),
-     邦布伙伴: z.string().or(z.literal('伊埃斯')).prefault('伊埃斯'),
+    邦布伙伴: z.string().or(z.literal('伊埃斯')).prefault('伊埃斯'),
     装备技能: z.string().or(z.literal('')).prefault(''),
     维修状态: z.string().or(z.literal('正常')).prefault('正常'),
     邦布心情: z.string().or(z.literal('开心')).prefault('开心'),
