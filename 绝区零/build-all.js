@@ -259,26 +259,29 @@ const opDir = path.join(__dirname, "开场白");
 const altGreetings = fs.readdirSync(opDir).filter(f=>f.endsWith('.txt')).sort()
   .map(f=>fs.readFileSync(path.join(opDir,f),'utf8'));
 
-const switchEntry = {
-  id: uid, keys: [], secondary_keys: [], comment: '【开关】是否为"法厄同"',
-  content: '当{{user}}为男性，则{{user}}扮演的为"哲"，所有关于{{user}}的名称都使用"哲"来代替。且Fairy会称呼{{user}}为主人，称呼"铃"为"助手2号"，且你不允许也不该代替{{user}}发言。\n\n当{{user}}为女性，则{{user}}扮演的为"铃"，所有关于{{user}}的名称都使用"铃"来代替。且Fairy会称呼{{user}}为主人，称呼"哲"为"助手2号"，且你不允许也不该代替{{user}}发言。',
-  constant: true, selective: true, insertion_order: 0, enabled: true,
-  position: 'after_char', use_regex: true,
-  extensions: {
-    position: 4, exclude_recursion: false, display_index: uid,
-    probability: 100, useProbability: true, depth: 1, selectiveLogic: 0,
-    outlet_name: '', group: '', group_override: false, group_weight: 100,
-    prevent_recursion: false, delay_until_recursion: false,
-    scan_depth: null, match_whole_words: null, use_group_scoring: null,
-    case_sensitive: null, automation_id: '', role: 2, vectorized: false,
-    sticky: null, cooldown: null, delay: null,
-    match_persona_description: false, match_character_description: false,
-    match_character_personality: false, match_character_depth_prompt: false,
-    match_scenario: false, match_creator_notes: false,
-    triggers: [], ignore_budget: false
-  }
+// ====== MERGE: 关键人物条目内容合并到阵营章节 ======
+const factionGroupToFolder = {
+  '狡兔屋':'狡兔屋', '对空六课':'对空六课', '白祇重工':'白祇重工',
+  '维多利亚家政':'维多利亚家政', '卡吕冬之子':'卡吕冬之子',
+  '治安局':'治安局', '天琴座':'天琴座', '云岿山':'云岿山',
+  '反舌鸟':'反舌鸟', '奥波勒斯小队':'奥波勒斯小队',
+  '怪啖屋':'怪啖屋', '黑枝':'黑枝', '妄想天使':'妄想天使'
 };
-entries.push(switchEntry);
+// 对每个阵营条目，找到对应关键人物文件夹下所有角色，合并内容
+entries.forEach(e => {
+  if (e.extensions.group !== '阵营章节') return;
+  const factionName = e.comment.replace('.yaml', '');
+  const folder = factionGroupToFolder[factionName];
+  if (!folder) return;
+  const charEntries = entries.filter(ce => ce.extensions.group === '关键人物' && ce.comment.startsWith(folder + '/'));
+  if (charEntries.length === 0) return;
+  const mergedContent = charEntries.map(ce => ce.content).join('\n\n');
+  e.content = e.content + '\n\n# === 关键人物 ===\n' + mergedContent;
+  // 禁用独立角色条目
+  charEntries.forEach(ce => { ce.enabled = false; });
+});
+
+// 删除废弃的开关条目 (原 switchEntry) — 已彻底移除
 
 // ====== Build regex_scripts ======
 const PANEL_DIR = path.join(__dirname, "面板");
