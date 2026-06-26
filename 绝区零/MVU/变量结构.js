@@ -81,6 +81,16 @@ export const Schema = z.object({
     拥有的邦布: z.array(z.string()).prefault(['伊埃斯'])
   }).prefault({}),
 
+  任务: z.object({
+    已激活: z.array(z.string()).prefault([]),
+    详情: z.record(z.string(), z.object({
+      状态: z.string().or(z.literal('已接受')).prefault('已接受'),
+      委托人: z.string().or(z.literal('')).prefault(''),
+      报酬: z.string().or(z.literal('')).prefault(''),
+      线索: z.array(z.string()).prefault([])
+    }).prefault({})).prefault({})
+  }).prefault({}),
+
   NPCs: z.record(z.string(), z.object({
     基础: z.object({
       性别: z.string().or(z.literal('未知')).prefault('未知'),

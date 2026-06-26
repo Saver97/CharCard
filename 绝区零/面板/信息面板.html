@@ -124,9 +124,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>⚔️ 战斗与个性</h3>
     <div class="npc-grid">
-      <div class="npc-g-card" onclick="editHeroString('战斗定位','h-combat-role')"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)" id="h-combat-role">-</span></div>
-      <div class="npc-g-card" onclick="editHeroNumber('以太适应性','h-ether-apt')"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)" id="h-ether-apt">-</span></div>
-      <div class="npc-g-card" onclick="editHeroString('当前情绪','h-mood')"><span class="npc-g-label">当前情绪</span><span class="npc-g-val" id="h-mood">-</span></div>
+      <div class="npc-g-card" style="cursor:default"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)" id="h-combat-role">-</span></div>
+      <div class="npc-g-card" style="cursor:default"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)" id="h-ether-apt">-</span></div>
+      <div class="npc-g-card" style="cursor:default"><span class="npc-g-label">当前情绪</span><span class="npc-g-val" id="h-mood">-</span></div>
     </div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--green)"></span>当前着装 <span style="font-weight:400;color:var(--muted);font-size:11px">（点击选择道具）</span></h3>
@@ -284,7 +284,10 @@ window.pickGear=function(slot){
   var sd=window.cachedData;var inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));var items=[{name:'卸下(空置)',desc:'移除当前装备'}];
   if(typeof inv==='object'){var invKeys=Object.keys(inv);for(var i=0;i<invKeys.length;i++){var iName=invKeys[i];var iData=inv[iName];var qty=typeof iData==='object'?iData.数量||1:iData;items.push({name:iName,desc:'x'+qty})}}
   showPickModal('选择着装 - '+slot,items,function(item){
-    if(item.name==='卸下(空置)'){window.pendingActions.push({desc:'卸下'+slot+'装备',cmd:'/setvar 主角.着装.'+slot+' ""|/trigger'});updateHijack();setTimeout(renderAll,300)}
+    if(item.name==='卸下(空置)'){
+      var gearName=getProp(window.cachedData,'主角.着装.'+slot,getProp(window.cachedData,'主角.着装.'+slot,''))||'';if(gearName){window.pendingActions.push({desc:'将'+gearName+'放回背包',cmd:'/send 主角脱下了'+gearName+'，请在 JSON Patch 中 { "op": "add", "path": "/主角/背包/'+gearName+'", "value": { "数量": 1, "描述": "已脱下的装备" } } |/trigger'})}
+      window.pendingActions.push({desc:'卸下'+slot+'装备',cmd:'/setvar 主角.着装.'+slot+' ""|/trigger'});
+      updateHijack();setTimeout(renderAll,300)}
     else{window.pendingActions.push({desc:'装备'+item.name+'到'+slot,cmd:'/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger'});window.pendingActions.push({desc:'将'+item.name+'从背包移除',cmd:'/setvar 主角.背包.'+item.name+' null|/trigger'});updateHijack();setTimeout(renderAll,300)}
   });
 };
