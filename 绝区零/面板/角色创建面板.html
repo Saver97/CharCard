@@ -359,15 +359,19 @@ renderBangbooCards();
 // ===== PHAETHON GEAR DEFAULTS =====
 const PHAETHON_GEAR = {
   wise: {
-    头部: "灰色短发天然造型",
-    身体: "灰色连帽卫衣+深蓝长外套",
-    足部: "白色运动鞋",
+    上衣: "灰色连帽卫衣",
+    下装: "深蓝色休闲长裤",
+    内衣: "",
+    内裤: "",
+    鞋子: "灰白配色运动鞋",
     饰品: ""
   },
   belle: {
-    头部: "深蓝短发+白色发夹",
-    身体: "白色宽松T恤+深蓝色背带短裙",
-    足部: "白色短靴",
+    上衣: "白色宽松T恤",
+    下装: "深蓝色背带短裙",
+    内衣: "",
+    内裤: "",
+    鞋子: "白色短靴",
     饰品: "星星手链"
   }
 };
@@ -375,21 +379,27 @@ const PHAETHON_GEAR = {
 // ===== CUSTOM ROUTE GEAR DEFAULTS =====
 const PRESET_GEAR = {
   resident: {
-    头部: "",
-    身体: "休闲便装（卫衣+牛仔裤）",
-    足部: "普通运动鞋",
+    上衣: "素色棉质卫衣",
+    下装: "深色牛仔裤",
+    内衣: "",
+    内裤: "",
+    鞋子: "普通运动鞋",
     饰品: ""
   },
   officer: {
-    头部: "治安官鸭舌帽",
-    身体: "NEPS标准制服·深蓝色执勤服",
-    足部: "黑色战术靴",
+    上衣: "NEPS标准执勤服·深蓝色",
+    下装: "深蓝色执勤裤",
+    内衣: "",
+    内裤: "",
+    鞋子: "黑色战术靴",
     饰品: "警徽"
   },
   raider: {
-    头部: "防风护目镜",
-    身体: "耐磨工装夹克+防割手套",
-    足部: "加固登山靴",
+    上衣: "耐磨工装夹克",
+    下装: "深色工装长裤",
+    内衣: "",
+    内裤: "",
+    鞋子: "加固登山靴",
     饰品: "以太探测器"
   }
 };
@@ -483,9 +493,11 @@ function startAdventure() {
       { op: "replace", path: "/主角/属性/以太适应性", value: 100 },
       { op: "replace", path: "/主角/战斗定位", value: "支援" },
       { op: "replace", path: "/主角/当前情绪", value: "平静/专注" },
-      { op: "replace", path: "/主角/着装/头部", value: gear.头部 },
-      { op: "replace", path: "/主角/着装/身体", value: gear.身体 },
-      { op: "replace", path: "/主角/着装/足部", value: gear.足部 },
+      { op: "replace", path: "/主角/着装/上衣", value: gear.上衣 },
+      { op: "replace", path: "/主角/着装/下装", value: gear.下装 },
+      { op: "replace", path: "/主角/着装/内衣", value: gear.内衣 },
+      { op: "replace", path: "/主角/着装/内裤", value: gear.内裤 },
+      { op: "replace", path: "/主角/着装/鞋子", value: gear.鞋子 },
       { op: "replace", path: "/主角/着装/饰品", value: gear.饰品 },
       { op: "replace", path: "/邦布/邦布伙伴", value: ["伊埃斯"] },
       { op: "replace", path: "/邦布/拥有的邦布", value: ["伊埃斯"] },
@@ -539,11 +551,13 @@ function startAdventure() {
       { op: "replace", path: "/主角/属性/特殊能力", value: special },
       { op: "replace", path: "/主角/战斗定位", value: combatRole },
       { op: "replace", path: "/主角/当前情绪", value: "平静" },
-      { op: "replace", path: "/主角/着装/头部", value: gear.头部 },
-      { op: "replace", path: "/主角/着装/身体", value: gear.身体 },
-      { op: "replace", path: "/主角/着装/足部", value: gear.足部 },
+      { op: "replace", path: "/主角/着装/上衣", value: gear.上衣 },
+      { op: "replace", path: "/主角/着装/下装", value: gear.下装 },
+      { op: "replace", path: "/主角/着装/内衣", value: gear.内衣 },
+      { op: "replace", path: "/主角/着装/内裤", value: gear.内裤 },
+      { op: "replace", path: "/主角/着装/鞋子", value: gear.鞋子 },
       { op: "replace", path: "/主角/着装/饰品", value: gear.饰品 },
-      { op: "replace", path: "/邦布/邦布伙伴", value: [selectedBangboo] },
+      { op: "replace", path: "/邦布/邦布伙伴", value: selectedBangboo },
       { op: "replace", path: "/邦布/拥有的邦布", value: [selectedBangboo] },
       { op: "replace", path: "/世界/城市流言", value: pickRandomRumor() }
     );
