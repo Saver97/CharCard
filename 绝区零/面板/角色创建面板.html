@@ -316,12 +316,15 @@ let selectedBangboo = "阿全";
 
 function renderBangbooCards(){
   const container = document.getElementById('bangboo-presets');
-  const list = currentRoute === 'custom' ? CUSTOM_BANGBOOS : ALL_CREATION_BANGBOOS;
+  const isCustom = currentRoute === 'custom';
   let html = '';
-  list.forEach(bb => {
+  ALL_CREATION_BANGBOOS.forEach(bb => {
     const isActive = selectedBangboo === bb.name;
-    html += `<div class="bb-card${isActive?' active':''}" onclick="selectBangboo('${bb.name}')" data-bb="${bb.name}">
-      <div class="bb-name">${bb.name}</div>
+    const isDisabled = isCustom && bb.name === '伊埃斯';
+    html += `<div class="bb-card${isActive?' active':''}" 
+      style="${isDisabled?'opacity:0.35;pointer-events:none;cursor:not-allowed':''}"
+      onclick="${isDisabled?'':'selectBangboo(\''+bb.name+'\')'}" data-bb="${bb.name}">
+      <div class="bb-name">${bb.name}${isDisabled?' <span style="font-size:9px;color:var(--danger)">(法厄同专属)</span>':''}</div>
       <div class="bb-faction">${bb.faction}</div>
       <div class="bb-skill">${bb.skill}</div>
     </div>`;

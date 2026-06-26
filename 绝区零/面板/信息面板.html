@@ -67,18 +67,20 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 .modal .pick-item .pick-desc{font-size:11px;color:var(--muted);margin-top:2px}
 .modal .pick-cancel{margin-top:10px;text-align:center;color:var(--danger);cursor:pointer;font-size:12px;padding:8px}
 .modal .pick-cancel:hover{color:#fff}
+
+/* Hijack Console */
+.hijack-console{background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.hc-text{font-size:13px;font-weight:700;color:var(--text)}
+.hc-count{color:var(--gold);background:var(--bg);padding:2px 10px;border-radius:10px;margin-left:6px;font-size:14px}
+.hc-submit{background:linear-gradient(135deg,var(--gold),#d4a020);color:#1a1a2e;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:all .3s}
+.hc-submit:disabled{opacity:0.35;cursor:not-allowed}
+.hc-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 4px 15px rgba(240,192,64,.4)}
 </style>
 </head>
 <body>
 
 <div class="global-overlay" id="overlay" onclick="closeModal()"></div>
-
-<!-- 选择模态框 -->
-<div class="modal" id="pickModal">
-  <h4 id="pickTitle">选择物品</h4>
-  <div class="pick-list" id="pickList"></div>
-  <div class="pick-cancel" onclick="closeModal()">取消</div>
-</div>
+<div class="modal" id="pickModal"><h4 id="pickTitle">选择物品</h4><div class="pick-list" id="pickList"></div><div class="pick-cancel" onclick="closeModal()">取消</div></div>
 
 <div class="container">
 <div class="header"><h1>⚡ 绝区零 · 状态面板</h1><p>事件驱动刷新 &nbsp;·&nbsp; <span id="refreshBadge" style="color:var(--muted);font-size:11px">○ 等待事件</span></p></div>
@@ -89,6 +91,12 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   <button class="tab-btn" data-tab="faction">🤝 阵营</button>
   <button class="tab-btn" data-tab="bangboo">🤖 邦布</button>
   <button class="tab-btn" data-tab="npc">💝 NPC</button>
+</div>
+
+<!-- HIJACK CONSOLE -->
+<div class="hijack-console">
+  <div class="hc-text">待提交操作: <span class="hc-count" id="hc-count">0</span></div>
+  <button class="hc-submit" id="hc-submit" disabled onclick="hijackAndSend()">✨ 提交变更</button>
 </div>
 
 <div class="tab-panel active" id="tab-world">
@@ -169,7 +177,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 
 <div class="tab-panel" id="tab-bangboo">
   <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>邦布状态</h3>
-    <div class="bar-wrap"><div class="bar-info"><span>伊埃斯电量</span><span id="b-battery-txt">0%</span></div><div class="bar-bg"><div class="bar-fill" id="b-battery-bar" style="width:0%;background:var(--orange)"></div></div></div>
+    <div class="bar-wrap"><div class="bar-info"><span>邦布电量</span><span id="b-battery-txt">0%</span></div><div class="bar-bg"><div class="bar-fill" id="b-battery-bar" style="width:0%;background:var(--orange)"></div></div></div>
     <div class="form-row"><label>邦布伙伴</label><span class="val" id="b-partners">-</span></div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>邦布详情</h3>
@@ -185,7 +193,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
       <input id="bb-new-name" placeholder="新邦布名" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
       <input id="bb-new-faction" placeholder="所属势力" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
       <input id="bb-new-skill" placeholder="技能" style="flex:1;background:#0b0e17;border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:12px;outline:none">
-      <button onclick="addBangboo()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+</button>
+      <button onclick="addBangboo()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">+添加</button>
     </div>
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>📦 邦布图鉴 <span style="font-weight:400;color:var(--muted);font-size:11px">（所有可获取邦布）</span></h3>
@@ -198,7 +206,7 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   <div id="npc-container"></div>
 </div>
 
-<div class="footer">绝区零 RPG · 信息面板 v4.0 · 事件驱动刷新</div>
+<div class="footer">绝区零 RPG · 信息面板 v4.1 · 事件驱动刷新</div>
 </div>
 
 <script>
@@ -206,9 +214,30 @@ const LEVEL_NAMES=['敌对','冷淡','中立','友好','亲密','热恋'];
 function getLevel(v){const n=parseInt(v)||0;if(n<=-51)return LEVEL_NAMES[0];if(n<=-11)return LEVEL_NAMES[1];if(n<=10)return LEVEL_NAMES[2];if(n<=50)return LEVEL_NAMES[3];if(n<=80)return LEVEL_NAMES[4];return LEVEL_NAMES[5]}
 function getProp(obj,path,def){const keys=path.split('.');let r=obj;for(const k of keys){if(r&&typeof r==='object'&&k in r)r=r[k];else return def}return r!==undefined?r:def}
 window.npcImageCache={};
-window.cachedData = null; // cache latest variable data for picker modals
+window.cachedData = null;
 
-// ===== BANGBOO GALLERY (all possible bangboos - static reference) =====
+// ===== HIJACK QUEUE =====
+window.pendingActions = [];
+function updateHijack(){
+  document.getElementById('hc-count').innerText = window.pendingActions.length;
+  document.getElementById('hc-submit').disabled = window.pendingActions.length === 0;
+}
+function queueAction(desc,cmd){
+  window.pendingActions.push({desc,cmd});
+  updateHijack();
+}
+window.hijackAndSend = function(){
+  if(window.pendingActions.length===0)return;
+  const lines = window.pendingActions.map(a => a.desc).join('\n');
+  const cmds = window.pendingActions.map(a => a.cmd).join('\n');
+  const text = '请执行以下操作：\n' + lines;
+  if(typeof triggerSlash==='function') triggerSlash('/send ' + text + '|/trigger');
+  else alert('待发送:\n' + text);
+  window.pendingActions = [];
+  updateHijack();
+};
+
+// ===== BANGBOO GALLERY =====
 const ALL_BANGBOOS = [
   { name: "伊埃斯", faction: "法厄同·特殊", skill: "感官同步·HDD远程操控" },
   { name: "阿全", faction: "治安局", skill: "360°视野·报警联动" },
@@ -224,10 +253,6 @@ const ALL_BANGBOOS = [
   { name: "静电布", faction: "狡兔屋", skill: "EMP脉冲·机械瘫痪" }
 ];
 
-// ===== DEMO DATA (commented out - no demo mode) =====
-// const DEMO_NPCS = { ... };
-// const DEMO_FACTIONS = { ... };
-
 // ===== NPC RENDERING =====
 function renderNPCs(data){
   const npcContainer=document.getElementById('npc-container');
@@ -241,21 +266,17 @@ function renderNPCs(data){
     const bgImg=window.npcImageCache[nName]?`background-image:url('${window.npcImageCache[nName]}');`:'';
     const favor=getProp(rel,'好感度',0);const trust=getProp(rel,'信任度',0);
     const chaos=getProp(rel,'修罗场',0);const lv=getLevel(favor);
-
     let eqHtml='<div class="npc-grid">';
     const equip=getProp(npc,'着装',{});['头部','身体','足部','饰品','武器'].forEach(part=>{
       const item=equip[part]||{名称:'空置'};
       eqHtml+=`<div class="npc-g-card"><span class="npc-g-label">${part}</span><span class="npc-g-val" style="font-size:11px">${item.名称||'空置'}</span></div>`;
     });eqHtml+='</div>';
-
     let invHtml='';const nInv=getProp(npc,'背包',{});
     for(const[iName,iData]of Object.entries(nInv))invHtml+=`<div class="kv-row"><span>${iName}</span><span class="kv-v" style="color:var(--gold)">x${iData.数量||1} ${iData.描述||''}</span></div>`;
-
     let partsHtml='';['唇齿','双峰','双手','双足','幽谷','秘穴'].forEach(p=>{
       const pData=organs[p]||{开发度:'未开发',描述:'保持着原有的状态'};
       partsHtml+=`<div class="npc-g-card"><span class="npc-g-label">${p} · ${pData.开发度}</span><span class="npc-g-val" style="font-size:11px;font-weight:400;color:var(--muted)">${pData.描述}</span></div>`;
     });
-
     html+=`<div class="npc-card-w" style="${bgImg}"><div class="npc-bg" style="${bgImg}"></div>
       <div class="npc-head" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
         <div class="npc-name">${nName}<span class="npc-badge">${lv} · ${favor}</span></div>
@@ -319,32 +340,18 @@ window.picUpload=function(npcName){
   const input=document.createElement('input');input.type='file';input.accept='image/*';
   input.onchange=e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();
     reader.onload=ev=>{window.npcImageCache[npcName]=ev.target.result;try{localStorage.setItem('zzz_npc_bg_'+npcName,ev.target.result)}catch(e){}renderAll()};reader.readAsDataURL(file);};input.click();};
-window.delNpc=function(npcName){if(confirm('确定要移除NPC ['+npcName+'] 吗？')){if(typeof triggerSlash==='function')triggerSlash('/send 请移除NPC ['+npcName+']|/trigger');else alert('请手动移除: '+npcName);}};
-
-// ===== Modal =====
+window.delNpc=function(npcName){if(confirm('确定要移除NPC ['+npcName+'] 吗？')){queueAction('移除NPC ['+npcName+']','/send 请移除NPC ['+npcName+']|/trigger');}};
 window.closeModal=function(){document.getElementById('overlay').classList.remove('show');document.getElementById('pickModal').classList.remove('show');};
 window.currentPickCallback=null;
 window.showPickModal=function(title,items,callback){
   document.getElementById('pickTitle').textContent=title;
-  let html='';
-  if(items.length===0)html='<div class="nodata">暂无可用选项</div>';
-  else items.forEach((it,i)=>{
-    html+=`<div class="pick-item" onclick="selectPick(${i})">
-      <div class="pick-name">${it.name}</div>
-      <div class="pick-desc">${it.desc||''}</div>
-    </div>`;
-  });
+  let html='';if(items.length===0)html='<div class="nodata">暂无可用选项</div>';
+  else items.forEach((it,i)=>{html+=`<div class="pick-item" onclick="selectPick(${i})"><div class="pick-name">${it.name}</div><div class="pick-desc">${it.desc||''}</div></div>`;});
   document.getElementById('pickList').innerHTML=html;
-  window._pickItems=items;
-  window.currentPickCallback=callback;
-  document.getElementById('overlay').classList.add('show');
-  document.getElementById('pickModal').classList.add('show');
+  window._pickItems=items;window.currentPickCallback=callback;
+  document.getElementById('overlay').classList.add('show');document.getElementById('pickModal').classList.add('show');
 };
-window.selectPick=function(idx){
-  const item=window._pickItems[idx];
-  closeModal();
-  if(window.currentPickCallback)window.currentPickCallback(item);
-};
+window.selectPick=function(idx){const item=window._pickItems[idx];closeModal();if(window.currentPickCallback)window.currentPickCallback(item);};
 
 // ===== Tabs =====
 document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{
@@ -396,7 +403,6 @@ function renderAll(){
     document.getElementById('b-skill').textContent=getProp(sd,'邦布.装备技能',getProp(sd,'邦布.装备技能',''))||'-';
     document.getElementById('b-repair').textContent=getProp(sd,'邦布.维修状态',getProp(sd,'邦布.维修状态','-'));
     document.getElementById('b-mood').textContent=getProp(sd,'邦布.邦布心情',getProp(sd,'邦布.邦布心情','-'));
-    // Hero gear
     document.getElementById('h-gear-head').textContent=getProp(sd,'主角.着装.头部',getProp(sd,'主角.着装.头部',''))||'空置';
     document.getElementById('h-gear-body').textContent=getProp(sd,'主角.着装.身体',getProp(sd,'主角.着装.身体',''))||'空置';
     document.getElementById('h-gear-foot').textContent=getProp(sd,'主角.着装.足部',getProp(sd,'主角.着装.足部',''))||'空置';
@@ -404,7 +410,6 @@ function renderAll(){
     document.getElementById('h-combat-role').textContent=getProp(sd,'主角.战斗定位',getProp(sd,'主角.战斗定位',''))||'-';
     document.getElementById('h-ether-apt').textContent=getProp(sd,'主角.属性.以太适应性',getProp(sd,'主角.属性.以太适应性','-'));
     document.getElementById('h-mood').textContent=getProp(sd,'主角.当前情绪',getProp(sd,'主角.当前情绪','-'));
-    // Hero inventory
     const inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));
     const invContainer=document.getElementById('hero-inventory');
     let invHtml='';
@@ -425,68 +430,50 @@ function renderAll(){
   }catch(e){renderNPCs(null);renderFactions(null);renderBangbooGallery(null);renderOwnedBangboos(null)}
 }
 
-// ===== Hero inventory & gear editing =====
-function sendSlash(cmd){if(typeof triggerSlash==='function')triggerSlash(cmd);else console.log('Slash:',cmd)}
-
-// Pick gear from inventory items
+// ===== Inventory & gear editing (queued) =====
 window.pickGear=function(slot){
   const sd=window.cachedData;
   const inv=getProp(sd,'主角.背包',getProp(sd,'主角.背包',{}));
   const items=[{name:'卸下(空置)',desc:'移除当前装备'}];
-  if(typeof inv==='object'){
-    for(const[iName,iData]of Object.entries(inv)){
-      const qty=typeof iData==='object'?iData.数量||1:iData;
-      const desc=typeof iData==='object'?iData.描述||'':('x'+qty);
-      // Include all items - user can equip anything
-      items.push({name:iName,desc:desc});
-    }
-  }
+  if(typeof inv==='object'){for(const[iName,iData]of Object.entries(inv)){const qty=typeof iData==='object'?iData.数量||1:iData;const desc=typeof iData==='object'?iData.描述||'':('x'+qty);items.push({name:iName,desc:desc});}}
   showPickModal('选择着装 - '+slot,items,function(item){
-    if(item.name==='卸下(空置)'){
-      sendSlash('/setvar 主角.着装.'+slot+' null|/trigger');
-    }else{
-      sendSlash('/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger');
-    }
+    if(item.name==='卸下(空置)') queueAction('卸下'+slot+'装备','/setvar 主角.着装.'+slot+' null|/trigger');
+    else queueAction('装备'+item.name+'到'+slot,'/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'"')+'"|/trigger');
     setTimeout(renderAll,300);
   });
 };
-
 window.editHeroString=function(label,elId){
   const el=document.getElementById(elId);const cur=el.textContent==='-'?'':el.textContent;
-  const keyMap={战斗定位:'战斗定位',当前情绪:'当前情绪'};
-  const key=keyMap[label];if(!key)return;
+  const keyMap={战斗定位:'战斗定位',当前情绪:'当前情绪'};const key=keyMap[label];if(!key)return;
   const val=prompt('编辑'+label,cur);if(val===null)return;
-  sendSlash('/setvar 主角.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger');
+  queueAction('修改主角'+label+'为 '+val,'/setvar 主角.'+key+' "'+val.replace(/"/g,'"')+'"|/trigger');
   setTimeout(renderAll,300);
 };
 window.editHeroNumber=function(label,elId){
   const el=document.getElementById(elId);const cur=el.textContent==='-'?'':el.textContent;
-  const keyMap={以太适应性:'以太适应性'};
-  const key=keyMap[label];if(!key)return;
+  const keyMap={以太适应性:'以太适应性'};const key=keyMap[label];if(!key)return;
   const val=prompt('编辑'+label+' (0-100)',cur);if(val===null)return;
   const num=parseInt(val);if(isNaN(num)||num<0||num>100){alert('请输入0-100的数字');return}
-  sendSlash('/setvar 主角.'+key+' '+num+'|/trigger');
+  queueAction('修改主角'+label+'为 '+num,'/setvar 主角.'+key+' '+num+'|/trigger');
   setTimeout(renderAll,300);
 };
 window.addHeroItem=function(){
   const nameEl=document.getElementById('inv-new-name');const qtyEl=document.getElementById('inv-new-qty');
   const name=nameEl.value.trim();const qty=parseInt(qtyEl.value)||1;
-  if(!name)return;sendSlash('/setvar 主角.背包.'+name+' '+qty+'|/trigger');
+  if(!name)return;
+  queueAction('添加道具 '+name+' x'+qty,'/setvar 主角.背包.'+name+' '+qty+'|/trigger');
   nameEl.value='';qtyEl.value='1';setTimeout(renderAll,300);
 };
 window.editHeroItem=function(name,qty){
   const newName=prompt('物品名',name);if(!newName)return;
   const newQty=parseInt(prompt('数量',qty))||0;
-  if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？'))sendSlash('/setvar 主角.背包.'+newName+' null|/trigger');}
-  else sendSlash('/setvar 主角.背包.'+newName+' '+newQty+'|/trigger');
+  if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？'))queueAction('删除道具 '+newName,'/setvar 主角.背包.'+newName+' null|/trigger');}
+  else queueAction('修改道具 '+newName+' 数量为 '+newQty,'/setvar 主角.背包.'+newName+' '+newQty+'|/trigger');
   setTimeout(renderAll,300);
 };
 
-// ===== Factions rendering =====
-function getFactionTitle(v){
-  if(v<=-51)return '仇敌';if(v<=-11)return '冷淡';if(v<=10)return '陌生人';
-  if(v<=50)return '朋友';if(v<=80)return '盟友';return '至交';
-}
+// ===== Factions =====
+function getFactionTitle(v){if(v<=-51)return '仇敌';if(v<=-11)return '冷淡';if(v<=10)return '陌生人';if(v<=50)return '朋友';if(v<=80)return '盟友';return '至交';}
 function renderFactions(data){
   const fc=document.getElementById('faction-container');
   if(!data){fc.innerHTML='<div class="nodata">暂无阵营数据</div>';return}
@@ -514,7 +501,7 @@ function renderFactions(data){
   fc.innerHTML=html||'<div class="nodata">暂无阵营数据</div>';
 }
 
-// ===== Owned Bangboos (from variable data) =====
+// ===== Bangboos =====
 function renderOwnedBangboos(data){
   const list=document.getElementById('owned-bangboo-list');
   const owned=getProp(data,'邦布.拥有的邦布',getProp(data,'bangboo.拥有的邦布',[]));
@@ -533,8 +520,6 @@ function renderOwnedBangboos(data){
   });
   list.innerHTML=html;
 }
-
-// ===== Bangboo Gallery (all reference) =====
 function renderBangbooGallery(data){
   const gallery=document.getElementById('bangboo-gallery');
   const owned=getProp(data,'邦布.拥有的邦布',getProp(data,'bangboo.拥有的邦布',[]));
@@ -551,24 +536,17 @@ function renderBangbooGallery(data){
   });
   gallery.innerHTML=html;
 }
-
 window.swapBangboo=function(name){
   if(confirm('确定要将邦布伙伴替换为 「'+name+'」 吗？')){
-    sendSlash('/setvar 邦布.邦布伙伴 ["'+name+'"]|/trigger');
+    queueAction('切换邦布伙伴为 '+name,'/setvar 邦布.邦布伙伴 ["'+name+'"]|/trigger');
     setTimeout(renderAll,300);
   }
 };
-
 window.addBangboo=function(){
-  const nameEl=document.getElementById('bb-new-name');
-  const factionEl=document.getElementById('bb-new-faction');
-  const skillEl=document.getElementById('bb-new-skill');
-  const name=nameEl.value.trim();
-  if(!name)return;
-  // Add to owned list
-  sendSlash('/setvar 邦布.拥有的邦布 add "'+name+'"|/trigger');
-  nameEl.value='';factionEl.value='';skillEl.value='';
-  setTimeout(renderAll,300);
+  const nameEl=document.getElementById('bb-new-name');const factionEl=document.getElementById('bb-new-faction');const skillEl=document.getElementById('bb-new-skill');
+  const name=nameEl.value.trim();if(!name)return;
+  queueAction('添加邦布 '+name,'/setvar 邦布.拥有的邦布 add "'+name+'"|/trigger');
+  nameEl.value='';factionEl.value='';skillEl.value='';setTimeout(renderAll,300);
 };
 
 renderAll();
