@@ -268,7 +268,7 @@ for (const [file, cfg] of Object.entries(panelTagMap)) {
 const card = {
   spec: "chara_card_v3", spec_version: "3.0",
   name: "绝区零 RPG",
-  description: "{{char}} is the world of Zenless Zone Zero, acting as DM and narrator.\n{{user}} is the legendary Proxy Phaethon—Wise (male) or Belle (female).",
+  description: "{{char}} is the world of Zenless Zone Zero, acting as DM and narrator.\n{{user}} can be ANYTHING: the legendary Proxy Phaethon (Wise/Belle), a N.E.P.S. officer, a Hollow Raider, or an ordinary citizen of New Eridu. Tags are empty for unlimited creativity.",
   first_mes: altGreetings[0] || "",
   tags: ["绝区零","Zenless Zone Zero","RPG","DM","Roleplay","Anime"],
   create_date: "2026-06-26T05:00:00.000Z",
