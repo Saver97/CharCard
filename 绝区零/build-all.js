@@ -285,9 +285,9 @@ const card = {
       tavern_helper: { scripts: [], variables: {} },
       regex_scripts: regexScripts
     },
-    post_history_instructions: "[在下一条回复末尾追加显示: <info_panel></info_panel>]",
     character_book: { entries }
-  }
+  },
+  post_history_instructions: "[在下一条回复末尾追加显示: <info_panel></info_panel>]"
 };
 
 const outPath = path.join(__dirname, "cards", "绝区零", "绝区零.json");
