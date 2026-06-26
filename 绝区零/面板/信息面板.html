@@ -363,6 +363,7 @@ function renderAll(){
       }
     }else{invHtml='<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>'}
     invContainer.innerHTML=invHtml;
+    renderFactions(sd);
     renderNPCs(sd);
     document.getElementById('refreshBadge').textContent='● 已连接';
     document.getElementById('refreshBadge').style.color='var(--green)';
@@ -409,6 +410,54 @@ window.editHeroItem=function(name,qty){
   setTimeout(renderAll,300);
 };
 window.delHeroItem=function(){};
+
+// ===== Factions rendering with demo data =====
+const DEMO_FACTIONS = {
+  狡兔屋: { val: 45, title: "值得信赖的常客", quest: true },
+  对空六课: { val: 10, title: "陌生人", quest: false },
+  白祇重工: { val: 20, title: "朋友", quest: true },
+  维多利亚家政: { val: 30, title: "朋友", quest: false },
+  卡吕冬之子: { val: 15, title: "朋友", quest: false },
+  治安局: { val: -5, title: "陌生人", quest: false },
+  天琴座: { val: 5, title: "陌生人", quest: true },
+  云岿山: { val: 0, title: "陌生人", quest: false }
+};
+function getFactionTitle(v){
+  if(v<=-51)return '仇敌';if(v<=-11)return '冷淡';if(v<=10)return '陌生人';
+  if(v<=50)return '朋友';if(v<=80)return '盟友';return '至交';
+}
+function renderFactions(data){
+  const fc=document.getElementById('faction-container');
+  let factions=data?{}:{};
+  if(!data){
+    factions=DEMO_FACTIONS;
+  }else{
+    const FNS=['狡兔屋','对空六课','白祇重工','维多利亚家政','卡吕冬之子','治安局','天琴座','云岿山'];
+    FNS.forEach(f=>{
+      const val=getProp(data,'factions.'+f,0);
+      const title=getProp(data,'factions.'+f+'_称号','')||getFactionTitle(val);
+      const quest=getProp(data,'factions.'+f+'_委托',false);
+      factions[f]={val,title,quest};
+    });
+  }
+  let html='';
+  for(const [name,f] of Object.entries(factions)){
+    const fill=Math.abs(f.val);const isNeg=f.val<0;
+    const barColor=isNeg?'var(--danger)':'var(--green)';
+    // Map -100..100 to 0..100% for visual fill (use 50 as neutral)
+    const visualPct=Math.max(0,Math.min(100,((f.val+100)/2)|0));
+    html+=`<div style="margin-bottom:10px;border-bottom:1px dashed rgba(255,255,255,.04);padding-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span style="font-size:13px;font-weight:600;color:var(--text)">${name}</span>
+        <span style="font-size:11px;color:var(--muted)">${f.title} · ${f.val} ${f.quest?'🟢':'⚪'}</span>
+      </div>
+      <div style="height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden">
+        <div style="height:100%;width:${visualPct}%;background:${barColor};border-radius:3px;transition:width .5s"></div>
+      </div>
+    </div>`;
+  }
+  fc.innerHTML=html||'<div class="nodata">暂无阵营数据</div>';
+}
 
 renderAll();
 if(typeof eventOn==='function'&&typeof Mvu!=='undefined'){try{eventOn(Mvu.events.VARIABLE_UPDATE_ENDED,()=>{setTimeout(renderAll,200)})}catch(e){}}
