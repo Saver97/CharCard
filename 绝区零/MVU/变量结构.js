@@ -107,7 +107,7 @@ export const Schema = z.object({
     }).prefault({}),
     过往经历: z.string().or(z.literal('')).prefault(''),
     容貌身材: z.string().or(z.literal('')).prefault(''),
-    着装: z.record(z.enum(['头部','身体','足部','饰品','武器']), z.object({
+     着装: z.record(z.enum(['上衣','下装','内衣','内裤','鞋子','饰品']), z.object({
       名称: z.string().or(z.literal('空置')).prefault('空置'),
       品质: z.string().or(z.literal('普通')).prefault('普通'),
       描述: z.string().or(z.literal('')).prefault('')
