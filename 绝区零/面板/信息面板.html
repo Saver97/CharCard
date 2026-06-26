@@ -443,9 +443,9 @@ window.pickGear=function(slot){
   }
   showPickModal('选择着装 - '+slot,items,function(item){
     if(item.name==='卸下(空置)'){
-      sendSlash('/setvar protagonist.着装.'+slot+' null|/trigger');
+      sendSlash('/setvar 主角.着装.'+slot+' null|/trigger');
     }else{
-      sendSlash('/setvar protagonist.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger');
+      sendSlash('/setvar 主角.着装.'+slot+' "'+item.name.replace(/"/g,'\\"')+'"|/trigger');
     }
     setTimeout(renderAll,300);
   });
@@ -456,7 +456,7 @@ window.editHeroString=function(label,elId){
   const keyMap={战斗定位:'战斗定位',当前情绪:'当前情绪'};
   const key=keyMap[label];if(!key)return;
   const val=prompt('编辑'+label,cur);if(val===null)return;
-  sendSlash('/setvar protagonist.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger');
+  sendSlash('/setvar 主角.'+key+' "'+val.replace(/"/g,'\\"')+'"|/trigger');
   setTimeout(renderAll,300);
 };
 window.editHeroNumber=function(label,elId){
@@ -465,20 +465,20 @@ window.editHeroNumber=function(label,elId){
   const key=keyMap[label];if(!key)return;
   const val=prompt('编辑'+label+' (0-100)',cur);if(val===null)return;
   const num=parseInt(val);if(isNaN(num)||num<0||num>100){alert('请输入0-100的数字');return}
-  sendSlash('/setvar protagonist.'+key+' '+num+'|/trigger');
+  sendSlash('/setvar 主角.'+key+' '+num+'|/trigger');
   setTimeout(renderAll,300);
 };
 window.addHeroItem=function(){
   const nameEl=document.getElementById('inv-new-name');const qtyEl=document.getElementById('inv-new-qty');
   const name=nameEl.value.trim();const qty=parseInt(qtyEl.value)||1;
-  if(!name)return;sendSlash('/setvar protagonist.背包.'+name+' '+qty+'|/trigger');
+  if(!name)return;sendSlash('/setvar 主角.背包.'+name+' '+qty+'|/trigger');
   nameEl.value='';qtyEl.value='1';setTimeout(renderAll,300);
 };
 window.editHeroItem=function(name,qty){
   const newName=prompt('物品名',name);if(!newName)return;
   const newQty=parseInt(prompt('数量',qty))||0;
-  if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？'))sendSlash('/setvar protagonist.背包.'+newName+' null|/trigger');}
-  else sendSlash('/setvar protagonist.背包.'+newName+' '+newQty+'|/trigger');
+  if(newQty<=0){if(confirm('删除物品 ['+newName+'] ？'))sendSlash('/setvar 主角.背包.'+newName+' null|/trigger');}
+  else sendSlash('/setvar 主角.背包.'+newName+' '+newQty+'|/trigger');
   setTimeout(renderAll,300);
 };
 
@@ -554,7 +554,7 @@ function renderBangbooGallery(data){
 
 window.swapBangboo=function(name){
   if(confirm('确定要将邦布伙伴替换为 「'+name+'」 吗？')){
-    sendSlash('/setvar bangboo.邦布伙伴 ["'+name+'"]|/trigger');
+    sendSlash('/setvar 邦布.邦布伙伴 ["'+name+'"]|/trigger');
     setTimeout(renderAll,300);
   }
 };
@@ -566,7 +566,7 @@ window.addBangboo=function(){
   const name=nameEl.value.trim();
   if(!name)return;
   // Add to owned list
-  sendSlash('/setvar bangboo.拥有的邦布 add "'+name+'"|/trigger');
+  sendSlash('/setvar 邦布.拥有的邦布 add "'+name+'"|/trigger');
   nameEl.value='';factionEl.value='';skillEl.value='';
   setTimeout(renderAll,300);
 };

@@ -1,4 +1,4 @@
-const fs = require("fs");
+﻿const fs = require("fs");
 const path = require("path");
 const mvu = require("./MVU/index.js");
 const B = path.join(__dirname, "cards", "绝区零", "世界书");
