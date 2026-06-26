@@ -18,8 +18,9 @@ fs.mkdirSync(path.join(__dirname, "开场白"), { recursive: true });
 
 const W = (f, c) => fs.writeFileSync(path.join(B, f), c, "utf8");
 
-// ====== START CONTENT ======
+// ====== ALL CONTENT ======
 
+// Worldview Core
 W("世界观核心/新艾利都.yaml",`---\nname: 新艾利都\ntitle: 最后的都市\noverview:\n  - 旧文明被空洞毁灭后，人类最后的幸存者都市。\n  - 掌握了从空洞中提取以太资源的技术，都市繁荣高度依赖空洞工业化。\n  - 逐渐滋生了财阀垄断、帮派割据、阴谋家和狂热信徒的暗流。\ntechnology:\n  - 主流: 模拟信号时代美学，磁带未来主义（Cassette Futurism），2000年代初风格\n  - 能源: 以太（Ether）——仅在空洞中产生的万能资源\n  - 式舆柱网络: 立柱与地下管道组成，从大型空洞汲取以太，结晶后转化为电力\npopulation:\n  - 人类: ~70%\n  - 希人（Thiren，半兽/亚人）: ~20%\n  - 其他幻想种（精灵、鬼族、吸血鬼等）及智能构造体/赛博格: ~10%\nlanguage: 中文为主，英文为辅（旧文明残留）`);
 W("世界观核心/空洞.yaml",`---\nname: 空洞\ndescription:\n  - 凭空出现的异常球形空间，内部时空紊乱无序。\n  - 充满名为"以太"的神秘物质，既是资源也具侵蚀性。\ntypes:\n  - 零号空洞: 一切空洞的母本，规模最大、等级最高。引发了"旧都陷落"事件\n  - 原生空洞: 六个大型空洞，环境复杂，以骸强大\n  - 伴生空洞: 从大型空洞衍生的小规模空洞，危险程度较低`);
 W("世界观核心/以太.yaml",`---\nname: 以太\nclassification: 仅存在于空洞中的万能资源\ncharacteristics:\n  - 可转化为多种形态，空洞内常见固态结晶\n  - 具有强烈侵蚀性，对生命体尤甚\n  - 最佳"开采"方式是在空洞中击杀敌人\n  - 开采作业极度危险\ncorruption:\n  - 以太适应性（Ether Aptitude）: 0-100分\n  - 低于50分者禁止进入空洞\n  - 长期暴露导致认知衰退、器官晶体化，最终异变为以骸`);
@@ -41,19 +42,84 @@ W("地理与势力/澄辉坪.yaml",`---\nname: 澄辉坪（Failume Heights）\nd
 W("地理与势力/热望角.yaml",`---\nname: 热望角（Reverb Arena）\ndescription: 地下管道改造的开放式娱乐场所`);
 W("地理与势力/厄匹斯港与星环.yaml",`---\nname: 厄匹斯港与星环电视塔\nlocations:\n  厄匹斯港: 旧都陷落时转运枢纽，有海神雕像可许愿\n  星环电视塔: 新艾利都地标，顶部流光大厅可升空`);
 
-// Factions
-W("阵营章节/狡兔屋.yaml",`---\nname: 狡兔屋（Cunning Hares）\nmembers: [妮可·德玛拉, 安比·德玛拉, 比利·奇德, 猫宫又奈]\ninfo: 微型人力资源派遣社，财务长期赤字。原名"温柔之家"`);
-W("阵营章节/对空六课.yaml",`---\nname: 对空六课（H.S.O.S.6）\nmembers: [星见雅, 月城柳, 苍角, 浅羽悠真]\ninfo: H.A.N.D.下属武装力量，徽章为六指手`);
-W("阵营章节/白祇重工.yaml",`---\nname: 白祇重工（Belobog Heavy Industries）\nmembers: [珂蕾妲, 格莉丝, 本·比格, 安东]\ninfo: 前顶尖建筑公司，约80%员工为熊希人`);
-W("阵营章节/维多利亚家政.yaml",`---\nname: 维多利亚家政（Victoria Housekeeping Co.）\nmembers: [冯·莱卡恩, 丽娜, 艾莲·乔, 可琳·威克斯]\ninfo: 高端家政公司，实际由梅弗劳尔市长组建处理纠纷`);
-W("阵营章节/卡吕冬之子.yaml",`---\nname: 卡吕冬之子（Sons of Calydon）\nmembers: [凯撒·金, 露西, 派派·韦尔, 柏妮思·怀特, 莱特, 波可娜]\ninfo: 外环机车族，口号"我来，我见，我撞飞！"`);
-W("阵营章节/治安局.yaml",`---\nname: 新艾利都治安局（N.E.P.S.）\nmembers: [朱鸢, 青衣, 赛斯·洛威尔, 简·杜]\ninfo: 刑侦特勤组以四象为原型。内鬼: 贾斯汀·布林格`);
+// Factions with character summaries merged
+const factionDefs = {
+  "狡兔屋": {
+    name: "狡兔屋（Cunning Hares）",
+    info: "微型人力资源派遣社，财务长期赤字。原名\\\"温柔之家\\\"。承接各类空洞委托，对新艾利都底层生态极为熟悉。",
+    members: "妮可·德玛拉（创始人/老大）、安比·德玛拉（成员）、比利·奇德（成员）、猫宫又奈（成员）"
+  },
+  "对空六课": {
+    name: "对空六课（H.S.O.S.6）",
+    info: "H.A.N.D.下属精锐武装力量，徽章为六指手。负责处理最高级别的空洞灾害与异常事件，拥有虚狩级战力。",
+    members: "星见雅（课长/狐希人/最年轻虚狩）、月城柳（副课长/粉发眼镜娘）、苍角（执行官/鬼族）、浅羽悠真（斥候）"
+  },
+  "白祇重工": {
+    name: "白祇重工（Belobog Heavy Industries）",
+    info: "前顶尖建筑公司，约80%员工为熊希人。拥有庞大的工程机械资源，在空洞周边区域的建设与维护中占据垄断地位。",
+    members: "珂蕾妲·贝洛伯格（社长/火爆直率）、格莉丝·霍华德（机械顾问/拆解狂魔）、本·比格（会计/熊希人）、安东·伊万诺夫（工程现场负责人/热血坦率）"
+  },
+  "维多利亚家政": {
+    name: "维多利亚家政（Victoria Housekeeping Co.）",
+    info: "表面为高端家政公司，实际由梅弗劳尔市长组建，用于处理城市内的纠纷、暗杀与保卫任务。成员战斗能力极强。",
+    members: "冯·莱卡恩（白狼希人执事/理性优雅）、丽娜（女仆长/飘浮移动）、艾莲·乔（鲨希人女仆/学生/慵懒）、可琳·威克斯（胆小女仆/挥舞巨大电锯）"
+  },
+  "卡吕冬之子": {
+    name: "卡吕冬之子（Sons of Calydon）",
+    info: "外环机车族，口号\\\"我来，我见，我撞飞！\\\"。通过火狱骑行竞速决出霸主地位，控制外环地区的物资运输与武力秩序。",
+    members: "凯撒·金（首领/豪爽直率）、露西（军师/傲娇大小姐）、派派·韦尔（卡车司机/极端慵懒）、柏妮思·怀特（燃油调配师/重度猫奴）、莱特（常胜冠军/晕血）、波可娜·费雷尼（猫希人佣兵/傲娇）"
+  },
+  "治安局": {
+    name: "新艾利都治安局（N.E.P.S.）",
+    info: "新艾利都官方警察力量。刑侦特勤组以四象（朱雀/青龙/白虎/玄武）为原型组建，专攻涉空洞刑事案件。内鬼贾斯汀·布林格已被发现。",
+    members: "朱鸢（组长/朱雀/完美主义）、青衣（钰偶智能构造体/青龙）、赛斯·洛威尔（猫希人巡查/白虎/热血老实人）、简·杜（卧底专家/玄武/百变欺诈师）"
+  },
+  "天琴座": {
+    name: "天琴座（Astra）",
+    info: "以耀嘉音为核心的音乐团体。掌握广泛的媒体资源与粉丝网络，是公众情报渠道的重要节点。",
+    members: "耀嘉音（第一歌姬/舞台女王）、伊芙琳·舒瓦利耶（经纪人兼保镖/冷静高效）"
+  },
+  "云岿山": {
+    name: "云岿山（Yunkui Mountain）",
+    info: "道教宗门，拥有虚狩级战力。\\\"随便观\\\"为其山下经营的道观兼茶馆，是收集情报与结交各方势力的据点。",
+    members: "仪玄（门主/冷艳腹黑/虚狩级战力）、橘福福（虎希人大师姐/元气）、潘引壶（熊猫希人厨师兼财务）、叶释渊（智囊型弟子/已云游）"
+  },
+  "反舌鸟": {
+    name: "反舌鸟（Mockingbird）",
+    info: "神秘的怪盗组织，劫富济贫。行动风格华丽高调，专门窃取财阀与腐败官员的财富，在民间声望极高。",
+    members: "雨果·维拉德（首领/吸血鬼）、薇薇安·班希（成员/报丧女妖/崇拜法厄同）"
+  },
+  "奥波勒斯小队": {
+    name: "防卫军 & 奥波勒斯小队（Obolus Squad）",
+    info: "防卫军现仅存黑曜石营。奥波勒斯小队为其下属特殊作战单位，格言\\\"予生者安眠，为死者代言\\\"。",
+    members: "鬼火（队长/意识附着于队员尾炮）、奥菲丝（队员）、11号（原白银军克隆人/极端嗜辣）、扳机（狙击手/双目失明/以太感知极强）、席德（重型机甲驾驶员/天然疯）"
+  },
+  "怪啖屋": {
+    name: "怪啖屋（Strange Eatery）",
+    info: "以怪谈论坛为核心的组织，成员分散在各地，专注于收集和验证都市传说、空洞怪谈与超常现象。",
+    members: "浮波柚叶（腹黑恶作剧少女/随身狸猫）、爱丽丝（兔希人大小姐/对称强迫症）、狛野真斗（犬希人肌肉男/忠诚）、卢西娅（羊希人守夜人/以骸控）、伊德海莉（章鱼希人/可回溯过去影像）"
+  },
+  "黑枝": {
+    name: "坎卜斯黑枝（Black Branch of Krampus）",
+    info: "TOPS财团内部清算组织，负责处理财团叛徒与实验废料。行事残忍高效，不留痕迹。",
+    members: "照（兔希人裁决官/最矮代理人）、琉音（成员/能聆听死者回声）、般岳（机械狮子武馆馆主）"
+  },
+  "妄想天使": {
+    name: "妄想天使（AOD）",
+    info: "地下偶像团体，拥有狂热粉丝群。成员均接受过不同程度的幻器改造，舞台表演即是战斗模式。",
+    members: "南宫羽（队长/植入翅膀使用流星锤）、爱芮（智能构造体主唱）、千夏（作曲/害羞社恐/崇拜耀嘉音）"
+  }
+};
+
+Object.entries(factionDefs).forEach(([key, def]) => {
+  W("阵营章节/" + key + ".yaml", `---\nname: ${def.name}\nmembers: ${def.members}\ninfo: ${def.info}`);
+});
 W("阵营章节/防卫军与奥波勒斯小队.yaml",`---\nname: 防卫军 & 奥波勒斯小队\nmembers: [鬼火, 11号, 扳机, 席德, 奥菲丝]\ninfo: 现仅存黑曜石营。格言"予生者安眠，为死者代言"`);
 W("阵营章节/HAND与HIA.yaml",`---\nname: H.A.N.D. & H.I.A.\norganizations:\n  H.A.N.D.: 武装部门，下设H.S.O.S.\n  H.I.A.: 空洞调查协会，运营HIA俱乐部`);
 W("阵营章节/称颂会与TOPS.yaml",`---\nname: 称颂会（The Order）\ninfo: 崇拜空洞的宗教狂热组织，通过灵药P07制造牺牲\nkey_figures: [莎拉, 布林格, 造物主, 司教梅若拉可]\n---\nname: TOPS财团联合\nmembers: [埃德蒙, 圣林, 高志金融, 乔纳森集团, 三门集团, 锈崖, 拉文洛克家族]`);
 W("阵营章节/其他组织.yaml",`---\nname: 其他组织\norganizations:\n  反舌鸟: 怪盗组织劫富济贫\n  云岿山: 道教宗门\n  天琴座: 音乐团体\n  妄想天使: 地下偶像\n  怪啖屋: 怪谈论坛\n  坎卜斯黑枝: TOPS内部清算组织\n  怀斯塔学会: 以太技术研究`);
 
-// Characters (simplified)
+// Characters
 const chars = {
   "法厄同线/哲":`---\nname: 哲\ngender: male\nrole: 法厄同（兄），Random Play店主\nappearance: 灰色短发墨绿眼瞳\npersonality: 冷静聪慧妹控，耀嘉音粉丝\nbehaviors: 收藏球鞋有洁癖，外出下拉面`,
   "法厄同线/铃":`---\nname: 铃\ngender: female\nrole: 法厄同（妹）\nappearance: 深蓝短发墨绿眼瞳\npersonality: 元气开朗兄控，吃货\nbehaviors: 深夜弹电吉他，房间乱`,
@@ -116,13 +182,12 @@ const chars = {
 };
 Object.entries(chars).forEach(([k,v])=>W("关键人物/"+k+".yaml", v));
 
-// ====== MVU（由面板生成）======
+// ====== MVU ======
 const panels = mvu.loadAllPanels();
 W("MVU/变量列表.yaml", mvu.generateVariableList());
 W("MVU/初始变量.yaml", mvu.generateInitYAML(panels));
 W("MVU/变量更新规则.yaml", mvu.generateUpdateRules(panels));
 W("MVU/变量输出格式.yaml", mvu.generateOutputFormat());
-// 生成每个面板的触发词YAML条目（含name和triggers）
 const panelEntries = mvu.generatePanelEntries(panels);
 panelEntries.forEach(pe => {
   const safeName = pe.fileName.replace(/[()【】]/g, '').replace(/[\s]+/g, '_');
@@ -138,7 +203,6 @@ W("时间线/历史沿革.yaml",`---\nname: 历史沿革\nevents:\n  - 旧文明
 W("时间线/剧情节点.yaml",`---\nname: 剧情节点\nchapters:\n  - "序章·法厄同": Fairy苏醒\n  - "第一章·远景案": 远景实业阴谋\n  - "第二章·白祇重工": 失控工程机械\n  - "第三章·维多利亚家政": 飞艇劫持\n  - "第四章·外环": 火狱骑行\n  - "第五章·落星风暴": 布林格之乱\n  - "星间日·天琴座": 星环塔演唱会\n  - "2.0·云岿山篇": 随便观重建`);
 
 // ====== OPENINGS ======
-// 统一入口：角色创建面板
 fs.writeFileSync(path.join(__dirname, "开场白/0.txt"), "<character_creation></character_creation>", "utf8");
 
 // ====== BUILD FINAL JSON ======
@@ -155,11 +219,9 @@ function addYamlDir(dir) {
       const parts = rel.split('/');
       const folder = parts[0];
       const isConst = folder === '扮演准则' || folder === '时间线';
-      const isDepth = folder === 'MVU';
       const keys = [];
       const km = content.match(/name:\s*(.+)/m);
       if (km) keys.push(km[1].trim());
-      // MVU 条目不提取触发词（仅常量注入，避免对话误触发）
       if (folder !== 'MVU') {
         const triggerSection = content.match(/triggers:\n((?:\s+- "[^"]*"\n?)*)/);
         if (triggerSection) {
@@ -169,14 +231,12 @@ function addYamlDir(dir) {
           }
         }
       }
-      // 本 (Ben) 单独设置为 after_char，其余均为 before_char
-      const isBen = f.name === '本.yaml';
       entries.push({
         id: uid, keys, secondary_keys: [], comment: f.name.replace('.yaml',''),
         content, constant: true, selective: true, insertion_order: 0, enabled: true,
-        position: isBen ? 'after_char' : 'before_char', use_regex: true,
+        position: 'before_char', use_regex: true,
         extensions: {
-          position: isBen ? 1 : 0, exclude_recursion: false, display_index: uid,
+          position: 0, exclude_recursion: false, display_index: uid,
           probability: 100, useProbability: true, depth: 4, selectiveLogic: 0,
           outlet_name: '', group: folder, group_override: false, group_weight: 100,
           prevent_recursion: isConst, delay_until_recursion: false,
@@ -199,7 +259,6 @@ const opDir = path.join(__dirname, "开场白");
 const altGreetings = fs.readdirSync(opDir).filter(f=>f.endsWith('.txt')).sort()
   .map(f=>fs.readFileSync(path.join(opDir,f),'utf8'));
 
-// Add the Phaethon switch entry (role=2 for character filter)
 const switchEntry = {
   id: uid, keys: [], secondary_keys: [], comment: '【开关】是否为"法厄同"',
   content: '当{{user}}为男性，则{{user}}扮演的为"哲"，所有关于{{user}}的名称都使用"哲"来代替。且Fairy会称呼{{user}}为主人，称呼"铃"为"助手2号"，且你不允许也不该代替{{user}}发言。\n\n当{{user}}为女性，则{{user}}扮演的为"铃"，所有关于{{user}}的名称都使用"铃"来代替。且Fairy会称呼{{user}}为主人，称呼"哲"为"助手2号"，且你不允许也不该代替{{user}}发言。',
@@ -221,7 +280,7 @@ const switchEntry = {
 };
 entries.push(switchEntry);
 
-// ====== Build regex_scripts from panel HTML files ======
+// ====== Build regex_scripts ======
 const PANEL_DIR = path.join(__dirname, "面板");
 const panelTagMap = {
   "角色创建面板.html": { tag: "character_creation", name: "初始化面板-角色创建" },
@@ -233,7 +292,6 @@ for (const [file, cfg] of Object.entries(panelTagMap)) {
   const fp = path.join(PANEL_DIR, file);
   if (!fs.existsSync(fp)) continue;
   const html = fs.readFileSync(fp, "utf8");
-  // character_creation 为完整标签形式，StatusPlaceHolderImpl 用自闭合简写
   const regex = cfg.tag === "StatusPlaceHolderImpl"
     ? "<" + cfg.tag + "/>"
     : "<" + cfg.tag + ">[\\s\\S]*?<\\/" + cfg.tag + ">";
@@ -254,7 +312,6 @@ for (const [file, cfg] of Object.entries(panelTagMap)) {
   });
 }
 
-// 添加隐藏变量更新的脚本
 regexScripts.push({
   id: "zzz-hide-update",
   scriptName: "隐藏变量更新",
@@ -273,7 +330,6 @@ regexScripts.push({
 
 const schemaFile = path.join(__dirname, "MVU", "变量结构.js");
 const schemaContent = fs.readFileSync(schemaFile, "utf8");
-const schemaJsonEscaped = JSON.stringify(schemaContent);
 
 const card = {
   spec: "chara_card_v3", spec_version: "3.0",
@@ -306,7 +362,7 @@ const card = {
             content: "import 'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate/artifact/bundle.js';",
             info: "", button: { enabled: true, buttons: [{ name: "重新处理变量", visible: false }, { name: "重新读取初始变量", visible: false }, { name: "快照楼层", visible: false }, { name: "重演楼层", visible: false }, { name: "重试额外模型解析", visible: false }, { name: "清除旧楼层变量", visible: false }] },
             data: {}, export_with: { data: true, button: true }
-          },  
+          },
           {
             type: "script", enabled: true, name: "变量结构",
             id: "zzz-schema",
