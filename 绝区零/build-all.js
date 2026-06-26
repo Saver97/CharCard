@@ -235,9 +235,9 @@ function addYamlDir(dir) {
       entries.push({
         id: uid, keys, secondary_keys: [], comment: f.name.replace('.yaml',''),
         content, constant: true, selective: true, insertion_order: 0, enabled: true,
-        position: 'before_char', use_regex: true,
+        position: isMvu ? 'after_char' : 'before_char', use_regex: true,
         extensions: {
-          position: 0, exclude_recursion: false, display_index: uid,
+          position: isMvu ? 4 : 0, exclude_recursion: false, display_index: uid,
           probability: 100, useProbability: true, depth: isMvu ? 2 : 4, selectiveLogic: 0,
           outlet_name: '', group: folder, group_override: false, group_weight: 100,
           prevent_recursion: isConst, delay_until_recursion: false,
