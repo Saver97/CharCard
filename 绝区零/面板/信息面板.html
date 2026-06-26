@@ -255,9 +255,8 @@ window.selectPick=function(idx){window.closeModal();if(window.currentPickCallbac
 document.querySelectorAll('.tab-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active')})});
 
 // ===== Rendering =====
-function loadNpcBgCache(){try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_')){window.npcImageCache[k.replace('zzz_npc_bg_','')]=localStorage.getItem(k)}}}catch(e){}}
+function loadNpcBgCache(npcs){if(!npcs)return;try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_')){var npcName=k.replace('zzz_npc_bg_','');if(npcs[npcName]!==undefined)window.npcImageCache[npcName]=localStorage.getItem(k)}}}catch(e){}}
 function clearNpcBgCache(){window.npcImageCache={};try{var keysToRemove=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.startsWith('zzz_npc_bg_'))keysToRemove.push(k)}keysToRemove.forEach(function(k){localStorage.removeItem(k)})}catch(e){}}
-// 不要在这里调用 loadNpcBgCache，由 renderAll 按需加载
 
 function renderAll(){
   try{
@@ -267,7 +266,7 @@ function renderAll(){
     if(!sd){renderFactions(null);renderNPCs(null);renderBangbooGallery(null);renderOwnedBangboos(null);document.getElementById('refreshBadge').textContent='○ 等待数据';document.getElementById('refreshBadge').style.color='var(--muted)';clearNpcBgCache();return}
     // 按需加载底图：NPCs 为空时清空缓存，否则加载
     var npcs=getProp(sd,'NPCs',null);
-    if(!npcs||typeof npcs!=='object'||Object.keys(npcs).length===0){clearNpcBgCache()}else{loadNpcBgCache()}
+    if(!npcs||typeof npcs!=='object'||Object.keys(npcs).length===0){clearNpcBgCache()}else{loadNpcBgCache(npcs)}
     document.getElementById('w-time').textContent=getProp(sd,'世界.当前时间','-');
     document.getElementById('w-loc').textContent=getProp(sd,'世界.当前地点','-');
     document.getElementById('w-chapter').textContent=getProp(sd,'世界.当前章节','-');
