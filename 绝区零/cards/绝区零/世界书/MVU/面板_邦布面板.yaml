@@ -9,12 +9,12 @@ triggers:
   - "bangboo"
 description: "伊埃斯电量与当前携带邦布"
 variables:
-  bangboo.伊埃斯电量: { type: "number", default: 100, desc: "0~100%，低于20%无法进入空洞" }
-  bangboo.邦布伙伴: { type: "array", default: ["伊埃斯"], desc: "当前携带的邦布列表" }
-  bangboo.装备技能: { type: "string", default: "", desc: "当前邦布装备的技能/芯片名称" }
-  bangboo.维修状态: { type: "string", default: "正常", desc: "正常/需维护/故障" }
-  bangboo.邦布心情: { type: "string", default: "开心", desc: "邦布情绪：开心/疲惫/闹脾气/兴奋/想偷懒" }
-  bangboo.拥有的邦布: { type: "array", default: ["伊埃斯"], desc: "已获取/拥有的所有邦布列表(含技能描述), 替换邦布时从这里选" }
+  邦布.伊埃斯电量: { type: "number", default: 100, desc: "0~100%，低于20%无法进入空洞" }
+  邦布.邦布伙伴: { type: "array", default: ["伊埃斯"], desc: "当前携带的邦布列表" }
+  邦布.装备技能: { type: "string", default: "", desc: "当前邦布装备的技能/芯片名称" }
+  邦布.维修状态: { type: "string", default: "正常", desc: "正常/需维护/故障" }
+  邦布.邦布心情: { type: "string", default: "开心", desc: "邦布情绪：开心/疲惫/闹脾气/兴奋/想偷懒" }
+  邦布.拥有的邦布: { type: "array", default: ["伊埃斯"], desc: "已获取/拥有的所有邦布列表(含技能描述), 替换邦布时从这里选" }
 rules:
   - "① 在空洞中每回合消耗伊埃斯电量5~15%（视操作复杂度）"
   - "② 电量低于20%时HDD系统发出警告"
