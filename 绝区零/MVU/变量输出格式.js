@@ -1,31 +1,26 @@
-// 变量输出格式 — 独立配置文件，构建时由 index.js 读取
-module.exports = `变量输出格式:
-  rule:
-    - you must output the update analysis and the actual update commands at once in the end of the next reply
-    - the update commands work like the JSON Patch (RFC 6902) standard, must be a valid JSON array containing operation objects
-    - allowed operations:
-      - replace: replace the value of existing paths
-      - add: add items to objects or arrays (use "-" as array index to append to end)
-      - remove
-    - paths must start with / and use the exact paths listed in the 变量更新规则 white list
-    - do not update any path not explicitly listed in the update rules
-  format: |-
-    <UpdateVariable>
-    <Analysis>\${in Chinese, no more than 80 words}
-    - \${calculate time passed or scene change: ...}
-    - \${list which variables were affected by this turn's events: ...}
-    - \${confirm all paths exist in the update rules white list: yes/no}
-    </Analysis>
-    <JSONPatch>
-    [
-      { "op": "replace", "path": "\${/世界/当前时间}", "value": "\${新艾利都历·上午 08:30}" },
-      { "op": "replace", "path": "\${/主角/着装/上衣}", "value": "\${灰色连帽卫衣}" },
-      { "op": "add", "path": "\${/主角/同伴/-}", "value": "\${安比}" },
-      { "op": "replace", "path": "\${/阵营/狡兔屋}", "value": \${number} },
-      { "op": "add", "path": "\${/邦布/拥有的邦布/-}", "value": "\${纸袋布}" },
-      { "op": "add", "path": "\${/任务/详情/星见雅委托}", "value": { "状态": "\${已接受}", "委托人": "\${对空六课·星见雅}", "报酬": "\${待定}", "线索": [] } },
-      { "op": "add", "path": "\${/任务/已激活/-}", "value": "\${星见雅委托}" },
-      { "op": "add", "path": "\${/NPCs/星见雅}", "value": { "基础": { "性别": "\${女}", "年龄": "\${20+岁}", "身份": "\${对空六课·课长}", "当前位置": "\${六分街·Random Play}", "动作": "\${站定}", "金钱": \${number}, "当前目标": "\${...}", "实时内心想法": "\${...}" }, "关系": { "好感度": \${number}, "信任度": \${number}, "修罗场": \${number}, "对主角看法": "\${...}" }, "性格": { "底色": "\${...}", "日常": "\${...}", "内在": "\${...}", "当前情绪": "\${...}" }, "着装": { "上衣": { "名称": "\${...}", "品质": "\${...}", "描述": "\${...}" }, "下装": { "名称": "\${...}", "品质": "\${...}", "描述": "\${...}" }, "内衣": { "名称": "\${...}", "品质": "\${...}", "描述": "\${...}" }, "内裤": { "名称": "\${...}", "品质": "\${...}", "描述": "\${...}" }, "鞋子": { "名称": "\${...}", "品质": "\${...}", "描述": "\${...}" }, "饰品": { "名称": "\${...}", "品质": "\${...}", "描述": "\${...}" } } } }
-    ]
-    </JSONPatch>
-    </UpdateVariable>`;
+// 变量输出格式 — 纯格式契约，对齐 tavern-cards skill 标准
+// 合法路径/类型/range 由「变量更新规则」单一权威提供，本文件只规定输出外壳
+module.exports = `<update_variable_rules>
+rule:
+  - you must output the update analysis and the actual update commands at once in the end of the next reply
+  - the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, and can only use the following operations: \`replace\` (replace the value of existing paths), \`add\` (only used to insert new items into an object or array, use "-" as array index to append to end), \`remove\`; that is, the output must be a valid JSON array containing operation objects
+  - paths must start with / and must be the exact paths listed in the 变量更新规则 white list (JSON Pointer form, no stat_data prefix); do not output any path not listed there
+  - obey the operation allowed for each path: object/array append uses \`add /path/-\`, object dynamic key uses \`add /path/keyName\`, record (e.g. 背包/任务详情) must NOT use \`/-\`
+format: |-
+  <UpdateVariable>
+  <Analysis>\${用中文，不超过 80 字}
+  - \${计算时间流逝或场景变化: ...}
+  - \${判断是否允许剧烈变动(特殊情境或时间跨度大于寻常): 是/否}
+  - \${对照各变量的 check 规则，仅依据当前回合而非过往剧情，逐项分析受影响变量: ...}
+  - \${若数值变化，写出计算: 旧值(X) + 变化量(Y) = 新值(Z)}
+  </Analysis>
+  <JSONPatch>
+  [
+    { "op": "replace", "path": "\${/path/to/variable}", "value": \${new_value} },
+    { "op": "add", "path": "\${/path/to/array/-}", "value": \${new_item} },
+    { "op": "add", "path": "\${/path/to/object/newKey}", "value": \${content} },
+    { "op": "remove", "path": "\${/path/to/array/0}" }
+  ]
+  </JSONPatch>
+  </UpdateVariable>
+</update_variable_rules>`;
