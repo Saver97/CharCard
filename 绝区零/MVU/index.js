@@ -86,7 +86,7 @@ function generateVariableList() {
 }
 
 function generateOutputFormat() {
-  return `---\noutput_format: |\n  <UpdateVariable>\n  <Analysis>简述变动因果</Analysis>\n  <JSONPatch>\n  [{ "op": "replace", "path": "/stat_data/目标路径", "value": 新值 }]\n  </JSONPatch>\n  </UpdateVariable>`;
+  return `---\n变量输出格式:\n  rule:\n    - 你必须在回复末尾输出变量更新分析和实际更新命令\n    - 更新命令遵循 JSON Patch (RFC 6902) 标准，必须是包含操作对象的有效 JSON 数组\n    - 支持以下操作：\n      - replace: 替换现有路径的值\n      - add: 向对象或数组中插入新项（使用 \\"-\\" 作为数组索引表示追加到末尾）\n      - remove: 删除路径\n    - 不要更新以 \\"_\\" 开头的字段名，它们是只读的\n  format: |\n    <UpdateVariable>\n    <Analysis>在此简述本回合的变量变动因果（中文，不超过80字）</Analysis>\n    <JSONPatch>\n    [\n      { "op": "replace", "path": "/世界/当前时间", "value": "..." },\n      { "op": "replace", "path": "/主角/基础/金钱", "value": 5000 },\n      { "op": "add", "path": "/NPCs/角色名", "value": { "基础": {...}, "关系": {...} } },\n      { "op": "add", "path": "/主角/道具/-", "value": "..." },\n      { "op": "remove", "path": "/主角/道具/0" },\n      ...\n    ]\n    </JSONPatch>\n    </UpdateVariable>`;
 }
 
 function formatVar(val) {
