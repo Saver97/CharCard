@@ -1,0 +1,121 @@
+{
+  "projects": {
+    "绝区零": {
+      "state_file": "cards/绝区零/tavern-cards-state.json",
+      "artifact": "cards/绝区零/绝区零.json"
+    }
+  },
+  "default_part_order": {
+    "世界观核心": [
+      "空洞与以太",
+      "邦布与科技",
+      "职业体系"
+    ],
+    "地理与势力": [
+      "城区",
+      "空洞区域",
+      "外环"
+    ],
+    "阵营章节": [
+      "代理人组织",
+      "官方机构",
+      "地下世界",
+      "反派势力"
+    ],
+    "关键人物": [
+      "法厄同线",
+      "狡兔屋",
+      "对空六课",
+      "白祇重工",
+      "维多利亚家政",
+      "卡吕冬之子",
+      "治安局",
+      "天琴座",
+      "云岿山",
+      "反舌鸟",
+      "奥波勒斯小队",
+      "怪啖屋",
+      "黑枝",
+      "妄想天使",
+      "其他"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "扮演准则": [
+      "叙事基调",
+      "规则说明"
+    ],
+    "时间线": [
+      "历史",
+      "剧情节点"
+    ]
+  },
+  "default_strategy_thresholds": {
+    "世界观核心": "Infinity",
+    "地理与势力": {
+      "城区": { "required": false, "threshold": 4 },
+      "空洞区域": { "required": false, "threshold": 4 },
+      "外环": { "required": false, "threshold": 4 }
+    },
+    "阵营章节": {
+      "代理人组织": { "required": false, "threshold": 3 },
+      "官方机构": { "required": false, "threshold": 2 },
+      "地下世界": { "required": false, "threshold": 2 },
+      "反派势力": { "required": false, "threshold": 2 }
+    },
+    "关键人物": {
+      "法厄同线": { "required": false, "threshold": "Infinity" },
+      "狡兔屋": { "required": false, "threshold": 3 },
+      "对空六课": { "required": false, "threshold": 3 },
+      "白祇重工": { "required": false, "threshold": 2 },
+      "维多利亚家政": { "required": false, "threshold": 2 },
+      "卡吕冬之子": { "required": false, "threshold": 2 },
+      "治安局": { "required": false, "threshold": 2 },
+      "天琴座": { "required": false, "threshold": 2 },
+      "云岿山": { "required": false, "threshold": 2 },
+      "反舌鸟": { "required": false, "threshold": 2 },
+      "奥波勒斯小队": { "required": false, "threshold": 2 },
+      "怪啖屋": { "required": false, "threshold": 2 },
+      "黑枝": { "required": false, "threshold": 2 },
+      "妄想天使": { "required": false, "threshold": 2 },
+      "其他": { "required": false, "threshold": "Infinity" }
+    },
+    "时间线": {
+      "历史": { "required": false, "threshold": "Infinity" },
+      "剧情节点": { "required": false, "threshold": "Infinity" }
+    },
+    "扮演准则": {
+      "叙事基调": { "required": true, "threshold": 2 },
+      "规则说明": { "required": false, "threshold": "Infinity" }
+    },
+    "MVU": {
+      "initvar": { "required": false, "threshold": null },
+      "output_format": { "required": false, "threshold": "Infinity" },
+      "update_rules": { "required": false, "threshold": "Infinity" },
+      "variable_list": { "required": false, "threshold": "Infinity" }
+    }
+  },
+  "default_type_lists": {
+    "before_char": [
+      "世界观核心",
+      "扮演准则",
+      "时间线"
+    ],
+    "after_char": [
+      "地理与势力",
+      "阵营章节",
+      "关键人物"
+    ],
+    "depth": [
+      "MVU"
+    ]
+  },
+  "depth_defaults": {
+    "depth": 0,
+    "role": "system"
+  }
+}

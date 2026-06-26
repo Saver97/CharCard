@@ -1,0 +1,8 @@
+---
+output_format: |
+  <UpdateVariable>
+  <Analysis>简述变动因果</Analysis>
+  <JSONPatch>
+  [{ "op": "replace", "path": "/stat_data/目标路径", "value": 新值 }]
+  </JSONPatch>
+  </UpdateVariable>

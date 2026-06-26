@@ -1,0 +1,33 @@
+---
+# -100~100
+# 敌对/冷淡/中立/友好/亲密/热恋
+# 未发生/已发生(首次时间戳)/固定关系
+# 共同经历的重大事件列表
+# 最近一次互动的简要描述
+# 是否有未完成委托
+world.当前时间: "新艾利都·清晨"
+world.当前地点: "雅努斯区·六分街·Random Play"
+world.当前章节: "序章·法厄同"
+world.当天计划: "录像店营业"
+protagonist.是否为法厄同: true
+protagonist.主人身份: ""
+protagonist.HP: 100
+protagonist.SAN: 100
+protagonist.发情度: 0
+protagonist.以太侵蚀度: 0
+protagonist.丁尼余额: 5000
+protagonist.同伴: []
+hollow.当前空洞: ""
+hollow.以太浓度: "低"
+hollow.探索进度: 0
+hollow.研究音擎: []
+bangboo.伊埃斯电量: 100
+bangboo.邦布伙伴: ["伊埃斯"]
+factions.狡兔屋: 0
+factions.对空六课: 0
+factions.白祇重工: 0
+factions.维多利亚家政: 0
+factions.卡吕冬之子: 0
+factions.治安局: 0
+factions.天琴座: 0
+factions.云岿山: 0
