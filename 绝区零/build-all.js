@@ -231,8 +231,42 @@ const switchEntry = {
 };
 entries.push(switchEntry);
 
+// ====== Build regex_scripts from panel HTML files ======
+const PANEL_DIR = path.join(__dirname, "面板");
+const panelTagMap = {
+  "角色创建面板.html": { tag: "character_creation", name: "初始化面板-角色创建" },
+  "世界观面板.html": { tag: "worldview_panel", name: "面板-世界观" },
+  "法厄同面板.html": { tag: "phaethon_panel", name: "面板-法厄同" },
+  "空洞探索面板.html": { tag: "hollow_panel", name: "面板-空洞探索" },
+  "阵营亲密度面板.html": { tag: "faction_panel", name: "面板-阵营亲密度" },
+  "邦布面板.html": { tag: "bangboo_panel", name: "面板-邦布" },
+  "NPC社交面板.html": { tag: "npc_panel", name: "面板-NPC社交" }
+};
+
+const regexScripts = [];
+for (const [file, cfg] of Object.entries(panelTagMap)) {
+  const fp = path.join(PANEL_DIR, file);
+  if (!fs.existsSync(fp)) continue;
+  const html = fs.readFileSync(fp, "utf8");
+  regexScripts.push({
+    id: "zzz-" + cfg.tag,
+    scriptName: cfg.name,
+    findRegex: "<" + cfg.tag + ">[\\s\\S]*?<\\/" + cfg.tag + ">",
+    replaceString: "```html\n" + html + "\n```",
+    trimStrings: [],
+    placement: [2],
+    disabled: false,
+    markdownOnly: true,
+    promptOnly: false,
+    runOnEdit: true,
+    substituteRegex: 0,
+    minDepth: null,
+    maxDepth: null
+  });
+}
+
 const card = {
-  spec: "chara_card_v2", spec_version: "2.0",
+  spec: "chara_card_v3", spec_version: "3.0",
   name: "绝区零 RPG",
   description: "{{char}} is the world of Zenless Zone Zero, acting as DM and narrator.\n{{user}} is the legendary Proxy Phaethon—Wise (male) or Belle (female).",
   first_mes: altGreetings[0] || "",
@@ -255,6 +289,7 @@ const card = {
       fav: false, talkativeness: "0.5", world: "绝区零",
       tavern_helper: { scripts: [], variables: {} }
     },
+    regex_scripts: regexScripts,
     character_book: { entries }
   }
 };
