@@ -23,9 +23,23 @@
 /主角/基础/当前行动      string   replace
 /主角/基础/当前目标      string   replace
 /主角/基础/金钱          number   replace
-/主角/状态/HP            number   replace
-/主角/状态/发情度        number   replace（range 0~100）
-/主角/状态/以太侵蚀度    number   replace（range 0~100）
+/主角/状态/HP:
+  type: number
+  check:
+    - 战斗受伤减少，治疗/休息恢复
+/主角/状态/发情度:
+  type: number
+  range: 0~100
+  check:
+    - 视线+1~5、接触+5~15、亲吻+15~30、前戏+30~50、性行为+50~70
+    - 每回合自然衰减-2
+    - 受到魅惑/催情类影响或与NPC深层身体接触时剧烈增加
+/主角/状态/以太侵蚀度:
+  type: number
+  range: 0~100
+  check:
+    - 在空洞中随时间增加，离开后缓慢降低
+    - 心智防护=100-侵蚀度，侵蚀度越高心智防护越低
 /主角/属性/以太适应性    number   replace（range 0~100）
 /主角/属性/战斗能力      string   replace
 /主角/属性/种族          string   replace

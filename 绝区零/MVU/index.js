@@ -48,9 +48,9 @@ function generateUpdateRules(panels) {
   rules += `/主角/基础/当前行动      string   replace\n`;
   rules += `/主角/基础/当前目标      string   replace\n`;
   rules += `/主角/基础/金钱          number   replace\n`;
-  rules += `/主角/状态/HP            number   replace\n`;
-  rules += `/主角/状态/发情度        number   replace（range 0~100）\n`;
-  rules += `/主角/状态/以太侵蚀度    number   replace（range 0~100）\n`;
+  rules += `/主角/状态/HP:\n  type: number\n  check:\n    - 战斗受伤减少，治疗/休息恢复\n`;
+  rules += `/主角/状态/发情度:\n  type: number\n  range: 0~100\n  check:\n    - 视线+1~5、接触+5~15、亲吻+15~30、前戏+30~50、性行为+50~70\n    - 每回合自然衰减-2\n    - 受到魅惑/催情类影响或与NPC深层身体接触时剧烈增加\n`;
+  rules += `/主角/状态/以太侵蚀度:\n  type: number\n  range: 0~100\n  check:\n    - 在空洞中随时间增加，离开后缓慢降低\n    - 心智防护=100-侵蚀度，侵蚀度越高心智防护越低\n`;
   rules += `/主角/属性/以太适应性    number   replace（range 0~100）\n`;
   rules += `/主角/属性/战斗能力      string   replace\n`;
   rules += `/主角/属性/种族          string   replace\n`;
