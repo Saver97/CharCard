@@ -47,6 +47,12 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 .copy-btn{background:#2a4a6a;border:none;border-radius:6px;padding:6px 14px;color:#fff;cursor:pointer;font-size:12px;transition:background .2s}
 .copy-btn:hover{background:#3a6a8a}
 .copy-btn.copied{background:#2a8a4a}
+.bb-card{padding:12px;border-radius:10px;border:2px solid #1e2d50;background:#0f1b33;cursor:pointer;transition:all .2s;text-align:center}
+.bb-card:hover{border-color:#4fc3f7;background:#102540;transform:translateY(-2px)}
+.bb-card.active{border-color:#4fc3f7;background:#0a2a3f;box-shadow:0 0 12px rgba(79,195,247,.2)}
+.bb-card .bb-name{font-size:14px;font-weight:700;color:#e0e0e0;margin-bottom:4px}
+.bb-card .bb-faction{font-size:10px;color:#888;margin-bottom:3px}
+.bb-card .bb-skill{font-size:11px;color:#4fc3f7}
 .footer{text-align:center;padding:20px;color:#555;font-size:12px}
 </style>
 </head>
@@ -149,11 +155,18 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
           <option value="独立绳匠">独立绳匠</option>
         </select>
       </div>
-      <div class="form-group">
+    <div class="form-group">
         <label>特殊能力 / 特长</label>
         <input type="text" id="special" placeholder="无" value="无">
         <span class="hint">如：机械维修、黑客、医疗等</span>
       </div>
+    </div>
+  </div>
+
+  <!-- 邦布伙伴 -->
+  <div class="card">
+    <h2>🤖 邦布伙伴 <span class="badge badge-blue">初始选择</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px" id="bangboo-presets">
     </div>
   </div>
 
@@ -243,6 +256,7 @@ function updateOutput() {
   yaml += 'character.战斗能力: "' + data['character.战斗能力'] + '"\n';
   yaml += 'character.所属势力: "' + data['character.所属势力'] + '"\n';
   yaml += 'character.特殊能力: "' + data['character.特殊能力'] + '"\n';
+  yaml += 'bangboo.邦布伙伴: ["' + selectedBangboo + '"]\n';
   yaml += '---\n\n';
   yaml += '# 选择对应的开场白文件：\n';
   yaml += '# 4-普通居民.txt | 5-治安官.txt | 6-盗洞客.txt\n';
@@ -268,6 +282,45 @@ document.querySelectorAll('#form input, #form select').forEach(el => {
   el.addEventListener('change', updateOutput);
 });
 
+// ===== Bangboo Selection =====
+const CREATION_BANGBOOS = [
+  { name: "伊埃斯", faction: "法厄同·特殊", skill: "感官同步·HDD远程操控" },
+  { name: "阿全", faction: "治安局", skill: "360°视野·报警联动" },
+  { name: "企鹅布", faction: "维多利亚家政", skill: "冰霜弹·减速领域" },
+  { name: "纸袋布", faction: "白祇重工", skill: "以太护盾·伤害减免" },
+  { name: "鲨鱼布", faction: "维多利亚家政", skill: "鲨鱼冲刺·破甲" },
+  { name: "恶魔布", faction: "卡吕冬之子", skill: "影子潜伏·暴击加成" },
+  { name: "巴特勒", faction: "独立", skill: "急救喷雾·HP回复" },
+  { name: "静电布", faction: "狡兔屋", skill: "EMP脉冲·机械瘫痪" },
+  { name: "共鸣布", faction: "天琴座", skill: "声呐扫描·弱点击破" },
+  { name: "招财布", faction: "独立", skill: "黄金律·掉率+5%" },
+  { name: "飓风布", faction: "卡吕冬之子", skill: "疾风步·移速+30%" },
+  { name: "格列佛", faction: "白祇重工", skill: "钻头猛击·眩晕" }
+];
+let selectedBangboo = "伊埃斯";
+
+function renderBangbooCards(){
+  const container = document.getElementById('bangboo-presets');
+  let html = '';
+  CREATION_BANGBOOS.forEach(bb => {
+    const isActive = selectedBangboo === bb.name;
+    html += `<div class="bb-card${isActive?' active':''}" onclick="selectBangboo('${bb.name}')" data-bb="${bb.name}">
+      <div class="bb-name">${bb.name}</div>
+      <div class="bb-faction">${bb.faction}</div>
+      <div class="bb-skill">${bb.skill}</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+window.selectBangboo = function(name){
+  selectedBangboo = name;
+  document.querySelectorAll('.bb-card').forEach(c => c.classList.remove('active'));
+  const target = document.querySelector(`.bb-card[data-bb="${name}"]`);
+  if(target) target.classList.add('active');
+  updateOutput();
+};
+
 // Bind preset buttons
 document.querySelectorAll('.preset-btn').forEach(btn => {
   btn.addEventListener('click', () => selectPreset(btn.dataset.preset));
@@ -275,6 +328,7 @@ document.querySelectorAll('.preset-btn').forEach(btn => {
 
 // Init
 selectPreset('resident');
+renderBangbooCards();
 </script>
 </body>
 </html>
