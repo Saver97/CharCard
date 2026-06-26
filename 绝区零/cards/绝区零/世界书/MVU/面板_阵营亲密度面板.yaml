@@ -23,7 +23,24 @@ variables:
   factions.治安局: { type: "number", default: 0, desc: "新艾利都官方警察" }
   factions.天琴座: { type: "number", default: 0, desc: "音乐团体，耀嘉音为核心" }
   factions.云岿山: { type: "number", default: 0, desc: "道教宗门" }
+  factions.狡兔屋_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.对空六课_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.白祇重工_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.维多利亚家政_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.卡吕冬之子_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.治安局_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.天琴座_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.云岿山_称号: { type: "string", default: "陌生人", desc: "根据亲密度自动变化的声望称号" }
+  factions.狡兔屋_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.对空六课_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.白祇重工_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.维多利亚家政_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.卡吕冬之子_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.治安局_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.天琴座_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
+  factions.云岿山_委托: { type: "boolean", default: false, desc: "是否有活跃委托" }
 rules:
   - "① 完成该阵营的委托：+5~+20"
   - "② 与该阵营敌对行动：-10~-30"
   - "③ 亲密度影响可接取的委托难度和角色态度"
+  - "④ 称号根据亲密度自动变化：敌对≤-51→仇敌 / -50~-11→冷淡 / -10~10→陌生人 / 11~50→朋友 / 51~80→盟友 / ≥81→至交"
