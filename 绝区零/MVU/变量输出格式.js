@@ -1,0 +1,26 @@
+// 变量输出格式 — 独立配置文件，构建时由 index.js 读取
+module.exports = `变量输出格式:
+  rule:
+    - 你必须在每轮回复末尾输出 <UpdateVariable> 块（含 <Analysis> 和 <JSONPatch>）
+    - 使用 JSON Patch (RFC 6902) 标准：replace / add / remove
+    - 仅使用合法路径（参见变量更新规则中的路径白名单），禁止 CDATA 包裹
+    - 路径始终以 / 开头（如 /主角/基础/金钱），不可省略顶级域（如 /背包/xxx ❌ → /主角/背包/xxx ✅）
+    - add 到对象：/主角/背包/物品名，value 为 {数量: number, 描述: string}
+    - add 到数组：/主角/同伴/- 或 /邦布/拥有的邦布/-（value 直接是字符串）
+  
+  【着装注意事项】:
+    - 卸下装备时使用 replace 而非 remove：{ "op": "replace", "path": "/主角/着装/饰品", "value": "" }
+    - 同一步操作中需要同时将卸下的装备 add 到 /主角/背包/装备名 ✅
+
+  format: |
+    <UpdateVariable>
+    <Analysis>简述本回合变量变动因果（中文，80字内）</Analysis>
+    <JSONPatch>
+    [
+      { "op": "replace", "path": "/主角/着装/饰品", "value": "" },
+      { "op": "add", "path": "/主角/背包/星星手链", "value": { "数量": 1, "描述": "银色的手链" } },
+      { "op": "add", "path": "/邦布/拥有的邦布/-", "value": "企鹅布" },
+      { "op": "remove", "path": "/主角/同伴/0" }
+    ]
+    </JSONPatch>
+    </UpdateVariable>`;
