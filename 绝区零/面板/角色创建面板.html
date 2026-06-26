@@ -379,28 +379,16 @@ const PHAETHON_GEAR = {
 // ===== CUSTOM ROUTE GEAR DEFAULTS =====
 const PRESET_GEAR = {
   resident: {
-    上衣: "素色棉质卫衣",
-    下装: "深色牛仔裤",
-    内衣: "",
-    内裤: "",
-    鞋子: "普通运动鞋",
-    饰品: ""
+    male:   { 上衣: "素色棉质卫衣", 下装: "深色牛仔裤", 内衣: "", 内裤: "灰色四角内裤", 鞋子: "普通运动鞋", 饰品: "" },
+    female: { 上衣: "素色棉质卫衣", 下装: "深色牛仔裤", 内衣: "白色棉质文胸", 内裤: "白色棉质三角内裤", 鞋子: "普通运动鞋", 饰品: "" }
   },
   officer: {
-    上衣: "NEPS标准执勤服·深蓝色",
-    下装: "深蓝色执勤裤",
-    内衣: "",
-    内裤: "",
-    鞋子: "黑色战术靴",
-    饰品: "警徽"
+    male:   { 上衣: "NEPS标准执勤服·深蓝色", 下装: "深蓝色执勤裤", 内衣: "", 内裤: "黑色平角内裤", 鞋子: "黑色战术靴", 饰品: "警徽" },
+    female: { 上衣: "NEPS标准执勤服·深蓝色", 下装: "深蓝色执勤裤", 内衣: "黑色运动文胸", 内裤: "黑色低腰三角内裤", 鞋子: "黑色战术靴", 饰品: "警徽" }
   },
   raider: {
-    上衣: "耐磨工装夹克",
-    下装: "深色工装长裤",
-    内衣: "",
-    内裤: "",
-    鞋子: "加固登山靴",
-    饰品: "以太探测器"
+    male:   { 上衣: "耐磨工装夹克", 下装: "深色工装长裤", 内衣: "", 内裤: "深绿色四角内裤", 鞋子: "加固登山靴", 饰品: "以太探测器" },
+    female: { 上衣: "耐磨工装夹克", 下装: "深色工装长裤", 内衣: "深绿色运动文胸", 内裤: "深绿色低腰三角内裤", 鞋子: "加固登山靴", 饰品: "以太探测器" }
   }
 };
 
@@ -542,7 +530,8 @@ function startAdventure() {
     const combat = document.getElementById('combat').value;
     const faction = document.getElementById('faction').value;
     const special = document.getElementById('special').value || '无';
-    const gear = PRESET_GEAR[currentPreset] || PRESET_GEAR.resident;
+    const gearVariant = (PRESET_GEAR[currentPreset] || PRESET_GEAR.resident);
+    const gear = (gender === '女' ? gearVariant.female : gearVariant.male);
     
     let combatRole = (currentPreset === 'officer') ? "执法者" : (currentPreset === 'raider') ? "盗洞客" : "平民";
     let location = (currentPreset === 'officer') ? "光映广场·治安局分局" : (currentPreset === 'raider') ? "空洞边缘·临时安全屋" : "六分街·公寓";
