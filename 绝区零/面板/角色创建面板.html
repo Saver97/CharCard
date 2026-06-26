@@ -419,6 +419,42 @@ const HARE_NPCS = [
   }
 ];
 
+// ===== RUMOR POOL =====
+const RUMOR_POOL = [
+  "伴生空洞异常扩大影响地下管道，热望角可能管制",
+  "绳网上有人悬赏回收零号空洞的以太结晶样本，报酬不菲但风险极高",
+  "HIA俱乐部发布了新一轮调查员招募，据说这次要深入克里特空洞",
+  "光映广场的治安局昨夜抓获了一批非法以太走私者",
+  "有人在厄匹斯港看见海神雕像在发光，说是许愿的人变多了",
+  "涡轮改装店新到一批邦布芯片，据说有稀有技能",
+  "星环电视塔顶部流光大厅下月有特殊演出，传言耀嘉音将登台",
+  "最近六分街深夜总有奇怪的红光闪烁，居民猜测是空洞异变前兆",
+  "白祇重工接了个巨型工程订单，招工广告贴满了雅努斯区",
+  "外环的火狱骑行冠军莱特又刷新了赛道纪录"
+];
+
+function pickRandomRumor() {
+  return RUMOR_POOL[Math.floor(Math.random() * RUMOR_POOL.length)];
+}
+
+// ===== N.E.P.S. NPC 初始数据 (治安官开局) =====
+const NEPS_NPCS = [
+  {
+    name: "朱鸢",
+    data: {
+      基础: { 性别: "女", 年龄: "20+岁", 身份: "刑侦特勤组组长·朱雀", 当前位置: "光映广场·治安局分局", 动作: "正在整理昨晚的巡逻报表", 金钱: 5000, 当前目标: "审核本周积压的案件卷宗", 实时内心想法: "这个月的破案率还差一点……得加把劲了。" },
+      关系: { 好感度: 45, 信任度: 50, 对主角看法: "新人不错，做事认真，再过一阵子就能独立带队了。" }
+    }
+  },
+  {
+    name: "青衣",
+    data: {
+      基础: { 性别: "女", 年龄: "未知（智能构造体）", 身份: "钰偶智能构造体·青龙", 当前位置: "光映广场·治安局分局", 动作: "蹲在角落里观察地面痕迹，偶尔舔一下手指", 金钱: 1000, 当前目标: "追踪昨晚非法以太交易的残留线索", 实时内心想法: "这个鞋印的化学成分……昨天那批走私的以太里掺了人工添加剂" },
+      关系: { 好感度: 40, 信任度: 45, 对主角看法: "你衣服上沾了14种不同成分的灰尘，昨天去了空洞边缘吧？" }
+    }
+  }
+];
+
 // ===== START ADVENTURE =====
 let adventureStarted = false;
 
@@ -427,6 +463,17 @@ function startAdventure() {
   adventureStarted = true;
   const btn = document.querySelector('.start-btn');
   if (btn) { btn.disabled = true; btn.textContent = '✅ 已开始'; btn.style.opacity = '0.6'; btn.style.cursor = 'not-allowed'; }
+  
+  // Lock all interactive elements: remove onclick, disable inputs, pointer-events none
+  document.querySelectorAll('input, select, button').forEach(el => {
+    if (el !== btn) el.disabled = true;
+  });
+  document.querySelectorAll('.route-card, .phaethon-card, .preset-btn, .bb-card').forEach(el => {
+    el.onclick = null;
+    el.style.pointerEvents = 'none';
+    el.style.opacity = '0.6';
+    el.style.cursor = 'default';
+  });
 
   let narrative = '';
   let patches = [];
@@ -456,7 +503,8 @@ function startAdventure() {
       { op: "replace", path: "/主角/着装/饰品", value: gear.饰品 },
       { op: "replace", path: "/邦布/邦布伙伴", value: ["伊埃斯"] },
       { op: "replace", path: "/邦布/拥有的邦布", value: ["伊埃斯"] },
-      { op: "replace", path: "/阵营/狡兔屋", value: 60 }
+      { op: "replace", path: "/阵营/狡兔屋", value: 60 },
+      { op: "replace", path: "/世界/城市流言", value: pickRandomRumor() }
     );
     
     // 添加狡兔屋 NPC
@@ -523,8 +571,17 @@ function startAdventure() {
       { op: "replace", path: "/主角/着装/足部", value: gear.足部 },
       { op: "replace", path: "/主角/着装/饰品", value: gear.饰品 },
       { op: "replace", path: "/邦布/邦布伙伴", value: [selectedBangboo] },
-      { op: "replace", path: "/邦布/拥有的邦布", value: [selectedBangboo] }
+      { op: "replace", path: "/邦布/拥有的邦布", value: [selectedBangboo] },
+      { op: "replace", path: "/世界/城市流言", value: pickRandomRumor() }
     );
+    
+    // 治安官开局：添加 NEPS NPC + 阵营好感度
+    if (currentPreset === 'officer') {
+      patches.push({ op: "replace", path: "/阵营/治安局", value: 50 });
+      NEPS_NPCS.forEach(npc => {
+        patches.push({ op: "add", path: "/NPCs/" + npc.name, value: npc.data });
+      });
+    }
     
     const presetNarratives = {
       resident: `新艾利都，又是一个普通的早晨。
@@ -548,13 +605,7 @@ function startAdventure() {
   }
   
   const patchStr = JSON.stringify(patches);
-  const hiddenDirective = `<span style="display:none;">
-<UpdateVariable>
-<JSONPatch>
-${patchStr}
-</JSONPatch>
-</UpdateVariable>
-</span>`;
+  const hiddenDirective = `\n\n<UpdateVariable>\n<JSONPatch>\n${patchStr}\n</JSONPatch>\n</UpdateVariable>`;
   
   const finalPrompt = `/send ${narrative}\n\n${hiddenDirective}|/trigger`;
   
