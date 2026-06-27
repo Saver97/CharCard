@@ -13,8 +13,13 @@
         "abstract": "EJS章节控制器：按章节进度动态加载剧情条目，含推进规则",
         "uid": 100,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "before_character_definition", "order": 5 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 5
+        }
       },
       "沙盒时间推进规则": {
         "path": "世界书/EJS/沙盒时间推进规则.txt",
@@ -24,8 +29,13 @@
         "abstract": "沙盒时间推进规则：时段系统/推进约束/角色时间感知",
         "uid": 101,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "before_character_definition", "order": 6 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 6
+        }
       },
       "沙盒触发条件": {
         "path": "世界书/EJS/沙盒触发条件.txt",
@@ -35,8 +45,13 @@
         "abstract": "沙盒触发条件：时间/地点/关键词/变量/组合触发规则",
         "uid": 102,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "before_character_definition", "order": 7 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 7
+        }
       },
       "沙盒·关键剧情时间表": {
         "path": "世界书/EJS/沙盒·关键剧情时间表.txt",
@@ -46,8 +61,13 @@
         "abstract": "沙盒关键剧情时间表：16章全事件ID/触发条件/时间线",
         "uid": 103,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "before_character_definition", "order": 8 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 8
+        }
       }
     },
     "MVU": {
@@ -320,12 +340,24 @@
         "path": "世界书/世界观核心/种族特性.yaml",
         "scope": "catalog",
         "part": "职业体系",
-        "keywords": ["种族", "希人", "鬼族", "精灵", "吸血鬼", "智能构造体"],
+        "keywords": [
+          "种族",
+          "希人",
+          "鬼族",
+          "精灵",
+          "吸血鬼",
+          "智能构造体"
+        ],
         "abstract": "种族特性：18个智慧种族的生物学特征、社会地位、NPC互动反应",
         "uid": 104,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "before_character_definition", "order": 195 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 195
+        }
       }
     },
     "地图": {
@@ -333,177 +365,322 @@
         "path": "世界书/地图/新艾利都概述.yaml",
         "scope": "catalog",
         "part": "概述",
-        "keywords": ["新艾利都", "New Eridu"],
+        "keywords": [
+          "新艾利都",
+          "New Eridu"
+        ],
         "abstract": "新艾利都概述：旧都陷落后重建的最后都市，雅努斯区/索恩区/外环三大区域体系",
         "uid": 15,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 150 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 150
+        }
       },
       "六分街": {
         "path": "世界书/地图/雅努斯区/六分街.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["六分街", "Sixth Street", "Random Play"],
+        "keywords": [
+          "六分街",
+          "Sixth Street",
+          "Random Play"
+        ],
         "abstract": "六分街：主角据点/录像店/141便利店/咖啡店/拉面店/音像店/邦布改装/街机厅",
         "uid": 16,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 160 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 160
+        }
       },
       "光映广场": {
         "path": "世界书/地图/雅努斯区/光映广场.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["光映广场", "Lumina Square", "HIA俱乐部"],
+        "keywords": [
+          "光映广场",
+          "Lumina Square",
+          "HIA俱乐部"
+        ],
         "abstract": "光映广场：商业治安中心/HIA俱乐部/百货/火锅店/花店/报刊亭/地铁枢纽",
         "uid": 17,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 161 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 161
+        }
       },
       "黑雁工地旧址": {
         "path": "世界书/地图/雅努斯区/黑雁工地旧址.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["黑雁工地", "Brant Street", "白祇重工"],
+        "keywords": [
+          "黑雁工地",
+          "Brant Street",
+          "白祇重工"
+        ],
         "abstract": "黑雁工地旧址：白祇重工施工仓储区/工程机械/工业废墟",
         "uid": 18,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 162 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 162
+        }
       },
       "芭莱大厦前": {
         "path": "世界书/地图/雅努斯区/芭莱大厦前.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["芭莱大厦", "Ballet Twins", "地铁站"],
+        "keywords": [
+          "芭莱大厦",
+          "Ballet Twins",
+          "地铁站"
+        ],
         "abstract": "芭莱大厦前：商业区/地铁传送枢纽/维多利亚家政飞艇劫持地",
         "uid": 19,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 163 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 163
+        }
       },
       "斯科特哨站": {
         "path": "世界书/地图/雅努斯区/斯科特哨站.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["斯科特哨站", "Scott Outpost"],
+        "keywords": [
+          "斯科特哨站",
+          "Scott Outpost"
+        ],
         "abstract": "斯科特哨站：边界哨站/观测台/停机坪/防卫军HAND联合监测",
         "uid": 20,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 164 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 164
+        }
       },
       "热望角": {
         "path": "世界书/地图/雅努斯区/热望角.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["热望角", "Reverb Arena"],
+        "keywords": [
+          "热望角",
+          "Reverb Arena"
+        ],
         "abstract": "热望角：地下管道改造娱乐场/竞技场/地下乐队/锦标赛",
         "uid": 21,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 165 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 165
+        }
       },
       "厄匹斯港": {
         "path": "世界书/地图/雅努斯区/厄匹斯港.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["厄匹斯港", "Port Elpis", "海神雕像"],
+        "keywords": [
+          "厄匹斯港",
+          "Port Elpis",
+          "海神雕像"
+        ],
         "abstract": "厄匹斯港：旧都陷落转运枢纽/海神雕像许愿/耀嘉音星探发现地",
         "uid": 22,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 166 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 166
+        }
       },
       "星环": {
         "path": "世界书/地图/雅努斯区/星环.yaml",
         "scope": "catalog",
         "part": "雅努斯区",
-        "keywords": ["星环", "Starloop", "流光大厅", "耀嘉音"],
+        "keywords": [
+          "星环",
+          "Starloop",
+          "流光大厅",
+          "耀嘉音"
+        ],
         "abstract": "星环：地标电视塔/流光大厅升空/年度跨年演唱会",
         "uid": 23,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 167 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 167
+        }
       },
       "卫非地": {
         "path": "世界书/地图/索恩区/卫非地.yaml",
         "scope": "catalog",
         "part": "索恩区",
-        "keywords": ["卫非地", "Waifei", "辉瓷", "莱姆尼安空洞"],
+        "keywords": [
+          "卫非地",
+          "Waifei",
+          "辉瓷",
+          "莱姆尼安空洞"
+        ],
         "abstract": "卫非地：索恩区辉瓷半岛/2.0主线舞台/莱姆尼安空洞隔海相望",
         "uid": 24,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 170 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 170
+        }
       },
       "澄辉坪": {
         "path": "世界书/地图/索恩区/澄辉坪.yaml",
         "scope": "catalog",
         "part": "索恩区",
-        "keywords": ["澄辉坪", "Failume Heights", "随便观"],
+        "keywords": [
+          "澄辉坪",
+          "Failume Heights",
+          "随便观"
+        ],
         "abstract": "澄辉坪：卫非地主城/中式悬崖城市/茶馆药房典当行/辉瓷工匠区",
         "uid": 25,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 171 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 171
+        }
       },
       "随便观": {
         "path": "世界书/地图/索恩区/随便观.yaml",
         "scope": "catalog",
         "part": "索恩区",
-        "keywords": ["随便观", "Suibian Temple", "云岿山"],
+        "keywords": [
+          "随便观",
+          "Suibian Temple",
+          "云岿山"
+        ],
         "abstract": "随便观：废弃道观/云岿山据点/邦布派遣经营/阿朔与狮耶留守",
         "uid": 26,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 172 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 172
+        }
       },
       "HAND总部": {
         "path": "世界书/地图/索恩区/HAND总部.yaml",
         "scope": "catalog",
         "part": "索恩区",
-        "keywords": ["HAND总部", "对空六课", "H.S.O.S.6"],
+        "keywords": [
+          "HAND总部",
+          "对空六课",
+          "H.S.O.S.6"
+        ],
         "abstract": "HAND总部：空洞事务部/对空六课办公室/莱姆尼安空洞直连通道",
         "uid": 27,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 173 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 173
+        }
       },
       "绮梦度假村": {
         "path": "世界书/地图/索恩区/绮梦度假村.yaml",
         "scope": "catalog",
         "part": "索恩区",
-        "keywords": ["绮梦度假村", "Qimeng Resort"],
+        "keywords": [
+          "绮梦度假村",
+          "Qimeng Resort"
+        ],
         "abstract": "绮梦度假村：高端度假村/TOPS高层/黑枝辉瓷走私秘密节点",
         "uid": 28,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 174 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 174
+        }
       },
       "野火镇": {
         "path": "世界书/地图/外环/野火镇.yaml",
         "scope": "catalog",
         "part": "外环",
-        "keywords": ["野火镇", "Blazewood", "外环", "卡吕冬之子"],
+        "keywords": [
+          "野火镇",
+          "Blazewood",
+          "外环",
+          "卡吕冬之子"
+        ],
         "abstract": "野火镇：外环最大城镇/卡吕冬之子据点/灰烬湖/火狱骑行",
         "uid": 29,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 180 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 180
+        }
       },
       "空洞概述": {
         "path": "世界书/地图/空洞概述.yaml",
         "scope": "catalog",
         "part": "空洞",
-        "keywords": ["空洞", "零号空洞", "灵薄", "克里特空洞", "莱姆尼安空洞"],
+        "keywords": [
+          "空洞",
+          "零号空洞",
+          "灵薄",
+          "克里特空洞",
+          "莱姆尼安空洞"
+        ],
         "abstract": "空洞概述：零号空洞/6原生空洞/伴生空洞体系全览/旧都陷落事件",
         "uid": 30,
         "enabled": true,
-        "strategy": { "type": "constant" },
-        "position": { "type": "after_character_definition", "order": 190 }
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 190
+        }
       }
     },
     "阵营章节": {
@@ -2799,40 +2976,6 @@
       "disabled": false,
       "markdownOnly": false,
       "promptOnly": true,
-      "runOnEdit": false,
-      "substituteRegex": 0,
-      "minDepth": null,
-      "maxDepth": null
-    },
-    "变量更新中美化": {
-      "id": "b9d5f25b-a9d0-41bf-8a69-602d64bbde22",
-      "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi",
-      "replace_file": "正则/变量更新中美化.html",
-      "trimStrings": [],
-      "placement": [
-        1,
-        2
-      ],
-      "disabled": false,
-      "markdownOnly": true,
-      "promptOnly": false,
-      "runOnEdit": false,
-      "substituteRegex": 0,
-      "minDepth": null,
-      "maxDepth": null
-    },
-    "变量更新美化": {
-      "id": "92d49340-fe5e-4929-871f-43d110e5ec76",
-      "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi",
-      "replace_file": "正则/变量更新美化.html",
-      "trimStrings": [],
-      "placement": [
-        1,
-        2
-      ],
-      "disabled": false,
-      "markdownOnly": true,
-      "promptOnly": false,
       "runOnEdit": false,
       "substituteRegex": 0,
       "minDepth": null,

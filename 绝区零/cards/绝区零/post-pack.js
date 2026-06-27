@@ -82,16 +82,7 @@ for (const r of card.data.extensions.regex_scripts) {
 }
 console.log(`✓ HTML 正则补代码块标记: ${fenceFixed} 个`);
 
-// 2d. 禁用变量更新美化正则（与面板冲突：误匹配面板内 <UpdateVariable> 字符串导致闪烁/消失）
-let disabledBeautify = 0;
-for (const r of card.data.extensions.regex_scripts) {
-  const name = r.scriptName || r.id;
-  if ((name === '变量更新中美化' || name === '变量更新美化') && !r.disabled) {
-    r.disabled = true;
-    disabledBeautify++;
-  }
-}
-console.log(`✓ 禁用变量更新美化正则(与面板冲突): ${disabledBeautify} 个`);
+	// 2d. (removed — 变量更新美化正则已删除)
 
 // 2e. 修正「对AI隐藏变量更新」正则：skill 默认 promptOnly:true 会在 MVU 引擎解析前清掉更新块
 //     改用经验证可用的配置：markdownOnly:true(前端隐藏) + 简单非贪婪 findRegex
