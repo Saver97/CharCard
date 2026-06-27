@@ -11,7 +11,14 @@ const panel = {
     "阵营.卡吕冬之子": { type: "number", default: 0, desc: "外环机车族" },
     "阵营.治安局": { type: "number", default: 0, desc: "新艾利都官方警察" },
     "阵营.天琴座": { type: "number", default: 0, desc: "音乐团体，耀嘉音为核心" },
-    "阵营.云岿山": { type: "number", default: 0, desc: "道教宗门" }
+    "阵营.云岿山": { type: "number", default: 0, desc: "道教宗门" },
+    "阵营.反舌鸟": { type: "number", default: 0, desc: "怪盗组织，劫富济贫" },
+    "阵营.怪啖屋": { type: "number", default: 0, desc: "怪谈论坛，收集验证都市传说" },
+    "阵营.妄想天使": { type: "number", default: 0, desc: "地下偶像团体，舞台即战斗" },
+    "阵营.黑枝": { type: "number", default: 0, desc: "TOPS财团内部清算组织" },
+    "阵营.称颂会": { type: "number", default: 0, desc: "崇拜空洞的宗教狂热组织" },
+    "阵营.HAND与HIA": { type: "number", default: 0, desc: "H.A.N.D.武装部门 & H.I.A.空洞调查协会" },
+    "阵营.奥波勒斯小队": { type: "number", default: 0, desc: "防卫军下属特殊作战单位" }
   },
   rules: [
     "① 完成该阵营的委托：+5~+20",

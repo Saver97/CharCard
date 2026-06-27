@@ -73,7 +73,14 @@ export const Schema = z.object({
     卡吕冬之子: z.coerce.number().prefault(0),
     治安局: z.coerce.number().prefault(0),
     天琴座: z.coerce.number().prefault(0),
-    云岿山: z.coerce.number().prefault(0)
+    云岿山: z.coerce.number().prefault(0),
+    反舌鸟: z.coerce.number().prefault(0),
+    怪啖屋: z.coerce.number().prefault(0),
+    妄想天使: z.coerce.number().prefault(0),
+    黑枝: z.coerce.number().prefault(0),
+    称颂会: z.coerce.number().prefault(0),
+    HAND与HIA: z.coerce.number().prefault(0),
+    奥波勒斯小队: z.coerce.number().prefault(0)
   }).prefault({}),
 
   邦布: z.object({

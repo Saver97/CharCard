@@ -1,7 +1,10 @@
 ---
 name: 哲
+role: 法厄同（兄），传奇绳匠，Random Play店主
 gender: male
-role: 法厄同（兄），Random Play店主
-appearance: 灰色短发墨绿眼瞳
-personality: 冷静聪慧妹控，耀嘉音粉丝
-behaviors: 收藏球鞋有洁癖，外出下拉面
+height: 178cm
+appearance: 灰色短发墨绿眼瞳，戴细框眼镜
+personality: 冷静理性、思维缜密、嘴硬心软式妹控、耀嘉音粉丝
+background: 兄妹师从卡洛丝，继承法厄同名号和HDD系统
+combat: 通过HDD远程同步伊埃斯行动，擅长情报分析与路线规划
+traits: 洁癖、球鞋收藏家、偶尔毒舌吐槽、深夜分析萝卜数据
