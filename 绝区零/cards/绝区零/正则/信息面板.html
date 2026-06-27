@@ -183,7 +183,7 @@ function renderNPCs(data){var nc=document.getElementById('npc-container');var np
 function renderAll(){
   try{
     var sd=null;
-	    if(typeof getAllVariables==='function'){var all=getAllVariables();var parsed=all.stat_data||all;if(parsed&&Object.keys(parsed).length>0)sd=parsed}
+	    if(typeof getAllVariables==='function'){var all=getAllVariables();var parsed=all;if(all.stat_data&&Object.keys(all.stat_data).length>0)parsed=all.stat_data;if(parsed&&Object.keys(parsed).length>0)sd=parsed}
     window.cachedData=sd;
     if(!sd){renderFactions(null);renderNPCs(null);renderBangbooGallery(null);renderOwnedBangboos(null);renderQuests(null);return}
     document.getElementById('w-time').textContent=getProp(sd,'世界.当前时间','-');
