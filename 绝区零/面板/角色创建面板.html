@@ -64,22 +64,22 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 <div class="header"><h1>⚡ 绝区零 · 角色创建</h1><p>选择你的身份，开始在新艾利都的冒险</p></div>
 
 <div class="card"><h2>⚙️ 选择游戏模式</h2>
-<div class="route-cards">
-<div class="route-card active" onclick="selectMode('story')"><span class="icon">📖</span><span class="label">剧情模式</span><span class="desc">跟随主线——法厄同是世界的轴心</span></div>
-<div class="route-card" onclick="selectMode('sandbox')"><span class="icon">🏜️</span><span class="label">沙盒模式</span><span class="desc">自由探索——故事由你书写</span></div>
+<div class="route-cards" id="mode-cards">
+<div class="route-card active" onclick="selectMode('story',this)"><span class="icon">📖</span><span class="label">剧情模式</span><span class="desc">跟随主线——法厄同是世界的轴心</span></div>
+<div class="route-card" onclick="selectMode('sandbox',this)"><span class="icon">🏜️</span><span class="label">沙盒模式</span><span class="desc">自由探索——故事由你书写</span></div>
 </div></div>
 
 <div class="card"><h2>📋 STEP 1: 选择身份路线</h2>
-<div class="route-cards">
-<div class="route-card active" onclick="selectRoute('phaethon')"><span class="icon">🎮</span><span class="label">法厄同</span><span class="desc">传奇绳匠，Random Play店主，HDD远程操控伊埃斯探索空洞</span></div>
-<div class="route-card" onclick="selectRoute('custom')"><span class="icon">🆕</span><span class="label">非法厄同</span><span class="desc">自定义身份——居民、治安官、盗洞客……谱写属于你的故事</span></div>
+<div class="route-cards" id="route-cards">
+<div class="route-card active" onclick="selectRoute('phaethon',this)"><span class="icon">🎮</span><span class="label">法厄同</span><span class="desc">传奇绳匠，Random Play店主，HDD远程操控伊埃斯探索空洞</span></div>
+<div class="route-card" onclick="selectRoute('custom',this)"><span class="icon">🆕</span><span class="label">非法厄同</span><span class="desc">自定义身份——居民、治安官、盗洞客……谱写属于你的故事</span></div>
 </div></div>
 
 <div class="card hidden-section show" id="phaethon-section">
 <h2>🎮 STEP 2: 选择法厄同身份 <span class="badge badge-purple">法厄同线</span></h2>
 <div class="phaethon-choice">
-<div class="phaethon-card active" onclick="selectPhaethon('wise')"><span class="avatar">♂</span><span class="name">哲 (Wise)</span><span class="role">兄 · 冷静聪慧 · 灰色短发</span></div>
-<div class="phaethon-card" onclick="selectPhaethon('belle')"><span class="avatar">♀</span><span class="name">铃 (Belle)</span><span class="role">妹 · 元气开朗 · 深蓝短发</span></div>
+<div class="phaethon-card active" onclick="selectPhaethon('wise',this)"><span class="avatar">♂</span><span class="name">哲 (Wise)</span><span class="role">兄 · 冷静聪慧 · 灰色短发</span></div>
+<div class="phaethon-card" onclick="selectPhaethon('belle',this)"><span class="avatar">♀</span><span class="name">铃 (Belle)</span><span class="role">妹 · 元气开朗 · 深蓝短发</span></div>
 </div></div>
 
 <div class="card hidden-section" id="custom-section">
@@ -149,9 +149,9 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 var currentRoute='phaethon',selectedPhaethon='wise',currentPreset='resident',selectedChapter=0,currentMode='story';
 var adventureStarted=false,selectedBangboo='阿全';
 
-function selectMode(m){currentMode=m;var cs=document.querySelectorAll('#mode-cards .route-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');var t=document.querySelector('#mode-cards [onclick*="'+m+'"]');if(t)t.classList.add('active')}
-function selectRoute(r){currentRoute=r;selectedBangboo=r==='custom'?'阿全':'伊埃斯';var cs=document.querySelectorAll('#route-cards .route-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');var t=document.querySelector('#route-cards [onclick*="'+r+'"]');if(t)t.classList.add('active');document.getElementById('phaethon-section').classList.toggle('show',r==='phaethon');document.getElementById('custom-section').classList.toggle('show',r==='custom');document.getElementById('form-section').classList.toggle('show',r==='custom');document.getElementById('bangboo-section').classList.toggle('show',r==='custom');renderBangbooCards()}
-function selectPhaethon(c){selectedPhaethon=c;var cs=document.querySelectorAll('.phaethon-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');var t=document.querySelector('.phaethon-card[onclick*="'+c+'"]');if(t)t.classList.add('active')}
+function selectMode(m,el){currentMode=m;var cs=el.parentElement.querySelectorAll('.route-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active')}
+function selectRoute(r,el){currentRoute=r;selectedBangboo=r==='custom'?'阿全':'伊埃斯';var cs=el.parentElement.querySelectorAll('.route-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active');document.getElementById('phaethon-section').classList.toggle('show',r==='phaethon');document.getElementById('custom-section').classList.toggle('show',r==='custom');document.getElementById('form-section').classList.toggle('show',r==='custom');document.getElementById('bangboo-section').classList.toggle('show',r==='custom');renderBangbooCards()}
+function selectPhaethon(c,el){selectedPhaethon=c;var cs=el.parentElement.querySelectorAll('.phaethon-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active')}
 function onChapterChange(){selectedChapter=parseInt(document.getElementById('startChapter').value)||0}
 
 var RACE_TRAITS={'人类':'普通人类，无特殊种族特性。','猫希人':'猫科亚人，敏捷灵活、夜视优异。隐性猫爪可伸缩。','虎希人':'虎科亚人，力量爆发力在希人中首屈一指。','犬希人':'犬科亚人，嗅觉极其灵敏。','狼希人':'狼科亚人，天然领导气质。','鲨希人':'海洋掠食者亚人，在液态以太中更活跃。','熊希人':'熊科亚人，防御力与耐力顶尖。','鼠希人':'啮齿类亚人，小巧灵活。','兔希人':'兔科亚人，跳跃力与听觉超出所有希人。','狐希人':'狐科亚人，天生以太感知力远超其他希人。','章鱼希人':'最罕见希人亚种。触手可回溯过去影像。','羊希人':'羊科亚人，以太感知特异化为守夜人之眼。','熊猫希人':'珍惜亚人种，外表憨厚武力值极高。','报丧女妖':'传说种族。音波可直接作用于以太物质。','鬼族':'非人种族，身体耐久数倍于人类。','精灵':'稀有长寿种族，以太适应性天生极高。','吸血鬼':'夜行种族，夜间感官与再生显著增强。','智能构造体':'人工制造的智能生命。不需进食/呼吸/睡眠。'};
@@ -159,7 +159,7 @@ function updateRaceHint(){var r=document.getElementById('race').value;document.g
 
 var PRESETS={resident:{name:'',race:'人类',gender:'男',age:25,bio:'新艾利都的普通市民',ether:45,combat:'无',faction:'无',special:'无',location:'六分街·公寓',canPick:true},officer:{name:'',race:'人类',gender:'男',age:28,bio:'NEPS基层治安官',ether:55,combat:'中',faction:'新艾利都治安局（N.E.P.S.）',special:'标准治安官训练',location:'光映广场·街区',canPick:false},raider:{name:'',race:'猫希人',gender:'男',age:30,bio:'经验丰富的盗洞客',ether:70,combat:'强',faction:'独立',special:'空洞生存经验',location:'厄匹斯港·码头',canPick:false},tops:{name:'',race:'人类',gender:'男',age:32,bio:'TOPS财团中层采购专员',ether:40,combat:'弱',faction:'TOPS财团',special:'内部情报网络',location:'光映广场·街区',canPick:false},hia:{name:'',race:'人类',gender:'男',age:27,bio:'H.I.A.基层调查员',ether:75,combat:'中',faction:'H.I.A.',special:'空洞采样与分析',location:'光映广场·街区',canPick:false},rider:{name:'',race:'人类',gender:'男',age:26,bio:'外环自由骑手',ether:35,combat:'强',faction:'卡吕冬之子',special:'摩托车驾驶维修',location:'野火镇·加油站',canPick:false},proxy:{name:'',race:'人类',gender:'男',age:28,bio:'独立绳匠——没有HDD，每下一单都是赌命',ether:85,combat:'弱',faction:'独立绳匠',special:'手绘空洞路径笔记',location:'六分街·公寓',canPick:false},defector:{name:'',race:'人类',gender:'男',age:24,bio:'曾在称颂会担任基层司祭，目睹不该看的仪式后逃亡',ether:60,combat:'弱',faction:'无',special:'称颂会内部知识',location:'光映广场·街区',canPick:false}};
 
-function selectPreset(key){currentPreset=key;var cs=document.querySelectorAll('.preset-btn');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');var t=document.querySelector('.preset-btn[onclick*="'+key+'"]');if(t)t.classList.add('active');var p=PRESETS[key];var locked=!p.canPick;document.getElementById('name').value=p.name;document.getElementById('race').value=p.race;document.getElementById('gender').value=p.gender;document.getElementById('age').value=p.age;document.getElementById('bio').value=p.bio;document.getElementById('ether').value=p.ether;document.getElementById('combat').value=p.combat;document.getElementById('faction').value=p.faction;document.getElementById('special').value=p.special;document.getElementById('startLocation').value=p.location;updateRaceHint();['bio','ether','combat','faction','special'].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=locked});var lr=document.getElementById('startLocation');if(lr&&lr.parentElement)lr.parentElement.style.display=locked?'none':'';var b=document.getElementById('lock-badge');if(b){b.textContent=locked?'🔒 预设身份':'✏️ 自由定制';b.style.color=locked?'#ef5350':'#66bb6a'}}
+function selectPreset(key,el){currentPreset=key;var cs=el.parentElement.querySelectorAll('.preset-btn');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active');var p=PRESETS[key];var locked=!p.canPick;document.getElementById('name').value=p.name;document.getElementById('race').value=p.race;document.getElementById('gender').value=p.gender;document.getElementById('age').value=p.age;document.getElementById('bio').value=p.bio;document.getElementById('ether').value=p.ether;document.getElementById('combat').value=p.combat;document.getElementById('faction').value=p.faction;document.getElementById('special').value=p.special;document.getElementById('startLocation').value=p.location;updateRaceHint();['bio','ether','combat','faction','special'].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=locked});var lr=document.getElementById('startLocation');if(lr&&lr.parentElement)lr.parentElement.style.display=locked?'none':'';var b=document.getElementById('lock-badge');if(b){b.textContent=locked?'🔒 预设身份':'✏️ 自由定制';b.style.color=locked?'#ef5350':'#66bb6a'}}
 
 var ALL_BANGBOOS=[{name:'艾米莉安',faction:'狡兔屋',skill:'便携机炮·扫债者'},{name:'阿全',faction:'白祇重工',skill:'掘进冲刺——冲撞+电钻'},{name:'巴特勒',faction:'维多利亚家政',skill:'茶歇时间——回复能量'},{name:'阿崔巡查',faction:'治安局',skill:'汪汪连咬'},{name:'赤红莫库斯',faction:'卡吕冬之子',skill:'轰鸣车轮——骑摩托推怪'},{name:'格列佛探员',faction:'对空六课',skill:'紧急行动——三连穿刺'},{name:'咔嚓仔',faction:'天琴座',skill:'咔嚓！看镜头——增伤Buff'},{name:'罗宾',faction:'反舌鸟',skill:'幕布落下——随机卡牌'},{name:'贝利恩',faction:'云岿山',skill:'凤凰球舞——弹跳石球'},{name:'芽芽',faction:'云岿山',skill:'六星飞剑'},{name:'艾斯米小姐',faction:'怪啖屋',skill:'星光变换——回血/回能'},{name:'墨丘利',faction:'防卫军',skill:'战术策略——载具喷火'},{name:'比克布利克',faction:'黑枝',skill:'蒙太奇连击'},{name:'头号粉丝',faction:'妄想天使',skill:'应援——增伤回能'},{name:'鲨牙布',faction:'冰属性',skill:'旱地猎鲨——追踪+鱼雷'},{name:'飚速布',faction:'火属性',skill:'Boom——火箭爆炸'},{name:'插头布',faction:'电属性',skill:'电流狙击——电磁炮'},{name:'共鸣布',faction:'以太属性',skill:'迷你黑洞——牵引敌人'},{name:'左轮布',faction:'物理属性',skill:'幸运左轮——随机礼花弹'},{name:'企鹅布',faction:'维多利亚家政',skill:'冰刀舞——连续斩击'},{name:'恶魔布',faction:'卡吕冬之子',skill:'幻惑之吻——追尾弹'},{name:'纸袋布',faction:'白祇重工',skill:'近一点再近一点——双刀斩击'},{name:'寻宝布',faction:'支援型',skill:'探测器——随机增益'},{name:'果核布',faction:'支援型',skill:'甜甜甘露——果汁弹回血'}];
 
