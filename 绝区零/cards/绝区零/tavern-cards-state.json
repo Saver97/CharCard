@@ -274,13 +274,13 @@
     "地理与势力": {
       "光映广场": {
         "path": "世界书/地理与势力/光映广场.yaml",
-        "part": "城区",
         "scope": "catalog",
-        "abstract": "光映广场：雅努斯区商业中心,含HIA俱乐部/科坦咖啡/引力影院/花店/火锅店等",
+        "part": "城区",
         "keywords": [
           "光映广场",
           "Lumina Square"
-        ]
+        ],
+        "abstract": "光映广场：雅努斯区商业中心,含HIA俱乐部/科坦咖啡/引力影院/花店/火锅店等"
       },
       "六分街商户": {
         "path": "世界书/地理与势力/六分街商户.yaml",
@@ -773,70 +773,74 @@
     "关键人物": {
       "乔普师傅": {
         "path": "世界书/关键人物/其他/乔普师傅.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "瀑汤谷-锦鲤拉面店店主(六分街总店)",
+        "part": "其他",
         "keywords": [
           "乔普师傅",
           "General Chop"
-        ]
+        ],
+        "abstract": "瀑汤谷-锦鲤拉面店店主(六分街总店)"
       },
       "恩佐": {
         "path": "世界书/关键人物/其他/恩佐.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "涡轮改装店店主",
+        "part": "其他",
         "keywords": [
           "恩佐",
           "Enzo"
-        ]
+        ],
+        "abstract": "涡轮改装店店主"
       },
       "埃珐": {
         "path": "世界书/关键人物/其他/埃珐.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "吟游唱针音像店店主",
+        "part": "其他",
         "keywords": [
           "埃珐",
           "Elfy"
-        ]
+        ],
+        "abstract": "吟游唱针音像店店主"
       },
       "汀曼大师": {
         "path": "世界书/关键人物/其他/汀曼大师.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "Coff Cafe连锁咖啡店店主(智能构造体)",
+        "part": "其他",
         "keywords": [
           "汀曼大师",
           "Master Tingman"
-        ]
-      },
-      "Orchidea": {
-        "path": "世界书/关键人物/其他/Orchidea.yaml",
-        "part": "其他",
-        "scope": "specific",
-        "abstract": "光映广场花店店主兼委托中介",
-        "keywords": [
-          "Orchidea"
-        ]
-      },
-      "Blaze": {
-        "path": "世界书/关键人物/其他/Blaze.yaml",
-        "part": "其他",
-        "scope": "specific",
-        "abstract": "光映广场火锅店店主",
-        "keywords": [
-          "Blaze"
-        ]
+        ],
+        "abstract": "Coff Cafe连锁咖啡店店主(智能构造体)"
       },
       "伊芙": {
         "path": "世界书/关键人物/其他/伊芙.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "光映广场报刊亭店主",
+        "part": "其他",
         "keywords": [
           "伊芙",
           "Eve"
+        ],
+        "abstract": "光映广场报刊亭店主"
+      },
+      "奥奇迪亚": {
+        "path": "世界书/关键人物/其他/奥奇迪亚.yaml",
+        "part": "其他",
+        "scope": "specific",
+        "abstract": "朝露花店店主兼委托中介",
+        "keywords": [
+          "奥奇迪亚",
+          "Orchidea",
+          "朝露花店"
+        ]
+      },
+      "辛味": {
+        "path": "世界书/关键人物/其他/辛味.yaml",
+        "part": "其他",
+        "scope": "specific",
+        "abstract": "辛味火锅店店主",
+        "keywords": [
+          "辛味",
+          "Blaze",
+          "辛味火锅店"
         ]
       },
       "仪玄": {
