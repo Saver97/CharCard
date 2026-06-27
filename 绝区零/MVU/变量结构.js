@@ -77,7 +77,8 @@ export const Schema = z.object({
     黑枝: z.coerce.number().prefault(0),
     称颂会: z.coerce.number().prefault(0),
     HAND与HIA: z.coerce.number().prefault(0),
-    奥波勒斯小队: z.coerce.number().prefault(0)
+    奥波勒斯小队: z.coerce.number().prefault(0),
+    罗斯凯利法: z.coerce.number().prefault(0)
   }).prefault({}),
 
   邦布: z.object({

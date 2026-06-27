@@ -80,7 +80,7 @@ function generateUpdateRules(panels) {
   rules += `/空洞/萝卜质量       string   replace\n`;
   rules += `/空洞/剩余安全时间   string   replace\n\n`;
   rules += `## 阵营（15个，仅 number，replace）\n`;
-  rules += `/阵营/狡兔屋 | /阵营/对空六课 | /阵营/白祇重工 | /阵营/维多利亚家政 | /阵营/卡吕冬之子 | /阵营/治安局 | /阵营/天琴座 | /阵营/云岿山 | /阵营/反舌鸟 | /阵营/怪啖屋 | /阵营/妄想天使 | /阵营/黑枝 | /阵营/称颂会 | /阵营/HAND与HIA | /阵营/奥波勒斯小队    number  replace\n\n`;
+  rules += `/阵营/狡兔屋 | /阵营/对空六课 | /阵营/白祇重工 | /阵营/维多利亚家政 | /阵营/卡吕冬之子 | /阵营/治安局 | /阵营/天琴座 | /阵营/云岿山 | /阵营/反舌鸟 | /阵营/怪啖屋 | /阵营/妄想天使 | /阵营/黑枝 | /阵营/称颂会 | /阵营/HAND与HIA | /阵营/奥波勒斯小队 | /阵营/罗斯凯利法    number  replace\n\n`;
   rules += `## 邦布\n`;
   rules += `/邦布/伊埃斯电量     number   replace\n`;
   rules += `/邦布/邦布伙伴       string   replace（★ 仅1只，旧邦布自动回拥有的邦布列表）\n`;

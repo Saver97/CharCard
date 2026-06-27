@@ -410,6 +410,16 @@
       }
     },
     "阵营章节": {
+      "罗斯凯利法": {
+        "path": "世界书/阵营章节/罗斯凯利法.yaml",
+        "part": "代理人组织",
+        "scope": "catalog",
+        "abstract": "罗斯凯利法:挽昼建立的浮空理想国,维琳娜/诺姆所属",
+        "keywords": [
+          "罗斯凯利法",
+          "Roscaelifer"
+        ]
+      },
       "HAND与HIA": {
         "path": "世界书/阵营章节/HAND与HIA.yaml",
         "scope": "catalog",
@@ -2190,66 +2200,66 @@
     "剧情章节": {
       "序章": {
         "path": "世界书/剧情章节/序章.yaml",
-        "part": "第一季",
         "scope": "catalog",
-        "abstract": "序章: Fairy激活,兄妹与狡兔屋初合作",
+        "part": "第一季",
         "keywords": [
           "序章"
-        ]
+        ],
+        "abstract": "序章: Fairy激活,兄妹与狡兔屋初合作"
       },
       "第一章": {
         "path": "世界书/剧情章节/第一章.yaml",
-        "part": "第一季",
         "scope": "catalog",
-        "abstract": "猫的失物: 死路屠夫,远景阴谋",
+        "part": "第一季",
         "keywords": [
           "猫的失物"
-        ]
+        ],
+        "abstract": "猫的失物: 死路屠夫,远景阴谋"
       },
       "第二章": {
         "path": "世界书/剧情章节/第二章.yaml",
-        "part": "第一季",
         "scope": "catalog",
-        "abstract": "在空洞的中心呼唤: 牲鬼初现",
+        "part": "第一季",
         "keywords": [
           "在空洞的中心呼唤"
-        ]
+        ],
+        "abstract": "在空洞的中心呼唤: 牲鬼初现"
       },
       "第三章": {
         "path": "世界书/剧情章节/第三章.yaml",
-        "part": "第一季",
         "scope": "catalog",
-        "abstract": "危楼夜寻踪: 营救芮恩",
+        "part": "第一季",
         "keywords": [
           "危楼夜寻踪"
-        ]
+        ],
+        "abstract": "危楼夜寻踪: 营救芮恩"
       },
       "第四章": {
         "path": "世界书/剧情章节/第四章.yaml",
-        "part": "第一季",
         "scope": "catalog",
-        "abstract": "火狱骑行: 庞培之死,凯撒继承",
+        "part": "第一季",
         "keywords": [
           "火狱骑行"
-        ]
+        ],
+        "abstract": "火狱骑行: 庞培之死,凯撒继承"
       },
       "第五章": {
         "path": "世界书/剧情章节/第五章.yaml",
-        "part": "第一季",
         "scope": "catalog",
-        "abstract": "星流霆击: 布林格讨伐",
+        "part": "第一季",
         "keywords": [
           "星流霆击"
-        ]
+        ],
+        "abstract": "星流霆击: 布林格讨伐"
       },
       "第二季第一章": {
         "path": "世界书/剧情章节/第二季第一章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "云霞同归处: 拜入云岿山",
+        "part": "第二季",
         "keywords": [
           "云霞同归处"
-        ]
+        ],
+        "abstract": "云霞同归处: 拜入云岿山"
       }
     }
   },

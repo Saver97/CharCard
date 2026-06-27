@@ -18,7 +18,8 @@ const panel = {
     "阵营.黑枝": { type: "number", default: 0, desc: "TOPS财团内部清算组织" },
     "阵营.称颂会": { type: "number", default: 0, desc: "崇拜空洞的宗教狂热组织" },
     "阵营.HAND与HIA": { type: "number", default: 0, desc: "H.A.N.D.武装部门 & H.I.A.空洞调查协会" },
-    "阵营.奥波勒斯小队": { type: "number", default: 0, desc: "防卫军下属特殊作战单位" }
+    "阵营.奥波勒斯小队": { type: "number", default: 0, desc: "防卫军下属特殊作战单位" },
+    "阵营.罗斯凯利法": { type: "number", default: 0, desc: "挽昼建立的浮空理想国" }
   },
   rules: [
     "① 完成该阵营的委托：+5~+20",
