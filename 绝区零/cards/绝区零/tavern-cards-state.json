@@ -1069,7 +1069,10 @@
         "scope": "specific",
         "part": "云岿山",
         "keywords": [
-          "仪玄"
+          "仪玄",
+          "云岿山门主",
+          "虚狩",
+          "青溟剑"
         ],
         "abstract": "仪玄：gender: female | height: 172cm；role: 云岿山门主；personality: 冷艳腹黑，虚狩级战力",
         "uid": 42,
@@ -1090,7 +1093,8 @@
         "scope": "specific",
         "part": "云岿山",
         "keywords": [
-          "叶释渊"
+          "叶释渊",
+          "云岿山智囊"
         ],
         "abstract": "叶释渊：gender: male；role: 智囊型弟子已云游；personality: 冷静理性腹黑",
         "uid": 43,
@@ -1111,7 +1115,10 @@
         "scope": "specific",
         "part": "云岿山",
         "keywords": [
-          "橘福福"
+          "橘福福",
+          "虎希人",
+          "大师姐",
+          "云岿山"
         ],
         "abstract": "橘福福：gender: female | height: 142cm；role: 虎希人大师姐；personality: 元气精力充沛",
         "uid": 44,
@@ -1132,7 +1139,10 @@
         "scope": "specific",
         "part": "云岿山",
         "keywords": [
-          "潘引壶"
+          "潘引壶",
+          "熊猫希人",
+          "随便观厨师",
+          "云岿山"
         ],
         "abstract": "潘引壶：gender: male | height: 192cm；role: 熊猫希人厨师兼财务",
         "uid": 45,
@@ -1153,7 +1163,9 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "伊瑟尔德"
+          "伊瑟尔德",
+          "防卫军上校",
+          "称颂会司教"
         ],
         "abstract": "伊瑟尔德：gender: female；role: 防卫军上校/称颂会司教",
         "uid": 46,
@@ -1171,7 +1183,9 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "启明星"
+          "启明星",
+          "绳网中间商",
+          "星人攻略"
         ],
         "abstract": "启明星：gender: female；role: 绳网中间商，制作《星人攻略》",
         "uid": 47,
@@ -1189,7 +1203,8 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "红豆"
+          "红豆",
+          "饮茶仙看板娘"
         ],
         "abstract": "红豆：gender: female；role: 饮茶仙看板娘",
         "uid": 48,
@@ -1207,7 +1222,8 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "芮恩"
+          "芮恩",
+          "自由黑客"
         ],
         "abstract": "芮恩：gender: female；role: 自由黑客",
         "uid": 49,
@@ -1225,7 +1241,10 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "达米安"
+          "达米安",
+          "辉瓷美克",
+          "反派",
+          "利己主义者"
         ],
         "abstract": "达米安：gender: male；role: 辉晶美克地区负责人，利己主义者",
         "uid": 50,
@@ -1243,7 +1262,10 @@
         "scope": "specific",
         "part": "卡吕冬之子",
         "keywords": [
-          "凯撒·金"
+          "凯撒·金",
+          "卡吕冬之子首领",
+          "外环霸主",
+          "灰烬湖"
         ],
         "abstract": "凯撒·金：gender: female | height: 176cm；role: 卡吕冬之子首领；personality: 豪爽直率单细胞笨蛋美人",
         "uid": 51,
@@ -1264,7 +1286,10 @@
         "scope": "specific",
         "part": "卡吕冬之子",
         "keywords": [
-          "柏妮思·怀特"
+          "柏妮思·怀特",
+          "燃油调配师",
+          "猫奴",
+          "卡吕冬之子"
         ],
         "abstract": "柏妮思·怀特：gender: female | height: 160cm；role: 燃油调配师；personality: 极度外向自来熟，重度猫奴",
         "uid": 52,
@@ -1285,7 +1310,9 @@
         "scope": "specific",
         "part": "卡吕冬之子",
         "keywords": [
-          "波可娜·费雷尼"
+          "波可娜·费雷尼",
+          "猫希人佣兵",
+          "卡吕冬之子"
         ],
         "abstract": "波可娜·费雷尼：gender: female | height: 173cm；role: 猫希人佣兵；personality: 傲娇口是心非",
         "uid": 53,
@@ -1306,7 +1333,9 @@
         "scope": "specific",
         "part": "卡吕冬之子",
         "keywords": [
-          "派派·韦尔"
+          "派派·韦尔",
+          "卡车司机",
+          "卡吕冬之子"
         ],
         "abstract": "派派·韦尔：gender: female | height: 151cm；role: 卡车司机；personality: 极端慵懒，从不需要刹车",
         "uid": 54,
@@ -1327,7 +1356,10 @@
         "scope": "specific",
         "part": "卡吕冬之子",
         "keywords": [
-          "莱特"
+          "莱特",
+          "常胜冠军",
+          "火狱骑行",
+          "卡吕冬之子"
         ],
         "abstract": "莱特：gender: male | height: 185cm；role: 常胜冠军；personality: 外表傲慢内心珍视同伴，晕血",
         "uid": 55,
@@ -1348,7 +1380,10 @@
         "scope": "specific",
         "part": "卡吕冬之子",
         "keywords": [
-          "露西"
+          "露西",
+          "军师",
+          "傲娇大小姐",
+          "卡吕冬之子"
         ],
         "abstract": "露西：gender: female | height: 152cm；role: 军师；personality: 傲娇大小姐，习惯用\"本小姐\"自称",
         "uid": 56,
@@ -1369,7 +1404,10 @@
         "scope": "specific",
         "part": "反舌鸟",
         "keywords": [
-          "薇薇安·班希"
+          "薇薇安·班希",
+          "报丧女妖",
+          "反舌鸟",
+          "崇拜法厄同"
         ],
         "abstract": "薇薇安·班希：gender: female | height: 162cm；role: 报丧女妖成员；personality: 崇拜法厄同的重女",
         "uid": 57,
@@ -1390,7 +1428,9 @@
         "scope": "specific",
         "part": "反舌鸟",
         "keywords": [
-          "雨果·维拉德"
+          "雨果·维拉德",
+          "吸血鬼",
+          "反舌鸟首领"
         ],
         "abstract": "雨果·维拉德：gender: male | height: 185cm；role: 反舌鸟首领吸血鬼",
         "uid": 58,
@@ -1411,7 +1451,11 @@
         "scope": "specific",
         "part": "天琴座",
         "keywords": [
-          "伊芙琳·舒瓦利耶"
+          "伊芙琳·舒瓦利耶",
+          "经纪人",
+          "保镖",
+          "天琴座",
+          "忠犬"
         ],
         "abstract": "伊芙琳·舒瓦利耶：gender: female | height: 173cm；role: 耀嘉音经纪人兼保镖；personality: 冷静高效忠犬属性",
         "uid": 59,
@@ -1432,7 +1476,10 @@
         "scope": "specific",
         "part": "天琴座",
         "keywords": [
-          "耀嘉音"
+          "耀嘉音",
+          "第一歌姬",
+          "天琴座",
+          "星环演唱会"
         ],
         "abstract": "耀嘉音：gender: female | height: 176cm；role: 第一歌姬；personality: 舞台女王私下天然呆",
         "uid": 60,
@@ -1453,7 +1500,11 @@
         "scope": "specific",
         "part": "奥波勒斯小队",
         "keywords": [
-          "11号"
+          "11号",
+          "白银军克隆人",
+          "嗜辣",
+          "防卫军",
+          "奥波勒斯小队"
         ],
         "abstract": "11号：gender: female | height: 160cm；role: 原白银军克隆人，极端嗜辣",
         "uid": 61,
@@ -1474,7 +1525,12 @@
         "scope": "specific",
         "part": "奥波勒斯小队",
         "keywords": [
-          "席德"
+          "席德",
+          "机甲驾驶员",
+          "天然疯",
+          "防卫军",
+          "奥波勒斯小队",
+          "铸铁"
         ],
         "abstract": "席德：gender: female | height: 153cm；role: 重型机甲驾驶员，天然疯",
         "uid": 62,
@@ -1495,7 +1551,12 @@
         "scope": "specific",
         "part": "奥波勒斯小队",
         "keywords": [
-          "扳机"
+          "扳机",
+          "狙击手",
+          "双目失明",
+          "以太感知",
+          "防卫军",
+          "奥波勒斯小队"
         ],
         "abstract": "扳机：gender: female | height: 173cm；role: 狙击手，双目失明以太感知极强",
         "uid": 63,
@@ -1516,7 +1577,11 @@
         "scope": "specific",
         "part": "奥波勒斯小队",
         "keywords": [
-          "鬼火&奥菲丝"
+          "鬼火&奥菲丝",
+          "队长意识",
+          "尾炮",
+          "防卫军",
+          "奥波勒斯小队"
         ],
         "abstract": "鬼火&奥菲丝：gender: female；role: 队长意识附着于队员尾炮中",
         "uid": 64,
@@ -1537,7 +1602,11 @@
         "scope": "specific",
         "part": "妄想天使",
         "keywords": [
-          "千夏"
+          "千夏",
+          "作曲",
+          "妄想天使",
+          "社恐",
+          "崇拜耀嘉音"
         ],
         "abstract": "千夏：gender: female；role: AOD作曲，害羞社恐崇拜耀嘉音",
         "uid": 65,
@@ -1558,7 +1627,10 @@
         "scope": "specific",
         "part": "妄想天使",
         "keywords": [
-          "南宫羽"
+          "南宫羽",
+          "妄想天使",
+          "队长",
+          "流星锤"
         ],
         "abstract": "南宫羽：gender: female；role: AOD队长，植入翅膀使用流星锤",
         "uid": 66,
@@ -1579,7 +1651,11 @@
         "scope": "specific",
         "part": "妄想天使",
         "keywords": [
-          "爱芮"
+          "爱芮",
+          "智能构造体",
+          "AOD主唱",
+          "妄想天使",
+          "被Youkai蛊惑"
         ],
         "abstract": "爱芮：gender: female；role: AOD智能构造体主唱",
         "uid": 67,
@@ -1600,7 +1676,10 @@
         "scope": "specific",
         "part": "对空六课",
         "keywords": [
-          "星见雅"
+          "星见雅",
+          "狐希人",
+          "对空六课课长",
+          "虚狩"
         ],
         "abstract": "星见雅：gender: female | height: 170cm；role: 对空六课课长；appearance: 狐希人黑发红眼",
         "uid": 68,
@@ -1621,7 +1700,9 @@
         "scope": "specific",
         "part": "对空六课",
         "keywords": [
-          "月城柳"
+          "月城柳",
+          "对空六课副课长",
+          "粉发眼镜娘"
         ],
         "abstract": "月城柳：gender: female | height: 169cm；role: 对空六课副课长；appearance: 粉发眼镜娘",
         "uid": 69,
@@ -1642,7 +1723,9 @@
         "scope": "specific",
         "part": "对空六课",
         "keywords": [
-          "浅羽悠真"
+          "浅羽悠真",
+          "对空六课斥候",
+          "以太适性衰竭"
         ],
         "abstract": "浅羽悠真：gender: male | height: 173cm；role: 对空六课斥候；personality: 慵懒效率主义者，罹患以太适性衰竭综合征",
         "uid": 70,
@@ -1663,7 +1746,9 @@
         "scope": "specific",
         "part": "对空六课",
         "keywords": [
-          "苍角"
+          "苍角",
+          "鬼族",
+          "对空六课执行官"
         ],
         "abstract": "苍角：gender: female | height: 145cm；role: 对空六课执行官；appearance: 蓝皮鬼族白短发",
         "uid": 71,
@@ -1684,7 +1769,10 @@
         "scope": "specific",
         "part": "怪啖屋",
         "keywords": [
-          "伊德海莉"
+          "伊德海莉",
+          "章鱼希人",
+          "记忆触摸",
+          "怪啖屋"
         ],
         "abstract": "伊德海莉：gender: female | height: 171cm；role: 章鱼希人，可回溯过去影像",
         "uid": 72,
@@ -1705,7 +1793,11 @@
         "scope": "specific",
         "part": "怪啖屋",
         "keywords": [
-          "卢西娅"
+          "卢西娅",
+          "羊希人",
+          "守夜人",
+          "怪啖屋",
+          "彷徨猎手"
         ],
         "abstract": "卢西娅：gender: female；role: 羊希人守夜人，以骸控",
         "uid": 73,
@@ -1726,7 +1818,10 @@
         "scope": "specific",
         "part": "怪啖屋",
         "keywords": [
-          "浮波柚叶"
+          "浮波柚叶",
+          "腹黑",
+          "怪啖屋",
+          "狸猫"
         ],
         "abstract": "浮波柚叶：gender: female；role: 腹黑恶作剧少女，随身狸猫",
         "uid": 74,
@@ -1747,7 +1842,10 @@
         "scope": "specific",
         "part": "怪啖屋",
         "keywords": [
-          "爱丽丝"
+          "爱丽丝",
+          "兔希人",
+          "对称强迫症",
+          "怪啖屋"
         ],
         "abstract": "爱丽丝：gender: female；role: 兔希人大小姐，胆小对称强迫症",
         "uid": 75,
@@ -1768,7 +1866,9 @@
         "scope": "specific",
         "part": "怪啖屋",
         "keywords": [
-          "狛野真斗"
+          "狛野真斗",
+          "犬希人",
+          "怪啖屋"
         ],
         "abstract": "狛野真斗：gender: male；role: 犬希人肌肉男，对朋友忠诚",
         "uid": 76,
@@ -1789,7 +1889,11 @@
         "scope": "specific",
         "part": "治安局",
         "keywords": [
-          "朱鸢"
+          "朱鸢",
+          "朱雀",
+          "刑侦特勤组",
+          "完美主义",
+          "治安局"
         ],
         "abstract": "朱鸢：gender: female | height: 175cm；role: 刑侦特勤组组长/朱雀；personality: 完美主义追求上等生",
         "uid": 77,
@@ -1810,7 +1914,11 @@
         "scope": "specific",
         "part": "治安局",
         "keywords": [
-          "简·杜"
+          "简·杜",
+          "玄武",
+          "卧底专家",
+          "欺诈师",
+          "治安局"
         ],
         "abstract": "简·杜：gender: female | height: 170cm；role: 卧底专家/玄武；personality: 百变欺诈师",
         "uid": 78,
@@ -1831,7 +1939,11 @@
         "scope": "specific",
         "part": "治安局",
         "keywords": [
-          "赛斯·洛威尔"
+          "赛斯·洛威尔",
+          "白虎",
+          "猫希人",
+          "巡查",
+          "治安局"
         ],
         "abstract": "赛斯·洛威尔：gender: male | height: 174cm；role: 猫希人巡查/白虎；personality: 热血单纯老实人",
         "uid": 79,
@@ -1852,7 +1964,11 @@
         "scope": "specific",
         "part": "治安局",
         "keywords": [
-          "青衣"
+          "青衣",
+          "青龙",
+          "钰偶",
+          "智能构造体",
+          "治安局"
         ],
         "abstract": "青衣：gender: female | height: 142cm；role: 钰偶智能构造体/青龙；personality: 爱舔东西分析成分",
         "uid": 80,
@@ -1873,7 +1989,11 @@
         "scope": "specific",
         "part": "法厄同线",
         "keywords": [
-          "Fairy"
+          "Fairy",
+          "HDD",
+          "AI助手",
+          "毒舌",
+          "自恋"
         ],
         "abstract": "Fairy：role: HDD系统AI助手；personality: 极度自恋毒舌吐槽役，耗电导致电费涨五倍",
         "uid": 81,
@@ -1891,7 +2011,11 @@
         "scope": "specific",
         "part": "法厄同线",
         "keywords": [
-          "伊埃斯"
+          "伊埃斯",
+          "Eous",
+          "特殊邦布",
+          "HDD同步",
+          "感官同步"
         ],
         "abstract": "伊埃斯（Eous）：type: 特殊邦布；origin: 导师卡洛丝制作，可HDD远程同步控制",
         "uid": 82,
@@ -1909,7 +2033,11 @@
         "scope": "specific",
         "part": "法厄同线",
         "keywords": [
-          "哲"
+          "哲",
+          "Wise",
+          "兄",
+          "法厄同",
+          "Random Play"
         ],
         "abstract": "哲：gender: male；role: 法厄同（兄），Random Play店主；appearance: 灰色短发墨绿眼瞳",
         "uid": 83,
@@ -1927,7 +2055,11 @@
         "scope": "specific",
         "part": "法厄同线",
         "keywords": [
-          "铃"
+          "铃",
+          "Belle",
+          "妹",
+          "法厄同",
+          "Random Play"
         ],
         "abstract": "铃：gender: female；role: 法厄同（妹）；appearance: 深蓝短发墨绿眼瞳",
         "uid": 84,
@@ -1945,7 +2077,9 @@
         "scope": "specific",
         "part": "狡兔屋",
         "keywords": [
-          "妮可·德玛拉"
+          "妮可·德玛拉",
+          "狡兔屋创始人",
+          "老大"
         ],
         "abstract": "妮可·德玛拉：gender: female | height: 165cm；role: 狡兔屋创始人/老大；appearance: 粉发双马尾绿眼",
         "uid": 85,
@@ -1966,7 +2100,10 @@
         "scope": "specific",
         "part": "狡兔屋",
         "keywords": [
-          "安比·德玛拉"
+          "安比·德玛拉",
+          "Soldier 0",
+          "白银军",
+          "狡兔屋"
         ],
         "abstract": "安比·德玛拉：gender: female | height: 156cm；role: 狡兔屋成员；appearance: 白短橙绿渐变瞳，娇小",
         "uid": 86,
@@ -1987,7 +2124,11 @@
         "scope": "specific",
         "part": "狡兔屋",
         "keywords": [
-          "比利·奇德"
+          "比利·奇德",
+          "红围巾",
+          "星徽骑士",
+          "智能构造体",
+          "狡兔屋"
         ],
         "abstract": "比利·奇德：gender: male | height: 188cm；role: 狡兔屋成员；appearance: 银白爆炸头，智能构造体",
         "uid": 87,
@@ -2008,7 +2149,10 @@
         "scope": "specific",
         "part": "狡兔屋",
         "keywords": [
-          "猫宫又奈"
+          "猫宫又奈",
+          "猫希人",
+          "赤牙帮",
+          "狡兔屋"
         ],
         "abstract": "猫宫又奈：gender: female | height: 148cm；role: 狡兔屋成员；appearance: 猫希人黑发红眼双猫尾",
         "uid": 88,
@@ -2029,7 +2173,9 @@
         "scope": "specific",
         "part": "白祇重工",
         "keywords": [
-          "安东·伊万诺夫"
+          "安东·伊万诺夫",
+          "白祇重工",
+          "工程负责人"
         ],
         "abstract": "安东·伊万诺夫：gender: male | height: 190cm；role: 工程现场负责人；personality: 热血坦率干劲满满",
         "uid": 89,
@@ -2050,7 +2196,10 @@
         "scope": "specific",
         "part": "白祇重工",
         "keywords": [
-          "本·比格"
+          "本·比格",
+          "熊希人",
+          "会计",
+          "白祇重工"
         ],
         "abstract": "本·比格：gender: male | height: 192cm；role: 熊希人会计；personality: 外表凶悍内心敦厚，数字敏感",
         "uid": 90,
@@ -2071,7 +2220,10 @@
         "scope": "specific",
         "part": "白祇重工",
         "keywords": [
-          "格莉丝·霍华德"
+          "格莉丝·霍华德",
+          "机械顾问",
+          "拆解狂魔",
+          "白祇重工"
         ],
         "abstract": "格莉丝·霍华德：gender: female | height: 170cm；role: 白祇重工机械顾问；personality: 机械狂热者拆解狂魔",
         "uid": 91,
@@ -2092,7 +2244,9 @@
         "scope": "specific",
         "part": "白祇重工",
         "keywords": [
-          "珂蕾妲·贝洛伯格"
+          "珂蕾妲·贝洛伯格",
+          "白祇重工社长",
+          "霍斯女儿"
         ],
         "abstract": "珂蕾妲·贝洛伯格：gender: female | height: 150cm；role: 白祇重工社长；appearance: 橙红双马尾独眼罩",
         "uid": 92,
@@ -2113,7 +2267,10 @@
         "scope": "specific",
         "part": "维多利亚家政",
         "keywords": [
-          "丽娜"
+          "丽娜",
+          "女仆长",
+          "飘浮",
+          "维多利亚家政"
         ],
         "abstract": "丽娜：gender: female | height: 173cm；role: 女仆长；appearance: 银发红眼飘浮移动",
         "uid": 93,
@@ -2134,7 +2291,10 @@
         "scope": "specific",
         "part": "维多利亚家政",
         "keywords": [
-          "可琳·威克斯"
+          "可琳·威克斯",
+          "胆小女仆",
+          "电锯",
+          "维多利亚家政"
         ],
         "abstract": "可琳·威克斯：gender: female | height: 141cm；role: 胆小女仆；personality: 极度缺乏自信，挥舞巨大电锯",
         "uid": 94,
@@ -2155,7 +2315,10 @@
         "scope": "specific",
         "part": "维多利亚家政",
         "keywords": [
-          "艾莲·乔"
+          "艾莲·乔",
+          "鲨希人",
+          "慵懒",
+          "维多利亚家政"
         ],
         "abstract": "艾莲·乔：gender: female | height: 161cm；role: 鲨希人女仆/学生；personality: 慵懒节能主义，口头禅\"麻烦\"",
         "uid": 95,
@@ -2176,7 +2339,10 @@
         "scope": "specific",
         "part": "维多利亚家政",
         "keywords": [
-          "冯·莱卡恩"
+          "冯·莱卡恩",
+          "执事",
+          "白狼希人",
+          "维多利亚家政"
         ],
         "abstract": "冯·莱卡恩：gender: male | height: 198cm；role: 白狼希人执事；personality: 理性优雅绅士，轻微洁癖",
         "uid": 96,
@@ -2197,7 +2363,11 @@
         "scope": "specific",
         "part": "黑枝",
         "keywords": [
-          "照"
+          "照",
+          "兔希人",
+          "裁决官",
+          "黑枝",
+          "最矮代理人"
         ],
         "abstract": "照：gender: female | height: 118cm；role: 兔希人裁决官，最矮代理人",
         "uid": 97,
@@ -2218,7 +2388,9 @@
         "scope": "specific",
         "part": "黑枝",
         "keywords": [
-          "琉音"
+          "琉音",
+          "黑枝",
+          "聆听死者回声"
         ],
         "abstract": "琉音：gender: female | height: 145cm；role: 黑枝成员，能聆听死者回声",
         "uid": 98,
@@ -2239,7 +2411,10 @@
         "scope": "specific",
         "part": "黑枝",
         "keywords": [
-          "般岳"
+          "般岳",
+          "机械狮子",
+          "武馆馆主",
+          "黑枝"
         ],
         "abstract": "般岳：gender: male | height: 200cm；role: 机械狮子武馆馆主",
         "uid": 99,
@@ -2261,7 +2436,9 @@
         "part": "其他",
         "keywords": [
           "乔普师傅",
-          "General Chop"
+          "General Chop",
+          "拉面店",
+          "瀑汤谷"
         ],
         "abstract": "瀑汤谷-锦鲤拉面店店主(六分街总店)",
         "enabled": true,
@@ -2280,7 +2457,9 @@
         "part": "其他",
         "keywords": [
           "恩佐",
-          "Enzo"
+          "Enzo",
+          "涡轮改装店",
+          "邦布改装"
         ],
         "abstract": "涡轮改装店店主",
         "enabled": true,
@@ -2299,7 +2478,10 @@
         "part": "其他",
         "keywords": [
           "埃珐",
-          "Elfy"
+          "Elfy",
+          "吟游唱针",
+          "音像店",
+          "驱动盘调律"
         ],
         "abstract": "吟游唱针音像店店主",
         "enabled": true,
@@ -2318,7 +2500,10 @@
         "part": "其他",
         "keywords": [
           "汀曼大师",
-          "Master Tingman"
+          "Master Tingman",
+          "Coff Cafe",
+          "智能构造体",
+          "咖啡"
         ],
         "abstract": "Coff Cafe连锁咖啡店店主(智能构造体)",
         "enabled": true,
@@ -2337,7 +2522,9 @@
         "part": "其他",
         "keywords": [
           "伊芙",
-          "Eve"
+          "Eve",
+          "报刊亭",
+          "光映广场"
         ],
         "abstract": "光映广场报刊亭店主",
         "enabled": true,
@@ -2357,7 +2544,9 @@
         "keywords": [
           "辛味",
           "Blaze",
-          "辛味火锅店"
+          "辛味火锅店",
+          "火锅店",
+          "光映广场"
         ],
         "abstract": "辛味火锅店店主",
         "enabled": true,
@@ -2377,7 +2566,9 @@
         "keywords": [
           "兰",
           "Orchidea",
-          "朝露花店"
+          "朝露花店",
+          "委托中介",
+          "称颂会逃亡者庇护"
         ],
         "abstract": "朝露花店店主兼委托中介",
         "enabled": true,
@@ -2396,7 +2587,10 @@
         "part": "罗斯凯利法",
         "keywords": [
           "维琳娜",
-          "Velina"
+          "Velina",
+          "外策局总务官",
+          "罗斯凯利法",
+          "风属性"
         ],
         "abstract": "罗斯凯利法外策局总务官,S级风属性异常,首位风属性角色",
         "enabled": true,
@@ -2419,7 +2613,10 @@
         "part": "罗斯凯利法",
         "keywords": [
           "诺姆",
-          "Norma"
+          "Norma",
+          "外策局技术长",
+          "罗斯凯利法",
+          "火属性"
         ],
         "abstract": "罗斯凯利法外策局技术长,S级火属性击破",
         "enabled": true,
@@ -2442,7 +2639,11 @@
         "part": "法厄同线",
         "keywords": [
           "佩洛伊斯",
-          "Pyrois"
+          "Pyrois",
+          "法厄同",
+          "战斗形态",
+          "S级以太",
+          "虚空核"
         ],
         "abstract": "法厄同觉醒战斗形态,S级以太强攻,免费赠送",
         "enabled": true,
@@ -2461,7 +2662,11 @@
         "part": "初代虚狩",
         "keywords": [
           "蕾米埃尔",
-          "Remielle"
+          "Remielle",
+          "初代虚狩",
+          "粉发白翼",
+          "反目",
+          "闭锁派"
         ],
         "abstract": "初代七虚狩之一,粉发白翼,预计3.1实装",
         "enabled": true,
@@ -2484,7 +2689,12 @@
         "part": "初代虚狩",
         "keywords": [
           "挽昼",
-          "Sunbringer"
+          "Sunbringer",
+          "初代虚狩",
+          "智能构造体",
+          "三位一体",
+          "邦布发明者",
+          "罗斯凯利法"
         ],
         "abstract": "初代七虚狩,智能构造体,分解为三具(艾尔妲/林德薇恩/德蕾琪娜),邦布发明者,罗斯凯利法建立者",
         "enabled": true,
@@ -2507,7 +2717,11 @@
         "part": "治安局",
         "keywords": [
           "塞维里安",
-          "Severian"
+          "Severian",
+          "猫希人",
+          "高级专员",
+          "治安局",
+          "赛斯哥哥"
         ],
         "abstract": "NEPS总部高级专员,赛斯的哥哥,猫希人,第三季浮空岛相关",
         "enabled": true,
@@ -2529,7 +2743,9 @@
         "scope": "specific",
         "part": "云岿山",
         "keywords": [
-          "叶瞬光"
+          "叶瞬光",
+          "青溟剑剑主",
+          "云岿山"
         ],
         "abstract": "叶释渊之妹,青溟剑现任剑主",
         "enabled": true,
@@ -2551,7 +2767,10 @@
         "part": "治安局",
         "keywords": [
           "希希芙",
-          "Cissia"
+          "Cissia",
+          "案件专员",
+          "治安局",
+          "塞维里安下属"
         ],
         "abstract": "NEPS总部案件专员,塞维里安下属",
         "enabled": true,
@@ -2574,7 +2793,8 @@
         "part": "称颂会",
         "keywords": [
           "莎拉",
-          "Sarah"
+          "Sarah",
+          "称颂会核心成员"
         ],
         "abstract": "称颂会核心成员",
         "enabled": true,
@@ -2598,7 +2818,10 @@
         "keywords": [
           "布林格",
           "Bringer",
-          "贾斯汀"
+          "贾斯汀",
+          "前治安局警官",
+          "称颂会内鬼",
+          "朱鸢恩人"
         ],
         "abstract": "前治安局警官,称颂会内鬼,朱鸢童年恩人",
         "enabled": true,
@@ -2622,7 +2845,8 @@
         "part": "称颂会",
         "keywords": [
           "造物主",
-          "The Creator"
+          "The Creator",
+          "称颂会最高领袖"
         ],
         "abstract": "称颂会最高领袖",
         "enabled": true,
@@ -2645,7 +2869,8 @@
         "part": "称颂会",
         "keywords": [
           "梅若拉可",
-          "Merolac"
+          "Merolac",
+          "称颂会司教"
         ],
         "abstract": "称颂会司教",
         "enabled": true,
@@ -2669,7 +2894,12 @@
         "keywords": [
           "卡洛丝",
           "Carole",
-          "阿尔娜"
+          "阿尔娜",
+          "赫利俄斯机关",
+          "研究主任",
+          "法厄同导师",
+          "Fairy创造者",
+          "伊埃斯创造者"
         ],
         "abstract": "赫利俄斯机关研究主任,法厄同兄妹导师,伊埃斯与Fairy创造者",
         "enabled": true,
@@ -2688,7 +2918,9 @@
         "part": "卡吕冬之子",
         "keywords": [
           "大老爹",
-          "Big Daddy"
+          "Big Daddy",
+          "卡吕冬之子创始人",
+          "凯撒养父"
         ],
         "abstract": "卡吕冬之子创始人,凯撒养父",
         "enabled": true,
@@ -2712,7 +2944,9 @@
         "keywords": [
           "霍斯",
           "Khors",
-          "贝洛伯格"
+          "贝洛伯格",
+          "白祇重工前社长",
+          "珂蕾妲之父"
         ],
         "abstract": "白祇重工前社长,珂蕾妲之父",
         "enabled": true,
@@ -2736,7 +2970,12 @@
         "part": "黑枝",
         "keywords": [
           "普罗米娅",
-          "Promeia"
+          "Promeia",
+          "黑枝裁决官",
+          "赎罪者",
+          "手铐",
+          "处刑式",
+          "清道夫"
         ],
         "abstract": "黑枝裁决官/沉默的赎罪者/手铐与自我审判",
         "uid": 200,
@@ -2759,7 +2998,10 @@
         "part": "其他",
         "keywords": [
           "Youkai",
-          "四钥匙"
+          "四钥匙",
+          "Fairy孪生AI",
+          "缄枢",
+          "智能构造体寄生"
         ],
         "abstract": "四钥匙之一/Fairy孪生AI/第二季核心反派",
         "uid": 201,
@@ -2781,7 +3023,9 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "铅杖"
+          "铅杖",
+          "罗斯凯利法侵吞",
+          "TOPS"
         ],
         "abstract": "神秘人物/Youkai盟友/罗斯凯利法侵吞推手",
         "uid": 202,
