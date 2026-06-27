@@ -834,13 +834,53 @@
       },
       "兰": {
         "path": "世界书/关键人物/其他/兰.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "朝露花店店主兼委托中介",
+        "part": "其他",
         "keywords": [
           "兰",
           "Orchidea",
           "朝露花店"
+        ],
+        "abstract": "朝露花店店主兼委托中介"
+      },
+      "维琳娜": {
+        "path": "世界书/关键人物/罗斯凯利法/维琳娜.yaml",
+        "part": "罗斯凯利法",
+        "scope": "specific",
+        "abstract": "罗斯凯利法外策局总务官,S级风属性异常,首位风属性角色",
+        "keywords": [
+          "维琳娜",
+          "Velina"
+        ]
+      },
+      "诺姆": {
+        "path": "世界书/关键人物/罗斯凯利法/诺姆.yaml",
+        "part": "罗斯凯利法",
+        "scope": "specific",
+        "abstract": "罗斯凯利法外策局技术长,S级火属性击破",
+        "keywords": [
+          "诺姆",
+          "Norma"
+        ]
+      },
+      "佩洛伊斯": {
+        "path": "世界书/关键人物/法厄同线/佩洛伊斯.yaml",
+        "part": "法厄同线",
+        "scope": "specific",
+        "abstract": "法厄同觉醒战斗形态,S级以太强攻,免费赠送",
+        "keywords": [
+          "佩洛伊斯",
+          "Pyrois"
+        ]
+      },
+      "蕾米埃尔": {
+        "path": "世界书/关键人物/初代虚狩/蕾米埃尔.yaml",
+        "part": "初代虚狩",
+        "scope": "specific",
+        "abstract": "初代七虚狩之一,粉发白翼,预计3.1实装",
+        "keywords": [
+          "蕾米埃尔",
+          "Remielle"
         ]
       },
       "仪玄": {
