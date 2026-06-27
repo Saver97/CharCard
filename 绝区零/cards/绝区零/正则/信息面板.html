@@ -185,7 +185,7 @@ function renderAll(){
     var sd=null;
 	    if(typeof getAllVariables==='function'){var all=getAllVariables();var parsed=typeof _!=='undefined'?_.get(all,'stat_data'):(all.stat_data||all);if(parsed&&Object.keys(parsed).length>0)sd=parsed}
     window.cachedData=sd;
-    if(!sd){renderFactions(null);renderNPCs(null);renderBangbooGallery(null);renderOwnedBangboos(null);renderQuests(null);return}
+    if(!sd){renderFactions(null);renderNPCs(null);renderOwnedBangboos(null);renderQuests(null);return}
     document.getElementById('w-time').textContent=getProp(sd,'世界.当前时间','-');
     document.getElementById('w-loc').textContent=getProp(sd,'世界.当前地点','-');
     document.getElementById('w-chapter').textContent=getProp(sd,'世界.当前章节','-');
