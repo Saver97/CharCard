@@ -2186,6 +2186,71 @@
           "order": 950
         }
       }
+    },
+    "剧情章节": {
+      "序章": {
+        "path": "世界书/剧情章节/序章.yaml",
+        "part": "第一季",
+        "scope": "catalog",
+        "abstract": "序章: Fairy激活,兄妹与狡兔屋初合作",
+        "keywords": [
+          "序章"
+        ]
+      },
+      "第一章": {
+        "path": "世界书/剧情章节/第一章.yaml",
+        "part": "第一季",
+        "scope": "catalog",
+        "abstract": "猫的失物: 死路屠夫,远景阴谋",
+        "keywords": [
+          "猫的失物"
+        ]
+      },
+      "第二章": {
+        "path": "世界书/剧情章节/第二章.yaml",
+        "part": "第一季",
+        "scope": "catalog",
+        "abstract": "在空洞的中心呼唤: 牲鬼初现",
+        "keywords": [
+          "在空洞的中心呼唤"
+        ]
+      },
+      "第三章": {
+        "path": "世界书/剧情章节/第三章.yaml",
+        "part": "第一季",
+        "scope": "catalog",
+        "abstract": "危楼夜寻踪: 营救芮恩",
+        "keywords": [
+          "危楼夜寻踪"
+        ]
+      },
+      "第四章": {
+        "path": "世界书/剧情章节/第四章.yaml",
+        "part": "第一季",
+        "scope": "catalog",
+        "abstract": "火狱骑行: 庞培之死,凯撒继承",
+        "keywords": [
+          "火狱骑行"
+        ]
+      },
+      "第五章": {
+        "path": "世界书/剧情章节/第五章.yaml",
+        "part": "第一季",
+        "scope": "catalog",
+        "abstract": "星流霆击: 布林格讨伐",
+        "keywords": [
+          "星流霆击"
+        ]
+      },
+      "第二季第一章": {
+        "path": "世界书/剧情章节/第二季第一章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "云霞同归处: 拜入云岿山",
+        "keywords": [
+          "云霞同归处"
+        ]
+      }
     }
   },
   "typeLists": {
