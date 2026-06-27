@@ -1,0 +1,47 @@
+---
+name: 光映广场（Lumina Square）
+version: "1.0"
+location: 新艾利都·雅努斯区
+description:
+  - 雅努斯区最大的商业与治安中心，设有大型购物中心及治安局分署
+  - 主要交通枢纽——地铁换乘站位于此
+  - 与新艾利都各区域连接最便捷的中心地带
+shops:
+  HIA Club（空洞调查协会俱乐部）:
+    - 功能: 战斗模拟/专家挑战/爬塔
+    - 位于光映广场内部
+  Coff Cafe（科坦咖啡·分店）:
+    - 与六分街相同的咖啡增益
+  Waterfall Soup（瀑汤谷·分店）:
+    - 店主: 小乔普（Chop Junior），乔普师傅的传人
+  Richard Teamilk（理查德茶饮）:
+    - 经营: 茶饮/饮料
+  Old Duyi's Massage Parlor（老独一按摩推拿）:
+    - 经营: 按摩/推拿（信赖事件触发点）
+  Dew Gardening Shop（朝露花店）:
+    - 经营: 花卉
+    - 店主: 兰（Orchidea），暗中兼做委托中介
+  Beaverson Beauty Salon（海狸美容院）:
+    - 经营: 美容美发（信赖事件触发点）
+  Lumina Galleria（光映百货）:
+    - 大型购物中心
+  Simmer Hotpot（辛味火锅店）:
+    - 经营: 火锅
+    - 店主: 辛味（Blaze）
+  Eve's Newsstand（伊芙报刊亭）:
+    - 经营: 报刊/资讯
+    - 店主: 伊芙（Eve）
+  141 Convenience Store（分店）
+  Sage in a Barrel（分店）
+  Playground（广场活动区）:
+    - 角色互动开放空间
+  Parking Lot（停车场）:
+    - 信赖事件触发点
+  Officer Mewmew（喵吉长官·光映广场分点）:
+    - 发布广场区域探索任务
+NPC:
+  - 小乔普（拉面分店主）
+  - 兰/Orchidea（花店店主兼委托中介）
+  - 辛味/Blaze（火锅店主）
+  - 伊芙/Eve（报刊亭店主）
+  - 老独一（按摩推拿师）

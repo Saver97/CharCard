@@ -1,0 +1,14 @@
+---
+name: H.A.N.D.总部（HAND Headquarters）
+version: "2.0"
+location: 新艾利都·索恩区
+description:
+  - H.A.N.D.（Hollow Affairs and Neutralization Department，空洞事务与中和部）的中央总部
+  - 下设 H.S.O.S.6（对空六课）——星见雅、月城柳、苍角、浅羽悠真所属
+  - 管理新艾利都所有空洞相关事务: 边界监测、以骸讨伐、空洞研究
+features:
+  - HAND广场入口（HAND Plaza Entrance）: 公众可访问的接待区
+  - 对空六课办公室（Section 6 Office）: 对空六课成员的工作与待命区
+  - 莱姆尼安空洞入口（Melinoe Hollow Entrance）: 总部地下的空洞直连通道——仅供对空六课使用
+  - 技术部数据塔: Fairy在此初次检测到Youkai信号
+associated_faction: H.A.N.D. & H.I.A.

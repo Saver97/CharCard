@@ -1,0 +1,13 @@
+---
+name: 黑雁工地旧址（Brant Street Construction Site）
+version: "1.0"
+location: 新艾利都·雅努斯区
+description:
+  - 白祇重工（Belobog Heavy Industries）的施工与仓储区域，环境杂乱充满工业气息
+  - 停放着各类工程机甲与运输车辆，是白祇重工成员日常工作的场所
+  - 时常有失控的旧式工程机械在此徘徊——白祇重工负责回收与拆解
+features:
+  - 三门集团搅拌车/白祇重工铲车/卡车/挖掘机等工程机械
+  - 散落的以太矿渣与废弃驱动盘
+  - "第一幕第一镜"拍照活动指定地点（拍摄工程机械）
+associated_faction: 白祇重工（Belobog Heavy Industries）

@@ -39,6 +39,11 @@ function generateUpdateRules(panels) {
   rules += `/世界/当前时间        string  replace\n`;
   rules += `/世界/当前地点        string  replace\n`;
   rules += `/世界/当前章节        string  replace\n`;
+  rules += `/世界/当前模式        string  replace（★ 仅 "剧情" 或 "沙盒"）\n`;
+  rules += `/世界/章节进度        number  replace（★ 仅加1递增，禁止跳跃或减小）\n`;
+  rules += `/世界/沙盒起始章      number  replace（★ 仅在沙盒模式开局时设定一次）\n`;
+  rules += `/世界/沙盒时间        string  replace（★ 仅沙盒模式使用，格式"第X天·时段"）\n`;
+  rules += `/世界/已触发事件      string  replace（★ 逗号分隔的关键事件ID，仅追加不删除）\n`;
   rules += `/世界/当天计划        string  replace\n`;
   rules += `/世界/天气            string  replace\n`;
   rules += `/世界/城市流言        string  replace（★ 禁止 add）\n`;

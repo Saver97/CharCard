@@ -1,0 +1,16 @@
+---
+name: 星环（Starloop）
+version: "2.0"
+location: 新艾利都·雅努斯区
+description:
+  - 新艾利都地标性建筑——星环电视塔的统称
+  - 塔顶"流光大厅"可升空悬浮，是全城最具科技感的建筑奇观
+  - 耀嘉音每年在此举办"星环跨年演唱会"——新艾利都年度最大文化事件
+  - 伊芙琳·舒瓦利耶曾在演唱会期间为耀嘉音挡下子弹
+features:
+  - 流光大厅（Luminous Hall）: 可升空的顶层宴会厅/演出场地
+  - VIP贵宾室（VIP Lounge）: 仅供天琴座及受邀嘉宾使用
+  - 观景台: 360°俯瞰新艾利都
+  - 星环塔传送点
+associated_event: 耀嘉音年度星环跨年演唱会
+associated_faction: 天琴座（Astra）

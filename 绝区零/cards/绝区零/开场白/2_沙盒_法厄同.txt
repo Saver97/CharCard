@@ -1,0 +1,7 @@
+<initvar>
+世界.当前模式: "沙盒"
+世界.沙盒起始章: 0
+世界.沙盒时间: "第1天·早晨"
+</initvar>
+
+<character_creation></character_creation>

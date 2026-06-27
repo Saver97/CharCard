@@ -58,17 +58,17 @@ for (const entry of card.data.character_book.entries) {
 }
 console.log(`✓ 补 group: ${groupFixed} 个条目`);
 
-// 2b. 修正 MVU 条目 depth=2（防止对话增长时被丢弃，与既有实践一致）
-let depthFixed = 0;
-for (const entry of card.data.character_book.entries) {
-  if (entry.extensions.group === 'MVU' && entry.extensions.position === 4) {
-    if (entry.extensions.depth !== 2) {
-      entry.extensions.depth = 2;
-      depthFixed++;
-    }
-  }
-}
-console.log(`✓ MVU 条目 depth 修正为 2: ${depthFixed} 个`);
+	// 2b. 修正 MVU 条目 depth=0（始终注入，优先保证变量更新与面板显示）
+	let depthFixed = 0;
+	for (const entry of card.data.character_book.entries) {
+	  if (entry.extensions.group === 'MVU' && entry.extensions.position === 4) {
+	    if (entry.extensions.depth !== 0) {
+	      entry.extensions.depth = 0;
+	      depthFixed++;
+	    }
+	  }
+	}
+	console.log(`✓ MVU 条目 depth 修正为 0: ${depthFixed} 个`);
 
 // 2c. HTML 正则补 markdown 代码块标记（markdownOnly 正则需 ```html 包裹才渲染）
 let fenceFixed = 0;
