@@ -1080,7 +1080,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "仪玄"
+            "仪玄",
+            "云岿山门主",
+            "虚狩",
+            "青溟剑"
           ]
         },
         "position": {
@@ -1102,7 +1105,8 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "叶释渊"
+            "叶释渊",
+            "云岿山智囊"
           ]
         },
         "position": {
@@ -1126,7 +1130,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "橘福福"
+            "橘福福",
+            "虎希人",
+            "大师姐",
+            "云岿山"
           ]
         },
         "position": {
@@ -1150,7 +1157,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "潘引壶"
+            "潘引壶",
+            "熊猫希人",
+            "随便观厨师",
+            "云岿山"
           ]
         },
         "position": {
@@ -1273,7 +1283,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "凯撒·金"
+            "凯撒·金",
+            "卡吕冬之子首领",
+            "外环霸主",
+            "灰烬湖"
           ]
         },
         "position": {
@@ -1297,7 +1310,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "柏妮思·怀特"
+            "柏妮思·怀特",
+            "燃油调配师",
+            "猫奴",
+            "卡吕冬之子"
           ]
         },
         "position": {
@@ -1320,7 +1336,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "波可娜·费雷尼"
+            "波可娜·费雷尼",
+            "猫希人佣兵",
+            "卡吕冬之子"
           ]
         },
         "position": {
@@ -1343,7 +1361,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "派派·韦尔"
+            "派派·韦尔",
+            "卡车司机",
+            "卡吕冬之子"
           ]
         },
         "position": {
@@ -1367,7 +1387,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "莱特"
+            "莱特",
+            "常胜冠军",
+            "火狱骑行",
+            "卡吕冬之子"
           ]
         },
         "position": {
@@ -1391,7 +1414,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "露西"
+            "露西",
+            "军师",
+            "傲娇大小姐",
+            "卡吕冬之子"
           ]
         },
         "position": {
@@ -1415,7 +1441,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "薇薇安·班希"
+            "薇薇安·班希",
+            "报丧女妖",
+            "反舌鸟",
+            "崇拜法厄同"
           ]
         },
         "position": {
@@ -1438,7 +1467,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "雨果·维拉德"
+            "雨果·维拉德",
+            "吸血鬼",
+            "反舌鸟首领"
           ]
         },
         "position": {
@@ -1463,7 +1494,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "伊芙琳·舒瓦利耶"
+            "伊芙琳·舒瓦利耶",
+            "经纪人",
+            "保镖",
+            "天琴座",
+            "忠犬"
           ]
         },
         "position": {
@@ -1487,7 +1522,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "耀嘉音"
+            "耀嘉音",
+            "第一歌姬",
+            "天琴座",
+            "星环演唱会"
           ]
         },
         "position": {
@@ -1512,7 +1550,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "11号"
+            "11号",
+            "白银军克隆人",
+            "嗜辣",
+            "防卫军",
+            "奥波勒斯小队"
           ]
         },
         "position": {
@@ -1538,7 +1580,12 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "席德"
+            "席德",
+            "机甲驾驶员",
+            "天然疯",
+            "防卫军",
+            "奥波勒斯小队",
+            "铸铁"
           ]
         },
         "position": {
@@ -1564,7 +1611,12 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "扳机"
+            "扳机",
+            "狙击手",
+            "双目失明",
+            "以太感知",
+            "防卫军",
+            "奥波勒斯小队"
           ]
         },
         "position": {
@@ -1589,7 +1641,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "鬼火&奥菲丝"
+            "鬼火&奥菲丝",
+            "队长意识",
+            "尾炮",
+            "防卫军",
+            "奥波勒斯小队"
           ]
         },
         "position": {
@@ -1614,7 +1670,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "千夏"
+            "千夏",
+            "作曲",
+            "妄想天使",
+            "社恐",
+            "崇拜耀嘉音"
           ]
         },
         "position": {
@@ -1638,7 +1698,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "南宫羽"
+            "南宫羽",
+            "妄想天使",
+            "队长",
+            "流星锤"
           ]
         },
         "position": {
@@ -1663,7 +1726,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "爱芮"
+            "爱芮",
+            "智能构造体",
+            "AOD主唱",
+            "妄想天使",
+            "被Youkai蛊惑"
           ]
         },
         "position": {
@@ -1687,7 +1754,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "星见雅"
+            "星见雅",
+            "狐希人",
+            "对空六课课长",
+            "虚狩"
           ]
         },
         "position": {
@@ -1710,7 +1780,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "月城柳"
+            "月城柳",
+            "对空六课副课长",
+            "粉发眼镜娘"
           ]
         },
         "position": {
@@ -1733,7 +1805,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "浅羽悠真"
+            "浅羽悠真",
+            "对空六课斥候",
+            "以太适性衰竭"
           ]
         },
         "position": {
@@ -1756,7 +1830,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "苍角"
+            "苍角",
+            "鬼族",
+            "对空六课执行官"
           ]
         },
         "position": {
@@ -1780,7 +1856,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "伊德海莉"
+            "伊德海莉",
+            "章鱼希人",
+            "记忆触摸",
+            "怪啖屋"
           ]
         },
         "position": {
@@ -1805,7 +1884,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "卢西娅"
+            "卢西娅",
+            "羊希人",
+            "守夜人",
+            "怪啖屋",
+            "彷徨猎手"
           ]
         },
         "position": {
@@ -1829,7 +1912,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "浮波柚叶"
+            "浮波柚叶",
+            "腹黑",
+            "怪啖屋",
+            "狸猫"
           ]
         },
         "position": {
@@ -1853,7 +1939,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "爱丽丝"
+            "爱丽丝",
+            "兔希人",
+            "对称强迫症",
+            "怪啖屋"
           ]
         },
         "position": {
@@ -1876,7 +1965,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "狛野真斗"
+            "狛野真斗",
+            "犬希人",
+            "怪啖屋"
           ]
         },
         "position": {
@@ -1901,7 +1992,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "朱鸢"
+            "朱鸢",
+            "朱雀",
+            "刑侦特勤组",
+            "完美主义",
+            "治安局"
           ]
         },
         "position": {
@@ -1926,7 +2021,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "简·杜"
+            "简·杜",
+            "玄武",
+            "卧底专家",
+            "欺诈师",
+            "治安局"
           ]
         },
         "position": {
@@ -1951,7 +2050,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "赛斯·洛威尔"
+            "赛斯·洛威尔",
+            "白虎",
+            "猫希人",
+            "巡查",
+            "治安局"
           ]
         },
         "position": {
@@ -1976,7 +2079,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "青衣"
+            "青衣",
+            "青龙",
+            "钰偶",
+            "智能构造体",
+            "治安局"
           ]
         },
         "position": {
@@ -2087,7 +2194,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "妮可·德玛拉"
+            "妮可·德玛拉",
+            "狡兔屋创始人",
+            "老大"
           ]
         },
         "position": {
@@ -2111,7 +2220,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "安比·德玛拉"
+            "安比·德玛拉",
+            "Soldier 0",
+            "白银军",
+            "狡兔屋"
           ]
         },
         "position": {
@@ -2136,7 +2248,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "比利·奇德"
+            "比利·奇德",
+            "红围巾",
+            "星徽骑士",
+            "智能构造体",
+            "狡兔屋"
           ]
         },
         "position": {
@@ -2160,7 +2276,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "猫宫又奈"
+            "猫宫又奈",
+            "猫希人",
+            "赤牙帮",
+            "狡兔屋"
           ]
         },
         "position": {
@@ -2183,7 +2302,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "安东·伊万诺夫"
+            "安东·伊万诺夫",
+            "白祇重工",
+            "工程负责人"
           ]
         },
         "position": {
@@ -2207,7 +2328,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "本·比格"
+            "本·比格",
+            "熊希人",
+            "会计",
+            "白祇重工"
           ]
         },
         "position": {
@@ -2231,7 +2355,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "格莉丝·霍华德"
+            "格莉丝·霍华德",
+            "机械顾问",
+            "拆解狂魔",
+            "白祇重工"
           ]
         },
         "position": {
@@ -2254,7 +2381,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "珂蕾妲·贝洛伯格"
+            "珂蕾妲·贝洛伯格",
+            "白祇重工社长",
+            "霍斯女儿"
           ]
         },
         "position": {
@@ -2278,7 +2407,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "丽娜"
+            "丽娜",
+            "女仆长",
+            "飘浮",
+            "维多利亚家政"
           ]
         },
         "position": {
@@ -2302,7 +2434,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "可琳·威克斯"
+            "可琳·威克斯",
+            "胆小女仆",
+            "电锯",
+            "维多利亚家政"
           ]
         },
         "position": {
@@ -2326,7 +2461,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "艾莲·乔"
+            "艾莲·乔",
+            "鲨希人",
+            "慵懒",
+            "维多利亚家政"
           ]
         },
         "position": {
@@ -2350,7 +2488,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "冯·莱卡恩"
+            "冯·莱卡恩",
+            "执事",
+            "白狼希人",
+            "维多利亚家政"
           ]
         },
         "position": {
@@ -2375,7 +2516,11 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "照"
+            "照",
+            "兔希人",
+            "裁决官",
+            "黑枝",
+            "最矮代理人"
           ]
         },
         "position": {
@@ -2398,7 +2543,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "琉音"
+            "琉音",
+            "黑枝",
+            "聆听死者回声"
           ]
         },
         "position": {
@@ -2422,7 +2569,10 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "般岳"
+            "般岳",
+            "机械狮子",
+            "武馆馆主",
+            "黑枝"
           ]
         },
         "position": {
@@ -2598,7 +2748,10 @@
           "type": "selective",
           "keys": [
             "维琳娜",
-            "Velina"
+            "Velina",
+            "外策局总务官",
+            "罗斯凯利法",
+            "风属性"
           ]
         },
         "position": {
@@ -2624,7 +2777,10 @@
           "type": "selective",
           "keys": [
             "诺姆",
-            "Norma"
+            "Norma",
+            "外策局技术长",
+            "罗斯凯利法",
+            "火属性"
           ]
         },
         "position": {
@@ -2674,7 +2830,11 @@
           "type": "selective",
           "keys": [
             "蕾米埃尔",
-            "Remielle"
+            "Remielle",
+            "初代虚狩",
+            "粉发白翼",
+            "反目",
+            "闭锁派"
           ]
         },
         "position": {
@@ -2702,7 +2862,12 @@
           "type": "selective",
           "keys": [
             "挽昼",
-            "Sunbringer"
+            "Sunbringer",
+            "初代虚狩",
+            "智能构造体",
+            "三位一体",
+            "邦布发明者",
+            "罗斯凯利法"
           ]
         },
         "position": {
@@ -2729,7 +2894,11 @@
           "type": "selective",
           "keys": [
             "塞维里安",
-            "Severian"
+            "Severian",
+            "猫希人",
+            "高级专员",
+            "治安局",
+            "赛斯哥哥"
           ]
         },
         "position": {
@@ -2752,7 +2921,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "叶瞬光"
+            "叶瞬光",
+            "青溟剑剑主",
+            "云岿山"
           ]
         },
         "position": {
@@ -2778,7 +2949,10 @@
           "type": "selective",
           "keys": [
             "希希芙",
-            "Cissia"
+            "Cissia",
+            "案件专员",
+            "治安局",
+            "塞维里安下属"
           ]
         },
         "position": {
@@ -2802,7 +2976,8 @@
           "type": "selective",
           "keys": [
             "莎拉",
-            "Sarah"
+            "Sarah",
+            "称颂会核心成员"
           ]
         },
         "position": {
@@ -2830,7 +3005,10 @@
           "keys": [
             "布林格",
             "Bringer",
-            "贾斯汀"
+            "贾斯汀",
+            "前治安局警官",
+            "称颂会内鬼",
+            "朱鸢恩人"
           ]
         },
         "position": {
@@ -2854,7 +3032,8 @@
           "type": "selective",
           "keys": [
             "造物主",
-            "The Creator"
+            "The Creator",
+            "称颂会最高领袖"
           ]
         },
         "position": {
@@ -2878,7 +3057,8 @@
           "type": "selective",
           "keys": [
             "梅若拉可",
-            "Merolac"
+            "Merolac",
+            "称颂会司教"
           ]
         },
         "position": {
@@ -2928,7 +3108,9 @@
           "type": "selective",
           "keys": [
             "大老爹",
-            "Big Daddy"
+            "Big Daddy",
+            "卡吕冬之子创始人",
+            "凯撒养父"
           ]
         },
         "position": {
@@ -2955,7 +3137,9 @@
           "keys": [
             "霍斯",
             "Khors",
-            "贝洛伯格"
+            "贝洛伯格",
+            "白祇重工前社长",
+            "珂蕾妲之父"
           ]
         },
         "position": {
@@ -2984,7 +3168,12 @@
           "type": "selective",
           "keys": [
             "普罗米娅",
-            "Promeia"
+            "Promeia",
+            "黑枝裁决官",
+            "赎罪者",
+            "手铐",
+            "处刑式",
+            "清道夫"
           ]
         },
         "position": {
@@ -3010,7 +3199,10 @@
           "type": "selective",
           "keys": [
             "Youkai",
-            "四钥匙"
+            "四钥匙",
+            "Fairy孪生AI",
+            "缄枢",
+            "智能构造体寄生"
           ]
         },
         "position": {
@@ -3033,7 +3225,9 @@
         "strategy": {
           "type": "selective",
           "keys": [
-            "铅杖"
+            "铅杖",
+            "罗斯凯利法侵吞",
+            "TOPS"
           ]
         },
         "position": {
