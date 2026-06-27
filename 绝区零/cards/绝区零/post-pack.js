@@ -98,8 +98,8 @@ for (const r of card.data.extensions.regex_scripts) {
 }
 console.log(`✓ 对AI隐藏变量更新正则改为前端隐藏(防MVU解析前被清): ${hideFixed} 个`);
 
-	// 2f. selective→constant：仅MVU/EJS/扮演准则常驻，其余按需关键词触发
-	const CONSTANT_GROUPS = new Set(['MVU', 'EJS', '扮演准则']);
+	// 2f. selective→constant：核心知识常驻（不变动=缓存友好），人物/地图/阵营按需触发
+	const CONSTANT_GROUPS = new Set(['MVU', 'EJS', '扮演准则', '世界观核心', '时间线']);
 	let constFixed = 0;
 	for (const entry of card.data.character_book.entries) {
 	  const g = entry.extensions.group || '';
