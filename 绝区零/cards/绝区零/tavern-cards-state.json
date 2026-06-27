@@ -18,7 +18,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 5
+          "order": 130
         }
       },
       "沙盒时间推进规则": {
@@ -34,7 +34,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 6
+          "order": 140
         }
       },
       "沙盒触发条件": {
@@ -50,7 +50,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 7
+          "order": 150
         }
       },
       "沙盒·关键剧情时间表": {
@@ -66,7 +66,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 8
+          "order": 160
         }
       }
     },
@@ -85,7 +85,7 @@
           "type": "at_depth",
           "role": "system",
           "depth": 0,
-          "order": 1
+          "order": 1500
         }
       },
       "变量列表": {
@@ -102,7 +102,7 @@
           "type": "at_depth",
           "role": "system",
           "depth": 0,
-          "order": 2
+          "order": 1510
         }
       },
       "[mvu_update]变量更新规则": {
@@ -119,7 +119,7 @@
           "type": "at_depth",
           "role": "system",
           "depth": 0,
-          "order": 3
+          "order": 1520
         }
       },
       "[InitVar]请勿打开": {
@@ -133,7 +133,7 @@
           "type": "at_depth",
           "role": "system",
           "depth": 0,
-          "order": 4
+          "order": 1530
         }
       }
     },
@@ -153,7 +153,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 100
+          "order": 10
         }
       },
       "以太": {
@@ -171,7 +171,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 110
+          "order": 20
         }
       },
       "以骸": {
@@ -189,7 +189,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 120
+          "order": 30
         }
       },
       "希人种族": {
@@ -207,7 +207,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 130
+          "order": 40
         }
       },
       "新艾利都": {
@@ -225,7 +225,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 140
+          "order": 50
         }
       },
       "相关物品与事件": {
@@ -243,7 +243,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 150
+          "order": 60
         }
       },
       "研究音擎与零号空洞探索者": {
@@ -261,7 +261,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 160
+          "order": 70
         }
       },
       "空洞": {
@@ -279,7 +279,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 170
+          "order": 80
         }
       },
       "绳匠与绳网": {
@@ -297,7 +297,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 180
+          "order": 90
         }
       },
       "邦布": {
@@ -315,7 +315,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 190
+          "order": 100
         }
       },
       "音擎与驱动盘": {
@@ -333,7 +333,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 190
+          "order": 110
         }
       },
       "种族特性": {
@@ -356,7 +356,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 195
+          "order": 120
         }
       }
     },
@@ -377,7 +377,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 150
+          "order": 360
         }
       },
       "六分街": {
@@ -397,7 +397,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 160
+          "order": 370
         }
       },
       "光映广场": {
@@ -417,7 +417,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 161
+          "order": 380
         }
       },
       "黑雁工地旧址": {
@@ -437,7 +437,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 162
+          "order": 390
         }
       },
       "芭莱大厦前": {
@@ -457,7 +457,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 163
+          "order": 400
         }
       },
       "斯科特哨站": {
@@ -476,7 +476,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 164
+          "order": 410
         }
       },
       "热望角": {
@@ -495,7 +495,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 165
+          "order": 420
         }
       },
       "厄匹斯港": {
@@ -515,7 +515,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 166
+          "order": 430
         }
       },
       "星环": {
@@ -536,7 +536,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 167
+          "order": 440
         }
       },
       "卫非地": {
@@ -557,7 +557,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 170
+          "order": 450
         }
       },
       "澄辉坪": {
@@ -577,7 +577,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 171
+          "order": 460
         }
       },
       "随便观": {
@@ -597,7 +597,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 172
+          "order": 461
         }
       },
       "HAND总部": {
@@ -617,7 +617,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 173
+          "order": 470
         }
       },
       "绮梦度假村": {
@@ -636,7 +636,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 174
+          "order": 480
         }
       },
       "野火镇": {
@@ -657,7 +657,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 180
+          "order": 490
         }
       },
       "空洞概述": {
@@ -679,21 +679,11 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 190
+          "order": 500
         }
       }
     },
     "阵营章节": {
-      "罗斯凯利法": {
-        "path": "世界书/阵营章节/罗斯凯利法.yaml",
-        "scope": "catalog",
-        "part": "代理人组织",
-        "keywords": [
-          "罗斯凯利法",
-          "Roscaelifer"
-        ],
-        "abstract": "罗斯凯利法:挽昼建立的浮空理想国,维琳娜/诺姆所属"
-      },
       "HAND与HIA": {
         "path": "世界书/阵营章节/HAND与HIA.yaml",
         "scope": "catalog",
@@ -709,7 +699,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 230
+          "order": 520
         }
       },
       "云岿山": {
@@ -722,7 +712,7 @@
         "uid": 23,
         "position": {
           "type": "after_character_definition",
-          "order": 240
+          "order": 530
         }
       },
       "其他组织": {
@@ -740,7 +730,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 241
+          "order": 531
         }
       },
       "卡吕冬之子": {
@@ -758,7 +748,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 250
+          "order": 540
         }
       },
       "反舌鸟": {
@@ -776,7 +766,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 260
+          "order": 550
         }
       },
       "天琴座": {
@@ -794,7 +784,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 270
+          "order": 560
         }
       },
       "奥波勒斯小队": {
@@ -812,7 +802,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 280
+          "order": 570
         }
       },
       "妄想天使": {
@@ -830,7 +820,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 290
+          "order": 580
         }
       },
       "对空六课": {
@@ -848,7 +838,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 300
+          "order": 590
         }
       },
       "怪啖屋": {
@@ -866,7 +856,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 310
+          "order": 600
         }
       },
       "治安局": {
@@ -884,7 +874,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 320
+          "order": 610
         }
       },
       "狡兔屋": {
@@ -902,7 +892,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 330
+          "order": 620
         }
       },
       "白祇重工": {
@@ -920,7 +910,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 340
+          "order": 630
         }
       },
       "称颂会与TOPS": {
@@ -938,7 +928,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 350
+          "order": 640
         }
       },
       "维多利亚家政": {
@@ -956,7 +946,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 360
+          "order": 650
         }
       },
       "黑枝": {
@@ -974,8 +964,27 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 370
+          "order": 660
         }
+      },
+      "罗斯凯利法": {
+        "path": "世界书/阵营章节/罗斯凯利法.yaml",
+        "scope": "catalog",
+        "part": "代理人组织",
+        "keywords": [
+          "罗斯凯利法",
+          "Roscaelifer"
+        ],
+        "abstract": "罗斯凯利法:挽昼建立的浮空理想国,维琳娜/诺姆所属",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 510
+        },
+        "uid": 105
       }
     },
     "扮演准则": {
@@ -994,7 +1003,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 300
+          "order": 170
         }
       },
       "规则说明": {
@@ -1012,7 +1021,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 310
+          "order": 180
         }
       }
     },
@@ -1032,7 +1041,7 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 400
+          "order": 190
         }
       },
       "历史沿革": {
@@ -1050,235 +1059,11 @@
         },
         "position": {
           "type": "before_character_definition",
-          "order": 410
+          "order": 200
         }
       }
     },
     "关键人物": {
-      "乔普师傅": {
-        "path": "世界书/关键人物/其他/乔普师傅.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "乔普师傅",
-          "General Chop"
-        ],
-        "abstract": "瀑汤谷-锦鲤拉面店店主(六分街总店)"
-      },
-      "恩佐": {
-        "path": "世界书/关键人物/其他/恩佐.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "恩佐",
-          "Enzo"
-        ],
-        "abstract": "涡轮改装店店主"
-      },
-      "埃珐": {
-        "path": "世界书/关键人物/其他/埃珐.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "埃珐",
-          "Elfy"
-        ],
-        "abstract": "吟游唱针音像店店主"
-      },
-      "汀曼大师": {
-        "path": "世界书/关键人物/其他/汀曼大师.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "汀曼大师",
-          "Master Tingman"
-        ],
-        "abstract": "Coff Cafe连锁咖啡店店主(智能构造体)"
-      },
-      "伊芙": {
-        "path": "世界书/关键人物/其他/伊芙.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "伊芙",
-          "Eve"
-        ],
-        "abstract": "光映广场报刊亭店主"
-      },
-      "辛味": {
-        "path": "世界书/关键人物/其他/辛味.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "辛味",
-          "Blaze",
-          "辛味火锅店"
-        ],
-        "abstract": "辛味火锅店店主"
-      },
-      "兰": {
-        "path": "世界书/关键人物/其他/兰.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "兰",
-          "Orchidea",
-          "朝露花店"
-        ],
-        "abstract": "朝露花店店主兼委托中介"
-      },
-      "维琳娜": {
-        "path": "世界书/关键人物/罗斯凯利法/维琳娜.yaml",
-        "scope": "specific",
-        "part": "罗斯凯利法",
-        "keywords": [
-          "维琳娜",
-          "Velina"
-        ],
-        "abstract": "罗斯凯利法外策局总务官,S级风属性异常,首位风属性角色"
-      },
-      "诺姆": {
-        "path": "世界书/关键人物/罗斯凯利法/诺姆.yaml",
-        "scope": "specific",
-        "part": "罗斯凯利法",
-        "keywords": [
-          "诺姆",
-          "Norma"
-        ],
-        "abstract": "罗斯凯利法外策局技术长,S级火属性击破"
-      },
-      "佩洛伊斯": {
-        "path": "世界书/关键人物/法厄同线/佩洛伊斯.yaml",
-        "scope": "specific",
-        "part": "法厄同线",
-        "keywords": [
-          "佩洛伊斯",
-          "Pyrois"
-        ],
-        "abstract": "法厄同觉醒战斗形态,S级以太强攻,免费赠送"
-      },
-      "蕾米埃尔": {
-        "path": "世界书/关键人物/初代虚狩/蕾米埃尔.yaml",
-        "scope": "specific",
-        "part": "初代虚狩",
-        "keywords": [
-          "蕾米埃尔",
-          "Remielle"
-        ],
-        "abstract": "初代七虚狩之一,粉发白翼,预计3.1实装"
-      },
-      "挽昼": {
-        "path": "世界书/关键人物/初代虚狩/挽昼.yaml",
-        "scope": "specific",
-        "part": "初代虚狩",
-        "keywords": [
-          "挽昼",
-          "Sunbringer"
-        ],
-        "abstract": "初代七虚狩,智能构造体,分解为三具(艾尔妲/林德薇恩/德蕾琪娜),邦布发明者,罗斯凯利法建立者"
-      },
-      "塞维里安": {
-        "path": "世界书/关键人物/治安局/塞维里安.yaml",
-        "scope": "specific",
-        "part": "治安局",
-        "keywords": [
-          "塞维里安",
-          "Severian"
-        ],
-        "abstract": "NEPS总部高级专员,赛斯的哥哥,猫希人,第三季浮空岛相关"
-      },
-      "叶瞬光": {
-        "path": "世界书/关键人物/云岿山/叶瞬光.yaml",
-        "scope": "specific",
-        "part": "云岿山",
-        "keywords": [
-          "叶瞬光"
-        ],
-        "abstract": "叶释渊之妹,青溟剑现任剑主"
-      },
-      "希希芙": {
-        "path": "世界书/关键人物/治安局/希希芙.yaml",
-        "scope": "specific",
-        "part": "治安局",
-        "keywords": [
-          "希希芙",
-          "Cissia"
-        ],
-        "abstract": "NEPS总部案件专员,塞维里安下属"
-      },
-      "莎拉": {
-        "path": "世界书/关键人物/称颂会/莎拉.yaml",
-        "scope": "specific",
-        "part": "称颂会",
-        "keywords": [
-          "莎拉",
-          "Sarah"
-        ],
-        "abstract": "称颂会核心成员"
-      },
-      "布林格": {
-        "path": "世界书/关键人物/称颂会/布林格.yaml",
-        "scope": "specific",
-        "part": "称颂会",
-        "keywords": [
-          "布林格",
-          "Bringer",
-          "贾斯汀"
-        ],
-        "abstract": "前治安局警官,称颂会内鬼,朱鸢童年恩人"
-      },
-      "造物主": {
-        "path": "世界书/关键人物/称颂会/造物主.yaml",
-        "scope": "specific",
-        "part": "称颂会",
-        "keywords": [
-          "造物主",
-          "The Creator"
-        ],
-        "abstract": "称颂会最高领袖"
-      },
-      "梅若拉可": {
-        "path": "世界书/关键人物/称颂会/梅若拉可.yaml",
-        "scope": "specific",
-        "part": "称颂会",
-        "keywords": [
-          "梅若拉可",
-          "Merolac"
-        ],
-        "abstract": "称颂会司教"
-      },
-      "卡洛丝": {
-        "path": "世界书/关键人物/法厄同线/卡洛丝.yaml",
-        "scope": "specific",
-        "part": "法厄同线",
-        "keywords": [
-          "卡洛丝",
-          "Carole",
-          "阿尔娜"
-        ],
-        "abstract": "赫利俄斯机关研究主任,法厄同兄妹导师,伊埃斯与Fairy创造者"
-      },
-      "大老爹": {
-        "path": "世界书/关键人物/卡吕冬之子/大老爹.yaml",
-        "scope": "specific",
-        "part": "卡吕冬之子",
-        "keywords": [
-          "大老爹",
-          "Big Daddy"
-        ],
-        "abstract": "卡吕冬之子创始人,凯撒养父"
-      },
-      "霍斯": {
-        "path": "世界书/关键人物/白祇重工/霍斯.yaml",
-        "scope": "specific",
-        "part": "白祇重工",
-        "keywords": [
-          "霍斯",
-          "Khors",
-          "贝洛伯格"
-        ],
-        "abstract": "白祇重工前社长,珂蕾妲之父"
-      },
       "仪玄": {
         "path": "世界书/关键人物/云岿山/仪玄.yaml",
         "scope": "specific",
@@ -1297,7 +1082,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 380
+          "order": 890
         }
       },
       "叶释渊": {
@@ -1318,7 +1103,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 390
+          "order": 900
         }
       },
       "橘福福": {
@@ -1339,7 +1124,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 400
+          "order": 910
         }
       },
       "潘引壶": {
@@ -1360,7 +1145,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 410
+          "order": 920
         }
       },
       "伊瑟尔德": {
@@ -1378,7 +1163,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 420
+          "order": 930
         }
       },
       "启明星": {
@@ -1396,7 +1181,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 430
+          "order": 940
         }
       },
       "红豆": {
@@ -1414,7 +1199,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 440
+          "order": 950
         }
       },
       "芮恩": {
@@ -1432,7 +1217,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 450
+          "order": 960
         }
       },
       "达米安": {
@@ -1450,7 +1235,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 460
+          "order": 970
         }
       },
       "凯撒·金": {
@@ -1471,7 +1256,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 470
+          "order": 980
         }
       },
       "柏妮思·怀特": {
@@ -1492,7 +1277,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 480
+          "order": 990
         }
       },
       "波可娜·费雷尼": {
@@ -1513,7 +1298,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 490
+          "order": 1000
         }
       },
       "派派·韦尔": {
@@ -1534,7 +1319,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 500
+          "order": 1010
         }
       },
       "莱特": {
@@ -1555,7 +1340,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 510
+          "order": 1020
         }
       },
       "露西": {
@@ -1576,7 +1361,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 520
+          "order": 1030
         }
       },
       "薇薇安·班希": {
@@ -1597,7 +1382,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 530
+          "order": 1040
         }
       },
       "雨果·维拉德": {
@@ -1618,7 +1403,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 540
+          "order": 1050
         }
       },
       "伊芙琳·舒瓦利耶": {
@@ -1639,7 +1424,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 550
+          "order": 1060
         }
       },
       "耀嘉音": {
@@ -1660,7 +1445,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 560
+          "order": 1070
         }
       },
       "11号": {
@@ -1681,7 +1466,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 570
+          "order": 1080
         }
       },
       "席德": {
@@ -1702,7 +1487,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 580
+          "order": 1090
         }
       },
       "扳机": {
@@ -1723,7 +1508,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 590
+          "order": 1100
         }
       },
       "鬼火&奥菲丝": {
@@ -1744,7 +1529,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 600
+          "order": 1110
         }
       },
       "千夏": {
@@ -1765,7 +1550,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 610
+          "order": 1120
         }
       },
       "南宫羽": {
@@ -1786,7 +1571,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 620
+          "order": 1130
         }
       },
       "爱芮": {
@@ -1807,7 +1592,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 630
+          "order": 1140
         }
       },
       "星见雅": {
@@ -1828,7 +1613,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 640
+          "order": 1150
         }
       },
       "月城柳": {
@@ -1849,7 +1634,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 650
+          "order": 1160
         }
       },
       "浅羽悠真": {
@@ -1870,7 +1655,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 660
+          "order": 1170
         }
       },
       "苍角": {
@@ -1891,7 +1676,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 670
+          "order": 1180
         }
       },
       "伊德海莉": {
@@ -1912,7 +1697,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 680
+          "order": 1190
         }
       },
       "卢西娅": {
@@ -1933,7 +1718,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 690
+          "order": 1200
         }
       },
       "浮波柚叶": {
@@ -1954,7 +1739,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 700
+          "order": 1210
         }
       },
       "爱丽丝": {
@@ -1975,7 +1760,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 710
+          "order": 1220
         }
       },
       "狛野真斗": {
@@ -1996,7 +1781,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 720
+          "order": 1230
         }
       },
       "朱鸢": {
@@ -2017,7 +1802,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 730
+          "order": 1240
         }
       },
       "简·杜": {
@@ -2038,7 +1823,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 740
+          "order": 1250
         }
       },
       "赛斯·洛威尔": {
@@ -2059,7 +1844,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 750
+          "order": 1260
         }
       },
       "青衣": {
@@ -2080,7 +1865,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 760
+          "order": 1270
         }
       },
       "Fairy": {
@@ -2098,7 +1883,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 770
+          "order": 1280
         }
       },
       "伊埃斯": {
@@ -2116,7 +1901,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 780
+          "order": 1290
         }
       },
       "哲": {
@@ -2134,7 +1919,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 790
+          "order": 1300
         }
       },
       "铃": {
@@ -2152,7 +1937,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 800
+          "order": 1310
         }
       },
       "妮可·德玛拉": {
@@ -2173,7 +1958,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 810
+          "order": 1320
         }
       },
       "安比·德玛拉": {
@@ -2194,7 +1979,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 820
+          "order": 1330
         }
       },
       "比利·奇德": {
@@ -2215,7 +2000,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 830
+          "order": 1340
         }
       },
       "猫宫又奈": {
@@ -2236,7 +2021,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 840
+          "order": 1350
         }
       },
       "安东·伊万诺夫": {
@@ -2257,7 +2042,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 850
+          "order": 1360
         }
       },
       "本·比格": {
@@ -2278,7 +2063,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 860
+          "order": 1370
         }
       },
       "格莉丝·霍华德": {
@@ -2299,7 +2084,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 870
+          "order": 1380
         }
       },
       "珂蕾妲·贝洛伯格": {
@@ -2320,7 +2105,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 880
+          "order": 1390
         }
       },
       "丽娜": {
@@ -2341,7 +2126,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 890
+          "order": 1400
         }
       },
       "可琳·威克斯": {
@@ -2362,7 +2147,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 900
+          "order": 1410
         }
       },
       "艾莲·乔": {
@@ -2383,7 +2168,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 910
+          "order": 1420
         }
       },
       "冯·莱卡恩": {
@@ -2404,7 +2189,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 920
+          "order": 1430
         }
       },
       "照": {
@@ -2425,7 +2210,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 930
+          "order": 1440
         }
       },
       "琉音": {
@@ -2446,7 +2231,7 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 940
+          "order": 1450
         }
       },
       "般岳": {
@@ -2467,52 +2252,483 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 950
+          "order": 1460
         }
       },
-      "Youkai": {
-        "path": "世界书/关键人物/其他/Youkai.yaml",
+      "乔普师傅": {
+        "path": "世界书/关键人物/其他/乔普师傅.yaml",
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "Youkai",
-          "四钥匙"
+          "乔普师傅",
+          "General Chop"
         ],
-        "uid": 201,
+        "abstract": "瀑汤谷-锦鲤拉面店店主(六分街总店)",
         "enabled": true,
         "strategy": {
-          "type": "selective",
-          "keys": [
-            "Youkai",
-            "四钥匙"
-          ]
+          "type": "constant"
         },
         "position": {
           "type": "after_character_definition",
-          "order": 961
+          "order": 670
         },
-        "abstract": "四钥匙之一/Fairy孪生AI/第二季核心反派"
+        "uid": 106
       },
-      "铅杖": {
-        "path": "世界书/关键人物/其他/铅杖.yaml",
+      "恩佐": {
+        "path": "世界书/关键人物/其他/恩佐.yaml",
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "铅杖"
+          "恩佐",
+          "Enzo"
         ],
-        "uid": 202,
+        "abstract": "涡轮改装店店主",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 680
+        },
+        "uid": 107
+      },
+      "埃珐": {
+        "path": "世界书/关键人物/其他/埃珐.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "埃珐",
+          "Elfy"
+        ],
+        "abstract": "吟游唱针音像店店主",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 690
+        },
+        "uid": 108
+      },
+      "汀曼大师": {
+        "path": "世界书/关键人物/其他/汀曼大师.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "汀曼大师",
+          "Master Tingman"
+        ],
+        "abstract": "Coff Cafe连锁咖啡店店主(智能构造体)",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 700
+        },
+        "uid": 109
+      },
+      "伊芙": {
+        "path": "世界书/关键人物/其他/伊芙.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "伊芙",
+          "Eve"
+        ],
+        "abstract": "光映广场报刊亭店主",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 710
+        },
+        "uid": 110
+      },
+      "辛味": {
+        "path": "世界书/关键人物/其他/辛味.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "辛味",
+          "Blaze",
+          "辛味火锅店"
+        ],
+        "abstract": "辛味火锅店店主",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 720
+        },
+        "uid": 111
+      },
+      "兰": {
+        "path": "世界书/关键人物/其他/兰.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "兰",
+          "Orchidea",
+          "朝露花店"
+        ],
+        "abstract": "朝露花店店主兼委托中介",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 730
+        },
+        "uid": 112
+      },
+      "维琳娜": {
+        "path": "世界书/关键人物/罗斯凯利法/维琳娜.yaml",
+        "scope": "specific",
+        "part": "罗斯凯利法",
+        "keywords": [
+          "维琳娜",
+          "Velina"
+        ],
+        "abstract": "罗斯凯利法外策局总务官,S级风属性异常,首位风属性角色",
         "enabled": true,
         "strategy": {
           "type": "selective",
           "keys": [
-            "铅杖"
+            "维琳娜",
+            "Velina"
           ]
         },
         "position": {
           "type": "after_character_definition",
-          "order": 962
+          "order": 740
         },
-        "abstract": "神秘人物/Youkai盟友/罗斯凯利法侵吞推手"
+        "uid": 113
+      },
+      "诺姆": {
+        "path": "世界书/关键人物/罗斯凯利法/诺姆.yaml",
+        "scope": "specific",
+        "part": "罗斯凯利法",
+        "keywords": [
+          "诺姆",
+          "Norma"
+        ],
+        "abstract": "罗斯凯利法外策局技术长,S级火属性击破",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "诺姆",
+            "Norma"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 750
+        },
+        "uid": 114
+      },
+      "佩洛伊斯": {
+        "path": "世界书/关键人物/法厄同线/佩洛伊斯.yaml",
+        "scope": "specific",
+        "part": "法厄同线",
+        "keywords": [
+          "佩洛伊斯",
+          "Pyrois"
+        ],
+        "abstract": "法厄同觉醒战斗形态,S级以太强攻,免费赠送",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 760
+        },
+        "uid": 115
+      },
+      "蕾米埃尔": {
+        "path": "世界书/关键人物/初代虚狩/蕾米埃尔.yaml",
+        "scope": "specific",
+        "part": "初代虚狩",
+        "keywords": [
+          "蕾米埃尔",
+          "Remielle"
+        ],
+        "abstract": "初代七虚狩之一,粉发白翼,预计3.1实装",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "蕾米埃尔",
+            "Remielle"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 770
+        },
+        "uid": 116
+      },
+      "挽昼": {
+        "path": "世界书/关键人物/初代虚狩/挽昼.yaml",
+        "scope": "specific",
+        "part": "初代虚狩",
+        "keywords": [
+          "挽昼",
+          "Sunbringer"
+        ],
+        "abstract": "初代七虚狩,智能构造体,分解为三具(艾尔妲/林德薇恩/德蕾琪娜),邦布发明者,罗斯凯利法建立者",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "挽昼",
+            "Sunbringer"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 780
+        },
+        "uid": 117
+      },
+      "塞维里安": {
+        "path": "世界书/关键人物/治安局/塞维里安.yaml",
+        "scope": "specific",
+        "part": "治安局",
+        "keywords": [
+          "塞维里安",
+          "Severian"
+        ],
+        "abstract": "NEPS总部高级专员,赛斯的哥哥,猫希人,第三季浮空岛相关",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "塞维里安",
+            "Severian"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 790
+        },
+        "uid": 118
+      },
+      "叶瞬光": {
+        "path": "世界书/关键人物/云岿山/叶瞬光.yaml",
+        "scope": "specific",
+        "part": "云岿山",
+        "keywords": [
+          "叶瞬光"
+        ],
+        "abstract": "叶释渊之妹,青溟剑现任剑主",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "叶瞬光"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 800
+        },
+        "uid": 119
+      },
+      "希希芙": {
+        "path": "世界书/关键人物/治安局/希希芙.yaml",
+        "scope": "specific",
+        "part": "治安局",
+        "keywords": [
+          "希希芙",
+          "Cissia"
+        ],
+        "abstract": "NEPS总部案件专员,塞维里安下属",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "希希芙",
+            "Cissia"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 810
+        },
+        "uid": 120
+      },
+      "莎拉": {
+        "path": "世界书/关键人物/称颂会/莎拉.yaml",
+        "scope": "specific",
+        "part": "称颂会",
+        "keywords": [
+          "莎拉",
+          "Sarah"
+        ],
+        "abstract": "称颂会核心成员",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "莎拉",
+            "Sarah"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 820
+        },
+        "uid": 121
+      },
+      "布林格": {
+        "path": "世界书/关键人物/称颂会/布林格.yaml",
+        "scope": "specific",
+        "part": "称颂会",
+        "keywords": [
+          "布林格",
+          "Bringer",
+          "贾斯汀"
+        ],
+        "abstract": "前治安局警官,称颂会内鬼,朱鸢童年恩人",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "布林格",
+            "Bringer",
+            "贾斯汀"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 830
+        },
+        "uid": 122
+      },
+      "造物主": {
+        "path": "世界书/关键人物/称颂会/造物主.yaml",
+        "scope": "specific",
+        "part": "称颂会",
+        "keywords": [
+          "造物主",
+          "The Creator"
+        ],
+        "abstract": "称颂会最高领袖",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "造物主",
+            "The Creator"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 840
+        },
+        "uid": 123
+      },
+      "梅若拉可": {
+        "path": "世界书/关键人物/称颂会/梅若拉可.yaml",
+        "scope": "specific",
+        "part": "称颂会",
+        "keywords": [
+          "梅若拉可",
+          "Merolac"
+        ],
+        "abstract": "称颂会司教",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "梅若拉可",
+            "Merolac"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 850
+        },
+        "uid": 124
+      },
+      "卡洛丝": {
+        "path": "世界书/关键人物/法厄同线/卡洛丝.yaml",
+        "scope": "specific",
+        "part": "法厄同线",
+        "keywords": [
+          "卡洛丝",
+          "Carole",
+          "阿尔娜"
+        ],
+        "abstract": "赫利俄斯机关研究主任,法厄同兄妹导师,伊埃斯与Fairy创造者",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 860
+        },
+        "uid": 125
+      },
+      "大老爹": {
+        "path": "世界书/关键人物/卡吕冬之子/大老爹.yaml",
+        "scope": "specific",
+        "part": "卡吕冬之子",
+        "keywords": [
+          "大老爹",
+          "Big Daddy"
+        ],
+        "abstract": "卡吕冬之子创始人,凯撒养父",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "大老爹",
+            "Big Daddy"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 870
+        },
+        "uid": 126
+      },
+      "霍斯": {
+        "path": "世界书/关键人物/白祇重工/霍斯.yaml",
+        "scope": "specific",
+        "part": "白祇重工",
+        "keywords": [
+          "霍斯",
+          "Khors",
+          "贝洛伯格"
+        ],
+        "abstract": "白祇重工前社长,珂蕾妲之父",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "霍斯",
+            "Khors",
+            "贝洛伯格"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 880
+        },
+        "uid": 127
       },
       "普罗米娅": {
         "path": "世界书/关键人物/黑枝/普罗米娅.yaml",
@@ -2522,6 +2738,7 @@
           "普罗米娅",
           "Promeia"
         ],
+        "abstract": "黑枝裁决官/沉默的赎罪者/手铐与自我审判",
         "uid": 200,
         "enabled": true,
         "strategy": {
@@ -2533,9 +2750,52 @@
         },
         "position": {
           "type": "after_character_definition",
-          "order": 960
+          "order": 1490
+        }
+      },
+      "Youkai": {
+        "path": "世界书/关键人物/其他/Youkai.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "Youkai",
+          "四钥匙"
+        ],
+        "abstract": "四钥匙之一/Fairy孪生AI/第二季核心反派",
+        "uid": 201,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "Youkai",
+            "四钥匙"
+          ]
         },
-        "abstract": "黑枝裁决官/沉默的赎罪者/手铐与自我审判"
+        "position": {
+          "type": "after_character_definition",
+          "order": 1470
+        }
+      },
+      "铅杖": {
+        "path": "世界书/关键人物/其他/铅杖.yaml",
+        "scope": "specific",
+        "part": "其他",
+        "keywords": [
+          "铅杖"
+        ],
+        "abstract": "神秘人物/Youkai盟友/罗斯凯利法侵吞推手",
+        "uid": 202,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "铅杖"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 1480
+        }
       }
     },
     "剧情章节": {
@@ -2546,7 +2806,16 @@
         "keywords": [
           "序章"
         ],
-        "abstract": "序章: Fairy激活,兄妹与狡兔屋初合作"
+        "abstract": "序章: Fairy激活,兄妹与狡兔屋初合作",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 210
+        },
+        "uid": 128
       },
       "第一章": {
         "path": "世界书/剧情章节/第一章.yaml",
@@ -2555,7 +2824,16 @@
         "keywords": [
           "猫的失物"
         ],
-        "abstract": "猫的失物: 死路屠夫,远景阴谋"
+        "abstract": "猫的失物: 死路屠夫,远景阴谋",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 220
+        },
+        "uid": 129
       },
       "第二章": {
         "path": "世界书/剧情章节/第二章.yaml",
@@ -2564,7 +2842,16 @@
         "keywords": [
           "在空洞的中心呼唤"
         ],
-        "abstract": "在空洞的中心呼唤: 牲鬼初现"
+        "abstract": "在空洞的中心呼唤: 牲鬼初现",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 230
+        },
+        "uid": 130
       },
       "第三章": {
         "path": "世界书/剧情章节/第三章.yaml",
@@ -2573,7 +2860,16 @@
         "keywords": [
           "危楼夜寻踪"
         ],
-        "abstract": "危楼夜寻踪: 营救芮恩"
+        "abstract": "危楼夜寻踪: 营救芮恩",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 240
+        },
+        "uid": 131
       },
       "第四章": {
         "path": "世界书/剧情章节/第四章.yaml",
@@ -2582,7 +2878,16 @@
         "keywords": [
           "火狱骑行"
         ],
-        "abstract": "火狱骑行: 庞培之死,凯撒继承"
+        "abstract": "火狱骑行: 庞培之死,凯撒继承",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 250
+        },
+        "uid": 132
       },
       "第五章": {
         "path": "世界书/剧情章节/第五章.yaml",
@@ -2591,7 +2896,16 @@
         "keywords": [
           "星流霆击"
         ],
-        "abstract": "星流霆击: 布林格讨伐"
+        "abstract": "星流霆击: 布林格讨伐",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 260
+        },
+        "uid": 133
       },
       "第二季第一章": {
         "path": "世界书/剧情章节/第二季第一章.yaml",
@@ -2600,88 +2914,178 @@
         "keywords": [
           "云霞同归处"
         ],
-        "abstract": "云霞同归处: 拜入云岿山"
+        "abstract": "云霞同归处: 拜入云岿山",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 270
+        },
+        "uid": 134
       },
       "第二季第二章": {
         "path": "世界书/剧情章节/第二季第二章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "迟吟的浪涌: 浮波柚叶/爱丽丝登场",
+        "part": "第二季",
         "keywords": [
           "迟吟的浪涌"
-        ]
+        ],
+        "abstract": "迟吟的浪涌: 浮波柚叶/爱丽丝登场",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 280
+        },
+        "uid": 135
       },
       "第二季第三章": {
         "path": "世界书/剧情章节/第二季第三章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "不要温和地走入那良夜: 奥波勒斯小队登场",
+        "part": "第二季",
         "keywords": [
           "不要温和地走入那良夜"
-        ]
+        ],
+        "abstract": "不要温和地走入那良夜: 奥波勒斯小队登场",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 290
+        },
+        "uid": 136
       },
       "第二季第四章": {
         "path": "世界书/剧情章节/第二季第四章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "可曾记得梦: 伊德海莉/卢西娅登场",
+        "part": "第二季",
         "keywords": [
           "可曾记得梦"
-        ]
+        ],
+        "abstract": "可曾记得梦: 伊德海莉/卢西娅登场",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 300
+        },
+        "uid": 137
       },
       "第二季第五章": {
         "path": "世界书/剧情章节/第二季第五章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "将临未抵的深渊: Youkai登场",
+        "part": "第二季",
         "keywords": [
           "将临未抵的深渊"
-        ]
+        ],
+        "abstract": "将临未抵的深渊: Youkai登场",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 310
+        },
+        "uid": 138
       },
       "第二季第六章": {
         "path": "世界书/剧情章节/第二季第六章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "微光引灯时: Youkai寄生缄枢",
+        "part": "第二季",
         "keywords": [
           "微光引灯时"
-        ]
+        ],
+        "abstract": "微光引灯时: Youkai寄生缄枢",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 320
+        },
+        "uid": 139
       },
       "第二季间章": {
         "path": "世界书/剧情章节/第二季间章.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "旧梦的安可曲: Youkai挑拨,爱芮觉醒",
+        "part": "第二季",
         "keywords": [
           "旧梦的安可曲"
-        ]
+        ],
+        "abstract": "旧梦的安可曲: Youkai挑拨,爱芮觉醒",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 330
+        },
+        "uid": 140
       },
       "第二季尾音上": {
         "path": "世界书/剧情章节/第二季尾音上.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "新艾利都日落时上: Youkai逃脱",
+        "part": "第二季",
         "keywords": [
           "新·艾利都日落时"
-        ]
+        ],
+        "abstract": "新艾利都日落时上: Youkai逃脱",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 340
+        },
+        "uid": 141
       },
       "第二季尾音下": {
         "path": "世界书/剧情章节/第二季尾音下.yaml",
-        "part": "第二季",
         "scope": "catalog",
-        "abstract": "新艾利都日落时下: 第二季收尾",
+        "part": "第二季",
         "keywords": [
           "新·艾利都日落时"
-        ]
+        ],
+        "abstract": "新艾利都日落时下: 第二季收尾",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 341
+        },
+        "uid": 142
       },
       "第三季第一章": {
         "path": "世界书/剧情章节/第三季第一章.yaml",
-        "part": "第三季",
         "scope": "catalog",
-        "abstract": "某个梦游者的自白: 罗斯凯利法开放,佩洛伊斯觉醒",
+        "part": "第三季",
         "keywords": [
           "某个梦游者的自白"
-        ]
+        ],
+        "abstract": "某个梦游者的自白: 罗斯凯利法开放,佩洛伊斯觉醒",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 350
+        },
+        "uid": 143
       }
     }
   },
@@ -2690,7 +3094,8 @@
       "世界观核心",
       "EJS",
       "扮演准则",
-      "时间线"
+      "时间线",
+      "剧情章节"
     ],
     "after_char": [
       "地图",
@@ -2803,6 +3208,18 @@
       "其他": {
         "threshold": "Infinity",
         "required": false
+      },
+      "罗斯凯利法": {
+        "threshold": 2,
+        "required": false
+      },
+      "初代虚狩": {
+        "threshold": 2,
+        "required": false
+      },
+      "称颂会": {
+        "threshold": 2,
+        "required": false
       }
     },
     "时间线": {
@@ -2848,6 +3265,20 @@
         "threshold": "Infinity",
         "required": false
       }
+    },
+    "剧情章节": {
+      "第一季": {
+        "threshold": null,
+        "required": false
+      },
+      "第二季": {
+        "threshold": null,
+        "required": false
+      },
+      "第三季": {
+        "threshold": null,
+        "required": false
+      }
     }
   },
   "partOrder": {
@@ -2884,7 +3315,10 @@
       "怪啖屋",
       "黑枝",
       "妄想天使",
-      "其他"
+      "其他",
+      "罗斯凯利法",
+      "初代虚狩",
+      "称颂会"
     ],
     "MVU": [
       "variable_list",
@@ -2902,6 +3336,11 @@
     "时间线": [
       "历史",
       "剧情节点"
+    ],
+    "剧情章节": [
+      "第一季",
+      "第二季",
+      "第三季"
     ]
   },
   "depth_defaults": {
