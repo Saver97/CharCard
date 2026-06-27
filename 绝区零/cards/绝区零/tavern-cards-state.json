@@ -821,26 +821,26 @@
         ],
         "abstract": "光映广场报刊亭店主"
       },
-      "奥奇迪亚": {
-        "path": "世界书/关键人物/其他/奥奇迪亚.yaml",
-        "part": "其他",
-        "scope": "specific",
-        "abstract": "朝露花店店主兼委托中介",
-        "keywords": [
-          "奥奇迪亚",
-          "Orchidea",
-          "朝露花店"
-        ]
-      },
       "辛味": {
         "path": "世界书/关键人物/其他/辛味.yaml",
-        "part": "其他",
         "scope": "specific",
-        "abstract": "辛味火锅店店主",
+        "part": "其他",
         "keywords": [
           "辛味",
           "Blaze",
           "辛味火锅店"
+        ],
+        "abstract": "辛味火锅店店主"
+      },
+      "兰": {
+        "path": "世界书/关键人物/其他/兰.yaml",
+        "part": "其他",
+        "scope": "specific",
+        "abstract": "朝露花店店主兼委托中介",
+        "keywords": [
+          "兰",
+          "Orchidea",
+          "朝露花店"
         ]
       },
       "仪玄": {
