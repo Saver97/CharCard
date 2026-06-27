@@ -218,9 +218,8 @@ var gear=isWise?PHAETHON_GEAR.wise:PHAETHON_GEAR.belle;
 	patches.push({op:'replace',path:'/邦布/拥有的邦布',value:['伊埃斯']});
 	patches.push({op:'replace',path:'/世界/城市流言',value:ch.r});
 	patches.push({op:'replace',path:'/世界/章节进度',value:selectedChapter});
-	patches.push({op:'replace',path:'/世界/当前章节',value:CH_NAMES[selectedChapter]||'序章·法厄同'});
-		for(var k in ch.f){patches.push({op:'replace',path:'/阵营/'+k,value:ch.f[k]})}
-		var rs=selectedChapter<=0?0:Math.round((0.2+(selectedChapter-1)/14*0.8)*100)/100;
+		patches.push({op:'replace',path:'/世界/当前章节',value:CH_NAMES[selectedChapter]||'序章·法厄同'});
+			var rs=selectedChapter<=0?0:Math.round((0.2+(selectedChapter-1)/14*0.8)*100)/100;
 		function addNpcs(arr){arr.forEach(function(n){var d=JSON.parse(JSON.stringify(n.d));if(d.关系){d.关系.好感度=Math.round(d.关系.好感度*rs);d.关系.信任度=Math.round(d.关系.信任度*rs)}patches.push({op:'add',path:'/NPCs/'+n.n,value:d})})}
 		if(selectedChapter>=1)addNpcs(HARE_NPCS);
 		if(selectedChapter>=2)addNpcs(BELOBOG_NPCS);
@@ -228,7 +227,7 @@ var gear=isWise?PHAETHON_GEAR.wise:PHAETHON_GEAR.belle;
 		if(selectedChapter>=4)addNpcs(CALYDON_NPCS);
 		if(selectedChapter>=5)addNpcs(NEPS_NPCS);
 		if(selectedChapter>=6)addNpcs(YUNKUI_NPCS);
-	narrative=ch.n;
+	narrative=ch.narrative;
 }else{
 var name=document.getElementById('name').value.trim()||'未命名';
 var race=document.getElementById('race').value;
