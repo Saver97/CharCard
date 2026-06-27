@@ -358,6 +358,22 @@
           "type": "before_character_definition",
           "order": 120
         }
+      },
+      "角色名录": {
+        "path": "世界书/世界观核心/角色名录.yaml",
+        "scope": "catalog",
+        "part": "职业体系",
+        "keywords": [],
+        "abstract": "83个具名角色完整名录——AI创建NPC时的唯一合法来源",
+        "uid": 203,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 15
+        }
       }
     },
     "地图": {
