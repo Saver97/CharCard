@@ -903,107 +903,97 @@
         ],
         "abstract": "NEPS总部高级专员,赛斯的哥哥,猫希人,第三季浮空岛相关"
       },
-      "零号安比": {
-        "path": "世界书/关键人物/狡兔屋/零号安比.yaml",
-        "part": "狡兔屋",
-        "scope": "specific",
-        "abstract": "安比的S级觉醒形态,S电强攻,1.6实装",
-        "keywords": [
-          "零号安比",
-          "Soldier 0"
-        ]
-      },
       "叶瞬光": {
         "path": "世界书/关键人物/云岿山/叶瞬光.yaml",
-        "part": "云岿山",
         "scope": "specific",
-        "abstract": "叶释渊之妹,青溟剑现任剑主",
+        "part": "云岿山",
         "keywords": [
           "叶瞬光"
-        ]
+        ],
+        "abstract": "叶释渊之妹,青溟剑现任剑主"
       },
       "希希芙": {
         "path": "世界书/关键人物/治安局/希希芙.yaml",
-        "part": "治安局",
         "scope": "specific",
-        "abstract": "NEPS总部案件专员,塞维里安下属",
+        "part": "治安局",
         "keywords": [
           "希希芙",
           "Cissia"
-        ]
+        ],
+        "abstract": "NEPS总部案件专员,塞维里安下属"
       },
       "莎拉": {
         "path": "世界书/关键人物/称颂会/莎拉.yaml",
-        "part": "称颂会",
         "scope": "specific",
-        "abstract": "称颂会核心成员",
+        "part": "称颂会",
         "keywords": [
           "莎拉",
           "Sarah"
-        ]
+        ],
+        "abstract": "称颂会核心成员"
       },
       "布林格": {
         "path": "世界书/关键人物/称颂会/布林格.yaml",
-        "part": "称颂会",
         "scope": "specific",
-        "abstract": "前治安局警官,称颂会内鬼,朱鸢童年恩人",
+        "part": "称颂会",
         "keywords": [
           "布林格",
           "Bringer",
           "贾斯汀"
-        ]
+        ],
+        "abstract": "前治安局警官,称颂会内鬼,朱鸢童年恩人"
       },
       "造物主": {
         "path": "世界书/关键人物/称颂会/造物主.yaml",
-        "part": "称颂会",
         "scope": "specific",
-        "abstract": "称颂会最高领袖",
+        "part": "称颂会",
         "keywords": [
           "造物主",
           "The Creator"
-        ]
+        ],
+        "abstract": "称颂会最高领袖"
       },
       "梅若拉可": {
         "path": "世界书/关键人物/称颂会/梅若拉可.yaml",
-        "part": "称颂会",
         "scope": "specific",
-        "abstract": "称颂会司教",
+        "part": "称颂会",
         "keywords": [
           "梅若拉可",
           "Merolac"
-        ]
+        ],
+        "abstract": "称颂会司教"
       },
       "卡洛丝": {
         "path": "世界书/关键人物/法厄同线/卡洛丝.yaml",
-        "part": "法厄同线",
         "scope": "specific",
-        "abstract": "赫利俄斯机关研究主任,法厄同兄妹导师,伊埃斯与Fairy创造者",
+        "part": "法厄同线",
         "keywords": [
           "卡洛丝",
           "Carole",
           "阿尔娜"
-        ]
+        ],
+        "abstract": "赫利俄斯机关研究主任,法厄同兄妹导师,伊埃斯与Fairy创造者"
       },
       "大老爹": {
         "path": "世界书/关键人物/卡吕冬之子/大老爹.yaml",
-        "part": "卡吕冬之子",
         "scope": "specific",
-        "abstract": "卡吕冬之子创始人,凯撒养父",
+        "part": "卡吕冬之子",
         "keywords": [
           "大老爹",
           "Big Daddy"
-        ]
+        ],
+        "abstract": "卡吕冬之子创始人,凯撒养父"
       },
       "霍斯": {
         "path": "世界书/关键人物/白祇重工/霍斯.yaml",
-        "part": "白祇重工",
         "scope": "specific",
-        "abstract": "白祇重工前社长,珂蕾妲之父",
+        "part": "白祇重工",
         "keywords": [
           "霍斯",
           "Khors",
           "贝洛伯格"
-        ]
+        ],
+        "abstract": "白祇重工前社长,珂蕾妲之父"
       },
       "仪玄": {
         "path": "世界书/关键人物/云岿山/仪玄.yaml",
