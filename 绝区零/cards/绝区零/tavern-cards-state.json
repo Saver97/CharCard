@@ -2470,16 +2470,6 @@
           "order": 950
         }
       },
-      "普罗米娅": {
-        "path": "世界书/关键人物/其他/普罗米娅.yaml",
-        "scope": "specific",
-        "part": "其他",
-        "keywords": [
-          "普罗米娅",
-          "Promethea"
-        ],
-        "abstract": "独立代理人/火属性双剑战士/第二季尾音核心战力"
-      },
       "Youkai": {
         "path": "世界书/关键人物/其他/Youkai.yaml",
         "scope": "specific",
@@ -2499,6 +2489,16 @@
           "Leaden Staff"
         ],
         "abstract": "神秘人物/Youkai盟友/罗斯凯利法侵吞计划推手"
+      },
+      "普罗米娅": {
+        "path": "世界书/关键人物/黑枝/普罗米娅.yaml",
+        "scope": "specific",
+        "part": "黑枝",
+        "keywords": [
+          "普罗米娅",
+          "Promeia"
+        ],
+        "abstract": "S级冰属性异常/黑枝裁决官/处刑式·绝裁/手铐与赎罪"
       }
     },
     "剧情章节": {
