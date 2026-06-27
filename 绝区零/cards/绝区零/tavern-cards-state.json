@@ -2478,6 +2478,19 @@
           "Youkai",
           "四钥匙"
         ],
+        "uid": 201,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "Youkai",
+            "四钥匙"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 961
+        },
         "abstract": "四钥匙之一/Fairy孪生AI/第二季核心反派"
       },
       "铅杖": {
@@ -2485,10 +2498,21 @@
         "scope": "specific",
         "part": "其他",
         "keywords": [
-          "铅杖",
-          "Leaden Staff"
+          "铅杖"
         ],
-        "abstract": "神秘人物/Youkai盟友/罗斯凯利法侵吞计划推手"
+        "uid": 202,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "铅杖"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 962
+        },
+        "abstract": "神秘人物/Youkai盟友/罗斯凯利法侵吞推手"
       },
       "普罗米娅": {
         "path": "世界书/关键人物/黑枝/普罗米娅.yaml",
@@ -2498,7 +2522,20 @@
           "普罗米娅",
           "Promeia"
         ],
-        "abstract": "S级冰属性异常/黑枝裁决官/处刑式·绝裁/手铐与赎罪"
+        "uid": 200,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "普罗米娅",
+            "Promeia"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 960
+        },
+        "abstract": "黑枝裁决官/沉默的赎罪者/手铐与自我审判"
       }
     },
     "剧情章节": {
