@@ -42,17 +42,12 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 .text-block{padding:14px;margin-bottom:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px}.text-block .kv-row:last-child{border:none;margin:0;padding:0}
 .footer{text-align:center;padding:12px;color:var(--muted);font-size:10px}
 .nodata{text-align:center;color:var(--muted);padding:20px;font-size:12px}
-.toggle-btn{display:inline-block;padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--gold);cursor:pointer;font-size:12px;font-weight:600;transition:all .2s}
-.toggle-btn:hover{background:rgba(240,192,64,.1);border-color:var(--gold)}
-#panel-body{display:none}
-#panel-body.open{display:block}
 </style>
 </head>
 <body>
 
 <div class="container">
-<div class="header"><h1>⚡ 绝区零 · 状态面板</h1><p>只读显示 · 所有修改通过对话处理</p><button class="toggle-btn" onclick="togglePanel()">📋 展开面板</button></div>
-<div id="panel-body">
+<div class="header"><h1>⚡ 绝区零 · 状态面板</h1><p>只读显示 · 所有修改通过对话处理</p></div>
 <div class="tabs">
   <button class="tab-btn active" data-tab="world">🌍 世界观</button>
   <button class="tab-btn" data-tab="hero">🐣 主角</button>
@@ -172,10 +167,8 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 
 <div class="footer">绝区零 RPG · 信息面板 · 只读</div>
 </div>
-</div>
 
 <script>
-function togglePanel(){var b=document.getElementById('panel-body');var btn=document.querySelector('.toggle-btn');var open=b.classList.toggle('open');btn.textContent=open?'📋 收起面板':'📋 展开面板'}
 const LEVEL_NAMES=['敌对','冷淡','中立','友好','亲密','热恋'];
 function getLevel(v){const n=parseInt(v)||0;if(n<=-51)return LEVEL_NAMES[0];if(n<=-11)return LEVEL_NAMES[1];if(n<=10)return LEVEL_NAMES[2];if(n<=50)return LEVEL_NAMES[3];if(n<=80)return LEVEL_NAMES[4];return LEVEL_NAMES[5]}
 function getProp(obj,path,def){var keys=path.split('.');var r=obj;for(var i=0;i<keys.length;i++){if(r&&typeof r==='object'&&keys[i]in r)r=r[keys[i]];else return def}return r!==undefined?r:def}
