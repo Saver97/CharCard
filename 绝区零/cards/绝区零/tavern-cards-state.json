@@ -412,13 +412,13 @@
     "阵营章节": {
       "罗斯凯利法": {
         "path": "世界书/阵营章节/罗斯凯利法.yaml",
-        "part": "代理人组织",
         "scope": "catalog",
-        "abstract": "罗斯凯利法:挽昼建立的浮空理想国,维琳娜/诺姆所属",
+        "part": "代理人组织",
         "keywords": [
           "罗斯凯利法",
           "Roscaelifer"
-        ]
+        ],
+        "abstract": "罗斯凯利法:挽昼建立的浮空理想国,维琳娜/诺姆所属"
       },
       "HAND与HIA": {
         "path": "世界书/阵营章节/HAND与HIA.yaml",
@@ -2260,6 +2260,87 @@
           "云霞同归处"
         ],
         "abstract": "云霞同归处: 拜入云岿山"
+      },
+      "第二季第二章": {
+        "path": "世界书/剧情章节/第二季第二章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "迟吟的浪涌: 浮波柚叶/爱丽丝登场",
+        "keywords": [
+          "迟吟的浪涌"
+        ]
+      },
+      "第二季第三章": {
+        "path": "世界书/剧情章节/第二季第三章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "不要温和地走入那良夜: 奥波勒斯小队登场",
+        "keywords": [
+          "不要温和地走入那良夜"
+        ]
+      },
+      "第二季第四章": {
+        "path": "世界书/剧情章节/第二季第四章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "可曾记得梦: 伊德海莉/卢西娅登场",
+        "keywords": [
+          "可曾记得梦"
+        ]
+      },
+      "第二季第五章": {
+        "path": "世界书/剧情章节/第二季第五章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "将临未抵的深渊: Youkai登场",
+        "keywords": [
+          "将临未抵的深渊"
+        ]
+      },
+      "第二季第六章": {
+        "path": "世界书/剧情章节/第二季第六章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "微光引灯时: Youkai寄生缄枢",
+        "keywords": [
+          "微光引灯时"
+        ]
+      },
+      "第二季间章": {
+        "path": "世界书/剧情章节/第二季间章.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "旧梦的安可曲: Youkai挑拨,爱芮觉醒",
+        "keywords": [
+          "旧梦的安可曲"
+        ]
+      },
+      "第二季尾音上": {
+        "path": "世界书/剧情章节/第二季尾音上.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "新艾利都日落时上: Youkai逃脱",
+        "keywords": [
+          "新·艾利都日落时"
+        ]
+      },
+      "第二季尾音下": {
+        "path": "世界书/剧情章节/第二季尾音下.yaml",
+        "part": "第二季",
+        "scope": "catalog",
+        "abstract": "新艾利都日落时下: 第二季收尾",
+        "keywords": [
+          "新·艾利都日落时"
+        ]
+      },
+      "第三季第一章": {
+        "path": "世界书/剧情章节/第三季第一章.yaml",
+        "part": "第三季",
+        "scope": "catalog",
+        "abstract": "某个梦游者的自白: 罗斯凯利法开放,佩洛伊斯觉醒",
+        "keywords": [
+          "某个梦游者的自白"
+        ]
       }
     }
   },
