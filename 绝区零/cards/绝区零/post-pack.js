@@ -70,16 +70,17 @@ console.log(`✓ 补 group: ${groupFixed} 个条目`);
 	}
 	console.log(`✓ MVU 条目 depth 修正为 0: ${depthFixed} 个`);
 
-// 2c. HTML 正则补 markdown 代码块标记（markdownOnly 正则需 ```html 包裹才渲染）
-let fenceFixed = 0;
-for (const r of card.data.extensions.regex_scripts) {
-  const rs = r.replaceString || '';
-  const isHtml = rs.includes('<!DOCTYPE') || rs.includes('<html') || rs.includes('<style');
-  if (isHtml && !rs.startsWith('```')) {
-    r.replaceString = '```html\n' + rs + '\n```';
-    fenceFixed++;
-  }
-}
+	// 2c. HTML 正则补 markdown 代码块标记（角色创建面板跳过——srcdoc 不兼容）
+	let fenceFixed = 0;
+	for (const r of card.data.extensions.regex_scripts) {
+	  const rs = r.replaceString || '';
+	  const name = r.scriptName || r.id || '';
+	  const isHtml = rs.includes('<!DOCTYPE') || rs.includes('<html') || rs.includes('<style');
+	  if (isHtml && !rs.startsWith('```') && name !== '角色创建面板') {
+	    r.replaceString = '```html\n' + rs + '\n```';
+	    fenceFixed++;
+	  }
+	}
 console.log(`✓ HTML 正则补代码块标记: ${fenceFixed} 个`);
 
 	// 2d. (removed — 变量更新美化正则已删除)
