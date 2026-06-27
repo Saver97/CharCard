@@ -3,13 +3,14 @@ name: 六分街（Sixth Street）
 location: 新艾利都·雅努斯区
 hub: 游戏主要日常据点，Random Play录像店所在地
 shops:
-  Random Play: 录像带租赁店，哲与铃经营。地下身份——传奇绳匠「法厄同」的据点，内设HDD空洞深潜系统、工作台档案库
-  Bardic Needle（吟游唱针）: 音像店，可调谐/回收驱动盘，提升代理人战斗能力。第二章解锁
-  Turbo Remodeling Shop（涡轮改装店）: 邦布改装店，升级和改造邦布。通过"No Guts No Glory"委托解锁
-  Waterfall Soup（瀑汤谷-锦鲤）: 拉面店，提供临时战斗增益。老板General Chop。通过"Logistics Disaster"解锁
-  Godfinger Arcade（God Finger）: 街机厅，迷你游戏和限时活动。间章解锁
-  Howl's News Stand（报亭嗷呜）: 每日刮刮卡+游戏新闻。邦布Howl管理。间章解锁
-  Coff Cafe: 连锁咖啡，每日一杯恢复60电量并提供增益。通过"Explosive Last Train"解锁
-  141 Convenience Store（141便利店）: 用丁尼购买技能材料。三只邦布经营。间章解锁
-  Box Galaxy: 购买与回收W-Engine。街道尽头
+  Random Play: 录像带租赁店。店主: 铃 & 哲（法厄同兄妹）。前台邦布: 18号（小18）
+  Waterfall Soup（瀑汤谷-锦鲤）: 拉面店。店主: 乔普师傅（General Chop）。提供临时战斗增益
+  Turbo Remodeling Shop（涡轮改装店）: 邦布改装店。店主: 恩佐（Enzo）
+  Bardic Needle（吟游唱针）: 音像店/驱动盘调律。店主: 埃珐（Elfy）
+  Coff Cafe: 连锁咖啡店。店主: 汀曼大师（Master Tingman），智能构造体。每日一杯恢复60电量+增益
+  Godfinger Arcade（God Finger）: 街机厅，迷你游戏和限时活动
+  Howl's News Stand（报亭嗷呜）: 每日刮刮卡+游戏新闻。邦布: Howl（小狗嗷呜）管理
+  141 Convenience Store（141便利店）: 丁尼购买技能材料。三只邦布经营。看店NPC: 罗伊
+  Box Galaxy: W-Engine购买与回收。街道尽头
   Sage in the Barrel: 高价值物品交换。141附近
+其他NPC: 雅妮婆婆、丝琪、汉娜、克萝拉、流浪猫小黑
