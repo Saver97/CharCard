@@ -845,42 +845,62 @@
       },
       "维琳娜": {
         "path": "世界书/关键人物/罗斯凯利法/维琳娜.yaml",
-        "part": "罗斯凯利法",
         "scope": "specific",
-        "abstract": "罗斯凯利法外策局总务官,S级风属性异常,首位风属性角色",
+        "part": "罗斯凯利法",
         "keywords": [
           "维琳娜",
           "Velina"
-        ]
+        ],
+        "abstract": "罗斯凯利法外策局总务官,S级风属性异常,首位风属性角色"
       },
       "诺姆": {
         "path": "世界书/关键人物/罗斯凯利法/诺姆.yaml",
-        "part": "罗斯凯利法",
         "scope": "specific",
-        "abstract": "罗斯凯利法外策局技术长,S级火属性击破",
+        "part": "罗斯凯利法",
         "keywords": [
           "诺姆",
           "Norma"
-        ]
+        ],
+        "abstract": "罗斯凯利法外策局技术长,S级火属性击破"
       },
       "佩洛伊斯": {
         "path": "世界书/关键人物/法厄同线/佩洛伊斯.yaml",
-        "part": "法厄同线",
         "scope": "specific",
-        "abstract": "法厄同觉醒战斗形态,S级以太强攻,免费赠送",
+        "part": "法厄同线",
         "keywords": [
           "佩洛伊斯",
           "Pyrois"
-        ]
+        ],
+        "abstract": "法厄同觉醒战斗形态,S级以太强攻,免费赠送"
       },
       "蕾米埃尔": {
         "path": "世界书/关键人物/初代虚狩/蕾米埃尔.yaml",
-        "part": "初代虚狩",
         "scope": "specific",
-        "abstract": "初代七虚狩之一,粉发白翼,预计3.1实装",
+        "part": "初代虚狩",
         "keywords": [
           "蕾米埃尔",
           "Remielle"
+        ],
+        "abstract": "初代七虚狩之一,粉发白翼,预计3.1实装"
+      },
+      "挽昼": {
+        "path": "世界书/关键人物/初代虚狩/挽昼.yaml",
+        "part": "初代虚狩",
+        "scope": "specific",
+        "abstract": "初代七虚狩,智能构造体,分解为三具(艾尔妲/林德薇恩/德蕾琪娜),邦布发明者,罗斯凯利法建立者",
+        "keywords": [
+          "挽昼",
+          "Sunbringer"
+        ]
+      },
+      "塞维里安": {
+        "path": "世界书/关键人物/治安局/塞维里安.yaml",
+        "part": "治安局",
+        "scope": "specific",
+        "abstract": "NEPS总部高级专员,赛斯的哥哥,猫希人,第三季浮空岛相关",
+        "keywords": [
+          "塞维里安",
+          "Severian"
         ]
       },
       "仪玄": {
