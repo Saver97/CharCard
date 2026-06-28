@@ -1,10 +1,4 @@
 ---
 name: 潘引壶
-role: 云岿山二师兄，厨师兼财务
-gender: male
-height: 192cm
-age: 30+岁
-type: 熊猫希人（Panda Thiren）
-appearance: 黑白熊猫特征——熊耳、眼周黑纹、圆润壮实。单手举炒锅稳如泰山。
-personality: 沉默少语——专注于灶台和账本。熊猫吃素但不吃暗亏——随便观的账本没人能做手脚。
-info: 熊猫希人。云岿山的胃与钱包。
+gender: male | height: 192cm
+role: 熊猫希人厨师兼财务
