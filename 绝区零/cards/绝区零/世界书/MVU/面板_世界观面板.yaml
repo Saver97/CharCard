@@ -10,8 +10,9 @@ triggers:
   - "world"
 description: "当前时间、地点与计划"
 variables:
-  世界.当前时间: { type: "string", default: "新艾利都·清晨", desc: "日期/时段（清晨/白天/傍晚/深夜）" }
+  世界.当前时间: { type: "string", default: "6月28日·星期日", desc: "当前日期·星期（与真实时间同步）" }
   世界.当前地点: { type: "string", default: "雅努斯区·六分街·Random Play", desc: "所在城区或空洞名称" }
+  世界.沙盒时间: { type: "number", default: 0, desc: "经过天数，每天+1递增" }
   世界.当天计划: { type: "string", default: "录像店营业", desc: "当天主要活动" }
   世界.天气: { type: "string", default: "晴好·微风", desc: "当前天气与氛围" }
   世界.城市流言: { type: "string", default: "", desc: "绳网热帖/街头传说/路人八卦" }
