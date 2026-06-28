@@ -7,7 +7,6 @@ export const Schema = z.object({
   世界: z.object({
     当前时间: z.string().or(z.literal('未知')).prefault('未知'),
     当前地点: z.string().or(z.literal('未知')).prefault('未知'),
-    当前章节: z.string().or(z.literal('未知')).prefault('未知'),
     当天计划: z.string().or(z.literal('')).prefault(''),
     天气: z.string().or(z.literal('')).prefault(''),
     城市流言: z.string().or(z.literal('')).prefault(''),

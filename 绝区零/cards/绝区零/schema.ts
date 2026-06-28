@@ -6,10 +6,7 @@ export const Schema = z.object({
   世界: z.object({
     当前时间: z.string().or(z.literal('未知')).prefault('未知'),
     当前地点: z.string().or(z.literal('未知')).prefault('未知'),
-    当前章节: z.string().or(z.literal('未知')).prefault('未知'),
     当前模式: z.enum(['剧情', '沙盒']).prefault('剧情'),
-    章节进度: z.coerce.number().prefault(0),
-    沙盒起始章: z.coerce.number().prefault(0),
     沙盒时间: z.string().or(z.literal('')).prefault(''),
     已触发事件: z.string().or(z.literal('')).prefault(''),
     当天计划: z.string().or(z.literal('')).prefault(''),
