@@ -1,6 +1,8 @@
 ---
 name: 汀曼大师（Master Tingman）
 role: Coff Cafe连锁咖啡店店主
+gender: male
+age: 未知
 type: 智能构造体
 location: 六分街、光映广场、澄辉坪均有分店
 info: 智能构造体咖啡师。每日提供一杯增益咖啡，恢复60电量。连锁遍布新艾利都。
