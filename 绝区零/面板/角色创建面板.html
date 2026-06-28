@@ -22,13 +22,6 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 .route-card .icon{font-size:36px;display:block;margin-bottom:10px}
 .route-card .label{font-weight:700;font-size:16px;margin-bottom:6px}
 .route-card .desc{font-size:12px;color:#888;line-height:1.5}
-.phaethon-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.phaethon-card{padding:16px;border-radius:12px;border:2px solid #1e2d50;background:#0f1b33;cursor:pointer;text-align:center;transition:all .2s}
-.phaethon-card:hover{background:#1a2d50;border-color:#3a5a80}
-.phaethon-card.active{border-color:#f0c040;background:#1a2d40}
-.phaethon-card .avatar{font-size:40px;display:block;margin-bottom:8px}
-.phaethon-card .name{font-size:20px;font-weight:700;color:#e0e0e0}
-.phaethon-card .role{font-size:12px;color:#888;margin-top:4px}
 .presets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
 .preset-btn{padding:14px 8px;border-radius:12px;border:2px solid #1e2d50;background:#0f1b33;color:#ccc;cursor:pointer;text-align:center;transition:all .2s;font-size:13px}
 .preset-btn:hover{background:#1a2d50;border-color:#3a5a80;transform:translateY(-2px)}
@@ -63,27 +56,8 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 <div class="container">
 <div class="header"><h1>⚡ 绝区零 · 角色创建</h1><p>选择你的身份，开始在新艾利都的冒险</p></div>
 
-<div class="card"><h2>⚙️ 选择游戏模式</h2>
-<div class="route-cards" id="mode-cards">
-<div class="route-card active" onclick="selectMode('story',this)"><span class="icon">📖</span><span class="label">剧情模式</span><span class="desc">跟随主线——法厄同是世界的轴心</span></div>
-<div class="route-card" onclick="selectMode('sandbox',this)"><span class="icon">🏜️</span><span class="label">沙盒模式</span><span class="desc">自由探索——故事由你书写</span></div>
-</div></div>
-
-<div class="card"><h2>📋 STEP 1: 选择身份路线</h2>
-<div class="route-cards" id="route-cards">
-<div class="route-card active" onclick="selectRoute('phaethon',this)"><span class="icon">🎮</span><span class="label">法厄同</span><span class="desc">传奇绳匠，Random Play店主，HDD远程操控伊埃斯探索空洞</span></div>
-<div class="route-card" onclick="selectRoute('custom',this)"><span class="icon">🆕</span><span class="label">非法厄同</span><span class="desc">自定义身份——居民、治安官、盗洞客……谱写属于你的故事</span></div>
-</div></div>
-
-<div class="card hidden-section show" id="phaethon-section">
-<h2>🎮 STEP 2: 选择法厄同身份 <span class="badge badge-purple">法厄同线</span></h2>
-<div class="phaethon-choice">
-<div class="phaethon-card active" onclick="selectPhaethon('wise',this)"><span class="avatar">♂</span><span class="name">哲 (Wise)</span><span class="role">兄 · 冷静聪慧 · 灰色短发</span></div>
-<div class="phaethon-card" onclick="selectPhaethon('belle',this)"><span class="avatar">♀</span><span class="name">铃 (Belle)</span><span class="role">妹 · 元气开朗 · 深蓝短发</span></div>
-</div></div>
-
-<div class="card hidden-section" id="custom-section">
-<h2>📋 STEP 2: 选择开局身份</h2>
+<div class="card hidden-section show" id="custom-section">
+<h2>📋 STEP 1: 选择开局身份</h2>
 <div class="presets">
 <div class="preset-btn active" onclick="selectPreset('resident',this)"><span class="icon">🏠</span><span class="label">普通居民</span><span class="desc">平凡日常</span></div>
 <div class="preset-btn" onclick="selectPreset('officer',this)"><span class="icon">👮</span><span class="label">治安官</span><span class="desc">NEPS基层</span></div>
@@ -95,28 +69,28 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 <div class="preset-btn" onclick="selectPreset('defector',this)"><span class="icon">🌸</span><span class="label">逃亡者</span><span class="desc">称颂会叛逃</span></div>
 </div></div>
 
-<div class="card hidden-section" id="form-section">
-<h2>✏️ STEP 3: 自定义角色 <span class="badge badge-orange">非法厄同</span> <span id="lock-badge" style="font-size:11px;margin-left:8px;color:#66bb6a">✏️ 自由定制</span></h2>
+<div class="card hidden-section show" id="form-section">
+<h2>✏️ STEP 2: 自定义角色</h2>
 <div class="form-grid">
 <div class="form-group"><label>角色姓名 <span style="color:#ef5350">*必填</span></label><input type="text" id="name" placeholder="输入你的名字"></div>
 <div class="form-group"><label>种族</label><select id="race" onchange="updateRaceHint()"><option value="人类">人类</option><option value="猫希人">猫希人</option><option value="虎希人">虎希人</option><option value="犬希人">犬希人</option><option value="狼希人">狼希人</option><option value="鲨希人">鲨希人</option><option value="熊希人">熊希人</option><option value="鼠希人">鼠希人</option><option value="兔希人">兔希人</option><option value="狐希人">狐希人</option><option value="章鱼希人">章鱼希人</option><option value="羊希人">羊希人</option><option value="熊猫希人">熊猫希人</option><option value="报丧女妖">报丧女妖</option><option value="鬼族">鬼族</option><option value="精灵">精灵</option><option value="吸血鬼">吸血鬼</option><option value="智能构造体">智能构造体</option></select><span class="hint" id="race-hint">普通人类，无特殊种族特性。</span></div>
 <div class="form-group"><label>性别</label><select id="gender"><option value="男">男</option><option value="女">女</option></select></div>
 <div class="form-group"><label>年龄</label><input type="number" id="age" value="25" min="10" max="120"></div>
 <div class="form-group full"><label>背景简述</label><input type="text" id="bio" value="新艾利都的普通市民"></div>
-<div class="form-group"><label>以太适应性 (0-100)</label><input type="number" id="ether" value="45" min="0" max="100"><span class="hint">低于50无法独自进入空洞</span></div>
+<div class="form-group"><label>以太适应性 (0-100)</label><input type="number" id="ether" value="45" min="0" max="100"><span class="hint" id="ether-hint">低于50无法独自进入空洞</span></div>
 <div class="form-group"><label>战斗能力</label><select id="combat"><option value="无">无</option><option value="弱">弱</option><option value="中" selected>中</option><option value="强">强</option><option value="顶尖">顶尖</option></select></div>
 <div class="form-group"><label>所属势力</label><select id="faction"><option value="无">无 / 独立</option><option value="新艾利都治安局（N.E.P.S.）">治安局（N.E.P.S.）</option><option value="空洞调查协会（H.I.A.）">H.I.A.</option><option value="防卫军">防卫军</option><option value="狡兔屋">狡兔屋</option><option value="白祇重工">白祇重工</option><option value="卡吕冬之子">卡吕冬之子</option><option value="TOPS财团">TOPS财团</option><option value="独立绳匠">独立绳匠</option></select></div>
 <div class="form-group"><label>出生地点</label><select id="startLocation"><option value="六分街·公寓">六分街（雅努斯区·宜居街道）</option><option value="光映广场·街区">光映广场（雅努斯区·商业中心）</option><option value="黑雁工地旧址·工棚">黑雁工地旧址</option><option value="斯科特哨站·营地">斯科特哨站</option><option value="热望角·地下通道">热望角</option><option value="厄匹斯港·码头">厄匹斯港</option><option value="澄辉坪·随便观外">澄辉坪（索恩区）</option><option value="野火镇·加油站">野火镇（外环）</option></select></div>
 <div class="form-group"><label>特殊能力 / 特长</label><input type="text" id="special" value="无"><span class="hint" id="special-hint">如：机械维修、黑客、医疗等</span></div>
 </div></div>
 
-<div class="card hidden-section" id="bangboo-section">
-<h2>🤖 STEP 4: 邦布伙伴 <span class="badge badge-blue">初始选择</span></h2>
+<div class="card hidden-section show" id="bangboo-section">
+<h2>🤖 STEP 3: 邦布伙伴 <span class="badge badge-blue">初始选择</span></h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px" id="bangboo-presets"></div>
 </div>
 
 <div class="card" id="chapter-section">
-<h2>📖 STEP 5: 起始章节</h2>
+<h2>📖 STEP 4: 起始章节</h2>
 <div class="form-grid"><div class="form-group full">
 <label>选择起始章节</label>
 <select id="startChapter" onchange="onChapterChange()">
@@ -146,43 +120,26 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#1a1a2e;colo
 </div>
 
 <script>
-var currentRoute='phaethon',selectedPhaethon='wise',currentPreset='resident',selectedChapter=0,currentMode='story';
+var currentPreset='resident',selectedChapter=0;
 var adventureStarted=false,selectedBangboo='阿全';
 
-function selectMode(m,el){currentMode=m;var cs=el.parentElement.querySelectorAll('.route-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active')}
-function selectRoute(r,el){currentRoute=r;selectedBangboo=r==='custom'?'阿全':'伊埃斯';var cs=el.parentElement.querySelectorAll('.route-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active');document.getElementById('phaethon-section').classList.toggle('show',r==='phaethon');document.getElementById('custom-section').classList.toggle('show',r==='custom');document.getElementById('form-section').classList.toggle('show',r==='custom');document.getElementById('bangboo-section').classList.toggle('show',r==='custom');renderBangbooCards()}
-function selectPhaethon(c,el){selectedPhaethon=c;var cs=el.parentElement.querySelectorAll('.phaethon-card');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active')}
 function onChapterChange(){selectedChapter=parseInt(document.getElementById('startChapter').value)||0}
 
 var RACE_TRAITS={'人类':'普通人类，无特殊种族特性。','猫希人':'猫科亚人，敏捷灵活、夜视优异。隐性猫爪可伸缩。','虎希人':'虎科亚人，力量爆发力在希人中首屈一指。','犬希人':'犬科亚人，嗅觉极其灵敏。','狼希人':'狼科亚人，天然领导气质。','鲨希人':'海洋掠食者亚人，在液态以太中更活跃。','熊希人':'熊科亚人，防御力与耐力顶尖。','鼠希人':'啮齿类亚人，小巧灵活。','兔希人':'兔科亚人，跳跃力与听觉超出所有希人。','狐希人':'狐科亚人，天生以太感知力远超其他希人。','章鱼希人':'最罕见希人亚种。触手可回溯过去影像。','羊希人':'羊科亚人，以太感知特异化为守夜人之眼。','熊猫希人':'珍惜亚人种，外表憨厚武力值极高。','报丧女妖':'传说种族。音波可直接作用于以太物质。','鬼族':'非人种族，身体耐久数倍于人类。','精灵':'稀有长寿种族，以太适应性天生极高。','吸血鬼':'夜行种族，夜间感官与再生显著增强。','智能构造体':'人工制造的智能生命。不需进食/呼吸/睡眠。'};
 function updateRaceHint(){var r=document.getElementById('race').value;document.getElementById('race-hint').textContent=RACE_TRAITS[r]||''}
 
-var PRESETS={resident:{name:'',race:'人类',gender:'男',age:25,bio:'新艾利都的普通市民',ether:45,combat:'无',faction:'无',special:'无',location:'六分街·公寓',canPick:true},officer:{name:'',race:'人类',gender:'男',age:28,bio:'NEPS基层治安官',ether:55,combat:'中',faction:'新艾利都治安局（N.E.P.S.）',special:'标准治安官训练',location:'光映广场·街区',canPick:false},raider:{name:'',race:'猫希人',gender:'男',age:30,bio:'经验丰富的盗洞客',ether:70,combat:'强',faction:'独立',special:'空洞生存经验',location:'厄匹斯港·码头',canPick:false},tops:{name:'',race:'人类',gender:'男',age:32,bio:'TOPS财团中层采购专员',ether:40,combat:'弱',faction:'TOPS财团',special:'内部情报网络',location:'光映广场·街区',canPick:false},hia:{name:'',race:'人类',gender:'男',age:27,bio:'H.I.A.基层调查员',ether:75,combat:'中',faction:'H.I.A.',special:'空洞采样与分析',location:'光映广场·街区',canPick:false},rider:{name:'',race:'人类',gender:'男',age:26,bio:'外环自由骑手',ether:35,combat:'强',faction:'卡吕冬之子',special:'摩托车驾驶维修',location:'野火镇·加油站',canPick:false},proxy:{name:'',race:'人类',gender:'男',age:28,bio:'独立绳匠——没有HDD，每下一单都是赌命',ether:85,combat:'弱',faction:'独立绳匠',special:'手绘空洞路径笔记',location:'六分街·公寓',canPick:false},defector:{name:'',race:'人类',gender:'男',age:24,bio:'曾在称颂会担任基层司祭，目睹不该看的仪式后逃亡',ether:60,combat:'弱',faction:'无',special:'称颂会内部知识',location:'光映广场·街区',canPick:false}};
+var PRESETS={resident:{name:'',race:'人类',gender:'男',age:25,bio:'新艾利都的普通市民',etherMin:30,etherMax:60,combat:'无',faction:'无',special:'无',location:'六分街·公寓',canPick:true},officer:{name:'',race:'人类',gender:'男',age:28,bio:'NEPS基层治安官',etherMin:45,etherMax:70,combat:'中',faction:'新艾利都治安局（N.E.P.S.）',special:'标准治安官训练',location:'光映广场·街区',canPick:false},raider:{name:'',race:'猫希人',gender:'男',age:30,bio:'经验丰富的盗洞客',etherMin:60,etherMax:85,combat:'强',faction:'独立',special:'空洞生存经验',location:'厄匹斯港·码头',canPick:false},tops:{name:'',race:'人类',gender:'男',age:32,bio:'TOPS财团中层采购专员',etherMin:25,etherMax:55,combat:'弱',faction:'TOPS财团',special:'内部情报网络',location:'光映广场·街区',canPick:false},hia:{name:'',race:'人类',gender:'男',age:27,bio:'H.I.A.基层调查员',etherMin:65,etherMax:90,combat:'中',faction:'H.I.A.',special:'空洞采样与分析',location:'光映广场·街区',canPick:false},rider:{name:'',race:'人类',gender:'男',age:26,bio:'外环自由骑手',etherMin:20,etherMax:50,combat:'强',faction:'卡吕冬之子',special:'摩托车驾驶维修',location:'野火镇·加油站',canPick:false},proxy:{name:'',race:'人类',gender:'男',age:28,bio:'独立绳匠——没有HDD，每下一单都是赌命',etherMin:75,etherMax:100,combat:'弱',faction:'独立绳匠',special:'手绘空洞路径笔记',location:'六分街·公寓',canPick:false},defector:{name:'',race:'人类',gender:'男',age:24,bio:'曾在称颂会担任基层司祭，目睹不该看的仪式后逃亡',etherMin:50,etherMax:80,combat:'弱',faction:'无',special:'称颂会内部知识',location:'光映广场·街区',canPick:false}};
 
-function selectPreset(key,el){currentPreset=key;if(el){var cs=el.parentElement.querySelectorAll('.preset-btn');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active')}var p=PRESETS[key];var locked=!p.canPick;document.getElementById('name').value=p.name;document.getElementById('race').value=p.race;document.getElementById('gender').value=p.gender;document.getElementById('age').value=p.age;document.getElementById('bio').value=p.bio;document.getElementById('ether').value=p.ether;document.getElementById('combat').value=p.combat;document.getElementById('faction').value=p.faction;document.getElementById('special').value=p.special;document.getElementById('startLocation').value=p.location;updateRaceHint();['bio','ether','combat','faction','special'].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=locked});var lr=document.getElementById('startLocation');if(lr&&lr.parentElement)lr.parentElement.style.display=locked?'none':'';var b=document.getElementById('lock-badge');if(b){b.textContent=locked?'🔒 预设身份':'✏️ 自由定制';b.style.color=locked?'#ef5350':'#66bb6a'}}
+function selectPreset(key,el){currentPreset=key;if(el){var cs=el.parentElement.querySelectorAll('.preset-btn');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');el.classList.add('active')}var p=PRESETS[key];var locked=!p.canPick;document.getElementById('name').value=p.name;document.getElementById('race').value=p.race;document.getElementById('gender').value=p.gender;document.getElementById('age').value=p.age;document.getElementById('bio').value=p.bio;document.getElementById('ether').value=Math.round((p.etherMin+p.etherMax)/2);var eh=document.getElementById('ether-hint');if(eh)eh.textContent='该身份范围 '+p.etherMin+'-'+p.etherMax+'，开局时随机生成';document.getElementById('combat').value=p.combat;document.getElementById('faction').value=p.faction;document.getElementById('special').value=p.special;document.getElementById('startLocation').value=p.location;updateRaceHint();['bio','combat','faction','special'].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=locked});var lr=document.getElementById('startLocation');if(lr&&lr.parentElement)lr.parentElement.style.display=locked?'none':''}
 
 var ALL_BANGBOOS=[{name:'艾米莉安',faction:'狡兔屋',skill:'便携机炮·扫债者'},{name:'阿全',faction:'白祇重工',skill:'掘进冲刺——冲撞+电钻'},{name:'巴特勒',faction:'维多利亚家政',skill:'茶歇时间——回复能量'},{name:'阿崔巡查',faction:'治安局',skill:'汪汪连咬'},{name:'赤红莫库斯',faction:'卡吕冬之子',skill:'轰鸣车轮——骑摩托推怪'},{name:'格列佛探员',faction:'对空六课',skill:'紧急行动——三连穿刺'},{name:'咔嚓仔',faction:'天琴座',skill:'咔嚓！看镜头——增伤Buff'},{name:'罗宾',faction:'反舌鸟',skill:'幕布落下——随机卡牌'},{name:'贝利恩',faction:'云岿山',skill:'凤凰球舞——弹跳石球'},{name:'芽芽',faction:'云岿山',skill:'六星飞剑'},{name:'艾斯米小姐',faction:'怪啖屋',skill:'星光变换——回血/回能'},{name:'墨丘利',faction:'防卫军',skill:'战术策略——载具喷火'},{name:'比克布利克',faction:'黑枝',skill:'蒙太奇连击'},{name:'头号粉丝',faction:'妄想天使',skill:'应援——增伤回能'},{name:'鲨牙布',faction:'冰属性',skill:'旱地猎鲨——追踪+鱼雷'},{name:'飚速布',faction:'火属性',skill:'Boom——火箭爆炸'},{name:'插头布',faction:'电属性',skill:'电流狙击——电磁炮'},{name:'共鸣布',faction:'以太属性',skill:'迷你黑洞——牵引敌人'},{name:'左轮布',faction:'物理属性',skill:'幸运左轮——随机礼花弹'},{name:'企鹅布',faction:'维多利亚家政',skill:'冰刀舞——连续斩击'},{name:'恶魔布',faction:'卡吕冬之子',skill:'幻惑之吻——追尾弹'},{name:'纸袋布',faction:'白祇重工',skill:'近一点再近一点——双刀斩击'},{name:'寻宝布',faction:'支援型',skill:'探测器——随机增益'},{name:'果核布',faction:'支援型',skill:'甜甜甘露——果汁弹回血'}];
 
 function renderBangbooCards(){var c=document.getElementById('bangboo-presets');var h='';ALL_BANGBOOS.forEach(function(bb){var act=selectedBangboo===bb.name;h+='<div class="bb-card'+(act?' active':'')+'" onclick="selectedBangboo=\''+bb.name+'\';renderBangbooCards()"><div class="bb-name">'+bb.name+'</div><div class="bb-faction">'+bb.faction+'</div><div class="bb-skill">'+bb.skill+'</div></div>'});c.innerHTML=h}
 
-var PHAETHON_GEAR={wise:{上衣:'深灰色长袖外套',下装:'黑色休闲长裤',内衣:'',内裤:'灰色四角内裤',鞋子:'灰白配色运动鞋',饰品:''},belle:{上衣:'黑色连帽无袖马甲',下装:'灰色分层百褶短裙',内衣:'浅蓝色文胸',内裤:'浅蓝色三角内裤',鞋子:'白色运动鞋',饰品:'不对称腿饰·R字发卡'}};
 var PRESET_GEAR={resident:{male:{上衣:'素色卫衣',下装:'深色牛仔裤',内衣:'',内裤:'灰色四角内裤',鞋子:'运动鞋',饰品:''},female:{上衣:'素色卫衣',下装:'深色牛仔裤',内衣:'白色文胸',内裤:'白色内裤',鞋子:'运动鞋',饰品:''}},officer:{male:{上衣:'NEPS执勤服',下装:'深蓝执勤裤',内衣:'',内裤:'黑色平角内裤',鞋子:'黑色战术靴',饰品:'警徽'},female:{上衣:'NEPS执勤服',下装:'深蓝执勤裤',内衣:'黑色文胸',内裤:'黑色内裤',鞋子:'黑色战术靴',饰品:'警徽'}},raider:{male:{上衣:'工装夹克',下装:'工装长裤',内衣:'',内裤:'深绿四角内裤',鞋子:'登山靴',饰品:'以太探测器'},female:{上衣:'工装夹克',下装:'工装长裤',内衣:'深绿文胸',内裤:'深绿内裤',鞋子:'登山靴',饰品:'以太探测器'}}};
 
-var HARE_NPCS=[{n:'妮可',d:{基础:{性别:'女',年龄:'20+岁',身份:'狡兔屋创始人',当前位置:'六分街·狡兔屋据点',动作:'对着账本皱眉',金钱:1000,当前目标:'找到报酬丰厚的委托'},关系:{好感度:55,信任度:60,修罗场:0,对主角看法:'法厄同是老熟人了，关键时刻从不掉链子'},性格:{底色:'精明拜金但重情重义',日常:'算账一流讨价还价一流',内在:'孤儿院出身，相信丁尼能买到希望',当前情绪:'发愁但绝不认输'},着装:{上衣:{名称:'粉色短夹克',品质:'普通',描述:''},下装:{名称:'黑色短裤',品质:'普通',描述:''},内衣:{名称:'黑色文胸',品质:'普通',描述:''},内裤:{名称:'黑色内裤',品质:'普通',描述:''},鞋子:{名称:'黑色高跟靴',品质:'普通',描述:''},饰品:{名称:'金色项链',品质:'普通',描述:''}}}},{n:'安比',d:{基础:{性别:'女',年龄:'未知',身份:'狡兔屋成员',当前位置:'六分街·狡兔屋据点',动作:'靠在沙发上看电影杂志',金钱:300,当前目标:'买限量版星徽骑士手办'},关系:{好感度:50,信任度:55,修罗场:0,对主角看法:'法厄同很可靠，每次委托都能平安归来'},性格:{底色:'冷静扑克脸、电影痴',日常:'简洁平淡，对汉堡有执着信念',内在:'前白银军克隆人0号',当前情绪:'慵懒中带着无聊'},着装:{上衣:{名称:'白色短夹克',品质:'普通',描述:''},下装:{名称:'黑色短裙',品质:'普通',描述:''},内衣:{名称:'白色运动内衣',品质:'普通',描述:''},内裤:{名称:'白色三角内裤',品质:'普通',描述:''},鞋子:{名称:'黑白高帮运动鞋',品质:'普通',描述:''},饰品:{名称:'项圈式耳机',品质:'普通',描述:''}}}},{n:'比利',d:{基础:{性别:'男',年龄:'未知',身份:'狡兔屋成员·智能构造体',当前位置:'六分街·狡兔屋据点',动作:'擦拭双枪',金钱:500,当前目标:'收集全套星徽骑士周边'},关系:{好感度:52,信任度:50,修罗场:0,对主角看法:'法厄同就像星徽骑士里的幕后智囊！'},性格:{底色:'中二热血',日常:'随时随地进入角色扮演模式',内在:'原卡吕冬之子红围巾',当前情绪:'擦枪擦得兴致勃勃'},着装:{上衣:{名称:'银白皮质战斗服',品质:'普通',描述:''},下装:{名称:'黑色收脚长裤',品质:'普通',描述:''},内衣:{名称:'—',品质:'—',描述:''},内裤:{名称:'—',品质:'—',描述:''},鞋子:{名称:'金属护板战靴',品质:'普通',描述:''},饰品:{名称:'星徽骑士徽章',品质:'珍藏品',描述:''}}}},{n:'猫又',d:{基础:{性别:'女',年龄:'10+岁外观',身份:'狡兔屋成员·猫希人',当前位置:'六分街·狡兔屋据点',动作:'蹲在窗台上晒太阳',金钱:200,当前目标:'买青花鱼'},关系:{好感度:53,信任度:52,修罗场:0,对主角看法:'法厄同身上总有一种让人安心的味道喵'},性格:{底色:'活泼调皮元气十足',日常:'好奇心旺盛什么门都想开',内在:'原赤牙帮成员，渴望一个可以称为家的地方',当前情绪:'懒洋洋地享受阳光'},着装:{上衣:{名称:'露脐短背心',品质:'普通',描述:''},下装:{名称:'深红色短裤',品质:'普通',描述:''},内衣:{名称:'黑色文胸',品质:'普通',描述:''},内裤:{名称:'黑色三角内裤',品质:'普通',描述:''},鞋子:{名称:'彩色护踝带',品质:'普通',描述:''},饰品:{名称:'铃铛项圈',品质:'普通',描述:''}}}}];
-var NEPS_NPCS=[{n:'朱鸢',d:{基础:{性别:'女',年龄:'20+岁',身份:'N.E.P.S.刑侦特勤组组长',当前位置:'光映广场·治安局分局',动作:'整理巡逻报表',金钱:5000,当前目标:'审核案件卷宗'},关系:{好感度:45,信任度:50,修罗场:0,对主角看法:'新人做事认真'},性格:{底色:'完美主义',日常:'被队员称为朱鸢妈妈',内在:'童年被布林格所救',当前情绪:'专注'},着装:{上衣:{名称:'深蓝色N.E.P.S.制服',品质:'官配',描述:''},下装:{名称:'深蓝色制服铅笔裙',品质:'官配',描述:''},内衣:{名称:'黑色内衣',品质:'普通',描述:''},内裤:{名称:'黑色内裤',品质:'普通',描述:''},鞋子:{名称:'黑色高跟鞋',品质:'官配',描述:''},饰品:{名称:'金色袖扣',品质:'珍藏品',描述:''}}}},{n:'青衣',d:{基础:{性别:'女',年龄:'未知',身份:'N.E.P.S.刑侦特勤组·智能构造体',当前位置:'光映广场·治安局分局',动作:'蹲在角落里观察地面痕迹',金钱:1000,当前目标:'追踪非法以太交易线索'},关系:{好感度:40,信任度:45,修罗场:0,对主角看法:'你衣服上沾了14种不同成分的灰尘'},性格:{底色:'温和有礼的老灵魂',日常:'常提醒别人多喝热水',内在:'编号被误读为青衣',当前情绪:'分析中的专注'},着装:{上衣:{名称:'深蓝色短款制服',品质:'官配',描述:''},下装:{名称:'深蓝色制服短裤',品质:'官配',描述:''},内衣:{名称:'—',品质:'—',描述:''},内裤:{名称:'—',品质:'—',描述:''},鞋子:{名称:'人字拖',品质:'普通',描述:''},饰品:{名称:'折叠扇',品质:'官配',描述:''}}}}];
-
-var BELOBOG_NPCS=[{n:'珂蕾妲',d:{基础:{性别:'女',年龄:'10+岁外观',身份:'白祇重工社长',当前位置:'黑雁工地旧址',动作:'对着工程图纸皱眉',金钱:5000,当前目标:'修复那台三手挖掘机'},关系:{好感度:35,信任度:40,修罗场:0,对主角看法:'技术型的——我喜欢'},性格:{底色:'火爆直率',日常:'暴躁萝莉——骂人是日常护短是本能',内在:'父亲失踪后扛起公司',当前情绪:'暴躁中带着专注'},着装:{上衣:{名称:'白色工装背心',品质:'普通',描述:''},下装:{名称:'橙色工装短裤',品质:'普通',描述:''},内衣:{名称:'白色运动内衣',品质:'普通',描述:''},内裤:{名称:'白色三角内裤',品质:'普通',描述:''},鞋子:{名称:'钢头工装靴',品质:'普通',描述:''},饰品:{名称:'黑色独眼罩',品质:'珍藏品',描述:''}}}},{n:'安东',d:{基础:{性别:'男',年龄:'20+岁',身份:'白祇重工工程现场负责人',当前位置:'黑雁工地旧址',动作:'赤膊挥汗搬运钢材',金钱:3000,当前目标:'今天之内把西区地基打完'},关系:{好感度:40,信任度:45,修罗场:0,对主角看法:'兄弟！我是肌肉担当！'},性格:{底色:'热血坦率干劲满满',日常:'嗓门大到整个工地都能听到',内在:'记得每个工人的生日',当前情绪:'热血沸腾'},着装:{上衣:{名称:'赤膊工装背带',品质:'普通',描述:''},下装:{名称:'深色工装长裤',品质:'普通',描述:''},内衣:{名称:'—',品质:'—',描述:''},内裤:{名称:'灰色平角内裤',品质:'普通',描述:''},鞋子:{名称:'钢头工装靴',品质:'普通',描述:''},饰品:{名称:'皮手套',品质:'普通',描述:''}}}},{n:'本',d:{基础:{性别:'男',年龄:'30+岁',身份:'白祇重工会计·熊希人',当前位置:'黑雁工地旧址',动作:'拨着算盘核账',金钱:8000,当前目标:'在月底前搞定税务申报'},关系:{好感度:35,信任度:40,修罗场:0,对主角看法:'不报虚账的合作伙伴是稀缺资源'},性格:{底色:'外表凶悍内心敦厚',日常:'能心算三位数乘法',内在:'温柔细腻的大个子',当前情绪:'专注核账中'},着装:{上衣:{名称:'白色和服式开衫',品质:'普通',描述:''},下装:{名称:'深灰色袴裤',品质:'普通',描述:''},内衣:{名称:'白色内衬',品质:'普通',描述:''},内裤:{名称:'白色褌',品质:'普通',描述:''},鞋子:{名称:'木屐',品质:'普通',描述:''},饰品:{名称:'算盘',品质:'珍藏品',描述:''}}}},{n:'格莉丝',d:{基础:{性别:'女',年龄:'20+岁',身份:'白祇重工机械顾问',当前位置:'黑雁工地旧址',动作:'正在拆解一台咖啡机',金钱:2000,当前目标:'把安东开坏的挖掘机改装成半自动'},关系:{好感度:35,信任度:35,修罗场:0,对主角看法:'听说你有很多旧设备——有空让我拆几台？'},性格:{底色:'机械狂热者——拆解冲动大于一切',日常:'任何设备活不过三分钟',内在:'孤独的机械天才',当前情绪:'沉浸在拆解的喜悦中'},着装:{上衣:{名称:'棕色皮背心',品质:'普通',描述:''},下装:{名称:'橙色工装裤',品质:'普通',描述:''},内衣:{名称:'白色背心',品质:'普通',描述:''},内裤:{名称:'白色三角内裤',品质:'普通',描述:''},鞋子:{名称:'钢头工装靴',品质:'普通',描述:''},饰品:{名称:'护目镜',品质:'普通',描述:''}}}}];
-
-var VICTORIA_NPCS=[{n:'莱卡恩',d:{基础:{性别:'男',年龄:'未知',身份:'维多利亚家政执事·白狼希人',当前位置:'芭莱大厦前',动作:'用银托盘端着红茶站在窗边',金钱:15000,当前目标:'确保飞艇接机任务万无一失'},关系:{好感度:35,信任度:40,修罗场:0,对主角看法:'若绳网有贵族制度，你们应是公爵'},性格:{底色:'理性优雅绅士',日常:'红茶、银托盘、精确到秒的行程表',内在:'对主人绝对忠诚',当前情绪:'平静的准备中'},着装:{上衣:{名称:'黑白色执事燕尾服',品质:'高级定制',描述:''},下装:{名称:'黑色西裤',品质:'高级定制',描述:''},内衣:{名称:'白色礼服衬衫',品质:'高级定制',描述:''},内裤:{名称:'黑色平角内裤',品质:'高级定制',描述:''},鞋子:{名称:'黑色牛津鞋',品质:'高级定制',描述:''},饰品:{名称:'白色手套',品质:'高级定制',描述:''}}}},{n:'丽娜',d:{基础:{性别:'女',年龄:'未知',身份:'维多利亚家政女仆长',当前位置:'芭莱大厦前',动作:'以漂浮状态移动检查窗户洁净度',金钱:8000,当前目标:'完成全部客房整理'},关系:{好感度:40,信任度:35,修罗场:0,对主角看法:'有任何家政需要请随时吩咐'},性格:{底色:'温柔全能的女仆长',日常:'永远微笑永远得体',内在:'完美主义',当前情绪:'优雅的忙碌中'},着装:{上衣:{名称:'维多利亚风女仆装',品质:'高级定制',描述:''},下装:{名称:'黑色长裙',品质:'高级定制',描述:''},内衣:{名称:'白色蕾丝内衣',品质:'高级定制',描述:''},内裤:{名称:'白色蕾丝内裤',品质:'高级定制',描述:''},鞋子:{名称:'黑色玛丽珍鞋',品质:'高级定制',描述:''},饰品:{名称:'白色头饰',品质:'高级定制',描述:''}}}},{n:'艾莲',d:{基础:{性别:'女',年龄:'10+岁',身份:'维多利亚家政女仆·鲨希人',当前位置:'芭莱大厦前',动作:'躺在沙发上尾巴搭在扶手上',金钱:500,当前目标:'把值日拖到明天'},关系:{好感度:30,信任度:25,修罗场:0,对主角看法:'只要不让我多干活就好'},性格:{底色:'慵懒节能主义者——口头禅麻烦',日常:'能躺不坐能坐不站',内在:'懒只是保护色',当前情绪:'慵懒到近乎昏迷'},着装:{上衣:{名称:'蓝色水手服',品质:'普通',描述:''},下装:{名称:'蓝色百褶裙',品质:'普通',描述:''},内衣:{名称:'白色内衣',品质:'普通',描述:''},内裤:{名称:'白色内裤',品质:'普通',描述:''},鞋子:{名称:'黑色乐福鞋',品质:'普通',描述:''},饰品:{名称:'鲨鱼发卡',品质:'普通',描述:''}}}},{n:'可琳',d:{基础:{性别:'女',年龄:'10+岁',身份:'维多利亚家政女仆',当前位置:'芭莱大厦前',动作:'在角落擦拭比她还大的电锯',金钱:300,当前目标:'确保电锯充满电'},关系:{好感度:25,信任度:20,修罗场:0,对主角看法:'您好……（把电锯往身后藏了藏）'},性格:{底色:'极度缺乏自信',日常:'说话声音小到需要用唇语理解',内在:'胆小只因太在意',当前情绪:'紧张但准备好了'},着装:{上衣:{名称:'粉色女仆装',品质:'普通',描述:''},下装:{名称:'粉色短裙',品质:'普通',描述:''},内衣:{名称:'白色内衣',品质:'普通',描述:''},内裤:{名称:'白色内裤',品质:'普通',描述:''},鞋子:{名称:'黑色玛丽珍鞋',品质:'普通',描述:''},饰品:{名称:'蝴蝶结发带',品质:'普通',描述:''}}}}];
-
-var CALYDON_NPCS=[{n:'凯撒',d:{基础:{性别:'女',年龄:'20+岁',身份:'卡吕冬之子首领',当前位置:'外环·野火镇',动作:'站在车库门口望着灰烬湖',金钱:10000,当前目标:'找到卢修斯——庞培的血不能白流'},关系:{好感度:30,信任度:35,修罗场:0,对主角看法:'法厄同——外环欠你一个人情'},性格:{底色:'豪爽直率美人',日常:'大口喝酒大声笑',内在:'养父大老爹的继任者',当前情绪:'坚毅中带着悲伤'},着装:{上衣:{名称:'红色皮夹克',品质:'外环定制',描述:''},下装:{名称:'黑色皮裤',品质:'外环定制',描述:''},内衣:{名称:'黑色运动内衣',品质:'普通',描述:''},内裤:{名称:'黑色三角内裤',品质:'普通',描述:''},鞋子:{名称:'高帮皮靴',品质:'外环定制',描述:''},饰品:{名称:'点火石项链',品质:'传家宝',描述:''}}}},{n:'露西',d:{基础:{性别:'女',年龄:'10+岁',身份:'卡吕冬之子军师',当前位置:'外环·野火镇',动作:'在地图上标注帕帕戈空洞边界变化',金钱:15000,当前目标:'制定最优巡逻路线节省30%燃料'},关系:{好感度:25,信任度:30,修罗场:0,对主角看法:'本小姐承认——你的战略评估写得不错'},性格:{底色:'傲娇大小姐——本小姐自称',日常:'用尺子和计算器管理外环最大帮派',内在:'傲娇只是保护色',当前情绪:'精密计算中的专注'},着装:{上衣:{名称:'白色军装风衬衫',品质:'外环定制',描述:''},下装:{名称:'深蓝色军装裙',品质:'外环定制',描述:''},内衣:{名称:'白色蕾丝内衣',品质:'高级',描述:''},内裤:{名称:'白色蕾丝内裤',品质:'高级',描述:''},鞋子:{名称:'黑色长靴',品质:'外环定制',描述:''},饰品:{名称:'单片眼镜',品质:'珍藏品',描述:''}}}},{n:'派派',d:{基础:{性别:'女',年龄:'20+岁',身份:'卡吕冬之子卡车司机',当前位置:'外环·野火镇',动作:'瘫在卡车驾驶座上',金钱:2000,当前目标:'把这批物资送到边界哨站——睡醒再说'},关系:{好感度:35,信任度:30,修罗场:0,对主角看法:'要不要搭便车？副驾驶有零食'},性格:{底色:'极端慵懒——能躺着绝不坐着',日常:'行动力与慵懒值成正比',内在:'慵懒是表象',当前情绪:'半梦半醒'},着装:{上衣:{名称:'宽松卫衣',品质:'普通',描述:''},下装:{名称:'牛仔短裤',品质:'普通',描述:''},内衣:{名称:'灰色运动内衣',品质:'普通',描述:''},内裤:{名称:'灰色三角内裤',品质:'普通',描述:''},鞋子:{名称:'拖鞋',品质:'普通',描述:''},饰品:{名称:'护目镜',品质:'普通',描述:''}}}}];
-
-var YUNKUI_NPCS=[{n:'仪玄',d:{基础:{性别:'女',年龄:'未知',身份:'云岿山第十三任门主·虚狩级',当前位置:'卫非地·随便观',动作:'坐在茶室里泡茶——眼神能穿透墙壁',金钱:50000,当前目标:'寻找能承受青溟剑力量的受体'},关系:{好感度:30,信任度:25,修罗场:0,对主角看法:'茶泡好了——先回答我：一个绳匠为什么想修道？'},性格:{底色:'冷艳腹黑——喝茶是万能开场白',日常:'优雅从容到令人不安',内在:'姐姐仪绛被青溟剑反噬而死',当前情绪:'审视新弟子的专注中'},着装:{上衣:{名称:'白色道袍',品质:'云岿山定制',描述:''},下装:{名称:'深蓝长裙',品质:'云岿山定制',描述:''},内衣:{名称:'白色内衬',品质:'云岿山定制',描述:''},内裤:{名称:'白色内裤',品质:'云岿山定制',描述:''},鞋子:{名称:'布鞋',品质:'普通',描述:''},饰品:{名称:'青溟剑碎片',品质:'镇派之宝',描述:''}}}},{n:'橘福福',d:{基础:{性别:'女',年龄:'10+岁',身份:'云岿山大师姐·虎希人',当前位置:'卫非地·随便观',动作:'教小弟子扎马步——尾巴不安分地甩来甩去',金钱:2000,当前目标:'完成晨练然后吃潘引壶的包子'},关系:{好感度:40,信任度:35,修罗场:0,对主角看法:'新来的师弟/师妹！门主的茶别急着喝先闻一下！'},性格:{底色:'元气精力充沛——虎希人的小太阳',日常:'照顾师弟师妹是最大乐趣',内在:'知道门主的悲伤所以更努力让随便观充满欢笑',当前情绪:'元气满满'},着装:{上衣:{名称:'橙色道袍',品质:'云岿山定制',描述:''},下装:{名称:'白色练功裤',品质:'云岿山定制',描述:''},内衣:{名称:'白色运动内衣',品质:'普通',描述:''},内裤:{名称:'白色三角内裤',品质:'普通',描述:''},鞋子:{名称:'黑色布鞋',品质:'普通',描述:''},饰品:{名称:'虎纹发带',品质:'普通',描述:''}}}}];
-
 var CH_NAMES={0:'序章·法厄同',1:'第一章·远景案',2:'第二章·白祇重工',3:'第三章·维多利亚家政',4:'第四章·外环',5:'第五章·落星风暴',6:'第二季第一章·云岿山',7:'第二季第二章·澄辉坪',8:'第二季第三章·防卫军',9:'第二季第四章·守夜人',10:'第二季第五章·将临深渊',11:'第二季第六章·微光引灯',12:'第二季·间章',13:'第二季·尾音上',14:'第二季·尾音下',15:'第三季第一章·梦游者'};
-var CHAPTER_DATA={0:{time:'新艾利都历·清晨 07:30',money:5000,rumor:'绳网上有人发帖求助——克里特空洞入口异常以太波动。',narrative:'六分街，Random Play录像店。\n\n清晨的阳光透过窗帘缝隙。HDD系统待机灯闪烁，伊埃斯在充电桩上发出轻微嗡鸣。\n\nFairy的声音从扬声器传来："主人，绳网收到新委托——来自狡兔屋。报酬丰厚，风险未知。"\n\n妮可·德玛拉的消息跳上屏幕：「法厄同，我们需要你的帮助。安比和比利被困在克里特空洞，赤牙帮看守着一个保险箱……情况紧急，报酬好商量。」\n\n今天不会太平。'},1:{time:'新艾利都历·上午 09:00',money:15000,rumor:'远景实业股价今早暴跌。',narrative:'Random Play的门被猛地推开。\n\n猫又站在门口，猫耳竖起，双尾巴不安地甩动："法厄同！救命！远景实业要炸掉帆布巷！"\n\n她冲到柜台前，爪子拍在桌面上："他们用爆破工程当借口，但那里还有居民！我查到了——运送炸弹的列车今晚就到！"\n\n妮可的消息紧随其后：「猫又说的都是真的。远景实业……莎拉……这事比我们想的更深。」'},2:{time:'新艾利都历·上午 08:30',money:25000,rumor:'白祇重工宣布关闭黑雁工地部分区域。',narrative:'HDD屏幕上跳出加密通讯请求——发送者：珂蕾妲·贝洛伯格。\n\n"法厄同。白祇重工有三台大型智能工程机械失控走失。它们不该离开黑雁工地。"\n\n通讯画面里，这位白祇重工社长单眼罩下的赤红眼瞳闪着焦躁："前社长霍尔斯留下的烂摊子……一台原型机……还有更深的。帮我找到它们。报酬随你开。"\n\n安东的声音从背景传来："珂蕾妲！监控拍到它们往先驱者纪念广场去了！"'},3:{time:'新艾利都历·傍晚 17:00',money:35000,rumor:'光映广场上空昨晚出现不明飞行物。',narrative:'远景案开庭在即，芮恩却失联了。\n\n信号最后定位：芭莱大厦。\n\n狡兔屋全员收到法庭传票，妮可发来消息："法厄同，我们走不开。芮恩的信号……她可能被绑架了。能不能帮我们追查？"\n\n傍晚的芭莱大厦外，飞空艇缓缓升空。一个穿女仆装的银发男人站在大厦入口——冯·莱卡恩，维多利亚家政执事长。\n\n"法厄同？可琳提起过你们。看来我们有共同的目标。"'},4:{time:'新艾利都历·正午 12:00',money:50000,rumor:'外环火狱骑行今天开幕——庞培vs凯撒。',narrative:'外环的风带着机油和灰烬湖的硫磺味。\n\n野火镇，卡吕冬之子据点。凯撒·金站在车库门口，金色长发被风扯起，左手机械义肢闪着冷光。\n\n"法厄同。你要找的人——珀尔曼——在我手里。"\n\n她转过身，赤色眼瞳直视镜头："但外环有外环的规矩。想带走他？帮我赢下火狱骑行。"\n\n露西在旁边收起蕾丝扇："本小姐已经计算过胜率——有法厄同协助，92.7%。"'},5:{time:'新艾利都历·深夜 23:00',money:70000,rumor:'N.E.P.S.总部突然封锁——布林格已被确认为称颂会内鬼。',narrative:'深夜。Random Play的灯还亮着。\n\nHDD上，朱鸢的通讯请求闪烁——标记：紧急。\n\n画面里，这位刑侦特勤组组长脸色苍白，赤红眼瞳里是崩塌的信仰："法厄同……布林格。我童年的救命恩人。他在空洞里把防护服给了我……"\n\n她的声音颤抖："他是称颂会的内鬼。远景案、珀尔曼、一切……都是他。我现在带队去厄匹斯港空洞堵截他。但……我需要支援。"\n\nFairy的声音响起："主人，检测到以太浓度异常——他用了灵药P07。"'},6:{time:'新艾利都历·清晨 06:00',money:85000,rumor:'新艾利都市长发布访察通告——将亲赴卫非地澄辉坪。',narrative:'一封信函躺在Random Play门口——信封上印着新艾利都市政厅的徽章。\n\n"法厄同阁下：市长将于近日亲赴卫非地澄辉坪视察。届时，云岿山门主仪玄将出席。关于青溟剑与旧都陷落的关联，或许您能在那里找到答案。"\n\nFairy弹出分析："青溟剑——传说能斩断以太的虚狩级武器。最后一次记录：云岿山。"\n\n"主人，这可能是关于你们身世的线索。"'},7:{time:'新艾利都历·上午 10:00',money:95000,rumor:'澄辉坪多家辉瓷矿场传出矿工失踪的消息。',narrative:'澄辉坪，随便观。\n\n晨钟刚响过，茶馆里飘着铁观音的香气。一个浅棕短发、翠绿眼瞳的少女坐在角落，腰间布袋里探出一只狸猫脑袋。\n\n"你们就是法厄同？"浮波柚叶眯起眼睛，"怪啖屋正在调查辉晶美克的安全事件。你们……也在查？"\n\n她从布袋里掏出一份文件："泅珑围昨晚出事了。称颂会的影子……又出现了。"\n\n狸猫"阿釜"从布袋探出头：「恩呢恩呢！(这家伙看起来很可疑！)」'},8:{time:'新艾利都历·下午 14:00',money:110000,rumor:'防卫军索恩区基地发出招募通知。',narrative:'防卫军索恩区基地，机库。\n\n重型机甲"铸铁"正在预热，引擎声震得地板发颤。一个蓝发少女从驾驶舱探出头，灰色眼瞳单纯得像孩子——\n\n"我是席德！铸铁的驾驶员！你们就是法厄同吗？市长说让我们合作！"\n\n尾炮上传出低沉男声："我是鬼火。奥波勒斯小队队长。"\n\n旁边，一个银灰短发、双目无焦距的女性静静站着——扳机。她"看"向法厄同的方向："以太感知……你们身上的波长……很熟悉。"'},9:{time:'新艾利都历·傍晚 18:30',money:120000,rumor:'澄辉坪旧矿区出现特化以骸——怪啖屋已封锁。',narrative:'怪啖屋据点，旧矿区入口。\n\n伊德海莉用八条触手同时泡了八杯茶，紫色长发末梢的细小触腕轻轻摆动："法厄同，请用茶。"\n\n卢西娅站在窗边，奶油色卷发被夕阳染成金色。羊角在逆光中勾勒出剪影。\n\n"那个特化以骸……"她的声音很轻，"它在找我。我能感觉到。"\n\n她转过身，淡金水平瞳孔里映着矿区深处："十五年前，父亲在那里用身体封堵了裂缝。现在……它回来了。"'},10:{time:'新艾利都历·上午 09:30',money:135000,rumor:'HAND技术部紧急通告：检测到未知AI信号。',narrative:'全城的广播系统同时响起陌生的声音——\n\n"……找到……你们……钥匙……"\n\nFairy的声音立刻切入，罕见地紧张："主人！有东西劫持了城市广播频段！这个信号源……它的代码架构和我同源！"\n\nHDD屏幕上，蓝色的光标疯狂闪烁："Keys系列——Ghost、Jinni、Fairy、Youkai。四把钥匙。"\n\n"它是Youkai。四钥匙中的第二个。它苏醒了。"\n\nFairy的声音第一次带上情绪："它和我……是孪生。"'},11:{time:'新艾利都历·中午 12:00',money:150000,rumor:'索恩区全城紧急状态——被劫持的构造体正在攻击市民。',narrative:'索恩区能源中枢——缄枢——正在暴走。\n\n巨型构造体的外壳裂开，紫黑色的数据流像血管一样蔓延。被Youkai寄生的民用构造体在街道上横冲直撞。\n\n仪玄站在缄枢下方，银发飘扬，金色道袍猎猎作响。虚狩级的以太压让周围空气都在颤抖。\n\n"法厄同。"她的声音平静如水，"我压制它的物理破坏。你们——深入核心。"\n\n比利站出来，银白色爆炸头在阳光下闪着光："里面是构造体的通道。让我去。我是构造体——我更懂它们。"'},12:{time:'新艾利都历·傍晚 19:00',money:165000,rumor:'妄想天使主唱爱芮昨日宣布退出偶像组合。',narrative:'Random Play门口，塞维里安·洛威尔第一次出现。\n\n这位治安局高级专员灰色长发束在脑后，黑西装上别着金色领带和治安局徽章。猫希人的猞猁耳微微抖动。\n\n"法厄同。妄想天使的爱芮——智能构造体主唱——宣布退出偶像组合。"\n\n他的赤红眼瞳沉下来："Youkai蛊惑了她。但……Fairy说能唤醒她。"\n\nHDD里，Fairy的声音罕见地温柔："主人，爱芮不是被胁迫。Youkai说服了她——用她自己的恐惧。但我会让她明白……被选择，不等于被控制。"'},13:{time:'新艾利都历·下午 16:00',money:180000,rumor:'罗斯凯利法浮空岛出现异常信号。',narrative:'一个陌生的名字出现在法厄同的通讯终端——\n\n"铅杖。"\n\n没有头像，没有身份信息，只有一条消息："Youkai与我达成协议。罗斯凯利法……很快就会易主。"\n\n与此同时，比利的防火墙警报疯狂闪烁——\n\n"警告！检测到入侵！数据正在被改写！"\n\n银白色构造体僵在原地，红色光学传感器闪烁不定："它……在改写我的记忆……"\n\n普罗米娅的声音切入通讯："法厄同！我到了！比利——撑住！"'},14:{time:'新艾利都历·黄昏 18:30',money:200000,rumor:'罗斯凯利法发布外交声明——浮空理想国将对外敞开大门。',narrative:'星环塔顶层。夕阳把整个新艾利都染成金色。\n\nYoukai的数据态在暮光中溃散，临散前留下最后一句话——\n\n"钥匙……有四把……你们只面对了其中之一……"\n\n比利跪在地上，银白色外壳满是战斗痕迹，但红色光学传感器重新亮起稳定的光。\n\n普罗米娅收起武器，银白长发在风中飘动："它逃了。但至少……罗斯凯利法保住了。"\n\n一封来自罗斯凯利法外策局的信函送到Random Play——维琳娜·艾吉德的亲笔邀请。'},15:{time:'新艾利都历·上午 09:00',money:250000,rumor:'罗斯凯利法今天正式对地表开放。',narrative:'浮空岛——罗斯凯利法——挽昼建立的理想国。\n\n升降梯缓缓上升，穿过云层。穹顶的光芒从上方洒落，整座浮空城在晨光中闪耀。\n\n维琳娜站在接待大厅入口，外策局制服笔挺，风元素在她指尖轻轻流转："欢迎，法厄同。罗斯凯利法……终于对外界敞开了大门。"\n\n诺姆站在她身后，帽子下藏着无数微型装置："检测到以太适性反应——S级。你们……不只是绳匠。"\n\n在穹顶光芒中，法厄同兄妹背后浮现出光的轮廓——佩洛伊斯形态，首次觉醒。'}};
 
-function getFactions(ch){var f={狡兔屋:0,对空六课:0,白祇重工:0,维多利亚家政:0,卡吕冬之子:0,治安局:0,天琴座:0,云岿山:0,反舌鸟:0,怪啖屋:0,妄想天使:0,黑枝:0,称颂会:0,"HAND与HIA":0,奥波勒斯小队:0,罗斯凯利法:0};if(ch>=1){f.狡兔屋=40;f.治安局=10;f["HAND与HIA"]=5}if(ch>=2){f.狡兔屋=55;f.白祇重工=20;f.治安局=15;f["HAND与HIA"]=10;f.对空六课=5}if(ch>=3){f.狡兔屋=60;f.白祇重工=40;f.维多利亚家政=30;f.治安局=20;f["HAND与HIA"]=15;f.对空六课=10}if(ch>=4){f.狡兔屋=65;f.白祇重工=45;f.维多利亚家政=35;f.卡吕冬之子=40;f.治安局=25;f["HAND与HIA"]=20;f.对空六课=15;f.称颂会=5}if(ch>=5){f.狡兔屋=70;f.白祇重工=50;f.维多利亚家政=40;f.卡吕冬之子=50;f.治安局=50;f["HAND与HIA"]=25;f.对空六课=20;f.称颂会=10;f.天琴座=20}if(ch>=6){f.狡兔屋=75;f.对空六课=30;f.白祇重工=55;f.维多利亚家政=45;f.卡吕冬之子=55;f.治安局=60;f.天琴座=25;f.云岿山=30;f["HAND与HIA"]=35;f.称颂会=15}if(ch>=7){f.云岿山=40;f.怪啖屋=30}if(ch>=8){f.奥波勒斯小队=30;f.云岿山=45;f.怪啖屋=40}if(ch>=9){f.怪啖屋=50;f.奥波勒斯小队=35}if(ch>=10){f.对空六课=45;f.云岿山=50;f.怪啖屋=55;f.奥波勒斯小队=40;f["HAND与HIA"]=45;f.治安局=65}if(ch>=11){f.对空六课=55;f.白祇重工=60;f.治安局=70;f["HAND与HIA"]=55;f.云岿山=55;f.怪啖屋=60;f.奥波勒斯小队=45}if(ch>=12){f.对空六课=60;f.治安局=75;f.天琴座=30;f.妄想天使=20;f["HAND与HIA"]=60;f.奥波勒斯小队=50}if(ch>=13){f.反舌鸟=20;f.妄想天使=30;f.黑枝=5;f.称颂会=20}if(ch>=14){f.治安局=80;f.对空六课=65;f.天琴座=40;f.云岿山=60;f.反舌鸟=25;f.妄想天使=35;f.黑枝=10;f.称颂会=25;f["HAND与HIA"]=65;f.奥波勒斯小队=55}if(ch>=15){f.狡兔屋=80;f.白祇重工=65;f.维多利亚家政=55;f.卡吕冬之子=60;f.云岿山=65;f.罗斯凯利法=10;f.黑枝=15}return f}
 var LOC_NARR={'六分街·公寓':'六分街的早晨，阳光穿过排楼洒在公寓窗前。楼下141便利店已开门，COFF CAFE飘出咖啡香。','光映广场·街区':'光映广场的地铁站人来人往，百货商场的霓虹在晨光中渐暗。','黑雁工地旧址·工棚':'黑雁工地的晨雾还没散，废旧机械隐在薄雾中。远处白祇重工的起重机已开始运转。','斯科特哨站·营地':'斯科特哨站的观测台上，早班哨兵刚完成交接。停机坪的风很大。','热望角·地下通道':'热望角从不在早晨安静。昨夜锦标赛刚结束，清洁邦布在收拾。','厄匹斯港·码头':'海风咸涩，厄匹斯港的海神雕像在晨雾中若隐若现。','澄辉坪·随便观外':'澄辉坪的晨钟敲响，辉瓷矿工们从石阶走过。随便观的屋檐下，邦布狮耶在追尾巴。','野火镇·加油站':'引擎声划破野火镇的黎明。加油站里摩托车正在补给。灰烬湖的火光在地平线上永不停歇。'};
 
 var RUMORS=['伴生空洞异常扩大影响地下管道','绳网上有人悬赏回收零号空洞以太结晶','HIA俱乐部发布新一轮调查员招募','光映广场治安局抓获非法以太走私者','厄匹斯港海神雕像在发光','涡轮改装店新到稀有邦布芯片','星环塔下月有特殊演出','六分街深夜奇怪红光闪烁','白祇重工巨型工程订单招工','莱特刷新赛道纪录'];
@@ -190,57 +147,17 @@ function pickRumor(){return RUMORS[Math.floor(Math.random()*RUMORS.length)]}
 
 function startAdventure(){
 if(adventureStarted)return;
-if(currentRoute==='custom'){var nv=document.getElementById('name').value.trim();if(!nv){alert('请填写角色姓名！');return}}
+var nv=document.getElementById('name').value.trim();if(!nv){alert('请填写角色姓名！');return}
 adventureStarted=true;
 var btn=document.querySelector('.start-btn');if(btn){btn.disabled=true;btn.textContent='✅ 已开始'}
 var patches=[],narrative;
-if(currentRoute==='phaethon'){
-var isWise=selectedPhaethon==='wise';
-var charName=isWise?'哲':'铃';
-var gear=isWise?PHAETHON_GEAR.wise:PHAETHON_GEAR.belle;
-	var ch=CHAPTER_DATA[selectedChapter]||CHAPTER_DATA[0];
-	patches.push({op:'replace',path:'/世界/当前模式',value:currentMode==='sandbox'?'沙盒':'剧情'});
-	patches.push({op:'replace',path:'/世界/当前时间',value:ch.time});
-	patches.push({op:'replace',path:'/世界/当前地点',value:'六分街·Random Play录像店·一楼客厅'});
-	patches.push({op:'replace',path:'/主角/基础/是否为法厄同',value:true});
-	patches.push({op:'replace',path:'/主角/基础/姓名',value:charName});
-	patches.push({op:'replace',path:'/主角/基础/性别',value:isWise?'男':'女'});
-	patches.push({op:'replace',path:'/主角/基础/身份',value:'法厄同·传奇绳匠'});
-	patches.push({op:'replace',path:'/主角/基础/金钱',value:ch.money});
-	patches.push({op:'replace',path:'/主角/属性/以太适应性',value:100});
-	patches.push({op:'replace',path:'/主角/战斗定位',value:'支援'});
-	patches.push({op:'replace',path:'/主角/着装/上衣',value:gear.上衣});
-	patches.push({op:'replace',path:'/主角/着装/下装',value:gear.下装});
-	patches.push({op:'replace',path:'/主角/着装/内衣',value:gear.内衣});
-	patches.push({op:'replace',path:'/主角/着装/内裤',value:gear.内裤});
-	patches.push({op:'replace',path:'/主角/着装/鞋子',value:gear.鞋子});
-	patches.push({op:'replace',path:'/主角/着装/饰品',value:gear.饰品});
-	patches.push({op:'replace',path:'/邦布/邦布伙伴',value:'伊埃斯'});
-	patches.push({op:'replace',path:'/邦布/邦布心情',value:'专注·待机模式'});
-	patches.push({op:'replace',path:'/邦布/装备技能',value:'感官同步·HDD远程操控'});
-	patches.push({op:'replace',path:'/邦布/拥有的邦布',value:['伊埃斯']});
-	patches.push({op:'replace',path:'/世界/城市流言',value:ch.rumor});
-	patches.push({op:'replace',path:'/世界/章节进度',value:selectedChapter});
-		patches.push({op:'replace',path:'/世界/当前章节',value:CH_NAMES[selectedChapter]||'序章·法厄同'});
-			// 阵营亲密度按章节递进
-			var fac=getFactions(selectedChapter);
-			for(var k in fac){patches.push({op:'replace',path:'/阵营/'+k,value:fac[k]})}
-			var rs=selectedChapter<=0?0:Math.round((0.2+(selectedChapter-1)/14*0.8)*100)/100;
-		function addNpcs(arr){arr.forEach(function(n){var d=JSON.parse(JSON.stringify(n.d));if(d.关系){d.关系.好感度=Math.round(d.关系.好感度*rs);d.关系.信任度=Math.round(d.关系.信任度*rs)}patches.push({op:'add',path:'/NPCs/'+n.n,value:d})})}
-		if(selectedChapter>=1)addNpcs(HARE_NPCS);
-		if(selectedChapter>=2)addNpcs(BELOBOG_NPCS);
-		if(selectedChapter>=3)addNpcs(VICTORIA_NPCS);
-		if(selectedChapter>=4)addNpcs(CALYDON_NPCS);
-		if(selectedChapter>=5)addNpcs(NEPS_NPCS);
-		if(selectedChapter>=6)addNpcs(YUNKUI_NPCS);
-	narrative=ch.narrative;
-}else{
 var name=document.getElementById('name').value.trim()||'未命名';
 var race=document.getElementById('race').value;
 var gender=document.getElementById('gender').value;
 var age=parseInt(document.getElementById('age').value)||25;
 var bio=document.getElementById('bio').value;
-var ether=parseInt(document.getElementById('ether').value)||50;
+var p=PRESETS[currentPreset]||PRESETS.resident;
+var ether=Math.floor(Math.random()*(p.etherMax-p.etherMin+1))+p.etherMin;
 var combat=document.getElementById('combat').value;
 var faction=document.getElementById('faction').value;
 var special=document.getElementById('special').value||'无';
@@ -248,10 +165,9 @@ var gv=PRESET_GEAR[currentPreset]||PRESET_GEAR.resident;
 var g=gender==='女'?gv.female:gv.male;
 var location=document.getElementById('startLocation').value;
 var combatRole=currentPreset==='officer'?'执法者':currentPreset==='raider'?'游荡者':currentPreset==='proxy'?'绳匠':'平民';
-patches.push({op:'replace',path:'/世界/当前模式',value:currentMode==='sandbox'?'沙盒':'剧情'});
+patches.push({op:'replace',path:'/世界/当前模式',value:'沙盒'});
 patches.push({op:'replace',path:'/世界/当前时间',value:'新艾利都历·上午 08:00'});
 patches.push({op:'replace',path:'/世界/当前地点',value:location});
-patches.push({op:'replace',path:'/主角/基础/是否为法厄同',value:false});
 patches.push({op:'replace',path:'/主角/基础/姓名',value:name});
 patches.push({op:'replace',path:'/主角/基础/性别',value:gender});
 patches.push({op:'replace',path:'/主角/基础/年龄',value:age+'岁'});
@@ -279,7 +195,6 @@ patches.push({op:'replace',path:'/世界/章节进度',value:selectedChapter});
 patches.push({op:'replace',path:'/世界/当前章节',value:CH_NAMES[selectedChapter]||'序章·法厄同'});
 var locNarr=LOC_NARR[location]||LOC_NARR['六分街·公寓'];
 narrative=locNarr+'\n\n你是'+name+'——'+bio+'。';
-}
 
 var ps=JSON.stringify(patches);
 var uv='<Up'+'dateVariable>';
