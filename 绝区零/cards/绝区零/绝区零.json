@@ -5,7 +5,7 @@
   "scenario": "",
   "first_mes": "<initvar>\n世界.当前模式: \"剧情\"\n世界.章节进度: 0\n</initvar>\n\n<character_creation></character_creation>\n",
   "mes_example": "",
-  "creatorcomment": "绝区零 RPG 角色卡：法厄同/非法厄同双开局 + 完整 MVU 变量系统 + 可视化面板",
+  "creatorcomment": "绝区零 RPG 角色卡：完整 MVU 变量系统 + 可视化面板",
   "avatar": "none",
   "talkativeness": "0.5",
   "fav": false,
@@ -20,7 +20,7 @@
     "scenario": "",
     "first_mes": "<initvar>\n世界.当前模式: \"剧情\"\n世界.章节进度: 0\n</initvar>\n\n<character_creation></character_creation>\n",
     "mes_example": "",
-    "creator_notes": "绝区零 RPG 角色卡：法厄同/非法厄同双开局 + 完整 MVU 变量系统 + 可视化面板",
+    "creator_notes": "绝区零 RPG 角色卡：完整 MVU 变量系统 + 可视化面板",
     "creator": "tavern-cards-forge",
     "character_version": "1.0",
     "alternate_greetings": [
