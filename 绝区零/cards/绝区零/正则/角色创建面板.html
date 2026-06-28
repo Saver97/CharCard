@@ -160,7 +160,6 @@ var gv=PRESET_GEAR[currentPreset]||PRESET_GEAR.resident;
 	var g=gender==='女'?gv.female:gv.male;
 	var combatRole=currentPreset==='officer'?'执法者':currentPreset==='raider'?'游荡者':currentPreset==='proxy'?'绳匠':'平民';
 var dailyPlan=(PRESETS[currentPreset]||PRESETS.resident).plan||'六分街闲逛';
-patches.push({op:'replace',path:'/世界/当前模式',value:'沙盒'});
 patches.push({op:'replace',path:'/世界/当天计划',value:dailyPlan});
 patches.push({op:'replace',path:'/世界/当前时间',value:'6月28日·星期日'});
 patches.push({op:'replace',path:'/世界/当前地点',value:location});

@@ -62,7 +62,6 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>世界状态</h3>
     <div class="form-row"><label>当前时间</label><span class="val" id="w-time">-</span></div>
     <div class="form-row"><label>当前地点</label><span class="val" id="w-loc">-</span></div>
-    <div class="form-row"><label>当前模式</label><span class="val" id="w-mode">-</span></div>
     <div class="form-row"><label>经过天数</label><span class="val" id="w-sandbox-time">-</span></div>
     <div class="form-row"><label>当天计划</label><span class="val" id="w-plan">-</span></div>
     <div class="form-row"><label>天气</label><span class="val" id="w-weather">-</span></div>
@@ -172,8 +171,7 @@ function renderAll(){
     if(!sd){renderFactions(null);renderNPCs(null);renderOwnedBangboos(null);renderQuests(null);return}
     document.getElementById('w-time').textContent=getProp(sd,'世界.当前时间','-');
     document.getElementById('w-loc').textContent=getProp(sd,'世界.当前地点','-');
-    document.getElementById('w-mode').textContent=getProp(sd,'世界.当前模式','剧情');
-        document.getElementById('w-sandbox-time').textContent='第'+(parseInt(getProp(sd,'世界.沙盒时间',0))||0)+'天';
+    document.getElementById('w-sandbox-time').textContent='第'+(parseInt(getProp(sd,'世界.沙盒时间',0))||0)+'天';
     document.getElementById('w-plan').textContent=getProp(sd,'世界.当天计划','-');
     document.getElementById('w-weather').textContent=getProp(sd,'世界.天气','-');
     document.getElementById('w-rumor').textContent=getProp(sd,'世界.城市流言','')||'-';

@@ -13,7 +13,6 @@
 ## 世界
 /世界/当前时间        string  replace
 /世界/当前地点        string  replace
-/世界/当前模式        string  replace（★ 仅 "剧情" 或 "沙盒"）
 /世界/沙盒时间        number  replace（★ 经过天数，每天+1递增）
 /世界/已触发事件      string  replace（★ 逗号分隔的关键事件ID，仅追加不删除）
 /世界/当天计划        string  replace
