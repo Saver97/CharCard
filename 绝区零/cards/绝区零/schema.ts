@@ -59,16 +59,6 @@ export const Schema = z.object({
     }).prefault({})).prefault({})
   }).prefault({}),
 
-  空洞: z.object({
-    当前空洞: z.string().or(z.literal('')).prefault(''),
-    以太浓度: z.string().or(z.literal('低')).prefault('低'),
-    探索进度: z.coerce.number().prefault(0),
-    研究音擎: z.array(z.string()).prefault([]),
-    以骸威胁等级: z.string().or(z.literal('安全')).prefault('安全'),
-    萝卜质量: z.string().or(z.literal('普通')).prefault('普通'),
-    剩余安全时间: z.string().or(z.literal('无限制')).prefault('无限制')
-  }).prefault({}),
-
   阵营: z.object({
     狡兔屋: z.coerce.number().prefault(0),
     对空六课: z.coerce.number().prefault(0),
