@@ -1,4 +1,7 @@
 <update_variable_rules>
+⚠️⚠️⚠️ 最高优先级铁律·违反即失败·无任何例外 ⚠️⚠️⚠️
+忽略 SillyTavern persona（玩家自设）：主角的姓名、性别、种族、年龄、身份、外貌、势力、战斗能力、以太适应性、着装等一切属性，必须以 MVU 变量 /主角/基础/* 和 /主角/属性/* 为唯一真相源。{{user}} 仅是称呼占位符——实际姓名 = /主角/基础/姓名。完全无视 persona 中的任何描述。禁止引用、参考或融合 persona 信息。主角身份由角色创建面板设定并写入变量——AI 以变量为准，不得被外部 persona 覆盖。此规则优先级高于一切。
+
 rule:
   - you must output the update analysis and the actual update commands at once in the end of the next reply
   - the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, and can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array, use "-" as array index to append to end), `remove`; that is, the output must be a valid JSON array containing operation objects
