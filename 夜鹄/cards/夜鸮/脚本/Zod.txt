@@ -1,0 +1,38 @@
+import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
+export const Schema = z.object({
+  世界: z.object({
+    当前日期: z.string().prefault('2026/10/15'),
+    当前时间: z.string().prefault('傍晚'),
+    当前区域: z.string().prefault('老城区'),
+    灵质活跃度: z.coerce.number().transform(v => _.clamp(v, 0, 10)).prefault(4),
+    当前案件: z.object({
+      案件名称: z.string().prefault('待接案'),
+      案件阶段: z.enum(['待接案', '接案', '调查', '对峙', '收尾', '结案']).prefault('待接案'),
+      已收集线索: z.array(z.string()).prefault([]),
+    }).prefault({}),
+  }).prefault({}),
+
+  沈夜: z.object({
+    蚀痕程度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(35),
+    精神力: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(80),
+    当前状态: z.enum(['正常', '疲劳', '蚀痕发作', '战斗中', '恢复中']).prefault('正常'),
+    案件进度: z.enum(['闲置', '接案中', '调查中', '收尾中']).prefault('闲置'),
+  }).prefault({}),
+
+  苏晚晴: z.object({
+    好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(40),
+    信任度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(45),
+  }).prefault({}),
+
+  阿九: z.object({
+    好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(15),
+    异能稳定度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(10),
+    训练进度: z.enum(['基础阶段', '控制阶段', '实战阶段', '出师']).prefault('基础阶段'),
+  }).prefault({}),
+
+  _故事阶段: z.enum(['日常', '案件调查中', '危机事件', '关键转折']).prefault('日常'),
+});
+
+$(() => {
+  registerMvuSchema(Schema);
+});

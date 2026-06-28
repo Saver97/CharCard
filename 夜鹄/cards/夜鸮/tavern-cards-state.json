@@ -1,0 +1,796 @@
+{
+  "projectName": "夜鸮",
+  "worldbookName": "夜鸮",
+  "form": "charactercard",
+  "mvu": true,
+  "entryManifest": {
+    "世界观": {
+      "世界设定": {
+        "path": "世界书/世界观/世界设定.yaml",
+        "keywords": [
+          "灵质",
+          "异能者",
+          "灵管局",
+          "灵灾",
+          "蚀痕",
+          "深层"
+        ],
+        "abstract": "当代中国的隐秘异世界层：灵质、异能者、灵管局与灵灾体系的核心设定",
+        "uid": 0,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 10
+        }
+      }
+    },
+    "地理": {
+      "老城区": {
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "老城区"
+        ],
+        "abstract": "江城的旧核心：灵脉节点密集区",
+        "contents": [
+          {
+            "content": "@@if current_region?.includes('老城区')"
+          },
+          {
+            "content": "---\n<region region=\"老城区\">"
+          },
+          {
+            "file": "世界书/地理/老城区.yaml"
+          },
+          {
+            "content": "</region>"
+          }
+        ]
+      },
+      "新城区": {
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "新城区"
+        ],
+        "abstract": "江城的现代化城区，人为触发型灵灾温床",
+        "contents": [
+          {
+            "content": "@@if current_region?.includes('新城区')"
+          },
+          {
+            "content": "---\n<region region=\"新城区\">"
+          },
+          {
+            "file": "世界书/地理/新城区.yaml"
+          },
+          {
+            "content": "</region>"
+          }
+        ]
+      },
+      "地下灵质市场": {
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "地下灵质市场"
+        ],
+        "abstract": "非官方异能交易和信息交换网络",
+        "contents": [
+          {
+            "content": "@@if current_region?.includes('地下')"
+          },
+          {
+            "content": "---\n<region region=\"地下灵质市场\">"
+          },
+          {
+            "file": "世界书/地理/地下灵质市场.yaml"
+          },
+          {
+            "content": "</region>"
+          }
+        ]
+      }
+    },
+    "势力": {
+      "灵管局": {
+        "path": "世界书/势力/灵管局.yaml",
+        "scope": "specific",
+        "part": "main",
+        "keywords": [
+          "灵管局",
+          "灵异事务管理局",
+          "陈副局长"
+        ],
+        "abstract": "灵异事务管理局：国家异能管理机构，负责异能者注册、灵灾控制与善后。江城分局由陈副局长主持",
+        "uid": 4,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "灵管局",
+            "灵异事务管理局",
+            "陈副局长"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 80
+        }
+      },
+      "黑鳞会": {
+        "path": "世界书/势力/黑鳞会.yaml",
+        "scope": "specific",
+        "part": "main",
+        "keywords": [
+          "黑鳞会",
+          "螭"
+        ],
+        "abstract": "地下异能者组织，控制灵质黑市。江城区域代理代号'螭'，与灵管局默契共存",
+        "uid": 5,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "黑鳞会",
+            "螭"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 90
+        }
+      },
+      "沈家": {
+        "path": "世界书/势力/沈家.yaml",
+        "scope": "specific",
+        "part": "main",
+        "keywords": [
+          "沈家",
+          "沈重山",
+          "暗系异能"
+        ],
+        "abstract": "古老异能家族，暗系异能传承。沈夜的本家，十八岁'叛离'后被家族切断联系但未正式'废除'",
+        "uid": 6,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "沈家",
+            "沈重山",
+            "暗系异能"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 100
+        }
+      }
+    },
+    "时间线": {
+      "历史事件": {
+        "path": "世界书/时间线/历史事件.yaml",
+        "scope": "specific",
+        "part": "history",
+        "keywords": [
+          "历史事件",
+          "江底隧道",
+          "灵管局成立",
+          "S级灵灾"
+        ],
+        "abstract": "从灵质首次被观测到江底隧道事件的历史时间线：灵管局成立、S级灵灾、黑鳞会出现",
+        "uid": 7,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 30
+        }
+      },
+      "当前剧情": {
+        "path": "世界书/时间线/当前剧情.yaml",
+        "scope": "specific",
+        "part": "plot",
+        "keywords": [
+          "当前剧情",
+          "灵灾",
+          "阿九"
+        ],
+        "abstract": "当前剧情状态：约2026年秋，沈夜独立运营灵灾调解，阿九初觉醒，老城区灵灾频率异常上升",
+        "uid": 8,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 40
+        }
+      }
+    },
+    "角色": {
+      "角色速览": {
+        "path": "世界书/角色/角色速览.yaml",
+        "scope": "catalog",
+        "part": "other",
+        "keywords": [
+          "沈夜",
+          "苏晚晴",
+          "老刀",
+          "阿九"
+        ],
+        "abstract": "全角色速览：沈夜（主角）、苏晚晴、老刀、阿九的简要定位",
+        "uid": 9,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 110
+        }
+      },
+      "沈夜_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "沈夜",
+          "夜鸮",
+          "暗蚀",
+          "夜航船"
+        ],
+        "abstract": "沈夜基础档案：25岁前A级特勤，暗蚀异能者，夜航船书店老板，独立灵灾调解人",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"沈夜\">"
+          },
+          {
+            "file": "世界书/角色/沈夜/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "uid": 10,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 111
+        }
+      },
+      "沈夜_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "沈夜",
+          "夜鸮"
+        ],
+        "abstract": "沈夜多阶段性格调色盘：底色疏离，初识期玩世不恭/冷静，熟悉期冷静/毒舌，羁绊期可靠/沉默/温柔",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"沈夜\">"
+          },
+          {
+            "file": "世界书/角色/沈夜/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "uid": 11,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 112
+        }
+      },
+      "沈夜_三面性": {
+        "scope": "specific",
+        "part": "tri_faceted",
+        "keywords": [
+          "沈夜",
+          "夜鸮"
+        ],
+        "abstract": "沈夜三面性：书店老板（日常面）、夜鸮调解人（战斗面）、沈家子弟（真实面），含过渡与渗透",
+        "contents": [
+          {
+            "content": "---\n<character_tri_faceted character=\"沈夜\">"
+          },
+          {
+            "file": "世界书/角色/沈夜/三面性.yaml"
+          },
+          {
+            "content": "</character_tri_faceted>"
+          }
+        ],
+        "uid": 12,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 113
+        }
+      },
+      "沈夜_二次解释": {
+        "path": "世界书/角色/沈夜/二次解释.yaml",
+        "scope": "specific",
+        "part": "other",
+        "rephrase": true,
+        "keywords": [
+          "沈夜",
+          "演技指导"
+        ],
+        "abstract": "沈夜性格关键词二次解释：纠正AI对疏离/玩世不恭/刻薄/毒舌/温柔的常见误解",
+        "uid": 13,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 170
+        }
+      }
+    },
+    "NPC": {
+      "苏晚晴": {
+        "scope": "specific",
+        "keywords": [
+          "苏晚晴",
+          "苏姐"
+        ],
+        "abstract": "苏晚晴：26岁灵管局B级特勤情报分析科，沈夜的前同事，唯一保持非正式联系的人，白露旧表的继承者",
+        "contents": [
+          {
+            "content": "---\n<npc name=\"苏晚晴\">"
+          },
+          {
+            "file": "世界书/NPC/苏晚晴.yaml"
+          },
+          {
+            "content": "</npc>"
+          }
+        ],
+        "uid": 14,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "苏晚晴",
+            "苏姐"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 120
+        }
+      },
+      "老刀": {
+        "scope": "specific",
+        "keywords": [
+          "老刀",
+          "刀哥",
+          "锈锚酒吧"
+        ],
+        "abstract": "老刀：48岁锈锚酒吧老板，退役异能者，地下市场中立担保人，沈夜的忘年交",
+        "contents": [
+          {
+            "content": "---\n<npc name=\"老刀\">"
+          },
+          {
+            "file": "世界书/NPC/老刀.yaml"
+          },
+          {
+            "content": "</npc>"
+          }
+        ],
+        "uid": 15,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "老刀",
+            "刀哥",
+            "锈锚酒吧"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 121
+        }
+      },
+      "阿九": {
+        "scope": "specific",
+        "keywords": [
+          "阿九",
+          "小九"
+        ],
+        "abstract": "阿九：18岁刚觉醒的异能少女，声波共振能力者，沈夜不情不愿的徒弟，居住在书店二楼",
+        "contents": [
+          {
+            "content": "---\n<npc name=\"阿九\">"
+          },
+          {
+            "file": "世界书/NPC/阿九.yaml"
+          },
+          {
+            "content": "</npc>"
+          }
+        ],
+        "uid": 16,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "阿九",
+            "小九"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 122
+        }
+      }
+    },
+    "扮演准则": {
+      "扮演准则": {
+        "path": "世界书/扮演准则/扮演准则.yaml",
+        "keywords": [],
+        "abstract": "沈夜角色卡整体扮演准则：冷感叙事、简练对话、用身体语言表达情感、禁止煽情和甜言蜜语",
+        "uid": 17,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 20
+        }
+      }
+    },
+    "MVU": {
+      "[mvu_update]变量输出格式": {
+        "path": "世界书/变量/变量输出格式.txt",
+        "part": "output_format",
+        "keywords": [],
+        "abstract": "MVU变量输出格式",
+        "uid": 18,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 130
+        }
+      },
+      "变量列表": {
+        "path": "世界书/变量/变量列表.txt",
+        "part": "variable_list",
+        "keywords": [],
+        "abstract": "MVU变量列表",
+        "uid": 19,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 140
+        }
+      },
+      "[mvu_update]变量更新规则": {
+        "path": "世界书/变量/变量更新规则.yaml",
+        "part": "update_rules",
+        "keywords": [],
+        "abstract": "MVU变量更新规则",
+        "uid": 20,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 150
+        }
+      },
+      "[InitVar]请勿打开": {
+        "path": "世界书/变量/initvar.yaml",
+        "part": "initvar",
+        "keywords": [],
+        "abstract": "MVU初始变量",
+        "uid": 21,
+        "enabled": false,
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 160
+        }
+      }
+    },
+    "EJS预处理": {
+      "EJS预处理": {
+        "keywords": [],
+        "abstract": "EJS变量注册：定义current_region等变量供@@if条件使用",
+        "contents": [
+          {
+            "content": "@@preprocessing"
+          },
+          {
+            "file": "世界书/EJS/EJS预处理.txt"
+          }
+        ]
+      }
+    }
+  },
+  "typeLists": {
+    "before_char": [
+      "EJS预处理",
+      "世界观",
+      "扮演准则",
+      "时间线",
+      "地理",
+      "势力"
+    ],
+    "after_char": [
+      "角色",
+      "NPC"
+    ],
+    "depth": [
+      "事件",
+      "MVU"
+    ]
+  },
+  "strategyThresholds": {
+    "角色": {
+      "basic": {
+        "threshold": 5,
+        "required": true
+      },
+      "other": {
+        "threshold": 2,
+        "required": false
+      },
+      "personality": {
+        "threshold": 2,
+        "required": true
+      },
+      "tri_faceted": {
+        "threshold": 2,
+        "required": false
+      }
+    },
+    "事件": 0,
+    "地理": {
+      "region": {
+        "threshold": 4,
+        "required": false
+      },
+      "scene": {
+        "threshold": 4,
+        "required": false
+      }
+    },
+    "势力": 0,
+    "MVU": {
+      "initvar": {
+        "threshold": null,
+        "required": false
+      },
+      "output_format": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "update_rules": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "variable_list": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "NPC": 0,
+    "EJS预处理": "Infinity",
+    "扮演准则": "Infinity",
+    "时间线": {
+      "history": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "plot": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "世界观": "Infinity"
+  },
+  "partOrder": {
+    "角色": [
+      "basic",
+      "personality",
+      "tri_faceted",
+      "other"
+    ],
+    "地理": [
+      "region",
+      "scene"
+    ],
+    "势力": [
+      "main"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "时间线": [
+      "history",
+      "plot"
+    ]
+  },
+  "depth_defaults": {
+    "role": "system",
+    "depth": 0
+  },
+  "description": "",
+  "first_messages": [
+    "开场白/0.txt"
+  ],
+  "creator": "",
+  "creator_notes": "",
+  "version": "1.0",
+  "create_date": "2026-06-28T10:44:34.449Z",
+  "extensions": {
+    "tavern_helper": {
+      "scripts": {
+        "MVU": {
+          "type": "script",
+          "script_file": "脚本/MVU.txt",
+          "enabled": true,
+          "id": "d0311ca6-5e9a-498e-a777-f74dc4dc6b12",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": [
+              {
+                "name": "重新处理变量",
+                "visible": true
+              },
+              {
+                "name": "重新读取初始变量",
+                "visible": true
+              },
+              {
+                "name": "快照楼层",
+                "visible": false
+              },
+              {
+                "name": "重演楼层",
+                "visible": false
+              },
+              {
+                "name": "重试额外模型解析",
+                "visible": false
+              },
+              {
+                "name": "清除旧楼层变量",
+                "visible": false
+              }
+            ]
+          },
+          "data": {}
+        },
+        "Zod": {
+          "type": "script",
+          "script_file": "脚本/Zod.txt",
+          "enabled": true,
+          "id": "5b3b09af-35e3-4149-a0f7-2f08776ed6a1",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": []
+          },
+          "data": {}
+        }
+      },
+      "variables": {}
+    },
+    "talkativeness": "0.5",
+    "fav": false,
+    "depth_prompt": {
+      "prompt": "",
+      "depth": 4,
+      "role": "system"
+    }
+  },
+  "regex_scripts": {
+    "对AI隐藏状态栏": {
+      "id": "b5f2606f-69cc-4a6a-8ebb-bd8a3b7f671f",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "状态栏界面": {
+      "id": "ce6da13c-4e35-4057-8964-3192b7903acc",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replace_file": "正则/状态栏界面.html",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "对AI隐藏变量更新": {
+      "id": "aa12731a-97c4-4450-ac2f-0bfe1d6a4f64",
+      "findRegex": "/<(update(?:variable)?)>(?:(?!.*<\\/\\1>)(?:(?!<\\1>).)*$|(?:(?!<\\1>).)*<\\/\\1?>)/gsi",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+	  },
+    "变量更新美化": {
+      "id": "92d49340-fe5e-4929-871f-43d110e5ec76",
+      "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi",
+      "replace_file": "正则/变量更新美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    }
+  }
+}

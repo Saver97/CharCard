@@ -1,0 +1,6 @@
+<%_
+define('current_region', getvar('stat_data.世界.当前区域', { defaults: '' }));
+define('shenye_affection', getvar('stat_data.苏晚晴.好感度', { defaults: 0 }));
+define('case_stage', getvar('stat_data.世界.当前案件.案件阶段', { defaults: '待接案' }));
+define('spiritual_density', getvar('stat_data.世界.灵质活跃度', { defaults: 4 }));
+_%>
