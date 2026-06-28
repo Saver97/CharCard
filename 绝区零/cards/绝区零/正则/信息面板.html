@@ -49,15 +49,14 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
 
 <div class="container">
 <div class="header"><h1>⚡ 绝区零 · 状态面板</h1><p>只读显示 · 所有修改通过对话处理</p></div>
-<div class="tabs">
-  <button class="tab-btn active" data-tab="world">🌍 世界观</button>
-  <button class="tab-btn" data-tab="hero">🐣 主角</button>
-  <button class="tab-btn" data-tab="hollow">🌀 空洞</button>
-  <button class="tab-btn" data-tab="faction">🤝 阵营</button>
-  <button class="tab-btn" data-tab="bangboo">🤖 邦布</button>
-  <button class="tab-btn" data-tab="npc">💝 NPC</button>
-  <button class="tab-btn" data-tab="quest">📋 任务</button>
-</div>
+	<div class="tabs">
+	  <button class="tab-btn active" data-tab="world">🌍 世界观</button>
+	  <button class="tab-btn" data-tab="hero">🐣 主角</button>
+	  <button class="tab-btn" data-tab="faction">🤝 阵营</button>
+	  <button class="tab-btn" data-tab="bangboo">🤖 邦布</button>
+	  <button class="tab-btn" data-tab="npc">💝 NPC</button>
+	  <button class="tab-btn" data-tab="quest">📋 任务</button>
+	</div>
 
 <div class="tab-panel active" id="tab-world">
   <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>世界状态</h3>
@@ -87,7 +86,6 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>生存参数</h3>
     <div class="bar-wrap"><div class="bar-info"><span>❤️ HP</span><span id="h-hp-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-hp-bar" style="width:0%;background:var(--danger)"></div></div></div>
-    <div class="bar-wrap"><div class="bar-info"><span>🧠 心智防护</span><span id="h-mind-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-mind-bar" style="width:0%;background:var(--blue)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>🌸 发情度</span><span id="h-horny-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-horny-bar" style="width:0%;background:var(--pink)"></div></div></div>
     <div class="bar-wrap"><div class="bar-info"><span>☣️ 以太侵蚀度</span><span id="h-ether-txt">0/0</span></div><div class="bar-bg"><div class="bar-fill" id="h-ether-bar" style="width:0%;background:var(--purple)"></div></div></div>
   </div>
@@ -95,10 +93,13 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
     <div class="form-row"><label>丁尼余额</label><span class="val" id="h-denny">0 丁尼</span></div>
     <div class="form-row"><label>同伴</label><span class="val" id="h-companions">无</span></div>
   </div>
-  <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>⚔️ 战斗与个性</h3>
+  <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>角色能力</h3>
     <div class="npc-grid">
       <div class="npc-g-card"><span class="npc-g-label">战斗定位</span><span class="npc-g-val" style="color:var(--orange)" id="h-combat-role">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">战斗能力</span><span class="npc-g-val" style="color:var(--danger)" id="h-combat-pow">-</span></div>
       <div class="npc-g-card"><span class="npc-g-label">以太适应性</span><span class="npc-g-val" style="color:var(--purple)" id="h-ether-apt">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">特殊能力</span><span class="npc-g-val" style="font-size:11px;color:var(--gold)" id="h-special">-</span></div>
+      <div class="npc-g-card"><span class="npc-g-label">所属势力</span><span class="npc-g-val" style="font-size:11px;color:var(--blue)" id="h-faction">-</span></div>
       <div class="npc-g-card"><span class="npc-g-label">当前情绪</span><span class="npc-g-val" id="h-mood">-</span></div>
     </div>
   </div>
@@ -114,22 +115,6 @@ body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0a0b12;colo
   </div>
   <div class="card"><h3><span class="dot" style="background:var(--gold)"></span>🎒 背包</h3>
     <div id="hero-inventory"></div>
-  </div>
-</div>
-
-<div class="tab-panel" id="tab-hollow">
-  <div class="card"><h3><span class="dot" style="background:var(--purple)"></span>空洞状态</h3>
-    <div class="form-row"><label>当前空洞</label><span class="val" id="ho-name">（不在空洞中）</span></div>
-    <div class="form-row"><label>以太浓度</label><span class="val" id="ho-density">-</span></div>
-    <div class="bar-wrap"><div class="bar-info"><span>探索进度</span><span id="ho-progress-txt">0%</span></div><div class="bar-bg"><div class="bar-fill" id="ho-progress-bar" style="width:0%;background:var(--purple)"></div></div></div>
-    <div class="form-row"><label>研究音擎</label><span class="val" id="ho-resonia">无</span></div>
-  </div>
-  <div class="card"><h3><span class="dot" style="background:var(--danger)"></span>危险评估</h3>
-    <div class="npc-grid">
-      <div class="npc-g-card"><span class="npc-g-label">以骸威胁</span><span class="npc-g-val" style="color:var(--danger)" id="ho-threat">-</span></div>
-      <div class="npc-g-card"><span class="npc-g-label">萝卜质量</span><span class="npc-g-val" style="color:var(--gold)" id="ho-carrot">-</span></div>
-      <div class="npc-g-card"><span class="npc-g-label">安全时间</span><span class="npc-g-val" id="ho-timeleft">-</span></div>
-    </div>
   </div>
 </div>
 
@@ -206,16 +191,8 @@ function renderAll(){
     var hp=getProp(sd,'主角.状态.HP',100);document.getElementById('h-hp-txt').textContent=hp+'/100';document.getElementById('h-hp-bar').style.width=hp+'%';
     var horny=getProp(sd,'主角.状态.发情度',0);document.getElementById('h-horny-txt').textContent=horny+'/100';document.getElementById('h-horny-bar').style.width=horny+'%';
     var ether=getProp(sd,'主角.状态.以太侵蚀度',0);document.getElementById('h-ether-txt').textContent=ether+'/100';document.getElementById('h-ether-bar').style.width=ether+'%';
-    var mindProt=Math.max(0,100-ether);document.getElementById('h-mind-txt').textContent=mindProt+'/100';document.getElementById('h-mind-bar').style.width=mindProt+'%';
     document.getElementById('h-denny').textContent=(getProp(sd,'主角.基础.金钱',0))+' 丁尼';
     document.getElementById('h-companions').textContent=(getProp(sd,'主角.同伴',[])||[]).join(', ')||'无';
-    document.getElementById('ho-name').textContent=getProp(sd,'空洞.当前空洞','')||'（不在空洞中）';
-    document.getElementById('ho-density').textContent=getProp(sd,'空洞.以太浓度','-');
-    var prog=getProp(sd,'空洞.探索进度',0);document.getElementById('ho-progress-txt').textContent=prog+'%';document.getElementById('ho-progress-bar').style.width=prog+'%';
-    document.getElementById('ho-resonia').textContent=[].concat(getProp(sd,'空洞.研究音擎',[])).join(', ')||'无';
-    document.getElementById('ho-threat').textContent=getProp(sd,'空洞.以骸威胁等级','-');
-    document.getElementById('ho-carrot').textContent=getProp(sd,'空洞.萝卜质量','-');
-    document.getElementById('ho-timeleft').textContent=getProp(sd,'空洞.剩余安全时间','-');
     var bat=getProp(sd,'邦布.伊埃斯电量',100);document.getElementById('b-battery-txt').textContent=bat+'%';document.getElementById('b-battery-bar').style.width=bat+'%';
     document.getElementById('b-partners').textContent=getProp(sd,'邦布.邦布伙伴','')||'-';
     document.getElementById('b-skill').textContent=getProp(sd,'邦布.装备技能','')||'-';
@@ -228,7 +205,10 @@ function renderAll(){
     document.getElementById('h-gear-shoes').textContent=getProp(sd,'主角.着装.鞋子','')||'空置';
     document.getElementById('h-gear-acc').textContent=getProp(sd,'主角.着装.饰品','')||'空置';
     document.getElementById('h-combat-role').textContent=getProp(sd,'主角.战斗定位','')||'-';
+    document.getElementById('h-combat-pow').textContent=getProp(sd,'主角.属性.战斗能力','-');
     document.getElementById('h-ether-apt').textContent=getProp(sd,'主角.属性.以太适应性','-');
+    document.getElementById('h-special').textContent=getProp(sd,'主角.属性.特殊能力','无')||'无';
+    document.getElementById('h-faction').textContent=getProp(sd,'主角.基础.所属势力','-');
     document.getElementById('h-mood').textContent=getProp(sd,'主角.当前情绪','-');
     var inv=getProp(sd,'主角.背包',{});var invHtml='';
     if(typeof inv==='object'&&Object.keys(inv).length>0){var invKeys=Object.keys(inv);for(var i=0;i<invKeys.length;i++){var iName=invKeys[i];var iData=inv[iName];var qty=typeof iData==='object'?iData.数量||1:iData;invHtml+='<div class="kv-row"><span>'+iName+'</span><span class="kv-v" style="color:var(--gold)">x'+qty+'</span></div>'}}else{invHtml='<div style="font-size:12px;color:var(--muted);text-align:center;padding:8px">背包为空</div>'}
